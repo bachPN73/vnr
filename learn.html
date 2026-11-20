@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2563eb" />
+  <title>Quizlet Learn — Ôn Tập Liên Tục 415 Câu Theo Cụm (new.txt)</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-soft: #eff6ff;
+      --accent: #b91c1c;
+      --ok: #15803d;
+      --ok-bg: #dcfce7;
+      --warn: #b45309;
+      --warn-bg: #fef3c7;
+      --err: #dc2626;
+      --err-bg: #fee2e2;
+      --shadow: 0 6px 24px rgba(15, 23, 42, 0.07);
+    }
+    body.dark {
+      --bg: #0a0f1e;
+      --card: #111827;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --primary: #3b82f6;
+      --primary-soft: #172554;
+      --accent: #ef4444;
+      --ok: #4ade80;
+      --ok-bg: #052e16;
+      --warn: #fbbf24;
+      --warn-bg: #451a03;
+      --err: #f87171;
+      --err-bg: #450a0a;
+      --shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { margin: 0; overflow-x: hidden; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.58;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+    }
+    .topbar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pill-link {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .pill-link:hover { border-color: var(--primary); color: var(--primary); }
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 8px;
+      min-width: 38px;
+      min-height: 38px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 980px;
+      margin: 16px auto 0;
+      padding: 0 14px calc(32px + env(safe-area-inset-bottom));
+    }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* Dashboard Summary Banner */
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+    .hero-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .mastery-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--border);
+      overflow: hidden;
+      display: flex;
+      margin: 10px 0 8px;
+    }
+    .seg-ok { background: var(--ok); transition: width 0.25s; }
+    .seg-learn { background: var(--warn); transition: width 0.25s; }
+    .legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .legend strong { color: var(--text); }
+    .dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    .settings-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .sel {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .toggle-lbl {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn {
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      padding: 9px 15px;
+      min-height: 42px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn:active { opacity: 0.85; }
+    .btn.secondary {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn.danger {
+      background: var(--err);
+      color: #fff;
+    }
+    .btn.ok {
+      background: var(--ok);
+      color: #fff;
+    }
+
+    /* Cluster Grid */
+    .cluster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 12px;
+    }
+    .cluster-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .c-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .c-code {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .c-count {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .c-title {
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.4;
+    }
+    .c-tip-preview {
+      font-size: 0.81rem;
+      color: var(--muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .c-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .c-actions .btn { flex: 1; min-height: 40px; padding: 8px 10px; font-size: 0.84rem; }
+
+    /* Learn Stage */
+    .learn-shell {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .learn-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .learn-title {
+      font-weight: 800;
+      font-size: 0.96rem;
+      color: var(--primary);
+    }
+    .round-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .tip-drawer {
+      background: var(--primary-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .tip-drawer.open { display: block; }
+
+    .q-box {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .sub-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .state-badge {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .st-new { background: var(--primary-soft); color: var(--primary); }
+    .st-retry { background: var(--warn-bg); color: var(--warn); }
+    .st-multi { background: var(--err-bg); color: var(--err); }
+
+    .q-text {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .opts {
+      display: grid;
+      gap: 9px;
+    }
+    .opt {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      min-height: 48px;
+      border-radius: 11px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      cursor: pointer;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      transition: all 0.12s ease;
+    }
+    .opt:hover:not(:disabled) { border-color: var(--primary); }
+    .opt-key {
+      min-width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .opt.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+    .opt.selected .opt-key {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .opt.correct {
+      background: var(--ok-bg);
+      border-color: var(--ok);
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .opt.correct .opt-key { background: var(--ok); color: #fff; border-color: var(--ok); }
+    .opt.wrong {
+      background: var(--err-bg);
+      border-color: var(--err);
+      color: var(--err);
+    }
+    .opt.wrong .opt-key { background: var(--err); color: #fff; border-color: var(--err); }
+
+    .feedback {
+      margin-top: 14px;
+      padding: 13px 15px;
+      border-radius: 12px;
+      display: none;
+    }
+    .feedback.show { display: block; }
+    .feedback.fb-ok { background: var(--ok-bg); border: 1px solid var(--ok); color: var(--ok); }
+    .feedback.fb-err { background: var(--err-bg); border: 1px solid var(--err); color: var(--err); }
+    .fb-title { font-weight: 800; font-size: 0.96rem; margin-bottom: 4px; }
+    .fb-ans { color: var(--text); font-size: 0.92rem; margin-top: 4px; }
+    .fb-note { color: var(--muted); font-size: 0.84rem; margin-top: 6px; font-style: italic; }
+
+    .stage-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Round Summary */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+    }
+    .miss-list {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+    .miss-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--warn);
+      border-radius: 10px;
+      padding: 11px 13px;
+      font-size: 0.9rem;
+    }
+    .miss-q { font-weight: 700; margin-bottom: 4px; }
+    .miss-a { color: var(--ok); font-weight: 700; font-size: 0.88rem; }
+
+    /* Browse Cluster View */
+    .browse-sub {
+      margin: 18px 0 8px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--primary);
+      border-left: 4px solid var(--primary);
+      padding-left: 9px;
+    }
+    .browse-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      font-size: 0.91rem;
+    }
+    .browse-ans {
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--ok-bg);
+      color: var(--ok);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 680px) {
+      .topbar { padding: 9px 10px; }
+      .brand { font-size: 0.92rem; }
+      main { margin-top: 10px; padding: 0 10px calc(24px + env(safe-area-inset-bottom)); }
+      .hero { padding: 14px; }
+      .hero h1 { font-size: 1.08rem; }
+      .cluster-grid { grid-template-columns: 1fr; }
+      .q-box { padding: 15px 13px; }
+      .q-text { font-size: 0.98rem; }
+      .opt { padding: 11px 12px; font-size: 0.9rem; }
+      .stage-footer .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="nav-left">
+        <a class="pill-link" href="index.html">← Trang chính</a>
+        <a class="pill-link" href="flashcard.html">🃏 305 Tài liệu</a>
+        <div class="brand">🧠 QUIZLET LEARN · 415 CÂU GOM CỤM</div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="homeBtn" class="pill-link" style="display:none;" onclick="showDashboard()">📋 Chọn cụm</button>
+        <button id="themeBtn" class="icon-btn" title="Sáng / Tối">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- VIEW 1: CLUSTER DASHBOARD -->
+    <section id="view-dash" class="view active">
+      <div class="hero">
+        <div class="hero-top">
+          <div>
+            <h1>Học liên tục theo 10 Cụm Chủ Đề (file new.txt)</h1>
+            <div class="hero-sub">Các câu liên quan, dễ nhầm đã gom sát nhau · <strong>Làm sai sẽ tự động hỏi lại ngay sau 2 câu</strong> &amp; bắt buộc <strong>đúng 2 lần liên tiếp</strong> mới tính thuộc!</div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button id="weakBtn" class="btn danger" onclick="startWeakMode()" style="display:none;">🔥 Ôn câu hay sai (<span id="weakCnt">0</span>)</button>
+            <button class="btn" onclick="startAllMode()">⚡ Học nối tiếp 415 câu</button>
+          </div>
+        </div>
+
+        <div class="mastery-bar">
+          <div id="globalSegOk" class="seg-ok" style="width:0%"></div>
+          <div id="globalSegLearn" class="seg-learn" style="width:0%"></div>
+        </div>
+        <div class="legend">
+          <span><i class="dot" style="background:var(--ok)"></i>Đã thuộc: <strong id="gOk">0</strong></span>
+          <span><i class="dot" style="background:var(--warn)"></i>Đang luyện (từng sai): <strong id="gLearn">0</strong></span>
+          <span><i class="dot" style="background:var(--border)"></i>Chưa học: <strong id="gNew">415</strong></span>
+          <span style="margin-left:auto;"><button class="pill-link" onclick="resetAllProgress()" style="font-size:0.78rem; padding:3px 8px;">↻ Đặt lại toàn bộ tiến độ</button></span>
+        </div>
+
+        <div class="settings-row">
+          <select id="roundSizeSel" class="sel" title="Số câu mỗi vòng học">
+            <option value="7" selected>🎯 7 câu / vòng (Nhanh nhất)</option>
+            <option value="12">📘 12 câu / vòng</option>
+            <option value="999">📚 Cả cụm 1 lượt</option>
+          </select>
+          <select id="orderSel" class="sel" title="Thứ tự câu hỏi">
+            <option value="grouped" selected>🧩 Thứ tự cặp dễ nhầm (Khuyên dùng)</option>
+            <option value="shuffle">🔀 Xáo trộn ngẫu nhiên</option>
+          </select>
+          <label class="toggle-lbl"><input type="checkbox" id="shuffleOptsChk" checked /> Xáo trộn A/B/C/D</label>
+          <label class="toggle-lbl"><input type="checkbox" id="autoNextChk" /> Tự qua câu khi đúng</label>
+        </div>
+      </div>
+
+      <div id="clusterGrid" class="cluster-grid"></div>
+    </section>
+
+    <!-- VIEW 2: QUIZLET LEARN SESSION -->
+    <section id="view-learn" class="view">
+      <div class="learn-shell">
+        <div class="learn-top">
+          <div class="learn-title" id="sessionTitle">Cụm 1</div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="pill-link" onclick="toggleTip()">💡 Mẹo cụm này</button>
+            <span class="round-badge" id="roundStatus">Vòng 1 · Còn 7 câu</span>
+          </div>
+        </div>
+
+        <div id="tipDrawer" class="tip-drawer"></div>
+
+        <div class="mastery-bar" style="margin-top:0; margin-bottom:14px;">
+          <div id="sesSegOk" class="seg-ok" style="width:0%"></div>
+          <div id="sesSegLearn" class="seg-learn" style="width:0%"></div>
+        </div>
+
+        <div class="q-box">
+          <div class="q-meta">
+            <span id="subTag" class="sub-tag">Nhóm chủ đề</span>
+            <span id="stateBadge" class="state-badge st-new">Câu mới</span>
+          </div>
+          <div id="qText" class="q-text"></div>
+          <div id="optsBox" class="opts"></div>
+
+          <div id="multiSubmitWrap" style="margin-top:12px; display:none;">
+            <button class="btn" style="width:100%;" onclick="submitMulti()">✓ Kiểm tra các đáp án đã chọn</button>
+          </div>
+
+          <div id="feedbackBox" class="feedback">
+            <div id="fbTitle" class="fb-title"></div>
+            <div id="fbAns" class="fb-ans"></div>
+            <div id="fbNote" class="fb-note"></div>
+          </div>
+
+          <div class="stage-footer">
+            <span style="font-size:0.8rem; color:var(--muted);">Phím tắt: <code>1–4</code> chọn · <code>Enter</code> / <code>Space</code> tiếp tục</span>
+            <button id="nextBtn" class="btn" style="display:none;" onclick="advanceQueue()">Tiếp tục →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: ROUND CHECKPOINT SUMMARY -->
+    <section id="view-summary" class="view">
+      <div class="learn-shell">
+        <div class="summary-card">
+          <h2 id="sumHeading" style="margin:0 0 6px; color:var(--ok);">🎉 Hoàn thành Vòng 1!</h2>
+          <div id="sumSub" style="color:var(--muted); font-size:0.92rem;"></div>
+
+          <div class="mastery-bar" style="margin:14px 0 8px;">
+            <div id="sumSegOk" class="seg-ok" style="width:0%"></div>
+            <div id="sumSegLearn" class="seg-learn" style="width:0%"></div>
+          </div>
+          <div id="sumStats" class="legend" style="margin-bottom:14px;"></div>
+
+          <div id="missWrap" style="display:none;">
+            <div style="font-weight:800; color:var(--warn); margin-top:12px;">🔁 Chốt nhanh các câu bạn từng sai trong vòng vừa rồi:</div>
+            <div id="missList" class="miss-list"></div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+            <button id="nextRoundBtn" class="btn ok" style="flex:1;" onclick="startNextRound()">🚀 Tiếp tục vòng tiếp theo →</button>
+            <button class="btn secondary" onclick="showDashboard()">📋 Về danh sách Cụm</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: BROWSE CLUSTER CHEAT VIEW -->
+    <section id="view-browse" class="view">
+      <div class="learn-shell">
+        <div class="learn-top">
+          <div class="learn-title" id="browseTitle">Xem cụm</div>
+          <button id="browseStartBtn" class="btn">⚡ Vào học cụm này ngay</button>
+        </div>
+        <div id="browseTip" class="tip-drawer open"></div>
+        <div id="browseList"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="learn_data.js"></script>
+  <script>
+    const CLUSTERS = window.LEARN_CLUSTERS || [];
+    const ALL_CARDS = CLUSTERS.flatMap(c => c.cards.map(card => ({ ...card, clusterTitle: c.code + ': ' + c.title, clusterTip: c.tip })));
+    const CARD_MAP = Object.fromEntries(ALL_CARDS.map(c => [c.id, c]));
+
+    // Theme sync
+    const themeBtn = document.getElementById('themeBtn');
+    if (localStorage.getItem('lsd_dark') === '1') {
+      document.body.classList.add('dark');
+      themeBtn.textContent = '☀️';
+    }
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const d = document.body.classList.contains('dark');
+      themeBtn.textContent = d ? '☀️' : '🌙';
+      localStorage.setItem('lsd_dark', d ? '1' : '0');
+    });
+
+    // Progress stored in localStorage:
+    // prog[cardId] = { state: 0 (new) | 1 (learning/missed) | 2 (mastered), streak: number, misses: number }
+    const STORE_KEY = 'lsd_learn_v1';
+    let PROG = {};
+    try { PROG = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { PROG = {}; }
+    function saveProg() { localStorage.setItem(STORE_KEY, JSON.stringify(PROG)); }
+    function getP(id) { return PROG[id] || { state: 0, streak: 0, misses: 0 }; }
+
+    function switchView(id) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById('homeBtn').style.display = id === 'view-dash' ? 'none' : 'inline-block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showDashboard() {
+      renderDashboard();
+      switchView('view-dash');
+    }
+
+    function renderDashboard() {
+      let gOk = 0, gLearn = 0, gNew = 0, weakCount = 0;
+      ALL_CARDS.forEach(c => {
+        const p = getP(c.id);
+        if (p.state === 2) gOk++;
+        else if (p.state === 1) gLearn++;
+        else gNew++;
+        if (p.misses > 0 && p.state !== 2) weakCount++;
+      });
+      const total = ALL_CARDS.length || 1;
+      document.getElementById('gOk').textContent = gOk;
+      document.getElementById('gLearn').textContent = gLearn;
+      document.getElementById('gNew').textContent = gNew;
+      document.getElementById('globalSegOk').style.width = (gOk * 100 / total) + '%';
+      document.getElementById('globalSegLearn').style.width = (gLearn * 100 / total) + '%';
+
+      // Weak button: any card ever missed (or currently learning)
+      const everMissed = ALL_CARDS.filter(c => getP(c.id).misses > 0).length;
+      const weakBtn = document.getElementById('weakBtn');
+      weakBtn.style.display = everMissed > 0 ? 'inline-block' : 'none';
+      document.getElementById('weakCnt').textContent = everMissed;
+
+      const grid = document.getElementById('clusterGrid');
+      grid.innerHTML = '';
+      CLUSTERS.forEach(cl => {
+        let ok = 0, lr = 0;
+        cl.cards.forEach(c => {
+          const p = getP(c.id);
+          if (p.state === 2) ok++;
+          else if (p.state === 1) lr++;
+        });
+        const pct = Math.round((ok * 100) / cl.count);
+        const div = document.createElement('div');
+        div.className = 'cluster-card';
+        div.innerHTML = `
+          <div>
+            <div class="c-head">
+              <span class="c-code">${cl.code}</span>
+              <span class="c-count">${ok}/${cl.count} thuộc (${pct}%)</span>
+            </div>
+            <div class="c-title" style="margin-top:6px;">${cl.title}</div>
+            <div class="mastery-bar" style="height:6px; margin:8px 0 6px;">
+              <div class="seg-ok" style="width:${(ok * 100 / cl.count)}%"></div>
+              <div class="seg-learn" style="width:${(lr * 100 / cl.count)}%"></div>
+            </div>
+            <div class="c-tip-preview">💡 ${cl.tip}</div>
+          </div>
+          <div class="c-actions">
+            <button class="btn" onclick="startCluster('${cl.id}')">${ok === cl.count ? '🔁 Ôn lại cụm' : (ok + lr > 0 ? '⚡ Học tiếp' : '⚡ Bắt đầu học')}</button>
+            <button class="btn secondary" style="flex:0 0 auto;" onclick="browseCluster('${cl.id}')" title="Xem mẹo & danh sách câu gom theo cặp">📖 Xem cụm</button>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    function resetAllProgress() {
+      if (!confirm('Đặt lại toàn bộ tiến độ 415 câu về Chưa học?')) return;
+      PROG = {};
+      saveProg();
+      renderDashboard();
+    }
+
+    // Browse cluster cheat view
+    function browseCluster(cid) {
+      const cl = CLUSTERS.find(x => x.id === cid);
+      if (!cl) return;
+      document.getElementById('browseTitle').textContent = `${cl.code}: ${cl.title} (${cl.count} câu)`;
+      document.getElementById('browseTip').innerHTML = `<strong>💡 Mẹo phân biệt nhanh:</strong> ${cl.tip}`;
+      document.getElementById('browseStartBtn').onclick = () => startCluster(cid);
+
+      const box = document.getElementById('browseList');
+      box.innerHTML = '';
+      let lastSub = '';
+      cl.cards.forEach((c, i) => {
+        if (c.sub_label !== lastSub) {
+          const h = document.createElement('div');
+          h.className = 'browse-sub';
+          h.textContent = c.sub_label;
+          box.appendChild(h);
+          lastSub = c.sub_label;
+        }
+        const el = document.createElement('div');
+        el.className = 'browse-item';
+        const p = getP(c.id);
+        const badge = p.state === 2 ? '✅' : (p.state === 1 ? '🔁' : '⬜');
+        el.innerHTML = `
+          <div><strong>${badge} Câu ${i + 1}:</strong> ${escapeHtml(c.q)}</div>
+          <div class="browse-ans">✓ ${escapeHtml(c.answer)}</div>
+          ${c.note ? `<div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">📝 ${escapeHtml(c.note)}</div>` : ''}
+        `;
+        box.appendChild(el);
+      });
+      switchView('view-browse');
+    }
+
+    function escapeHtml(s) {
+      return (s || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+    }
+
+    // === QUIZLET LEARN ENGINE ===
+    let sessionCards = [];
+    let sessionTitle = '';
+    let sessionTip = '';
+    let roundNum = 0;
+    let roundQueue = [];       // array of { id, needHits }
+    let roundMissedIds = new Set();
+    let curEntry = null;
+    let curDisplayedOpts = []; // [{ key:'A', text:'...', origLetter:'A', isCorrect:bool }]
+    let curSelected = new Set();
+    let locked = false;
+    let autoTimer = null;
+
+    function shuffleArr(a) {
+      const b = a.slice();
+      for (let i = b.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [b[i], b[j]] = [b[j], b[i]];
+      }
+      return b;
+    }
+
+    function startCluster(cid) {
+      const cl = CLUSTERS.find(x => x.id === cid);
+      if (!cl) return;
+      // If all mastered, allow fresh review of this cluster
+      const allDone = cl.cards.every(c => getP(c.id).state === 2);
+      if (allDone) {
+        cl.cards.forEach(c => { PROG[c.id] = { ...getP(c.id), state: 0, streak: 0 }; });
+        saveProg();
+      }
+      sessionCards = cl.cards.map(c => ({ ...c, clusterTip: cl.tip }));
+      sessionTitle = `${cl.code}: ${cl.title}`;
+      sessionTip = cl.tip;
+      roundNum = 0;
+      startNextRound();
+    }
+
+    function startAllMode() {
+      sessionCards = ALL_CARDS.slice();
+      sessionTitle = 'Toàn bộ 415 câu (Gom theo 10 cụm)';
+      sessionTip = 'Đang học xuyên suốt 10 cụm theo đúng thứ tự các cặp câu dễ nhầm lẫn.';
+      roundNum = 0;
+      startNextRound();
+    }
+
+    function startWeakMode() {
+      const weak = ALL_CARDS.filter(c => getP(c.id).misses > 0);
+      if (!weak.length) return;
+      weak.sort((a, b) => getP(b.id).misses - getP(a.id).misses);
+      weak.forEach(c => { PROG[c.id] = { ...getP(c.id), state: 1, streak: 0 }; });
+      saveProg();
+      sessionCards = weak;
+      sessionTitle = `🔥 Ôn tập ${weak.length} câu hay sai nhất`;
+      sessionTip = 'Các câu bạn từng làm sai sẽ được lặp liên tục cho đến khi bạn trả lời đúng 2 lần liên tiếp!';
+      roundNum = 0;
+      startNextRound();
+    }
+
+    function startNextRound() {
+      clearTimeout(autoTimer);
+      const roundSize = parseInt(document.getElementById('roundSizeSel').value, 10) || 7;
+      const orderMode = document.getElementById('orderSel').value;
+
+      // Priority: 1) state===1 (learning/previously missed), 2) state===0 (unseen)
+      let learning = sessionCards.filter(c => getP(c.id).state === 1);
+      let unseen = sessionCards.filter(c => getP(c.id).state === 0);
+      if (orderMode === 'shuffle') {
+        learning = shuffleArr(learning);
+        unseen = shuffleArr(unseen);
+      }
+      const candidates = [...learning, ...unseen];
+      if (!candidates.length) {
+        showDashboard();
+        return;
+      }
+
+      roundNum++;
+      const batch = candidates.slice(0, roundSize);
+      roundQueue = batch.map(c => ({
+        id: c.id,
+        needHits: getP(c.id).state === 1 ? 2 : 1
+      }));
+      roundMissedIds = new Set();
+
+      document.getElementById('sessionTitle').textContent = sessionTitle;
+      document.getElementById('tipDrawer').classList.remove('open');
+      switchView('view-learn');
+      renderCurrentQuestion();
+    }
+
+    function toggleTip() {
+      const d = document.getElementById('tipDrawer');
+      const card = curEntry ? CARD_MAP[curEntry.id] : null;
+      d.innerHTML = `<strong>💡 Mẹo nhớ nhanh:</strong> ${escapeHtml((card && card.clusterTip) || sessionTip)}`;
+      d.classList.toggle('open');
+    }
+
+    function updateSessionBar() {
+      let ok = 0, lr = 0;
+      sessionCards.forEach(c => {
+        const p = getP(c.id);
+        if (p.state === 2) ok++;
+        else if (p.state === 1) lr++;
+      });
+      const tot = sessionCards.length || 1;
+      document.getElementById('sesSegOk').style.width = (ok * 100 / tot) + '%';
+      document.getElementById('sesSegLearn').style.width = (lr * 100 / tot) + '%';
+      document.getElementById('roundStatus').textContent = `Vòng ${roundNum} · Còn ${roundQueue.length} lượt · Thuộc ${ok}/${tot}`;
+    }
+
+    function renderCurrentQuestion() {
+      clearTimeout(autoTimer);
+      if (!roundQueue.length) {
+        renderRoundSummary();
+        return;
+      }
+      locked = false;
+      curSelected = new Set();
+      curEntry = roundQueue[0];
+      const card = CARD_MAP[curEntry.id];
+      const p = getP(card.id);
+
+      updateSessionBar();
+      document.getElementById('subTag').textContent = `${card.sub_label} · #${card.orig}`;
+      const st = document.getElementById('stateBadge');
+      if (card.multi) {
+        st.className = 'state-badge st-multi';
+        st.textContent = `☑ Chọn ${card.letters.length} đáp án` + (curEntry.needHits > 1 ? ` · Cần đúng ${curEntry.needHits} lần` : '');
+      } else if (curEntry.needHits > 1 || p.state === 1) {
+        st.className = 'state-badge st-retry';
+        st.textContent = `🔁 Ôn lại câu từng sai (cần đúng thêm ${curEntry.needHits} lần)`;
+      } else {
+        st.className = 'state-badge st-new';
+        st.textContent = '✨ Câu mới';
+      }
+
+      document.getElementById('qText').textContent = card.q;
+      document.getElementById('feedbackBox').className = 'feedback';
+      document.getElementById('nextBtn').style.display = 'none';
+      document.getElementById('multiSubmitWrap').style.display = card.multi ? 'block' : 'none';
+
+      // Build options (shuffle text while keeping clean A/B/C/D keys!)
+      const rawOpts = card.options.map(o => {
+        const origL = o[0].toUpperCase();
+        const body = o.replace(/^[A-Fa-f][\.\)]\s*/, '').trim();
+        return { origLetter: origL, text: body, isCorrect: card.letters.includes(origL) };
+      });
+      const doShuffle = document.getElementById('shuffleOptsChk').checked;
+      const ordered = doShuffle ? shuffleArr(rawOpts) : rawOpts;
+      const keys = ['A', 'B', 'C', 'D', 'E', 'F'];
+      curDisplayedOpts = ordered.map((o, i) => ({ ...o, key: keys[i] }));
+
+      const optsBox = document.getElementById('optsBox');
+      optsBox.innerHTML = '';
+      curDisplayedOpts.forEach((o, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'opt';
+        btn.dataset.idx = i;
+        btn.innerHTML = `<span class="opt-key">${o.key}</span><span>${escapeHtml(o.text)}</span>`;
+        btn.onclick = () => onPickOption(i, btn);
+        optsBox.appendChild(btn);
+      });
+    }
+
+    function onPickOption(idx, btn) {
+      if (locked) return;
+      const card = CARD_MAP[curEntry.id];
+      if (card.multi) {
+        if (curSelected.has(idx)) {
+          curSelected.delete(idx);
+          btn.classList.remove('selected');
+        } else {
+          curSelected.add(idx);
+          btn.classList.add('selected');
+        }
+        return;
+      }
+      curSelected = new Set([idx]);
+      evaluateAnswer();
+    }
+
+    function submitMulti() {
+      if (locked || curSelected.size === 0) return;
+      evaluateAnswer();
+    }
+
+    function evaluateAnswer() {
+      locked = true;
+      const card = CARD_MAP[curEntry.id];
+      const btns = [...document.querySelectorAll('#optsBox .opt')];
+      const correctIdxs = new Set(curDisplayedOpts.map((o, i) => o.isCorrect ? i : -1).filter(i => i >= 0));
+      const isRight = curSelected.size === correctIdxs.size && [...curSelected].every(i => correctIdxs.has(i));
+
+      btns.forEach((b, i) => {
+        b.disabled = true;
+        if (correctIdxs.has(i)) b.classList.add('correct');
+        else if (curSelected.has(i)) b.classList.add('wrong');
+      });
+      document.getElementById('multiSubmitWrap').style.display = 'none';
+
+      const p = getP(card.id);
+      const fb = document.getElementById('feedbackBox');
+      const fbTitle = document.getElementById('fbTitle');
+      const fbAns = document.getElementById('fbAns');
+      const fbNote = document.getElementById('fbNote');
+
+      // Remove current entry from front of queue
+      roundQueue.shift();
+
+      if (isRight) {
+        const rem = curEntry.needHits - 1;
+        if (rem <= 0) {
+          PROG[card.id] = { state: 2, streak: p.streak + 1, misses: p.misses };
+          fb.className = 'feedback show fb-ok';
+          fbTitle.textContent = '✅ Chính xác! Đã thuộc câu này!';
+          fbAns.textContent = '';
+        } else {
+          PROG[card.id] = { state: 1, streak: p.streak + 1, misses: p.misses };
+          // Re-insert near end of queue (3–4 cards later) to verify 2nd consecutive correct hit!
+          const pos = Math.min(roundQueue.length, 3);
+          roundQueue.splice(pos, 0, { id: card.id, needHits: rem });
+          fb.className = 'feedback show fb-ok';
+          fbTitle.textContent = '👍 Tốt lắm! Đúng 1/2 lần — sẽ hỏi lại sau vài câu để chốt chắc!';
+          fbAns.textContent = '';
+        }
+        fbNote.textContent = card.note ? ('📝 ' + card.note) : '';
+        saveProg();
+        updateSessionBar();
+
+        document.getElementById('nextBtn').style.display = 'inline-block';
+        if (document.getElementById('autoNextChk').checked) {
+          autoTimer = setTimeout(() => advanceQueue(), 680);
+        }
+      } else {
+        // WRONG -> Quizlet Learn immediate spaced re-queue!
+        PROG[card.id] = { state: 1, streak: 0, misses: p.misses + 1 };
+        roundMissedIds.add(card.id);
+        // Re-insert just 2 cards later so brain immediately retrieves it!
+        const insertAt = Math.min(roundQueue.length, 2);
+        roundQueue.splice(insertAt, 0, { id: card.id, needHits: 2 });
+
+        const correctTexts = curDisplayedOpts.filter(o => o.isCorrect).map(o => `${o.key}. ${o.text}`).join('  |  ');
+        fb.className = 'feedback show fb-err';
+        fbTitle.textContent = '❌ Chưa đúng — Đừng lo! Câu này sẽ lặp lại sau 2 câu (cần đúng 2 lần liên tiếp để thuộc)';
+        fbAns.innerHTML = `<strong>Đáp án đúng:</strong> ${escapeHtml(correctTexts)}`;
+        fbNote.textContent = card.note ? ('📝 ' + card.note) : '';
+        saveProg();
+        updateSessionBar();
+        document.getElementById('nextBtn').style.display = 'inline-block';
+      }
+    }
+
+    function advanceQueue() {
+      clearTimeout(autoTimer);
+      renderCurrentQuestion();
+    }
+
+    function renderRoundSummary() {
+      let ok = 0, lr = 0, nw = 0;
+      sessionCards.forEach(c => {
+        const p = getP(c.id);
+        if (p.state === 2) ok++;
+        else if (p.state === 1) lr++;
+        else nw++;
+      });
+      const tot = sessionCards.length || 1;
+      const doneAll = (lr + nw) === 0;
+
+      document.getElementById('sumHeading').textContent = doneAll
+        ? `🏆 Xuất sắc! Bạn đã thuộc 100% ${sessionTitle}!`
+        : `🎉 Hoàn thành Vòng ${roundNum}!`;
+      document.getElementById('sumSub').textContent = doneAll
+        ? 'Tất cả câu hỏi trong phần này đã đạt trạng thái Đã thuộc.'
+        : `Còn ${lr + nw} câu nữa trong phần này. Tiếp tục giữ nhịp nhé!`;
+
+      document.getElementById('sumSegOk').style.width = (ok * 100 / tot) + '%';
+      document.getElementById('sumSegLearn').style.width = (lr * 100 / tot) + '%';
+      document.getElementById('sumStats').innerHTML = `
+        <span><i class="dot" style="background:var(--ok)"></i>Đã thuộc: <strong>${ok}/${tot}</strong> (${Math.round(ok * 100 / tot)}%)</span>
+        <span><i class="dot" style="background:var(--border)"></i>Còn lại: <strong>${lr + nw}</strong></span>
+      `;
+
+      const missWrap = document.getElementById('missWrap');
+      const missList = document.getElementById('missList');
+      if (roundMissedIds.size > 0) {
+        missWrap.style.display = 'block';
+        missList.innerHTML = '';
+        [...roundMissedIds].forEach(id => {
+          const c = CARD_MAP[id];
+          const el = document.createElement('div');
+          el.className = 'miss-item';
+          el.innerHTML = `<div class="miss-q">${escapeHtml(c.q)}</div><div class="miss-a">✓ ${escapeHtml(c.answer)}</div>`;
+          missList.appendChild(el);
+        });
+      } else {
+        missWrap.style.display = 'none';
+      }
+
+      document.getElementById('nextRoundBtn').style.display = doneAll ? 'none' : 'inline-block';
+      switchView('view-summary');
+    }
+
+    // Keyboard shortcuts on PC
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('view-learn').classList.contains('active')) return;
+      if (['1', '2', '3', '4', '5', '6'].includes(e.key) && !locked) {
+        const idx = parseInt(e.key, 10) - 1;
+        const btn = document.querySelector(`#optsBox .opt[data-idx="${idx}"]`);
+        if (btn) btn.click();
+      } else if ((e.key === 'Enter' || e.code === 'Space')) {
+        e.preventDefault();
+        if (locked) advanceQueue();
+        else if (curEntry && CARD_MAP[curEntry.id].multi && curSelected.size > 0) submitMulti();
+      }
+    });
+
+    renderDashboard();
+  </script>
+</body>
+</html>
