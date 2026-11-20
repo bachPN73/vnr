@@ -120,12 +120,9 @@
       margin: 0 auto;
       padding: 0 14px 10px;
       display: flex;
+      flex-wrap: wrap;
       gap: 6px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
     }
-    .cat-bar::-webkit-scrollbar { display: none; }
     .cat-chip {
       border: 1px solid var(--border);
       background: var(--bg);
@@ -366,6 +363,14 @@
       .top-actions { width: 100%; }
       .search-input { flex: 1; width: auto; font-size: 16px; min-height: 40px; }
       .icon-btn { min-width: 40px; min-height: 40px; }
+      .cat-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0 12px 9px;
+      }
+      .cat-bar::-webkit-scrollbar { display: none; }
       main { margin-top: 10px; padding: 0 10px calc(24px + env(safe-area-inset-bottom)); }
       .card { padding: 16px 14px 14px; border-radius: 14px; }
       .question-text { font-size: 0.98rem; }
@@ -389,8 +394,10 @@
     </div>
     <div class="cat-bar" id="catBar">
       <button class="cat-chip active" data-cat="all">📚 Tất cả (<span id="cnt-all">0</span>)</button>
-      <button class="cat-chip" data-cat="dh14">🚀 Đại hội XIV (<span id="cnt-dh14">0</span>)</button>
+      <button class="cat-chip" data-cat="dh1_12">🏛 Đại hội I–XII (<span id="cnt-dh1_12">0</span>)</button>
       <button class="cat-chip" data-cat="dh13">🏛 Đại hội XIII (<span id="cnt-dh13">0</span>)</button>
+      <button class="cat-chip" data-cat="dh14">🚀 Đại hội XIV (<span id="cnt-dh14">0</span>)</button>
+      <button class="cat-chip" data-cat="nhapmon">📘 Nhập môn &amp; KL (<span id="cnt-nhapmon">0</span>)</button>
       <button class="cat-chip" data-cat="c1">1️⃣ Chương 1 (<span id="cnt-c1">0</span>)</button>
       <button class="cat-chip" data-cat="c2">2️⃣ Chương 2 (<span id="cnt-c2">0</span>)</button>
       <button class="cat-chip" data-cat="c3">3️⃣ Chương 3 (<span id="cnt-c3">0</span>)</button>
@@ -441,6 +448,8 @@
   <script>
     const ALL_CARDS = window.TAILIEU_CARDS || [];
     const CAT_LABELS = {
+      nhapmon: 'Nhập môn & Kết luận (Giáo trình)',
+      dh1_12: 'Các Đại hội Đảng I–XII',
       c1: 'Chương 1 (1930–1945)',
       c2: 'Chương 2 (1945–1975)',
       c3: 'Chương 3 (1975–nay)',
@@ -471,7 +480,7 @@
     // Category counts
     function updateCounts() {
       document.getElementById('cnt-all').textContent = ALL_CARDS.length;
-      ['c1', 'c2', 'c3', 'dh13', 'dh14'].forEach(c => {
+      ['nhapmon', 'dh1_12', 'c1', 'c2', 'c3', 'dh13', 'dh14'].forEach(c => {
         document.getElementById('cnt-' + c).textContent = ALL_CARDS.filter(x => x.cat === c).length;
       });
       document.getElementById('cnt-star').textContent = starredIds.size;
