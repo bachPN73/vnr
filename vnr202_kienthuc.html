@@ -37,19 +37,21 @@
       --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html, body { overflow-x: hidden; }
     body {
       margin: 0;
+      overflow-x: clip;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
     }
     header {
-      position: relative;
-      z-index: 20;
+      position: sticky;
+      top: 85px;
+      z-index: 40;
       background: var(--card);
       border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
     .header-inner {
       max-width: 1120px;
@@ -202,6 +204,115 @@
     th { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
     tr:nth-child(even) td { background: rgba(148, 163, 184, 0.05); }
     mark.hl { background: #fde047; color: #0f172a; padding: 0 2px; border-radius: 3px; }
+
+    /* Chapter-by-Chapter Shell & Sticky TOC for VNR202 */
+    .ch-shell {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .ch-sidebar {
+      position: sticky;
+      top: 150px;
+      align-self: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+      box-shadow: var(--shadow);
+      max-height: calc(100vh - 166px);
+      overflow-y: auto;
+    }
+    .ch-side-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+    .ch-nav-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin-bottom: 3px;
+      cursor: pointer;
+      transition: all 0.14s;
+      line-height: 1.35;
+    }
+    .ch-nav-btn:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .ch-nav-btn.active {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+    }
+    .ch-page {
+      display: none;
+    }
+    .ch-page.active-page {
+      display: block;
+    }
+    .ch-pager {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .ch-pager-btn {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .ch-pager-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .ch-pager-btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    @media (max-width: 900px) {
+      .ch-shell { grid-template-columns: 1fr; gap: 12px; }
+      .ch-sidebar {
+        position: sticky;
+        top: 138px;
+        z-index: 30;
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 8px 10px;
+        max-height: none;
+      }
+      .ch-side-title { display: none; }
+      .ch-nav-btn {
+        width: auto;
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-bottom: 0;
+        padding: 6px 11px;
+        border-radius: 999px;
+        border-color: var(--border);
+      }
+    }
 
     /* Quiz & Flashcard */
     .quiz-bar {
@@ -592,8 +703,118 @@
     const DATA = window.LSD_DATA || { memoHtml: '', guideHtml: '', questions: [] };
     const memoEl = document.getElementById('memoContent');
     const guideEl = document.getElementById('guideContent');
-    memoEl.innerHTML = DATA.memoHtml;
-    guideEl.innerHTML = DATA.guideHtml;
+
+    // Split long prose HTML into chapter-by-chapter pages with sticky sidebar & Prev/Next pager
+    function buildPaginatedSection(targetEl, rawHtml, storageKey, sidebarTitle) {
+      const temp = document.createElement('div');
+      temp.innerHTML = rawHtml;
+      const pages = [];
+      let currentNodes = [];
+      let currentTitle = 'Tổng quan';
+
+      Array.from(temp.childNodes).forEach(node => {
+        if (node.nodeType === 1 && node.tagName === 'H2') {
+          if (currentNodes.some(n => (n.textContent || '').trim().length > 0)) {
+            pages.push({ title: currentTitle, nodes: currentNodes });
+          }
+          currentTitle = node.textContent.trim().replace(/^[IVX0-9]+\.\s*/, '');
+          currentNodes = [node.cloneNode(true)];
+        } else {
+          currentNodes.push(node.cloneNode(true));
+        }
+      });
+      if (currentNodes.length) {
+        pages.push({ title: currentTitle, nodes: currentNodes });
+      }
+
+      const shell = document.createElement('div');
+      shell.className = 'ch-shell';
+
+      const sidebar = document.createElement('aside');
+      sidebar.className = 'ch-sidebar';
+      sidebar.innerHTML = `<div class="ch-side-title">${sidebarTitle} (${pages.length} phần)</div>`;
+
+      const proseWrap = document.createElement('div');
+      proseWrap.className = 'prose';
+
+      const pageEls = [];
+      const navBtns = [];
+
+      function shortLabel(str, idx) {
+        const clean = str.replace(/\s+/g, ' ').trim();
+        return clean.length > 34 ? clean.slice(0, 32) + '…' : clean;
+      }
+
+      function activatePage(idxStr, keepScroll) {
+        localStorage.setItem(storageKey, idxStr);
+        navBtns.forEach(b => b.classList.toggle('active', b.dataset.idx === idxStr));
+        if (idxStr === 'all') {
+          pageEls.forEach(p => p.classList.add('active-page'));
+        } else {
+          const targetIdx = parseInt(idxStr, 10) || 0;
+          pageEls.forEach((p, i) => p.classList.toggle('active-page', i === targetIdx));
+        }
+        if (!keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      pages.forEach((pg, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'ch-nav-btn';
+        btn.dataset.idx = String(idx);
+        btn.textContent = `${idx + 1}. ${shortLabel(pg.title, idx)}`;
+        btn.onclick = () => activatePage(String(idx));
+        sidebar.appendChild(btn);
+        navBtns.push(btn);
+
+        const pageDiv = document.createElement('div');
+        pageDiv.className = 'ch-page';
+        pg.nodes.forEach(n => pageDiv.appendChild(n));
+
+        const pager = document.createElement('div');
+        pager.className = 'ch-pager';
+        const prevBtn = idx > 0
+          ? `<button class="ch-pager-btn" data-go="${idx - 1}">← Phần ${idx}: ${shortLabel(pages[idx - 1].title)}</button>`
+          : `<span></span>`;
+        const nextBtn = idx < pages.length - 1
+          ? `<button class="ch-pager-btn primary" data-go="${idx + 1}">Tiếp: Phần ${idx + 2} (${shortLabel(pages[idx + 1].title)}) →</button>`
+          : `<a class="ch-pager-btn primary" style="text-decoration:none;" href="learn.html">🚀 Vào luyện Quizlet 415 câu →</a>`;
+        pager.innerHTML = prevBtn + nextBtn;
+        pager.querySelectorAll('[data-go]').forEach(b => {
+          b.addEventListener('click', () => activatePage(b.dataset.go));
+        });
+        pageDiv.appendChild(pager);
+
+        proseWrap.appendChild(pageDiv);
+        pageEls.push(pageDiv);
+      });
+
+      const allBtn = document.createElement('button');
+      allBtn.className = 'ch-nav-btn';
+      allBtn.dataset.idx = 'all';
+      allBtn.style.marginTop = '6px';
+      allBtn.style.borderTop = '1px dashed var(--border)';
+      allBtn.style.paddingTop = '10px';
+      allBtn.textContent = '📚 Hiện gộp tất cả các phần';
+      allBtn.onclick = () => activatePage('all');
+      sidebar.appendChild(allBtn);
+      navBtns.push(allBtn);
+
+      shell.appendChild(sidebar);
+      shell.appendChild(proseWrap);
+
+      targetEl.className = '';
+      targetEl.innerHTML = '';
+      targetEl.appendChild(shell);
+
+      const saved = localStorage.getItem(storageKey) || '0';
+      activatePage(saved === 'all' || parseInt(saved, 10) < pages.length ? saved : '0', true);
+    }
+
+    function renderAllProse() {
+      buildPaginatedSection(memoEl, DATA.memoHtml, 'vnr_memo_page', 'MỤC LỤC GHI NHỚ');
+      buildPaginatedSection(guideEl, DATA.guideHtml, 'vnr_guide_page', 'MỤC LỤC ĐỀ CƯƠNG');
+    }
+    renderAllProse();
 
     // Tabs
     let activeTab = 'memo';
@@ -623,14 +844,17 @@
         filterFlash(q);
         return;
       }
-      // Highlight in memo & guide
-      [ [memoEl, DATA.memoHtml], [guideEl, DATA.guideHtml] ].forEach(([el, orig]) => {
-        if (!q || q.length < 2) { el.innerHTML = orig; return; }
-        const re = new RegExp('(' + escapeRegExp(q) + ')', 'gi');
-        el.innerHTML = orig.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) => {
-          if (tag) return tag;
-          return text.replace(re, '<mark class="hl">$1</mark>');
-        });
+      if (!q || q.length < 2) {
+        renderAllProse();
+        return;
+      }
+      const re = new RegExp('(' + escapeRegExp(q) + ')', 'gi');
+      const hlMemo = DATA.memoHtml.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) => tag ? tag : text.replace(re, '<mark class="hl">$1</mark>'));
+      const hlGuide = DATA.guideHtml.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) => tag ? tag : text.replace(re, '<mark class="hl">$1</mark>'));
+      buildPaginatedSection(memoEl, hlMemo, 'vnr_memo_page', 'MỤC LỤC GHI NHỚ');
+      buildPaginatedSection(guideEl, hlGuide, 'vnr_guide_page', 'MỤC LỤC ĐỀ CƯƠNG');
+      document.querySelectorAll('#tab-' + activeTab + ' .ch-page').forEach(p => {
+        p.classList.toggle('active-page', p.querySelector('mark.hl') !== null);
       });
       const firstMark = document.querySelector('#tab-' + activeTab + ' mark.hl');
       if (firstMark) firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });

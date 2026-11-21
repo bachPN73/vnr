@@ -31,6 +31,8 @@
   const lastMln = localStorage.getItem('hub_last_mln') || 'mln131_kienthuc.html';
 
   const css = `
+    html { overflow-x: visible !important; }
+    body { overflow-x: clip; }
     .gnav-wrap {
       position: sticky;
       top: 0;

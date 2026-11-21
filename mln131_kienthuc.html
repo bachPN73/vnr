@@ -44,22 +44,24 @@
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
-    /* Page Tool Bar (below global nav) */
+    /* Sticky Page Tool Bar (below global nav) */
     header {
-      position: relative;
-      z-index: 20;
+      position: sticky;
+      top: 85px;
+      z-index: 40;
       background: var(--card);
       border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
     .topbar {
       max-width: 1200px;
@@ -183,13 +185,14 @@
     /* Sticky Sidebar TOC */
     aside.toc {
       position: sticky;
-      top: 108px;
+      top: 150px;
+      align-self: start;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
       box-shadow: var(--shadow);
-      max-height: calc(100vh - 126px);
+      max-height: calc(100vh - 166px);
       overflow-y: auto;
     }
     .toc-head {
@@ -239,16 +242,55 @@
     /* Content Column */
     .content { min-width: 0; }
 
-    /* Chapter Section Card */
+    /* Chapter Section Card (Single-Page Mode) */
     section.chapter {
+      display: none;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 24px 26px;
       margin-bottom: 20px;
       box-shadow: var(--shadow);
-      scroll-margin-top: 108px;
+      scroll-margin-top: 150px;
     }
+    section.chapter.active-page,
+    body.show-all section.chapter {
+      display: block;
+    }
+    .mj-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    body.dark .mj-chip.active { color: #042f2e; }
+    .page-pager {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .pager-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--text);
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.14s;
+    }
+    .pager-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .pager-btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    body.dark .pager-btn.primary { color: #042f2e; }
     .ch-header {
       display: flex;
       justify-content: space-between;
@@ -485,14 +527,15 @@
       </div>
     </div>
     <nav class="mobile-jump">
-      <a class="mj-chip" href="#tong-hop">⚡ Tổng hợp số</a>
-      <a class="mj-chip" href="#chuong-1">Ch.1 Nhập môn</a>
-      <a class="mj-chip" href="#chuong-2">Ch.2 Công nhân</a>
-      <a class="mj-chip" href="#chuong-3">Ch.3 CNXH &amp; TKQĐ</a>
-      <a class="mj-chip" href="#chuong-4">Ch.4 Dân chủ &amp; NN</a>
-      <a class="mj-chip" href="#chuong-5">Ch.5 Cơ cấu &amp; LM</a>
-      <a class="mj-chip" href="#chuong-6">Ch.6 Dân tộc &amp; TG</a>
-      <a class="mj-chip" href="#chuong-7">Ch.7 Gia đình</a>
+      <a class="mj-chip" href="#tong-hop" data-page="tong-hop">⚡ Tổng hợp số</a>
+      <a class="mj-chip" href="#chuong-1" data-page="chuong-1">Ch.1 Nhập môn</a>
+      <a class="mj-chip" href="#chuong-2" data-page="chuong-2">Ch.2 Công nhân</a>
+      <a class="mj-chip" href="#chuong-3" data-page="chuong-3">Ch.3 CNXH &amp; TKQĐ</a>
+      <a class="mj-chip" href="#chuong-4" data-page="chuong-4">Ch.4 Dân chủ &amp; NN</a>
+      <a class="mj-chip" href="#chuong-5" data-page="chuong-5">Ch.5 Cơ cấu &amp; LM</a>
+      <a class="mj-chip" href="#chuong-6" data-page="chuong-6">Ch.6 Dân tộc &amp; TG</a>
+      <a class="mj-chip" href="#chuong-7" data-page="chuong-7">Ch.7 Gia đình</a>
+      <a class="mj-chip" href="#all" data-page="all">📚 Xem tất cả</a>
     </nav>
   </header>
 
@@ -500,18 +543,19 @@
     <!-- STICKY SIDEBAR TOC -->
     <aside class="toc">
       <div class="toc-head">
-        <span>Mục lục 7 Chương</span>
+        <span>Chọn Trang Chương</span>
         <span id="progText">0/7</span>
       </div>
       <div class="toc-prog"><div id="progFill" class="toc-prog-fill"></div></div>
-      <a href="#tong-hop"><span>⚡ Bảng Con số &amp; Cặp dễ nhầm</span></a>
-      <a href="#chuong-1" data-ch="1"><span>Ch.1 · Nhập môn CNXHKH</span><span class="toc-done" id="td-1"></span></a>
-      <a href="#chuong-2" data-ch="2"><span>Ch.2 · Sứ mệnh LS GCCN</span><span class="toc-done" id="td-2"></span></a>
-      <a href="#chuong-3" data-ch="3"><span>Ch.3 · CNXH &amp; Thời kỳ QĐ</span><span class="toc-done" id="td-3"></span></a>
-      <a href="#chuong-4" data-ch="4"><span>Ch.4 · Dân chủ &amp; Nhà nước</span><span class="toc-done" id="td-4"></span></a>
-      <a href="#chuong-5" data-ch="5"><span>Ch.5 · Cơ cấu &amp; Liên minh</span><span class="toc-done" id="td-5"></span></a>
-      <a href="#chuong-6" data-ch="6"><span>Ch.6 · Dân tộc &amp; Tôn giáo</span><span class="toc-done" id="td-6"></span></a>
-      <a href="#chuong-7" data-ch="7"><span>Ch.7 · Vấn đề Gia đình</span><span class="toc-done" id="td-7"></span></a>
+      <a href="#tong-hop" data-page="tong-hop"><span>⚡ Bảng Con số &amp; Cặp dễ nhầm</span></a>
+      <a href="#chuong-1" data-page="chuong-1" data-ch="1"><span>Ch.1 · Nhập môn CNXHKH</span><span class="toc-done" id="td-1"></span></a>
+      <a href="#chuong-2" data-page="chuong-2" data-ch="2"><span>Ch.2 · Sứ mệnh LS GCCN</span><span class="toc-done" id="td-2"></span></a>
+      <a href="#chuong-3" data-page="chuong-3" data-ch="3"><span>Ch.3 · CNXH &amp; Thời kỳ QĐ</span><span class="toc-done" id="td-3"></span></a>
+      <a href="#chuong-4" data-page="chuong-4" data-ch="4"><span>Ch.4 · Dân chủ &amp; Nhà nước</span><span class="toc-done" id="td-4"></span></a>
+      <a href="#chuong-5" data-page="chuong-5" data-ch="5"><span>Ch.5 · Cơ cấu &amp; Liên minh</span><span class="toc-done" id="td-5"></span></a>
+      <a href="#chuong-6" data-page="chuong-6" data-ch="6"><span>Ch.6 · Dân tộc &amp; Tôn giáo</span><span class="toc-done" id="td-6"></span></a>
+      <a href="#chuong-7" data-page="chuong-7" data-ch="7"><span>Ch.7 · Vấn đề Gia đình</span><span class="toc-done" id="td-7"></span></a>
+      <a href="#all" data-page="all" style="margin-top:6px; border-top:1px dashed var(--border); padding-top:9px;"><span>📚 Hiện gộp cả 7 chương</span></a>
     </aside>
 
     <!-- MAIN CONTENT -->
@@ -1433,18 +1477,84 @@
       if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
-    // Active TOC highlight + back-to-top
+    // Chapter-by-Chapter Single Page Switcher
     const topBtn = document.getElementById('topBtn');
-    const tocLinks = [...document.querySelectorAll('.toc a')];
     const sections = [...document.querySelectorAll('section.chapter')];
-    window.addEventListener('scroll', () => {
-      topBtn.classList.toggle('show', window.scrollY > 360);
-      let cur = sections[0].id;
-      for (const s of sections) {
-        if (s.getBoundingClientRect().top <= 130) cur = s.id;
+    const pageIds = sections.map(s => s.id);
+    const PAGE_TITLES = {
+      'tong-hop': '⚡ Tổng hợp số',
+      'chuong-1': 'Chương 1 · Nhập môn',
+      'chuong-2': 'Chương 2 · Công nhân',
+      'chuong-3': 'Chương 3 · CNXH & TKQĐ',
+      'chuong-4': 'Chương 4 · Dân chủ & NN',
+      'chuong-5': 'Chương 5 · Cơ cấu & LM',
+      'chuong-6': 'Chương 6 · Dân tộc & TG',
+      'chuong-7': 'Chương 7 · Gia đình'
+    };
+
+    let currentPage = localStorage.getItem('mln131_active_page') || 'tong-hop';
+
+    // Inject Prev / Next pager into each chapter section
+    sections.forEach((sec, idx) => {
+      const pager = document.createElement('div');
+      pager.className = 'page-pager';
+      const prevId = idx > 0 ? pageIds[idx - 1] : null;
+      const nextId = idx < pageIds.length - 1 ? pageIds[idx + 1] : null;
+      pager.innerHTML = `
+        ${prevId ? `<button class="pager-btn" onclick="goPage('${prevId}')">← ${PAGE_TITLES[prevId]}</button>` : `<span></span>`}
+        ${nextId ? `<button class="pager-btn primary" onclick="goPage('${nextId}')">Tiếp: ${PAGE_TITLES[nextId]} →</button>` : `<a class="pager-btn primary" style="text-decoration:none;" href="mln131.html">🚀 Vào luyện Quizlet 432 câu →</a>`}
+      `;
+      sec.appendChild(pager);
+    });
+
+    function goPage(pid, keepScroll) {
+      if (pid === 'all') {
+        document.body.classList.add('show-all');
+        sections.forEach(s => s.classList.add('active-page'));
+      } else {
+        if (!pageIds.includes(pid)) pid = 'tong-hop';
+        document.body.classList.remove('show-all');
+        sections.forEach(s => s.classList.toggle('active-page', s.id === pid));
       }
-      tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+      currentPage = pid;
+      localStorage.setItem('mln131_active_page', pid);
+      document.querySelectorAll('[data-page]').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === pid);
+      });
+      if (!keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-page]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        goPage(a.dataset.page);
+      });
+    });
+
+    // When searching, show all matching chapter pages automatically
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim();
+      if (q.length >= 2) {
+        document.body.classList.remove('show-all');
+        sections.forEach(s => {
+          const hasMatch = s.querySelector('mark.hl') !== null;
+          s.classList.toggle('active-page', hasMatch);
+        });
+      } else {
+        goPage(currentPage, true);
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      topBtn.classList.toggle('show', window.scrollY > 320);
     }, { passive: true });
+
+    const hashId = location.hash.replace('#', '');
+    if (hashId && (pageIds.includes(hashId) || hashId === 'all')) {
+      goPage(hashId, true);
+    } else {
+      goPage(currentPage, true);
+    }
   </script>
 </body>
 </html>
