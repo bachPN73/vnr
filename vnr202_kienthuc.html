@@ -4,47 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#b91c1c" />
-  <title>Ôn Tập Siêu Tốc — Lịch Sử Đảng Cộng Sản Việt Nam</title>
+  <title>VNR202 — Hệ Thống Kiến Thức Đầy Đủ (Nhập Môn → Đại Hội XIV 2026)</title>
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f8f9fb;
       --card: #ffffff;
+      --soft: #f1f5f9;
       --text: #0f172a;
       --muted: #475569;
       --border: #e2e8f0;
-      --accent: #b91c1c;
-      --accent-soft: #fef2f2;
-      --accent-2: #d97706;
+      --primary: #b91c1c;
+      --primary-soft: #fef2f2;
+      --primary-border: #fecaca;
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
       --ok: #15803d;
-      --ok-bg: #dcfce7;
-      --err: #b91c1c;
-      --err-bg: #fee2e2;
-      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --ok-soft: #dcfce7;
+      --shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
     }
     body.dark {
-      --bg: #0b1120;
-      --card: #111827;
+      --bg: #0b0f17;
+      --card: #121824;
+      --soft: #1a2232;
       --text: #f1f5f9;
       --muted: #94a3b8;
-      --border: #1e293b;
-      --accent: #ef4444;
-      --accent-soft: #2a1215;
-      --accent-2: #f59e0b;
+      --border: #222d42;
+      --primary: #f87171;
+      --primary-soft: #2a1216;
+      --primary-border: #7f1d1d;
+      --amber: #fbbf24;
+      --amber-soft: #2e1f05;
       --ok: #4ade80;
-      --ok-bg: #052e16;
-      --err: #f87171;
-      --err-bg: #450a0a;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      --ok-soft: #052e16;
+      --shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
     }
+
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      overflow-x: clip;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
+      overflow-x: clip;
     }
+
+    /* Sticky Page Tool Bar */
     header {
       position: sticky;
       top: var(--gnav-h, 96px);
@@ -53,392 +59,584 @@
       border-bottom: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
-    .header-inner {
-      max-width: 1120px;
+    .topbar {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 12px 18px;
+      padding: 10px 16px;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       font-weight: 800;
-      font-size: 1.05rem;
-      color: var(--accent);
+      font-size: 1rem;
+      color: var(--primary);
+      letter-spacing: -0.01em;
     }
-    .brand span.badge {
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.72rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-    .tabs {
+    .tools {
       display: flex;
+      align-items: center;
+      gap: 7px;
       flex-wrap: wrap;
-      gap: 6px;
-    }
-    .tab-btn {
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
-      padding: 7px 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .tab-btn .tab-ico { font-size: 1rem; line-height: 1; }
-    .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .tab-btn.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
     .search-box {
-      padding: 7px 12px;
+      padding: 6px 11px;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--bg);
       color: var(--text);
       font-size: 0.88rem;
-      width: 210px;
+      width: 220px;
     }
-    .icon-btn {
+    .mode-btn {
       border: 1px solid var(--border);
-      background: var(--bg);
+      background: var(--soft);
       color: var(--text);
       border-radius: 8px;
-      padding: 7px 10px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
-      font-size: 0.9rem;
+      white-space: nowrap;
     }
-    main {
-      max-width: 1120px;
-      margin: 22px auto 60px;
-      padding: 0 18px;
+    .mode-btn.active {
+      background: var(--amber-soft);
+      border-color: var(--amber);
+      color: var(--amber);
     }
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    /* Visual Timeline Banner */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-    .stage-card {
-      background: var(--card);
+    .nav-pill {
+      text-decoration: none;
+      color: var(--text);
+      background: var(--soft);
       border: 1px solid var(--border);
-      border-top: 4px solid var(--accent);
-      border-radius: 12px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
     }
-    .stage-card:nth-child(even) { border-top-color: var(--accent-2); }
-    .stage-title {
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-    .stage-card:nth-child(even) .stage-title { color: var(--accent-2); }
-    .stage-card ul { margin: 0; padding-left: 18px; font-size: 0.88rem; color: var(--muted); }
-    .stage-card li strong { color: var(--text); }
+    .nav-pill:hover { border-color: var(--primary); color: var(--primary); }
 
-    /* Prose Content */
-    .prose {
+    /* Mobile horizontal jump bar */
+    .mobile-jump {
+      display: none;
+      gap: 6px;
+      padding: 0 12px 9px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .mobile-jump::-webkit-scrollbar { display: none; }
+    .mj-chip {
+      text-decoration: none;
+      color: var(--muted);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .mj-chip:hover { color: var(--primary); border-color: var(--primary); }
+    .mj-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    body.dark .mj-chip.active { color: #2a0a0a; }
+
+    /* Shell Layout */
+    .shell {
+      max-width: 1200px;
+      margin: 20px auto 64px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 262px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* Sticky Sidebar TOC */
+    aside.toc {
+      position: sticky;
+      top: calc(var(--gnav-h, 96px) + var(--pagehdr-h, 58px) + 14px);
+      align-self: start;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 24px 28px;
+      padding: 14px;
       box-shadow: var(--shadow);
+      max-height: calc(100vh - var(--gnav-h, 96px) - var(--pagehdr-h, 58px) - 28px);
+      overflow-y: auto;
     }
-    .prose h1 { font-size: 1.5rem; margin-top: 0; color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 10px; }
-    .prose h2 { font-size: 1.22rem; margin-top: 28px; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; }
-    .prose h3 { font-size: 1.05rem; margin-top: 20px; color: var(--text); }
-    .prose h4 { font-size: 0.96rem; margin-top: 16px; color: var(--accent-2); }
-    .prose blockquote {
-      margin: 14px 0;
-      padding: 10px 16px;
-      border-left: 4px solid var(--accent-2);
-      background: var(--accent-soft);
-      border-radius: 0 8px 8px 0;
-      font-size: 0.94rem;
+    .toc-head {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .prose code {
-      background: var(--bg);
+    .toc-prog {
+      height: 5px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .toc-prog-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.2s;
+    }
+    .toc a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 7px 9px;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .toc a:hover, .toc a.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .toc-done {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .toc-done.full { color: var(--ok); }
+
+    /* Content Column */
+    .content { min-width: 0; }
+
+    /* Strict Single-Chapter Page View */
+    section.chapter {
+      display: none;
+      background: var(--card);
       border: 1px solid var(--border);
-      padding: 1px 6px;
-      border-radius: 5px;
-      font-size: 0.86em;
+      border-radius: 16px;
+      padding: 24px 26px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 155px;
     }
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border-radius: 8px; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    section.chapter.active-page { display: block; }
+
+    .ch-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .ch-kicker {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .ch-header h2 {
+      margin: 0;
+      font-size: 1.32rem;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .ch-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .quiz-jump-btn {
+      border: 1px solid var(--primary);
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .quiz-jump-btn:hover { background: var(--primary); color: #fff; }
+    body.dark .quiz-jump-btn:hover { color: #2a0a0a; }
+
+    .done-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .done-btn.checked {
+      background: var(--ok-soft);
+      border-color: var(--ok);
+      color: var(--ok);
+    }
+
+    /* Callout Boxes */
+    .memo-box {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin-bottom: 18px;
       font-size: 0.91rem;
     }
+    .memo-box strong.lbl { color: var(--primary); }
+
+    .trap-box {
+      background: var(--amber-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--amber);
+      border-radius: 10px;
+      padding: 11px 14px;
+      margin: 12px 0;
+      font-size: 0.89rem;
+    }
+
+    /* Headings */
+    h3 {
+      font-size: 1.06rem;
+      color: var(--primary);
+      margin: 22px 0 10px;
+      padding-left: 10px;
+      border-left: 3.5px solid var(--primary);
+    }
+    h4 {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin: 14px 0 6px;
+    }
+
+    /* Grids & Mini Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 10px 0 14px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+    .mini-card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      font-size: 0.91rem;
+    }
+    .mini-card .mc-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 5px;
+      font-size: 0.92rem;
+    }
+    .mini-card p { margin: 0; }
+    .mini-card ul { margin: 4px 0 0; padding-left: 17px; }
+    .mini-card li { margin-bottom: 4px; }
+
+    /* Timeline Banner (6 stages) */
+    .stage-card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-top: 3.5px solid var(--primary);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.87rem;
+    }
+    .stage-card:nth-child(even) { border-top-color: var(--amber); }
+    .stage-title {
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+    .stage-card:nth-child(even) .stage-title { color: var(--amber); }
+    .stage-card ul { margin: 0; padding-left: 16px; color: var(--muted); }
+    .stage-card li strong { color: var(--text); }
+
+    /* Numbered Pills List */
+    ol.clean-num {
+      list-style: none;
+      counter-reset: item;
+      padding: 0;
+      margin: 8px 0 14px;
+      display: grid;
+      gap: 7px;
+    }
+    ol.clean-num li {
+      counter-increment: item;
+      position: relative;
+      padding: 9px 12px 9px 40px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+    ol.clean-num li::before {
+      content: counter(item);
+      position: absolute;
+      left: 10px;
+      top: 9px;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    body.dark ol.clean-num li::before { color: #2a0a0a; }
+
+    ul.clean-ul { margin: 6px 0 12px; padding-left: 20px; }
+    ul.clean-ul li { margin-bottom: 5px; font-size: 0.93rem; }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.89rem; }
     th, td {
       border: 1px solid var(--border);
       padding: 9px 11px;
       text-align: left;
       vertical-align: top;
     }
-    th { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
-    tr:nth-child(even) td { background: rgba(148, 163, 184, 0.05); }
+    th { background: var(--primary-soft); color: var(--primary); font-weight: 800; }
+    tr:nth-child(even) td { background: rgba(148, 163, 184, 0.04); }
+
+    .kw { font-weight: 700; color: var(--primary); }
     mark.hl { background: #fde047; color: #0f172a; padding: 0 2px; border-radius: 3px; }
 
-    /* Chapter-by-Chapter Shell & Sticky TOC for VNR202 */
-    .ch-shell {
-      display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
-      gap: 20px;
-      align-items: start;
-    }
-    .ch-sidebar {
-      position: sticky;
-      top: calc(var(--gnav-h, 96px) + 66px);
-      align-self: start;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 13px;
-      box-shadow: var(--shadow);
-      max-height: calc(100vh - var(--gnav-h, 96px) - 82px);
-      overflow-y: auto;
-    }
-    .ch-side-title {
-      font-size: 0.74rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin-bottom: 8px;
-      padding: 0 4px;
-    }
-    .ch-nav-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.84rem;
-      font-weight: 600;
-      padding: 8px 10px;
-      border-radius: 8px;
-      margin-bottom: 3px;
-      cursor: pointer;
-      transition: all 0.14s;
-      line-height: 1.35;
-    }
-    .ch-nav-btn:hover {
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .ch-nav-btn.active {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-    }
-    .ch-page {
-      display: none;
-    }
-    .ch-page.active-page {
-      display: block;
-    }
-    .ch-pager {
+    /* Compact mode */
+    body.compact .detail { display: none !important; }
+    body.compact section.chapter { padding: 18px 20px; }
+
+    .ch-footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      margin-top: 22px;
-      padding-top: 16px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Pager */
+    .page-pager {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
-    .ch-pager-btn {
+    .pager-btn {
       border: 1px solid var(--border);
-      background: var(--bg);
+      background: var(--soft);
       color: var(--text);
       padding: 9px 14px;
       border-radius: 10px;
       font-size: 0.86rem;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.14s;
     }
-    .ch-pager-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .ch-pager-btn.primary {
-      background: var(--accent);
+    .pager-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .pager-btn.primary {
+      background: var(--primary);
       color: #fff;
-      border-color: var(--accent);
+      border-color: var(--primary);
     }
-    @media (max-width: 900px) {
-      .ch-shell { grid-template-columns: 1fr; gap: 12px; }
-      .ch-sidebar {
-        position: sticky;
-        top: 138px;
-        z-index: 30;
-        display: flex;
-        gap: 6px;
-        overflow-x: auto;
-        padding: 8px 10px;
-        max-height: none;
-      }
-      .ch-side-title { display: none; }
-      .ch-nav-btn {
-        width: auto;
-        white-space: nowrap;
-        flex-shrink: 0;
-        margin-bottom: 0;
-        padding: 6px 11px;
-        border-radius: 999px;
-        border-color: var(--border);
-      }
-    }
+    body.dark .pager-btn.primary { color: #2a0a0a; }
 
-    /* Quiz & Flashcard */
-    .quiz-bar {
+    /* Post-Reading Recall Quiz Styles */
+    .ch-quiz-box {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border);
+      scroll-margin-top: 165px;
+    }
+    .qz-head {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
       justify-content: space-between;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 18px;
-      margin-bottom: 18px;
-      box-shadow: var(--shadow);
-    }
-    .btn {
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.88rem;
-    }
-    .btn.secondary {
-      background: var(--bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .q-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-      box-shadow: var(--shadow);
-    }
-    .q-title { font-weight: 700; margin-bottom: 12px; font-size: 0.98rem; }
-    .opt-list { display: grid; gap: 8px; }
-    .opt-btn {
-      text-align: left;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 0.92rem;
-      transition: all 0.12s;
-    }
-    .opt-btn:hover:not(:disabled) { border-color: var(--accent); }
-    .opt-btn.correct { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 700; }
-    .opt-btn.wrong { background: var(--err-bg); border-color: var(--err); color: var(--err); }
-
-    /* Flashcard */
-    .flash-wrap {
-      max-width: 720px;
-      margin: 18px auto;
-      text-align: center;
-    }
-    .flashcard {
-      background: var(--card);
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      padding: 36px 28px;
-      min-height: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-    .flashcard:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .flash-q { font-size: 1.08rem; font-weight: 700; margin-bottom: 14px; text-align: left; width: 100%; }
-    .flash-opts {
-      width: 100%;
-      display: grid;
-      gap: 8px;
-      text-align: left;
+      gap: 10px;
+      flex-wrap: wrap;
       margin-bottom: 12px;
     }
+    .qz-title { font-size: 1.08rem; font-weight: 800; color: var(--primary); }
+    .qz-sub { font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
+    .qz-bar { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+    .qz-stat {
+      font-size: 0.83rem;
+      font-weight: 800;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+    }
+    .qz-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--text);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .qz-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .qz-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    body.dark .qz-btn.active { color: #2a0a0a; }
+    .qz-list { display: grid; gap: 12px; }
+    .qz-card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .qz-card.is-ok { border-color: var(--ok); }
+    .qz-card.is-err { border-color: #dc2626; }
+    .qz-q { font-weight: 700; font-size: 0.94rem; margin-bottom: 10px; line-height: 1.5; }
+    .qz-ch-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-right: 6px;
+      vertical-align: 1px;
+    }
+    .qz-opts { display: grid; gap: 7px; }
+    .qz-opt {
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.89rem;
+      line-height: 1.45;
+      cursor: pointer;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .qz-opt:hover:not(:disabled) { border-color: var(--primary); }
+    .qz-opt.correct { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); font-weight: 700; }
+    .qz-opt.wrong { background: #fee2e2; border-color: #dc2626; color: #b91c1c; }
+    body.dark .qz-opt.wrong { background: #450a0a; border-color: #f87171; color: #f87171; }
+    .qz-exp {
+      display: none;
+      margin-top: 9px;
+      padding: 8px 11px;
+      border-radius: 8px;
+      background: var(--amber-soft);
+      border-left: 3px solid var(--amber);
+      font-size: 0.85rem;
+      line-height: 1.48;
+    }
+    .qz-exp.show { display: block; }
+    .qz-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+
+    /* Preserved 404 Bank Flashcard */
+    .bank-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .flash-wrap { max-width: 720px; margin: 10px auto; text-align: center; }
+    .flashcard {
+      background: var(--soft);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      min-height: 220px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .flash-q { font-size: 1.02rem; font-weight: 700; margin-bottom: 12px; }
+    .flash-opts { display: grid; gap: 7px; margin-bottom: 10px; }
     .flash-opt {
-      padding: 9px 14px;
+      padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 0.94rem;
-      transition: all 0.15s ease;
+      background: var(--card);
+      font-size: 0.9rem;
     }
     .flashcard.flipped .flash-opt.is-correct {
-      background: var(--ok-bg);
+      background: var(--ok-soft);
       border-color: var(--ok);
       color: var(--ok);
       font-weight: 700;
     }
     .flash-a {
+      display: none;
       margin-top: 10px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      background: var(--ok-bg);
+      padding: 9px 12px;
+      border-radius: 8px;
+      background: var(--ok-soft);
       color: var(--ok);
       font-weight: 700;
-      font-size: 0.96rem;
-      display: none;
-      width: 100%;
-      text-align: left;
+      font-size: 0.92rem;
     }
     .flashcard.flipped .flash-a { display: block; }
-    .flash-hint { font-size: 0.82rem; color: var(--muted); margin-top: 12px; }
-    .flash-nav { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .flash-hint { font-size: 0.8rem; color: var(--muted); margin-top: 10px; text-align: center; }
+
     .top-btn {
       position: fixed;
       right: 16px;
-      bottom: 24px;
+      bottom: 20px;
       z-index: 45;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--card);
-      color: var(--accent);
-      font-size: 1.2rem;
+      color: var(--primary);
+      font-size: 1.15rem;
       font-weight: 800;
       box-shadow: var(--shadow);
       cursor: pointer;
@@ -448,425 +646,855 @@
     }
     .top-btn.show { display: flex; }
 
-    @media (max-width: 768px) {
-      .header-inner {
-        padding: 10px 12px;
-        gap: 8px;
-      }
-      .brand {
-        font-size: 0.95rem;
-        width: 100%;
-        justify-content: space-between;
-      }
-      .brand span.badge { font-size: 0.68rem; padding: 2px 7px; }
-      .controls {
-        width: 100%;
-      }
-      .search-box {
-        flex: 1;
-        width: auto;
-        font-size: 16px;
-        padding: 9px 12px;
-        min-height: 42px;
-      }
-      .icon-btn {
-        min-width: 42px;
-        min-height: 42px;
-        font-size: 1.05rem;
-      }
-      /* Fixed Bottom Navigation Bar on Mobile */
-      .tabs {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 60;
-        background: var(--card);
-        border-top: 1px solid var(--border);
-        box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-        padding: 4px 4px calc(6px + env(safe-area-inset-bottom));
-      }
-      .tab-btn {
-        border: none;
-        border-radius: 10px;
-        padding: 6px 2px;
-        flex-direction: column;
-        justify-content: center;
-        gap: 3px;
-        font-size: 0.72rem;
-        min-height: 50px;
-        color: var(--muted);
-      }
-      .tab-btn .tab-ico { font-size: 1.18rem; }
-      .tab-btn.active {
-        background: var(--accent-soft);
-        color: var(--accent);
-      }
-      main {
-        margin: 12px auto 0;
-        padding: 0 10px calc(84px + env(safe-area-inset-bottom));
-      }
-      .timeline-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 14px;
-      }
-      .stage-card { padding: 12px 14px; }
-      .stage-card ul { font-size: 0.86rem; padding-left: 16px; }
-      .prose {
-        padding: 16px 13px;
-        border-radius: 12px;
-        overflow-wrap: anywhere;
-      }
-      .prose h1 { font-size: 1.22rem; }
-      .prose h2 { font-size: 1.06rem; margin-top: 22px; }
-      .prose h3 { font-size: 0.98rem; }
-      .prose blockquote { padding: 8px 12px; font-size: 0.88rem; }
-      table { font-size: 0.83rem; }
-      th, td { padding: 7px 8px; min-width: 88px; }
-      .quiz-bar {
-        padding: 12px;
-        gap: 10px;
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .quiz-bar > div:first-child {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px !important;
-      }
-      .quiz-bar > div:first-child strong {
-        grid-column: 1 / -1;
-        font-size: 0.9rem;
-      }
-      .btn { min-height: 42px; padding: 8px 10px; font-size: 0.85rem; }
-      #quizScore { text-align: center; font-size: 0.92rem; }
-      .q-card { padding: 14px 12px; }
-      .q-title { font-size: 0.95rem; }
-      .opt-btn {
-        min-height: 46px;
-        padding: 11px 12px;
-        font-size: 0.9rem;
-        line-height: 1.45;
-      }
-      .flash-wrap { margin: 6px auto; }
-      .flashcard {
-        padding: 18px 14px;
-        min-height: 220px;
-        border-radius: 14px;
-        touch-action: pan-y;
-      }
-      .flashcard:hover { transform: none; }
-      .flash-q { font-size: 0.98rem; margin-bottom: 12px; }
-      .flash-opt { padding: 10px 12px; font-size: 0.89rem; line-height: 1.45; }
-      .flash-a { font-size: 0.9rem; padding: 10px 12px; }
-      .flash-nav {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-top: 12px;
-      }
-      .flash-nav .btn { width: 100%; min-height: 44px; }
-      .top-btn {
-        bottom: calc(74px + env(safe-area-inset-bottom));
-        right: 12px;
-      }
+    @media (max-width: 900px) {
+      .shell { grid-template-columns: 1fr; margin-top: 12px; padding: 0 10px 64px; }
+      aside.toc { display: none; }
+      .mobile-jump { display: flex; }
+      section.chapter { padding: 16px 14px; border-radius: 13px; scroll-margin-top: 128px; }
+      .ch-header h2 { font-size: 1.12rem; }
+      .topbar { padding: 9px 12px; gap: 7px; }
+      .tools { width: 100%; }
+      .search-box { flex: 1; width: auto; font-size: 16px; min-height: 38px; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 7px 8px; min-width: 85px; }
     }
   </style>
 </head>
 <body>
   <script src="site_nav.js"></script>
   <header>
-    <div class="header-inner">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="memo"><span class="tab-ico">⚡</span><span class="tab-lbl">Ghi nhớ</span></button>
-        <button class="tab-btn" data-tab="guide"><span class="tab-ico">📖</span><span class="tab-lbl">Đề cương</span></button>
-        <button class="tab-btn" data-tab="quiz"><span class="tab-ico">🎯</span><span class="tab-lbl">Trắc nghiệm</span></button>
-        <button class="tab-btn" data-tab="flash"><span class="tab-ico">🃏</span><span class="tab-lbl">Flashcard</span></button>
-      </div>
-      <div class="controls">
-        <input id="globalSearch" class="search-box" type="search" placeholder="Tìm nhanh mốc, Đại hội..." />
+    <div class="topbar">
+      <div class="brand">📕 KIẾN THỨC VNR202 · ĐẦY ĐỦ ĐẾN ĐẠI HỘI XIV (2026)</div>
+      <div class="tools">
+        <input id="searchInput" class="search-box" type="search" placeholder="Tìm mốc, Đại hội, Nghị quyết..." />
+        <button id="compactBtn" class="mode-btn" title="Ẩn bớt diễn giải dài, chỉ giữ khung từ khóa để ôn gấp">⚡ Chế độ Siêu gọn</button>
       </div>
     </div>
+    <nav class="mobile-jump">
+      <a class="mj-chip" href="#tong-hop" data-page="tong-hop">⚡ 14 Đại hội &amp; Bẫy</a>
+      <a class="mj-chip" href="#chuong-0" data-page="chuong-0">Ch.0 Nhập môn</a>
+      <a class="mj-chip" href="#chuong-1" data-page="chuong-1">Ch.1 (1930–45)</a>
+      <a class="mj-chip" href="#chuong-2" data-page="chuong-2">Ch.2 (1945–75)</a>
+      <a class="mj-chip" href="#chuong-3a" data-page="chuong-3a">Ch.3A (1975–96)</a>
+      <a class="mj-chip" href="#chuong-3b" data-page="chuong-3b">Ch.3B (ĐH IX–XIV)</a>
+      <a class="mj-chip" href="#quiz-tong-hop" data-page="quiz-tong-hop">📝 Quiz 64 câu</a>
+      <a class="mj-chip" href="#ngan-hang-404" data-page="ngan-hang-404">📚 Ngân hàng 404</a>
+    </nav>
   </header>
 
-  <main>
-    <!-- TAB 1: MEMORY SYSTEM -->
-    <section id="tab-memo" class="panel active">
-      <div class="timeline-grid">
-        <div class="stage-card">
-          <div class="stage-title">CHẶNG 0: CHUẨN BỊ (1911–1930)</div>
-          <ul>
-            <li><strong>5/6/1911:</strong> Ra đi tìm đường → <strong>1919:</strong> Yêu sách 8 điểm</li>
-            <li><strong>1920:</strong> Luận cương Lênin &amp; ĐH Tua → Người cộng sản</li>
-            <li><strong>6/1925:</strong> Hội VNCMTN (<em>quả trứng</em>) → <strong>1928:</strong> Vô sản hóa</li>
-            <li><strong>2/1930:</strong> Lập Đảng — Cương lĩnh đầu tiên (4 văn kiện)</li>
-          </ul>
-        </div>
-        <div class="stage-card">
-          <div class="stage-title">CHẶNG 1: GIÀNH CHÍNH QUYỀN (1930–1945)</div>
-          <ul>
-            <li><strong>30–31:</strong> Xô Viết Nghệ Tĩnh (tập dượt 1) — Luận cương 10/30</li>
-            <li><strong>36–39:</strong> Dân chủ (báo chí, nghị trường) — ĐH I (1935)</li>
-            <li><strong>5/1941:</strong> TW 8 (Việt Minh) → <strong>1943:</strong> Đề cương văn hóa</li>
-            <li><strong>22/12/1944:</strong> VNTTGPQ → <strong>2/9/1945:</strong> Khai sinh VNDCCH</li>
-          </ul>
-        </div>
-        <div class="stage-card">
-          <div class="stage-title">CHẶNG 2: CHỐNG PHÁP (1945–1954)</div>
-          <ul>
-            <li><strong>6/1/1946:</strong> Tổng tuyển cử → <strong>9/11/1946:</strong> Hiến pháp 1</li>
-            <li><strong>45–46:</strong> Hòa Tưởng → Hòa Pháp (6/3 &amp; 14/9/1946)</li>
-            <li><strong>19/12/1946:</strong> Toàn quốc KC → <strong>1947:</strong> Việt Bắc → <strong>1951:</strong> ĐH II</li>
-            <li><strong>7/5/1954:</strong> Điện Biên Phủ → <strong>7/1954:</strong> Hiệp định Giơnevơ</li>
-          </ul>
-        </div>
-        <div class="stage-card">
-          <div class="stage-title">CHẶNG 3: CHỐNG MỸ (1954–1975)</div>
-          <ul>
-            <li><strong>1/1959:</strong> TW 15 → <strong>1960:</strong> Đồng Khởi &amp; ĐH III (2 chiến lược)</li>
-            <li><strong>4 chiến lược Mỹ:</strong> Đơn phương → Đặc biệt (Ấp Bắc) → Cục bộ (Vạn Tường, Mậu Thân) → VN hóa</li>
-            <li><strong>12/1972:</strong> ĐBP trên không → <strong>27/1/1973:</strong> Hiệp định Pari</li>
-            <li><strong>30/4/1975:</strong> Chiến dịch Hồ Chí Minh toàn thắng</li>
-          </ul>
-        </div>
-        <div class="stage-card">
-          <div class="stage-title">CHẶNG 4: THỐNG NHẤT &amp; TÌM TÒI (1975–1986)</div>
-          <ul>
-            <li><strong>7/1976:</strong> CHXHCN VN → <strong>12/1976:</strong> ĐH IV (ĐCS VN)</li>
-            <li><strong>3 bước đột phá:</strong> TW 6 (8/79) → TW 8 (6/85) → BCT (8/86)</li>
-            <li><strong>1/1981:</strong> Khoán 100 → <strong>3/1982:</strong> ĐH V (Nông nghiệp hàng đầu)</li>
-          </ul>
-        </div>
-        <div class="stage-card">
-          <div class="stage-title">CHẶNG 5: ĐỔI MỚI &amp; HỘI NHẬP (1986–NAY)</div>
-          <ul>
-            <li><strong>VI (86):</strong> Đổi mới → <strong>VII (91):</strong> Cương lĩnh 6 + Bạn</li>
-            <li><strong>VIII (96):</strong> Đẩy mạnh CNH → <strong>IX (01):</strong> KTTT + Đối tác</li>
-            <li><strong>X (06):</strong> ĐV làm KT tư nhân → <strong>XI (11):</strong> Cương lĩnh 8</li>
-            <li><strong>XII (16):</strong> Lợi ích QG cao nhất → <strong>XIII (21):</strong> 2025–2030–2045</li>
-          </ul>
-        </div>
+  <div class="shell">
+    <!-- STICKY SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-head">
+        <span>Chọn Trang Chương</span>
+        <span id="progText">0/5</span>
       </div>
-      <div id="memoContent" class="prose"></div>
-    </section>
+      <div class="toc-prog"><div id="progFill" class="toc-prog-fill"></div></div>
+      <a href="#tong-hop" data-page="tong-hop"><span>⚡ 14 Đại hội &amp; Bảng Phản xạ</span></a>
+      <a href="#chuong-0" data-page="chuong-0" data-ch="0"><span>Ch.0 · Nhập môn Lịch sử Đảng</span><span class="toc-done" id="td-0"></span></a>
+      <a href="#chuong-1" data-page="chuong-1" data-ch="1"><span>Ch.1 · Lập Đảng &amp; CMT8 (30–45)</span><span class="toc-done" id="td-1"></span></a>
+      <a href="#chuong-2" data-page="chuong-2" data-ch="2"><span>Ch.2 · Chống Pháp &amp; Mỹ (45–75)</span><span class="toc-done" id="td-2"></span></a>
+      <a href="#chuong-3a" data-page="chuong-3a" data-ch="3"><span>Ch.3A · Thống nhất &amp; Đổi mới (75–96)</span><span class="toc-done" id="td-3"></span></a>
+      <a href="#chuong-3b" data-page="chuong-3b" data-ch="4"><span>Ch.3B · Hội nhập &amp; ĐH IX–XIV (01–26)</span><span class="toc-done" id="td-4"></span></a>
+      <a href="#quiz-tong-hop" data-page="quiz-tong-hop" style="margin-top:6px; border-top:1px dashed var(--border); padding-top:9px;"><span>📝 Tổng ôn Quiz (64 câu chuẩn)</span><span class="toc-done" id="td-quiz">0/64</span></a>
+      <a href="#ngan-hang-404" data-page="ngan-hang-404"><span>📚 Ngân hàng 404 câu cơ bản</span></a>
+    </aside>
 
-    <!-- TAB 2: FULL STUDY GUIDE -->
-    <section id="tab-guide" class="panel">
-      <div id="guideContent" class="prose"></div>
-    </section>
+    <!-- MAIN CONTENT -->
+    <main class="content" id="contentRoot">
 
-    <!-- TAB 3: INTERACTIVE QUIZ -->
-    <section id="tab-quiz" class="panel">
-      <div class="quiz-bar">
-        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-          <strong>Chế độ luyện:</strong>
-          <button class="btn" onclick="startQuiz(15)">🎲 15 câu ngẫu nhiên</button>
-          <button class="btn secondary" onclick="startQuiz(40)">📝 Đề thử 40 câu</button>
-          <button class="btn secondary" onclick="startQuiz(404)">📚 Toàn bộ 404 câu</button>
-          <button class="btn secondary" id="retryWrongBtn" onclick="retryWrong()" style="display:none;">🔁 Làm lại câu sai</button>
+      <!-- ================= SECTION 0: CHEAT SHEET 14 ĐẠI HỘI & PHẢN XẠ 1S ================= -->
+      <section class="chapter" id="tong-hop">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">TỔNG HỢP SIÊU NHANH · GIÁO TRÌNH 2021 + COURSERA + ĐH XIII &amp; XIV (2026)</span>
+            <h2>⚡ Sơ đồ 6 Chặng, Công thức 14 Đại hội &amp; Bảng Phản xạ 1 Giây</h2>
+          </div>
         </div>
-        <div id="quizScore" style="font-weight:700; color:var(--accent);">Đúng: 0 / 0</div>
-      </div>
-      <div id="quizContainer"></div>
-    </section>
 
-    <!-- TAB 4: FLASHCARD -->
-    <section id="tab-flash" class="panel">
-      <div class="flash-wrap">
-        <div style="margin-bottom:12px; color:var(--muted); font-size:0.9rem;">
-          Thẻ <strong id="flashIdx">1</strong> / <strong id="flashTotal">404</strong> — Bấm vào thẻ (hoặc phím <code>Space</code>) để lật đáp án
+        <div class="memo-box">
+          <strong class="lbl">🎯 Cách học nhanh nhất:</strong> Nhớ trục <strong>6 chặng lịch sử</strong> → thuộc <strong>14 kỳ Đại hội (1 Đại hội = 1 từ khóa độc quyền)</strong> → đọc từng trang chương Ch.0 → Ch.3B rồi làm ngay <strong>Quiz nhớ nhanh cuối chương</strong> (mỗi ý hỏi đúng 1 lần, không lặp!).
         </div>
-        <div id="flashCard" class="flashcard" onclick="toggleFlash()">
-          <div id="flashQ" class="flash-q"></div>
-          <div id="flashOpts" class="flash-opts"></div>
-          <div id="flashA" class="flash-a"></div>
-          <div class="flash-hint">👆 Chạm để lật đáp án · 👈👉 Vuốt trái/phải để đổi thẻ</div>
+
+        <h3>I. Sơ đồ 6 Chặng lịch sử toàn khóa (1911 → 2026)</h3>
+        <div class="grid-3">
+          <div class="stage-card">
+            <div class="stage-title">CHẶNG 0: CHUẨN BỊ (1911–1930)</div>
+            <ul>
+              <li><strong>5/6/1911:</strong> Ra đi tìm đường → <strong>1919:</strong> Yêu sách 8 điểm</li>
+              <li><strong>1920:</strong> Luận cương Lênin (7/20) &amp; ĐH Tua (12/20)</li>
+              <li><strong>6/1925:</strong> Hội VNCMTN (<em>quả trứng</em>) → <strong>1928:</strong> Vô sản hóa</li>
+              <li><strong>2/1930:</strong> Lập Đảng — Cương lĩnh đầu tiên (4 văn kiện)</li>
+            </ul>
+          </div>
+          <div class="stage-card">
+            <div class="stage-title">CHẶNG 1: GIÀNH CHÍNH QUYỀN (1930–1945)</div>
+            <ul>
+              <li><strong>30–31:</strong> Xô Viết Nghệ–Tĩnh (tập dượt 1) — Luận cương 10/30</li>
+              <li><strong>36–39:</strong> Dân chủ (báo chí, nghị trường) — ĐH I (1935)</li>
+              <li><strong>5/1941:</strong> TW 8 (Việt Minh 19/5) → <strong>1943:</strong> Đề cương VH</li>
+              <li><strong>22/12/1944:</strong> VNTTGPQ → <strong>2/9/1945:</strong> Khai sinh VNDCCH</li>
+            </ul>
+          </div>
+          <div class="stage-card">
+            <div class="stage-title">CHẶNG 2: CHỐNG PHÁP (1945–1954)</div>
+            <ul>
+              <li><strong>6/1/1946:</strong> Tổng tuyển cử → <strong>9/11/1946:</strong> Hiến pháp 1</li>
+              <li><strong>45–46:</strong> Hòa Tưởng → Hòa Pháp (6/3 &amp; 14/9/1946)</li>
+              <li><strong>19/12/1946:</strong> Toàn quốc KC → <strong>1947:</strong> Việt Bắc → <strong>1951:</strong> ĐH II</li>
+              <li><strong>7/5/1954:</strong> Điện Biên Phủ → <strong>21/7/1954:</strong> Giơnevơ</li>
+            </ul>
+          </div>
+          <div class="stage-card">
+            <div class="stage-title">CHẶNG 3: CHỐNG MỸ (1954–1975)</div>
+            <ul>
+              <li><strong>1/1959:</strong> TW 15 → <strong>1960:</strong> Đồng Khởi &amp; ĐH III (2 chiến lược)</li>
+              <li><strong>4 chiến lược Mỹ:</strong> Đơn phương → Đặc biệt (Ấp Bắc) → Cục bộ (Vạn Tường, Mậu Thân) → VN hóa</li>
+              <li><strong>12/1972:</strong> ĐBP trên không → <strong>27/1/1973:</strong> Pari</li>
+              <li><strong>30/4/1975:</strong> Chiến dịch Hồ Chí Minh toàn thắng</li>
+            </ul>
+          </div>
+          <div class="stage-card">
+            <div class="stage-title">CHẶNG 4: THỐNG NHẤT &amp; TÌM TÒI (1975–1986)</div>
+            <ul>
+              <li><strong>7/1976:</strong> CHXHCN VN &amp; TP.HCM → <strong>12/1976:</strong> ĐH IV</li>
+              <li><strong>3 bước đột phá:</strong> TW 6 (8/79) → TW 8 (6/85) → BCT (8/86)</li>
+              <li><strong>1/1981:</strong> Khoán 100 &amp; 25/26-CP → <strong>3/1982:</strong> ĐH V</li>
+            </ul>
+          </div>
+          <div class="stage-card">
+            <div class="stage-title">CHẶNG 5: ĐỔI MỚI &amp; KỶ NGUYÊN MỚI (1986–2026)</div>
+            <ul>
+              <li><strong>VI (86):</strong> Đổi mới → <strong>VII (91):</strong> Cương lĩnh 6 + Bạn</li>
+              <li><strong>VIII (96):</strong> Đẩy mạnh CNH → <strong>IX (01):</strong> KTTT + Đối tác</li>
+              <li><strong>X (06):</strong> ĐV làm KT tư nhân → <strong>XI (11):</strong> Cương lĩnh 8</li>
+              <li><strong>XII (16):</strong> Lợi ích QG → <strong>XIII (21):</strong> 2025–30–45 → <strong>XIV (2026):</strong> Kỷ nguyên vươn mình, Đột phá, GDP ≥10%</li>
+            </ul>
+          </div>
         </div>
-        <div class="flash-nav">
-          <button class="btn secondary" onclick="stepFlash(-1)">← Thẻ trước</button>
-          <button class="btn secondary" onclick="stepFlash(1)">Thẻ tiếp →</button>
-          <button class="btn" onclick="toggleFlash()">👁 Lật đáp án</button>
-          <button class="btn secondary" onclick="shuffleFlash()">🔀 Xáo trộn</button>
+
+        <h3>II. Công thức nhớ 14 kỳ Đại hội (1 Đại hội = 1 Từ khóa Độc quyền)</h3>
+        <div class="trap-box">
+          <strong>Chuỗi câu thần chú 3 cụm:</strong>
+          <strong>Cụm A (I–V):</strong> <em>Phục hồi (I) → Kháng chiến (II) → Hai miền (III) → Cả nước (IV) → Nông nghiệp (V)</em> ·
+          <strong>Cụm B (VI–IX):</strong> <em>Đổi mới (VI) → Cương lĩnh 6 &amp; Bạn (VII) → Đẩy mạnh CNH (VIII) → KTTT &amp; Đối tác (IX)</em> ·
+          <strong>Cụm C (X–XIV):</strong> <em>ĐV tư nhân (X) → Cương lĩnh 8 (XI) → Lợi ích QG (XII) → Cơ đồ &amp; Sáng tạo (XIII) → Kỷ nguyên vươn mình &amp; Đột phá (XIV)</em>.
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>ĐH</th><th>Thời gian</th><th>Từ khóa ĐỘC QUYỀN ăn điểm ngay</th><th>Tên Đảng / TBT / Ghi chú thi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>I</strong></td><td>3/1935</td><td><strong>Phục hồi tổ chức</strong> (họp ở Ma Cao)</td><td>ĐCS Đông Dương · TBT <strong>Lê Hồng Phong</strong></td></tr>
+              <tr><td><strong>II</strong></td><td>2/1951</td><td><strong>"Kháng chiến thắng lợi"</strong> (Tuyên Quang); <strong>Chính cương ĐLĐVN</strong></td><td>Đổi tên <strong>Đảng Lao động VN</strong> · TBT <strong>Trường Chinh</strong></td></tr>
+              <tr><td><strong>III</strong></td><td>9/1960</td><td><strong>2 chiến lược 2 miền</strong> (Bắc quyết định nhất; Nam quyết định trực tiếp)</td><td>Hà Nội · KH 5 năm lần 1 (1961–1965) · TBT <strong>Lê Duẩn</strong></td></tr>
+              <tr><td><strong>IV</strong></td><td>12/1976</td><td><strong>Cả nước quá độ CNXH</strong>; 3 cuộc CM (KH–KT then chốt); <em>chủ quan 20 năm</em></td><td>Đổi tên <strong>Đảng Cộng sản VN</strong> · TBT <strong>Lê Duẩn</strong></td></tr>
+              <tr><td><strong>V</strong></td><td>3/1982</td><td><strong>Nông nghiệp là mặt trận hàng đầu</strong>; 2 nhiệm vụ chiến lược (XD + BV)</td><td>TBT <strong>Lê Duẩn</strong> (<em>chưa bình thường hóa Mỹ</em>)</td></tr>
+              <tr><td><strong>VI</strong></td><td>12/1986</td><td><strong>Đổi mới toàn diện</strong>; xóa bao cấp; <strong>3 chương trình KT lớn</strong>; <strong>"lấy dân làm gốc"</strong></td><td>TBT <strong>Nguyễn Văn Linh</strong> · Khoán 10 (4/1988)</td></tr>
+              <tr><td><strong>VII</strong></td><td>6/1991</td><td><strong>Cương lĩnh 1991 (6 đặc trưng)</strong>; lần đầu nêu <strong>Tư tưởng HCM</strong>; <em>"muốn là bạn"</em></td><td>TBT <strong>Đỗ Mười</strong> · VH <em>tiên tiến đậm đà bản sắc</em></td></tr>
+              <tr><td><strong>VIII</strong></td><td>6–7/1996</td><td><strong>Đẩy mạnh CNH–HĐH</strong> (KH&amp;CN động lực); ra khỏi khủng hoảng sau 10 năm</td><td>TBT <strong>Đỗ Mười</strong> → TW 4 (12/97) bầu <strong>Lê Khả Phiêu</strong></td></tr>
+              <tr><td><strong>IX</strong></td><td>4/2001</td><td>Chính thức nêu mô hình <strong>KTTT định hướng XHCN</strong>; <em>"sẵn sàng là bạn, đối tác tin cậy"</em></td><td>TBT <strong>Nông Đức Mạnh</strong></td></tr>
+              <tr><td><strong>X</strong></td><td>4/2006</td><td><strong>Cho phép đảng viên làm KT tư nhân</strong>; CNH gắn <strong>kinh tế tri thức</strong></td><td>TBT <strong>Nông Đức Mạnh</strong> · Gia nhập WTO (11/1/2007)</td></tr>
+              <tr><td><strong>XI</strong></td><td>1/2011</td><td><strong>Cương lĩnh 2011 (8 đặc trưng)</strong>; phát triển nhanh gắn <strong>bền vững</strong></td><td>TBT <strong>Nguyễn Phú Trọng</strong> · Mục tiêu giữa TK XXI</td></tr>
+              <tr><td><strong>XII</strong></td><td>1/2016</td><td>Lần đầu nêu <strong>"Lợi ích quốc gia, dân tộc cao nhất"</strong>; <em>...Kỷ cương – Đổi mới</em></td><td>TBT <strong>Nguyễn Phú Trọng</strong> · Chống tham nhũng</td></tr>
+              <tr><td><strong>XIII</strong></td><td>1–2/2021</td><td>35 năm Đổi mới: <em>"cơ đồ, tiềm lực, vị thế, uy tín"</em>; <strong>...Sáng tạo – Phát triển</strong>; <strong>3 mốc 2025–30–45</strong></td><td>1.587 ĐB · 18 BCT · TBT <strong>Nguyễn Phú Trọng</strong></td></tr>
+              <tr><td><strong>XIV</strong></td><td>19–23/1/2026</td><td>40 năm Đổi mới: <strong>Kỷ nguyên vươn mình</strong>; <strong>...Đột phá – Phát triển</strong>; GDP 26–30 <strong>≥10%/năm</strong>; <strong>KT tư nhân là động lực quan trọng nhất</strong>; "4 an"</td><td>1.586 ĐB · 19 BCT · TBT <strong>Tô Lâm</strong> · Mục tiêu 2030 (~8.500 USD) &amp; 2045</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>III. Tên Đảng &amp; Mặt trận qua các thời kỳ</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Thời kỳ</th><th>Tên gọi của Đảng</th><th>Tên Mặt trận dân tộc thống nhất</th></tr></thead>
+            <tbody>
+              <tr><td><strong>2/1930</strong></td><td>Đảng Cộng sản Việt Nam</td><td>Hội phản đế Đông Dương (1930–1931)</td></tr>
+              <tr><td><strong>10/1930 – 1939</strong></td><td>Đảng Cộng sản Đông Dương</td><td>MT Thống nhất ND phản đế ĐD (7/1936) → <strong>MT Dân chủ Đông Dương (1938)</strong></td></tr>
+              <tr><td><strong>1939 – 1945</strong></td><td>Đảng Cộng sản Đông Dương</td><td>MT DTTN phản đế ĐD (11/1939) → <strong>Mặt trận Việt Minh (19/5/1941)</strong></td></tr>
+              <tr><td><strong>11/1945 – 1950</strong></td><td><em>Hội nghiên cứu CN Mác ở ĐD</em> (rút bí mật)</td><td>Mở rộng Việt Minh → Hội Liên Việt (1946) → Mặt trận Liên Việt (3/1951)</td></tr>
+              <tr><td><strong>2/1951 (ĐH II)</strong></td><td><strong>Đảng Lao động Việt Nam</strong></td><td>Mặt trận Tổ quốc VN (1955) · <strong>MT DTGPMNVN (20/12/1960, Tây Ninh)</strong></td></tr>
+              <tr><td><strong>12/1976 (ĐH IV)</strong></td><td><strong>Đảng Cộng sản Việt Nam</strong></td><td>Mặt trận Tổ quốc Việt Nam</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>IV. Bảng Phản xạ "Thấy từ khóa → Khoanh đáp án trong 1 giây"</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Thấy từ khóa trong đề</th><th>Khoanh ngay đáp án</th></tr></thead>
+            <tbody>
+              <tr><td><em>"Quả trứng nở ra con chim non Cộng sản"</em></td><td><strong>Hội Việt Nam Cách mạng Thanh niên</strong> (6/1925, Quảng Châu)</td></tr>
+              <tr><td>Tổ chức CS <strong>đầu tiên</strong> vs <strong>Không dự Hội nghị hợp nhất</strong></td><td>Đầu tiên: <strong>Đông Dương CS Đảng</strong> · Không dự: <strong>Đông Dương CS Liên đoàn</strong></td></tr>
+              <tr><td><em>Le Paria / Bản án / Đường Kách mệnh</em> vs <em>Hội VNCMTN</em></td><td>Báo/Sách = chuẩn bị <strong>tư tưởng</strong> · Hội VNCMTN = chuẩn bị <strong>tổ chức</strong></td></tr>
+              <tr><td>Căn cứ đầu tiên (39–45) vs Căn cứ chống Pháp</td><td>39–45: <strong>Bắc Sơn – Võ Nhai</strong> · Chống Pháp: <strong>Việt Bắc</strong></td></tr>
+              <tr><td><em>"Dân tộc trên hết, Tổ quốc trên hết"</em> / <em>>90% mù chữ</em></td><td>Chỉ thị <strong>Kháng chiến kiến quốc (25/11/1945)</strong> / <strong>Bình dân học vụ</strong></td></tr>
+              <tr><td>Đánh bại <em>"đánh nhanh thắng nhanh"</em> vs <em>Giành quyền chủ động</em></td><td><strong>Việt Bắc Thu–Đông 1947</strong> vs <strong>Biên giới Thu–Đông 1950</strong></td></tr>
+              <tr><td>Phá sản <strong>Kế hoạch Nava</strong> / <em>"Bạch Đằng, Chi Lăng, Đống Đa TK XX"</em></td><td><strong>Điện Biên Phủ (7/5/1954)</strong> — 3 đợt, <em>Đánh chắc, tiến chắc</em></td></tr>
+              <tr><td>Điểm giống <strong>Giơnevơ (1954)</strong> &amp; <strong>Pari (1973)</strong></td><td>Đều cam kết tôn trọng <strong>4 quyền dân tộc cơ bản</strong></td></tr>
+              <tr><td>Mở đường <strong>Đồng Khởi 1960</strong> / Tiếp tục bạo lực sau Pari</td><td><strong>HNTW 15 (1/1959)</strong> / <strong>HNTW 21 (7/1973)</strong></td></tr>
+              <tr><td><em>"Đòn thăm dò chiến lược"</em> / Mở màn Xuân 75 / Tư lệnh HCM</td><td><strong>Phước Long (1/75)</strong> / <strong>Buôn Ma Thuột – Tây Nguyên (10/3/75)</strong> / <strong>Văn Tiến Dũng</strong></td></tr>
+              <tr><td><strong>3 bước đột phá</strong> kinh tế trước Đổi mới</td><td><strong>TW 6 (8/79)</strong> → <strong>TW 8 khóa V (6/85: giá–lương–tiền)</strong> → <strong>BCT (8/86)</strong></td></tr>
+              <tr><td><strong>NQ 36 khóa IX (2004)</strong> vs <strong>NQ 36 khóa XII (2018)</strong></td><td>Khóa IX = <strong>Người VN ở nước ngoài</strong> · Khóa XII = <strong>Chiến lược kinh tế biển</strong></td></tr>
+              <tr><td><strong>ĐH XIII (2021)</strong> vs <strong>ĐH XIV (2026)</strong></td><td>XIII: <strong>Sáng tạo</strong> (1.587 ĐB, 18 BCT, 271,2 tỷ USD) · XIV: <strong>Đột phá</strong> (1.586 ĐB, 19 BCT, &gt;514 tỷ USD, GDP ≥10%, KT tư nhân động lực quan trọng nhất)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 0: NHẬP MÔN ================= -->
+      <section class="chapter" id="chuong-0">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG NHẬP MÔN</span>
+            <h2>Đối tượng, Chức năng, Nhiệm vụ &amp; Phương pháp nghiên cứu</h2>
+          </div>
+          <button class="done-btn" data-done="0" onclick="toggleDone(0)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> Nghiên cứu <strong>sự ra đời, phát triển &amp; hoạt động lãnh đạo</strong> của Đảng; thực hiện <strong>3 chức năng</strong> (Nhận thức – Giáo dục – Dự báo &amp; phê phán), <strong>4 nhiệm vụ</strong>; kết hợp <strong>phương pháp Lịch sử &amp; Logic</strong> trên nền CNDV biện chứng và CNDV lịch sử.
+        </div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">1. Đối tượng nghiên cứu (4 nhóm nội dung)</div>
+            <ul>
+              <li>Hệ thống <strong>sự kiện lịch sử Đảng</strong> qua các thời kỳ.</li>
+              <li><strong>Cương lĩnh, đường lối, chủ trương, chính sách lớn</strong> của Đảng.</li>
+              <li>Quá trình <strong>chỉ đạo, tổ chức thực tiễn</strong> lãnh đạo cách mạng.</li>
+              <li>Công tác <strong>xây dựng, chỉnh đốn Đảng</strong> về chính trị, tư tưởng, tổ chức, đạo đức.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">2. Ba chức năng cơ bản</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li><strong>Chức năng nhận thức:</strong> Cung cấp tri thức khoa học, đầy đủ, có hệ thống về lịch sử lãnh đạo của Đảng.</li>
+              <li><strong>Chức năng giáo dục:</strong> Giáo dục lý tưởng cách mạng, truyền thống yêu nước, đạo đức và bản lĩnh chính trị.</li>
+              <li><strong>Chức năng dự báo và phê phán:</strong> Từ quy luật quá khứ dự báo xu thế tương lai; đấu tranh phê phán quan điểm sai trái, thù địch.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">3. Bốn nhiệm vụ của khoa học Lịch sử Đảng</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Trình bày có hệ thống Cương lĩnh, đường lối của Đảng.</li>
+              <li>Tái hiện tiến trình lịch sử lãnh đạo, đấu tranh của Đảng.</li>
+              <li>Tổng kết lịch sử của Đảng, rút ra quy luật và bài học kinh nghiệm.</li>
+              <li>Làm rõ vai trò, sức chiến đấu của hệ thống tổ chức Đảng trong công tác xây dựng Đảng.</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">4. Phương pháp luận &amp; Phương pháp cụ thể</div>
+            <ul>
+              <li><strong>Nền tảng phương pháp luận:</strong> Chủ nghĩa duy vật biện chứng và Chủ nghĩa duy vật lịch sử (tính khách quan, toàn diện, lịch sử – cụ thể).</li>
+              <li><strong>Hai phương pháp đặc trưng kết hợp chặt chẽ:</strong>
+                <ul>
+                  <li><strong>Phương pháp lịch sử:</strong> Trình bày sự kiện theo trình tự thời gian, bối cảnh cụ thể.</li>
+                  <li><strong>Phương pháp logic:</strong> Đi sâu bản chất, tìm ra quy luật vận động tất yếu.</li>
+                </ul>
+              </li>
+              <li class="detail">Bổ trợ: tổng kết thực tiễn gắn với lý luận, so sánh, làm việc nhóm, phân tích văn kiện gốc.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Giáo trình Lịch sử ĐCSVN (2021) — Chương Nhập môn</em></span>
+          <a class="nav-pill" href="learn.html">Luyện thêm trên Quizlet 415 câu →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 1: 1930 - 1945 ================= -->
+      <section class="chapter" id="chuong-1">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 1 · 1930 – 1945</span>
+            <h2>Đảng ra đời và Lãnh đạo đấu tranh giành chính quyền</h2>
+          </div>
+          <button class="done-btn" data-done="1" onclick="toggleDone(1)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> Pháp khai thác thuộc địa (1897–1914 &amp; 1919–1929) → XH thuộc địa nửa PK → Nguyễn Ái Quốc chuẩn bị (1911–1930) → <strong>Lập Đảng 2/1930</strong> (Cương lĩnh đầu tiên) → 3 cao trào <strong>30–31</strong>, <strong>36–39</strong>, <strong>39–45 (TW 8 Việt Minh)</strong> → <strong>CMT8 thắng lợi (2/9/1945)</strong>.
+        </div>
+
+        <h3>I. Bối cảnh lịch sử &amp; Hành trình chuẩn bị của Nguyễn Ái Quốc (1911–1930)</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Tác động của 2 cuộc khai thác thuộc địa của Pháp</div>
+            <ul>
+              <li><strong>Bối cảnh quốc tế:</strong> Nửa sau TK XIX CNTB chuyển sang <strong>đế quốc chủ nghĩa</strong>; CMT10 Nga (<strong>1917</strong>) &amp; Quốc tế Cộng sản (<strong>1919</strong>) mở ra thời đại mới.</li>
+              <li><strong>Khai thác lần 1 (1897–1914):</strong> Từ XH chỉ có địa chủ–nông dân → xuất hiện <strong>công nhân, tư sản, tiểu tư sản</strong> (GCCN ra đời từ đây).</li>
+              <li><strong>Khai thác lần 2 (1919–1929):</strong> Cơ cấu kinh tế VN mất cân đối, lạc hậu, nghèo nàn.</li>
+              <li><strong>Tính chất XH:</strong> Thuộc địa, nửa phong kiến · <strong>Mâu thuẫn chủ yếu:</strong> Toàn thể dân tộc VN vs Đế quốc Pháp.</li>
+              <li class="detail"><strong>Phong trào yêu nước trước 1930:</strong> Cần Vương (phong kiến), Phan Bội Châu (bạo động), Phan Châu Trinh (cải cách), VN Quốc dân Đảng (dân chủ tư sản) — tác dụng lớn nhất: <em>thức tỉnh lòng yêu nước</em>; thất bại do thiếu đường lối đúng &amp; giai cấp tiên phong. Giai đoạn 1919–1930 có 2 khuynh hướng (TS &amp; VS) song song tồn tại.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Các mốc chuẩn bị của Nguyễn Ái Quốc (1911–1929)</div>
+            <ul>
+              <li><strong>5/6/1911:</strong> Ra đi từ Bến Nhà Rồng — khác biệt độc đáo: <strong>hướng đi sang phương Tây &amp; cách tiếp cận chân lý</strong>.</li>
+              <li><strong>1919:</strong> Gửi <em>Yêu sách của nhân dân An Nam</em> (8 điểm) tới Hội nghị Vécxây.</li>
+              <li><strong>7/1920 &amp; 12/1920:</strong> Đọc Luận cương Lênin → dự <strong>Đại hội Tua (12/1920)</strong> sáng lập ĐCS Pháp → <strong>người cộng sản VN đầu tiên</strong>.</li>
+              <li><strong>Chuẩn bị tư tưởng:</strong> Báo <em>Le Paria</em> (1922), <em>Bản án chế độ thực dân Pháp</em> (1925), <em>Đường Kách mệnh</em> (1927).</li>
+              <li><strong>Chuẩn bị tổ chức:</strong> Lập <strong>Hội VN Cách mạng Thanh niên (6/1925, Quảng Châu)</strong> — <em>"quả trứng nở ra con chim non Cộng sản"</em>, báo <em>Thanh niên</em> (21/6/1925), phong trào <strong>"Vô sản hóa" (1928)</strong>. <em>(8/1925: bãi công Ba Son → công nhân bước sang tự giác)</em>.</li>
+              <li><strong>1929 (3 tổ chức CS):</strong> <strong>Đông Dương CS Đảng (6/1929 — đầu tiên)</strong>, An Nam CS Đảng, Đông Dương CS Liên đoàn → phân tán lực lượng, tất yếu phải hợp nhất.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. Hội nghị thành lập Đảng (2/1930) &amp; So sánh Cương lĩnh 2/1930 vs Luận cương 10/1930</h3>
+        <ul class="clean-ul">
+          <li><strong>Hội nghị hợp nhất (6/1 – 7/2/1930, Cửu Long – Hương Cảng):</strong> Nguyễn Ái Quốc chủ trì với tư cách <strong>Phái viên Quốc tế Cộng sản</strong> (ngày 8/2 đại biểu về nước; sau lấy <strong>3/2</strong> làm ngày thành lập). Có ĐDCSĐ &amp; ANCSĐ dự (<strong>ĐDCS Liên đoàn</strong> gia nhập sau); BCH TW lâm thời do <strong>Trịnh Đình Cửu</strong> đứng đầu.</li>
+          <li><strong>4 văn kiện Cương lĩnh chính trị đầu tiên:</strong> <em>Chánh cương vắn tắt, Sách lược vắn tắt, Chương trình tóm tắt, Điều lệ vắn tắt</em>. <strong>Quy luật ra đời (sáng tạo của HCM):</strong> <strong>CN Mác–Lênin + Phong trào công nhân + Phong trào yêu nước</strong>.</li>
+          <li class="detail"><strong>Nội dung nổi bật Cương lĩnh 2/1930:</strong> Kinh tế (tịch thu sản nghiệp lớn của đế quốc, chia ruộng đất dân cày nghèo, bỏ sưu thuế); Xã hội (nam nữ bình quyền, phổ thông GD theo công nông hóa); Phương pháp (bạo lực CM quần chúng, không thỏa hiệp). Nguyễn Ái Quốc đánh giá: <em>"Bước ngoặt vô cùng quan trọng... chứng tỏ giai cấp vô sản ta đã trưởng thành"</em>.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Tiêu chí</th><th>Cương lĩnh chính trị đầu tiên (2/1930 — Nguyễn Ái Quốc)</th><th>Luận cương chính trị (10/1930 — Trần Phú)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tên Đảng / TBT</strong></td>
+                <td>Đảng Cộng sản Việt Nam (BCH TW lâm thời: Trịnh Đình Cửu)</td>
+                <td>Đổi tên <strong>Đảng Cộng sản Đông Dương</strong>; bầu <strong>Trần Phú</strong> làm TBT đầu tiên</td>
+              </tr>
+              <tr>
+                <td><strong>Nhiệm vụ &amp; Đối tượng</strong></td>
+                <td><strong>Đặt giải phóng dân tộc (chống đế quốc) lên hàng đầu</strong>, gắn với đánh đổ phong kiến.</td>
+                <td>Đánh đổ phong kiến và đế quốc — <strong>Hạn chế lớn nhất (tư tưởng "tả" khuynh):</strong> không đưa ngọn cờ GPDT lên hàng đầu, nặng về đấu tranh giai cấp.</td>
+              </tr>
+              <tr>
+                <td><strong>Lực lượng cách mạng</strong></td>
+                <td>Công – nông là chính; <strong>tập hợp rộng:</strong> lôi kéo tiểu TS, trí thức, trung nông; <strong>lợi dụng/trung lập</strong> phú nông, địa chủ nhỏ, tư bản An Nam.</td>
+                <td><strong>Hẹp:</strong> chỉ xác định công nhân và nông dân (chưa đánh giá đúng các tầng lớp khác).</td>
+              </tr>
+              <tr>
+                <td><strong>Điểm giống nhau</strong></td>
+                <td colspan="2">Đều khẳng định <strong>vai trò lãnh đạo của Đảng Cộng sản</strong> (giai cấp công nhân) và gắn CM Việt Nam với CM thế giới.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>III. Ba cao trào cách mạng &amp; Thắng lợi Cách mạng Tháng Tám (1930–1945)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Giai đoạn</th><th>Bối cảnh &amp; Mốc chính</th><th>Kẻ thù · Khẩu hiệu · Hình thức · Mặt trận</th><th>Ý nghĩa lịch sử</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1930–1931</strong></td>
+                <td>1/5/1930 mở đầu; <strong>Xô Viết Nghệ–Tĩnh</strong> (chính quyền công nông đầu tiên); <strong>4/1931</strong> QTCS công nhận Đảng là chi bộ độc lập.</td>
+                <td>Đế quốc + PK · <em>Độc lập dân tộc</em> &amp; <em>Ruộng đất dân cày</em> · <strong>Biểu tình có vũ trang tự vệ</strong> · <em>Hội phản đế Đông Dương</em>.</td>
+                <td><strong>"Cuộc tập dượt thứ nhất"</strong> cho CMT8 (quyết định nhờ sự lãnh đạo của Đảng).</td>
+              </tr>
+              <tr>
+                <td><strong>1932–1935</strong></td>
+                <td><strong>1932:</strong> <em>Chương trình hành động</em> · Bút chiến công khai (32–33) · <strong>3/1935: Đại hội I (Ma Cao)</strong> bầu <strong>Lê Hồng Phong</strong> làm TBT.</td>
+                <td>Phục hồi hệ thống tổ chức Đảng từ TW đến địa phương sau khủng bố trắng.</td>
+                <td>Khôi phục hệ thống tổ chức &amp; phong trào quần chúng.</td>
+              </tr>
+              <tr>
+                <td><strong>1936–1939</strong></td>
+                <td>Chính phủ Mặt trận nhân dân lên cầm quyền ở Pháp.</td>
+                <td>Chống phát xít, phản động thuộc địa · <strong>Tạm gác</strong> "Độc lập DT" &amp; "CM ruộng đất" → đòi <strong>Tự do, dân chủ, cơm áo, hòa bình</strong> · <strong>Báo chí &amp; Nghị trường</strong> · <strong>MT Dân chủ ĐD (1938)</strong>.</td>
+                <td><strong>"Cuộc tập dượt thứ hai"</strong>, xây dựng đội quân chính trị hùng hậu.</td>
+              </tr>
+              <tr>
+                <td><strong>1939–1945</strong></td>
+                <td>9/1939 CTTG II; 22/9/1940 Nhật vào ĐD (<em>một cổ hai tròng</em>); 28/1/1941 Bác về nước; <strong>Căn cứ đầu tiên: Bắc Sơn–Võ Nhai</strong>; <strong>1943</strong> Đề cương VH (<em>dân tộc, khoa học, đại chúng</em>); <strong>22/12/1944</strong> VNTTGPQ; <strong>9/3/1945</strong> Nhật đảo chính Pháp → <strong>12/3/1945</strong> Chỉ thị <em>Nhật–Pháp bắn nhau...</em> (cao trào kháng Nhật).</td>
+                <td><strong>Chuyển hướng chiến lược:</strong> TW 6 (11/1939, Bà Điểm) mở đầu → TW 7 (11/40) → <strong>HNTW 8 (5/1941, Pác Bó)</strong> hoàn chỉnh: <strong>GPDT số 1</strong>, <strong>tạm gác CM ruộng đất</strong>, lập <strong>Việt Minh (19/5/1941)</strong>, lập VNDCCH, bầu <strong>Trường Chinh</strong> TBT, trọng tâm <strong>chuẩn bị khởi nghĩa</strong>.</td>
+                <td><strong>13/8/45:</strong> Quân lệnh số 1 · <strong>14–16/8:</strong> HN toàn quốc &amp; ĐH Quốc dân Tân Trào · Tổng KN <strong>14–28/8</strong> (HN 19/8, Huế 23/8, SG 25/8) → <strong>2/9/1945: Khai sinh VNDCCH</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="trap-box">
+          <strong>⚠️ Bẫy thi hay gặp về CMT8 (1945):</strong> Tính chất là <strong>Cách mạng giải phóng dân tộc điển hình</strong> mang tính dân chủ mới. Bài học CMT8 (4 bài học) <strong>KHÔNG PHẢI</strong> "sử dụng lực lượng vũ trang áp đảo tiêu diệt kẻ thù" mà là <strong>kết hợp lực lượng chính trị quần chúng với vũ trang, khởi nghĩa từng phần lên tổng khởi nghĩa &amp; chớp thời cơ</strong>!
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Giáo trình 2021 + Tài liệu Coursera Chương 1</em></span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <a class="nav-pill" href="flashcard.html">🃏 Luyện Flashcard Ch.1 →</a>
+            <a class="nav-pill" href="learn.html">🧠 Quizlet 415 câu →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 2: 1945 - 1975 ================= -->
+      <section class="chapter" id="chuong-2">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 2 · 1945 – 1975</span>
+            <h2>Bảo vệ chính quyền &amp; Hai cuộc kháng chiến chống Pháp, chống Mỹ</h2>
+          </div>
+          <button class="done-btn" data-done="2" onclick="toggleDone(2)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> 1945–46 giữ chính quyền (<strong>Hòa Tưởng → Hòa Pháp</strong>) → <strong>Chống Pháp 46–54</strong> (Việt Bắc 47, Biên giới 50, ĐH II 51, Điện Biên Phủ 7/5/54, Giơnevơ 21/7/54) → <strong>Chống Mỹ 54–75</strong> (TW 15, Đồng Khởi 60, ĐH III, đánh bại 4 chiến lược Mỹ, Pari 27/1/73, <strong>30/4/1975 toàn thắng</strong>).
+        </div>
+
+        <h3>I. Tình thế "Ngàn cân treo sợi tóc" &amp; Kháng chiến chống Pháp (1945–1954)</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">1. Giữ vững chính quyền (9/1945 – 12/1946)</div>
+            <ul>
+              <li><strong>Khó khăn:</strong> Lớn nhất là <strong>thù trong giặc ngoài</strong> (20 vạn quân Tưởng ở Bắc, Pháp nổ súng Nam Bộ <strong>23/9/1945</strong> → phong trào <strong>Nam tiến</strong>); &gt;90% mù chữ; tài chính trống rỗng.</li>
+              <li><strong>Diệt 3 giặc:</strong> Đói (<em>Tăng gia sản xuất, Hũ gạo tiết kiệm, Ngày đồng tâm</em>) · Tài chính (<em>Quỹ Độc lập 4/9/45, Tuần lễ vàng 17–24/9/45</em>) · Dốt (<strong>Bình dân học vụ</strong> — cuối 1946 &gt;2,5 triệu người biết chữ).</li>
+              <li><strong>11/11/1945:</strong> Rút vào bí mật dưới tên <strong>Hội nghiên cứu CN Mác ở Đông Dương</strong>.</li>
+              <li><strong>25/11/1945 — Chỉ thị Kháng chiến kiến quốc:</strong> Kẻ thù chính: <strong>Pháp</strong>; 4 nhiệm vụ (củng cố CQ, chống Pháp, trừ nội phản, cải thiện đời sống); khẩu hiệu <em>"Dân tộc trên hết, Tổ quốc trên hết"</em>; ngoại giao <em>"thêm bạn bớt thù"</em>.</li>
+              <li><strong>Chính trị:</strong> Tổng tuyển cử <strong>6/1/1946</strong> → Hiến pháp đầu tiên <strong>9/11/1946</strong>.</li>
+              <li><strong>Đổi chiều đối sách:</strong> 9/45–2/46 <strong>Hòa Tưởng – Đánh Pháp</strong> (<em>Hoa–Việt thân thiện</em>) → Sau Hiệp ước Trùng Khánh (28/2/46) chuyển sang <strong>"Hòa để tiến" với Pháp</strong>: <strong>Hiệp định Sơ bộ (6/3/1946)</strong> &amp; <strong>Tạm ước (14/9/1946)</strong> để đuổi Tưởng, chuẩn bị lực lượng.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">2. Đường lối &amp; Thắng lợi chống Pháp (1946–1954)</div>
+            <ul>
+              <li><strong>3 văn kiện cốt lõi:</strong> Chỉ thị <em>Toàn dân kháng chiến</em> (12/12/46) · <em>Lời kêu gọi toàn quốc kháng chiến</em> (<strong>19/12/46</strong>, HCM) · <em>Kháng chiến nhất định thắng lợi</em> (Trường Chinh).</li>
+              <li><strong>Phương châm:</strong> <strong>Toàn dân, toàn diện, lâu dài, tự lực cánh sinh</strong> · <em>"Tiêu thổ kháng chiến"</em>, căn cứ <strong>Việt Bắc</strong>, lực lượng <strong>3 thứ quân</strong> (chủ lực, địa phương, dân quân du kích).</li>
+              <li><strong>Thu–Đông 1947 (Việt Bắc):</strong> Đánh bại âm mưu <strong>"đánh nhanh thắng nhanh"</strong>.</li>
+              <li><strong>Thu–Đông 1950 (Biên giới):</strong> Đặt ngoại giao TQ, Liên Xô, Đông Âu; khai thông biên giới &amp; <strong>giành quyền chủ động chiến lược</strong> <em>(tiếp nối các chiến dịch 50–53: Trung Du, Đường 18, Hòa Bình, Tây Bắc, Thượng Lào)</em>.</li>
+              <li><strong>2/1951 — Đại hội II (Tuyên Quang):</strong> <em>"Đại hội kháng chiến thắng lợi"</em>; tách 3 Đảng ĐD → <strong>Đảng Lao động VN</strong> (TBT <strong>Trường Chinh</strong>); thông qua <strong>Chính cương ĐLĐVN</strong> (3 giai đoạn lên CNXH); 3/1951 lập Khối liên minh Việt–Lào–Campuchia.</li>
+              <li><strong>Điện Biên Phủ (13/3–7/5/1954):</strong> 3 đợt, <em>"Đánh chắc, tiến chắc"</em> → <strong>phá sản Kế hoạch Nava</strong>, ví như <em>"Bạch Đằng, Chi Lăng, Đống Đa TK XX"</em> → <strong>Hiệp định Giơnevơ (21/7/1954</strong>, Phạm Văn Đồng trưởng đoàn, 4 quyền DT cơ bản, vĩ tuyến 17 chỉ là giới tuyến quân sự tạm thời).</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. Xây dựng CNXH ở miền Bắc &amp; Kháng chiến chống Mỹ (1954–1975)</h3>
+        <div class="memo-box" style="margin-bottom:12px;">
+          <strong class="lbl">🔑 Đại hội III (5–10/9/1960, Hà Nội) — 2 chiến lược đồng thời:</strong>
+          (1) <strong>Miền Bắc (CM XHCN):</strong> Vai trò <strong>quyết định nhất</strong> đối với CM cả nước (hậu phương lớn; KH 5 năm lần 1: 1961–1965; 1956–57 hoàn thành &amp; sửa sai cải cách ruộng đất) ·
+          (2) <strong>Miền Nam (CM DTDCND):</strong> Vai trò <strong>quyết định trực tiếp</strong> giải phóng miền Nam (tiền tuyến lớn). Chi viện: <strong>Đường Trường Sơn 559 (1959)</strong> &amp; <strong>Đường biển 759 (1961)</strong>; thi đua miền Bắc: <em>Ba sẵn sàng</em> (thanh niên), <em>Ba đảm đang</em> (phụ nữ), <em>Tay cày/Tay búa tay súng</em>.
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Giai đoạn</th><th>Chiến lược của Mỹ</th><th>Chỉ đạo của Đảng &amp; Chiến thắng tiêu biểu</th><th>Bước ngoặt / Ghi chú thi</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1954–1960</strong></td>
+                <td><strong>Chiến tranh đơn phương</strong> <em>(Luật 10/59 "tố cộng, diệt cộng")</em></td>
+                <td><strong>HNTW 15 (1/1959):</strong> dùng bạo lực CM → <strong>Đồng Khởi 1960</strong> (đỉnh cao <strong>Bến Tre 17/1/1960</strong>) · <strong>20/12/1960:</strong> lập <strong>MT DTGPMNVN</strong> (Tây Ninh, CT Nguyễn Hữu Thọ).</td>
+                <td>Chuyển CM miền Nam từ <strong>giữ gìn lực lượng → thế tiến công</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>1961–1965</strong></td>
+                <td><strong>Chiến tranh đặc biệt</strong> <em>(Tay sai + cố vấn Mỹ: "dùng người Việt đánh người Việt")</em></td>
+                <td><strong>Ấp Bắc (1/1963)</strong> mở đầu đánh bại trực thăng vận, thiết xa vận; Bình Giã (12/64), Ba Gia, Đồng Xoài (1965).</td>
+                <td>Làm phá sản Chiến tranh đặc biệt.</td>
+              </tr>
+              <tr>
+                <td><strong>1965–1968</strong></td>
+                <td><strong>Chiến tranh cục bộ</strong> <em>(Quân Mỹ trực tiếp tham chiến + đánh phá miền Bắc)</em></td>
+                <td><strong>TW 11 (3/65) &amp; TW 12 (12/65):</strong> <em>"Tất cả để đánh thắng giặc Mỹ xâm lược"</em> · <strong>Vạn Tường (8/1965)</strong>, Plâyme · <strong>Tổng tiến công Tết Mậu Thân 1968</strong>.</td>
+                <td><strong>Mậu Thân 68:</strong> buộc Mỹ ngừng ném bom Bắc, đàm phán Paris <em>(Hạn chế: chủ quan đánh giá tình hình)</em>. <strong>6/1969:</strong> lập CP CMLT CHMNVN.</td>
+              </tr>
+              <tr>
+                <td><strong>1969–1975</strong></td>
+                <td><strong>Việt Nam hóa chiến tranh</strong></td>
+                <td><strong>"Điện Biên Phủ trên không" (18–29/12/1972)</strong> → <strong>Hiệp định Paris (27/1/1973: Mỹ rút quân)</strong> · <strong>HNTW 21 (7/1973):</strong> tiếp tục bạo lực CM · <strong>Phước Long (1/1975)</strong> <em>"đòn thăm dò"</em> · <strong>18/3/75</strong> quyết GP trong 1975 · <strong>Xuân 1975:</strong> Tây Nguyên (<strong>Buôn Ma Thuột 10/3</strong>) → Huế–Đà Nẵng → <strong>Chiến dịch Hồ Chí Minh (26–30/4/1975, Văn Tiến Dũng)</strong>.</td>
+                <td>Kết thúc <strong>21 năm chống Mỹ</strong> &amp; <strong>30 năm chiến tranh GPDT</strong>; thống nhất trọn vẹn đất nước!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="trap-box">
+          <strong>⚠️ Điểm mới &amp; Bẫy thi chống Mỹ:</strong> Là <em>"cuộc đụng đầu lịch sử"</em>; điểm mới so với chống Pháp là <strong>kết hợp khởi nghĩa từng phần của quần chúng với chiến tranh cách mạng</strong>; bài học quan trọng nhất là giương cao ngọn cờ <strong>Độc lập dân tộc và Chủ nghĩa xã hội</strong> (<em>không phải "và dân chủ"</em>).
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Giáo trình 2021 + Tài liệu Coursera Chương 2</em></span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <a class="nav-pill" href="flashcard.html">🃏 Luyện Flashcard Ch.2 →</a>
+            <a class="nav-pill" href="learn.html">🧠 Quizlet 415 câu →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 3A: 1975 - 1996 ================= -->
+      <section class="chapter" id="chuong-3a">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 3 (PHẦN A) · 1975 – 1996</span>
+            <h2>Thống nhất đất nước, Tìm tòi đổi mới &amp; 10 năm đầu Đổi mới</h2>
+          </div>
+          <button class="done-btn" data-done="3" onclick="toggleDone(3)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> Thống nhất Nhà nước (<strong>7/1976</strong>) → ĐH IV (12/76) &amp; ĐH V (3/82) + bảo vệ 2 đầu biên giới (1975–79) → <strong>3 bước đột phá kinh tế (79–85–86)</strong> → <strong>ĐH VI (12/1986) Đổi mới</strong> → <strong>ĐH VII (1991: Cương lĩnh 6)</strong> → <strong>ĐH VIII (1996: ra khỏi khủng hoảng, đẩy mạnh CNH–HĐH)</strong>.
+        </div>
+
+        <h3>I. Thống nhất đất nước, Bảo vệ Tổ quốc &amp; ĐH IV, V (1975–1986)</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Thống nhất Nhà nước &amp; Bảo vệ 2 biên giới</div>
+            <ul>
+              <li><strong>Nhiệm vụ bức thiết nhất sau 1975:</strong> Thống nhất đất nước về mặt <strong>Nhà nước</strong>.</li>
+              <li><strong>HNTW 24 (1975)</strong> → <strong>Hiệp thương chính trị 2 miền tại Sài Gòn (15–21/11/1975</strong>, Phạm Hùng trưởng đoàn Nam) → <strong>Tổng tuyển cử QH khóa VI (25/4/1976)</strong>.</li>
+              <li><strong>Kỳ họp 1 QH khóa VI (24/6–3/7/1976):</strong> Đặt tên nước <strong>Cộng hòa XHCN Việt Nam</strong> (Chủ tịch <strong>Tôn Đức Thắng</strong>), đổi tên Sài Gòn–Gia Định thành <strong>TP. Hồ Chí Minh</strong>.</li>
+              <li><strong>Bảo vệ Tổ quốc:</strong> Biên giới Tây Nam chống Pôn Pốt (<strong>1975–1979</strong>; tháng <strong>1/1979</strong> giúp Campuchia lật đổ diệt chủng) &amp; Biên giới phía Bắc (<strong>17/2/1979</strong>).</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Đại hội IV (12/1976) &amp; Đại hội V (3/1982)</div>
+            <ul>
+              <li><strong>ĐH IV (14–20/12/1976, Hà Nội):</strong> Đổi tên <strong>Đảng Cộng sản Việt Nam</strong>; đặc điểm lớn nhất: từ <em>sản xuất nhỏ tiến thẳng lên CNXH bỏ qua TBCN</em>; <strong>3 cuộc CM</strong> (KH–KT then chốt); ưu tiên CN nặng hợp lý. <strong>Hạn chế:</strong> chủ quan duy ý chí mục tiêu <strong>20 năm</strong>.</li>
+              <li><strong>ĐH V (3/1982, TBT Lê Duẩn):</strong> <strong>2 nhiệm vụ chiến lược</strong> (Xây dựng CNXH &amp; Bảo vệ vững chắc Tổ quốc); nhận thức mới: coi <strong>nông nghiệp là mặt trận hàng đầu</strong>.</li>
+              <li class="detail"><strong>Đặc trưng CNH trước Đổi mới (1960–1985):</strong> Dựa lao động, tài nguyên, viện trợ XHCN theo cơ chế kế hoạch hóa tập trung quan liêu bao cấp (chưa có KTTT) → nguyên nhân khủng hoảng KT–XH cùng hậu quả chiến tranh &amp; cấm vận.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. 3 Bước đột phá tư duy kinh tế trước Đổi mới (1979–1986)</h3>
+        <ol class="clean-num">
+          <li><strong>Bước đột phá 1 — HNTW 6 khóa IV (8/1979):</strong> Chủ trương khắc phục khuyết điểm quản lý, <em>"làm cho sản xuất bung ra"</em> (giai đoạn 1979–1985 xuất hiện phong trào <strong>"Xé rào"</strong>; <strong>1/1981:</strong> <strong>Chỉ thị 100 / Khoán 100</strong> trong nông nghiệp &amp; <strong>QĐ 25-CP, 26-CP</strong> mở rộng tự chủ xí nghiệp quốc doanh).</li>
+          <li><strong>Bước đột phá 2 — HNTW 8 khóa V (6/1985):</strong> Xóa bỏ cơ chế tập trung quan liêu bao cấp, thực hiện cải cách <strong>giá – lương – tiền</strong> <em>(tuy không thành công gây xáo trộn lớn nhưng để lại bài học thúc đẩy Đổi mới triệt để)</em>.</li>
+          <li><strong>Bước đột phá 3 — Hội nghị Bộ Chính trị khóa V (8/1986):</strong> Kết luận <strong>3 vấn đề lớn</strong> (<em>cơ cấu sản xuất, cải tạo XHCN, cơ chế quản lý kinh tế</em>) — mở đường trực tiếp cho Đại hội VI.</li>
+        </ol>
+
+        <h3>III. Đại hội VI (1986), Đại hội VII (1991), Đại hội VIII (1996) &amp; Phá bao vây</h3>
+        <div class="grid-3">
+          <div class="mini-card">
+            <div class="mc-title">Đại hội VI (12/1986) — Đổi mới</div>
+            <ul>
+              <li>TBT <strong>Nguyễn Văn Linh</strong>; tinh thần <em>nhìn thẳng sự thật</em>, không đổi mục tiêu CNXH.</li>
+              <li><strong>Trọng tâm kinh tế:</strong> xóa bao cấp, KT nhiều thành phần, <strong>3 chương trình KT lớn</strong> (Lương thực–TP, Hàng tiêu dùng, Hàng xuất khẩu).</li>
+              <li><strong>Bài học số 1:</strong> Quán triệt tư tưởng <strong>"lấy dân làm gốc"</strong>.</li>
+              <li><strong>12/1987:</strong> Luật Đầu tư nước ngoài · <strong>4/1988: NQ 10 (Khoán 10)</strong> hộ nông dân tự chủ → VN <strong>xuất khẩu gạo từ 1989</strong>!</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Đại hội VII (6/1991) — Cương lĩnh 1991</div>
+            <ul>
+              <li>Thông qua <strong>Cương lĩnh 1991 (6 đặc trưng)</strong> &amp; Chiến lược ổn định phát triển KT–XH đến 2000.</li>
+              <li>Lần đầu khẳng định nền tảng tư tưởng: <strong>CN Mác–Lênin và Tư tưởng Hồ Chí Minh</strong>.</li>
+              <li>Lần đầu nêu nền văn hóa <strong>"tiên tiến, đậm đà bản sắc dân tộc"</strong>.</li>
+              <li>Đối ngoại: <em>"Việt Nam <strong>muốn là bạn</strong> với tất cả các nước..."</em>.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Đại hội VIII (6–7/1996) — Đẩy mạnh CNH</div>
+            <ul>
+              <li>Tổng kết 10 năm Đổi mới: <strong>ra khỏi khủng hoảng KT–XH</strong> → chuyển sang thời kỳ <strong>đẩy mạnh CNH, HĐH</strong> (KH&amp;CN là động lực).</li>
+              <li><strong>Đổi mới KT làm trọng tâm</strong>, từng bước đổi mới chính trị; công bằng XH trong từng bước; <strong>xây dựng Đảng là nhiệm vụ then chốt</strong>.</li>
+              <li><strong>Phá thế bao vây 91–95:</strong> Pari về Campuchia (23/10/91) → BTH Trung Quốc (10/11/91) → Mỹ bỏ cấm vận (2/94) → BTH Việt–Mỹ (<strong>11/7/1995</strong>) &amp; gia nhập <strong>ASEAN (7/1995)</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Giáo trình 2021 + Tài liệu Coursera Chương 3</em></span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <a class="nav-pill" href="flashcard.html">🃏 Luyện Flashcard Ch.3 →</a>
+            <a class="nav-pill" href="learn.html">🧠 Quizlet 415 câu →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 3B: ĐH IX - XIV (2001 - 2026) & KẾT LUẬN ================= -->
+      <section class="chapter" id="chuong-3b">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 3 (PHẦN B) · 2001 – 2026 &amp; KẾT LUẬN</span>
+            <h2>Hội nhập quốc tế, Đại hội IX → XIV (2026) &amp; 5 Bài học lớn</h2>
+          </div>
+          <button class="done-btn" data-done="4" onclick="toggleDone(4)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> <strong>ĐH IX (01):</strong> KTTT định hướng XHCN → <strong>ĐH X (06):</strong> ĐV làm KT tư nhân, vào WTO (11/1/07) → <strong>ĐH XI (11):</strong> Cương lĩnh 8 đặc trưng → <strong>ĐH XII (16):</strong> Lợi ích QG cao nhất → <strong>ĐH XIII (21):</strong> 3 mốc 2025–30–45 → <strong>ĐH XIV (1/2026):</strong> Kỷ nguyên vươn mình, phương châm <strong>Đột phá</strong>, GDP ≥10%/năm, <strong>KT tư nhân là động lực quan trọng nhất</strong>!
+        </div>
+
+        <h3>I. Các Đại hội IX, X, XI, XII &amp; Mốc Hội nhập quốc tế</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Đại hội IX (2001) &amp; Đại hội X (2006)</div>
+            <ul>
+              <li><strong>ĐH IX (4/2001):</strong> Chính thức xác định mô hình <strong>KTTT định hướng XHCN</strong>; đối ngoại: <em>"sẵn sàng là bạn, là đối tác tin cậy"</em>.</li>
+              <li><strong>ĐH X (18–25/4/2006):</strong> <strong>Cho phép đảng viên làm kinh tế tư nhân</strong>; xây dựng, chỉnh đốn Đảng là nhiệm vụ then chốt hàng đầu; CNH–HĐH gắn <strong>kinh tế tri thức</strong>.</li>
+              <li><strong>Hội nhập quốc tế:</strong> ASEAN (7/1995) → APEC (<strong>1998</strong>) → 16 chữ vàng VN–TQ (<strong>1999</strong>) → Ký Nghị định thư WTO (7/11/2006), thành viên thứ <strong>150</strong> ngày <strong>11/1/2007</strong> → 2012 có <strong>36 nước</strong> công nhận KTTT.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Đại hội XI (2011) &amp; Đại hội XII (2016)</div>
+            <ul>
+              <li><strong>ĐH XI (12–19/1/2011):</strong> Thông qua <strong>Cương lĩnh (bổ sung, phát triển 2011) gồm 8 đặc trưng</strong> (bổ sung đặc trưng bình đẳng, đoàn kết các dân tộc); mục tiêu giữa TK XXI thành nước CN hiện đại; Chiến lược 2011–2020: <em>phát triển nhanh gắn bền vững, nguồn nhân lực chất lượng cao</em>.</li>
+              <li><strong>ĐH XII (1/2016):</strong> Khẩu hiệu <em>"Đoàn kết – Dân chủ – Kỷ cương – Đổi mới"</em>; lần đầu khẳng định bài học <strong>"Lấy lợi ích quốc gia, dân tộc làm mục tiêu cao nhất"</strong>; phòng chống tham nhũng <em>"không có vùng cấm, không có ngoại lệ"</em>; phong trào học tập tư tưởng, đạo đức, phong cách HCM.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>Bảng gom nhóm các Nghị quyết Trung ương khóa VIII – XII hay ra đề</h4>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Kinh tế, Tài nguyên &amp; An sinh</div>
+            <ul>
+              <li><strong>TW 2/VIII (12/96):</strong> <strong>GD&amp;ĐT, KH&amp;CN</strong> là <em>quốc sách hàng đầu</em>.</li>
+              <li><strong>TW 5/VIII (7/98):</strong> Văn hóa VN <em>tiên tiến, đậm đà bản sắc</em>.</li>
+              <li><strong>TW 5/IX (3/02):</strong> KT tập thể &amp; khẳng định <strong>KT tư nhân</strong>.</li>
+              <li><strong>TW 7/IX (3/03):</strong> <strong>Đất đai</strong> là tài nguyên vô cùng quý giá.</li>
+              <li><strong>TW 5/XII (5/17):</strong> Hoàn thiện thể chế <strong>KTTT định hướng XHCN</strong>.</li>
+              <li><strong>TW 6/XII — NQ 20 (10/17):</strong> Bảo vệ, nâng cao <strong>sức khỏe nhân dân</strong>.</li>
+              <li><strong>TW 7/XII — NQ 28 (5/18):</strong> Cải cách chính sách <strong>bảo hiểm xã hội</strong>.</li>
+              <li><strong>TW 8/XII — NQ 36 (22/10/18):</strong> Chiến lược phát triển bền vững <strong>kinh tế biển</strong> đến 2030, tầm nhìn 2045.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Xây dựng Đảng, Quốc phòng &amp; Đối ngoại</div>
+            <ul>
+              <li><strong>TW 3/VIII (6/97):</strong> Xây dựng đội ngũ cán bộ &amp; quyền làm chủ.</li>
+              <li><strong>TW 4/VIII (12/97):</strong> Bầu <strong>Lê Khả Phiêu</strong> làm Tổng Bí thư.</li>
+              <li><strong>TW 8/IX (7/03):</strong> <strong>Chiến lược bảo vệ Tổ quốc</strong> trong tình hình mới.</li>
+              <li><strong>NQ 36/IX (26/3/04):</strong> Công tác đối với <strong>người VN ở nước ngoài</strong> <em>(tránh nhầm NQ 36/XII Kinh tế biển!)</em>.</li>
+              <li><strong>TW 3/X — NQ 04 (8/06):</strong> Phòng, chống tham nhũng, lãng phí.</li>
+              <li><strong>Chỉ thị 03/X (11/06):</strong> Học tập, làm theo tấm gương đạo đức HCM.</li>
+              <li><strong>TW 5/X — NQ 14 (7/07):</strong> Tăng cường công tác <strong>kiểm tra, giám sát</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. So sánh Chi tiết Đại hội XIII (2021) vs Đại hội XIV (2026) — Cực hay thi!</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Tiêu chí</th><th>Đại hội XIII (25/1 – 1/2/2021, Hà Nội)</th><th>Đại hội XIV (19 – 23/1/2026, Hà Nội)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhân sự &amp; Đại biểu</strong></td>
+                <td><strong>1.587</strong> đại biểu · <strong>200</strong> UV TW (180 CT, 20 DK) · <strong>18</strong> UV BCT · TBT <strong>Nguyễn Phú Trọng</strong></td>
+                <td><strong>1.586</strong> đại biểu · <strong>200</strong> UV TW (180 CT, 20 DK) · <strong>19</strong> UV BCT · TBT <strong>Tô Lâm</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Phương châm</strong></td>
+                <td><em>Đoàn kết – Dân chủ – Kỷ cương – <strong>Sáng tạo</strong> – Phát triển</em></td>
+                <td><em>Đoàn kết – Dân chủ – Kỷ cương – <strong>Đột phá</strong> – Phát triển</em> (thay Sáng tạo → Đột phá)</td>
+              </tr>
+              <tr>
+                <td><strong>Bối cảnh &amp; Chủ đề</strong></td>
+                <td><strong>35 năm Đổi mới</strong> (<em>cơ đồ, tiềm lực, vị thế, uy tín</em>); Covid-19 &amp; CMCN 4.0; <strong>4 nguy cơ</strong> (tụt hậu, chệch hướng, tham nhũng, diễn biến hòa bình); chủ đề <strong>5 trụ cột</strong>; bổ sung <em>dân giám sát, dân thụ hưởng</em>.</td>
+                <td><strong>40 năm Đổi mới</strong> — khởi đầu <strong>kỷ nguyên vươn mình</strong>; CMCN 4.0 (<em>AI, công nghệ số, lượng tử</em>); <strong>nguy cơ bao trùm:</strong> <em>tụt hậu (nhất là công nghệ) &amp; bẫy thu nhập trung bình</em>.</td>
+              </tr>
+              <tr>
+                <td><strong>Thành tựu nhiệm kỳ trước</strong></td>
+                <td>Nhiệm kỳ XII (16–20): GDP ~6%/năm (2020: <strong>2,91%</strong>); quy mô <strong>271,2 tỷ USD</strong>, đầu người <strong>2.779 USD</strong>; năng suất LĐ 4,3%→5,9%; nông thôn mới sớm ~2 năm; nghèo đa chiều &lt;3%, BHYT &gt;90%, phổ cập mầm non trẻ 5 tuổi.</td>
+                <td>Nhiệm kỳ XIII (21–25): GDP ~<strong>6,2%/năm</strong> (2025: <strong>8,02%</strong>); quy mô vượt <strong>514 tỷ USD</strong> (#<strong>32</strong> thế giới, gấp 1,48 lần 2020); đầu người <strong>5.026 USD</strong> (nhóm TB cao); nghèo đa chiều 4,2%→<strong>1,3%</strong>, xóa xong nhà tạm/dột nát; BHYT <strong>95,2%</strong>; HDI <strong>0,766</strong> (+14 bậc); Hạnh phúc hạng <strong>46/143</strong> (+33 bậc); mục tiêu kép Covid-19; nâng tầm đối tác CLTD với các nước lớn.</td>
+              </tr>
+              <tr>
+                <td><strong>Mốc mục tiêu chiến lược</strong></td>
+                <td><strong>3 mốc:</strong> <strong>2025</strong> (vượt TB thấp) · <strong>2030</strong> (100 năm Đảng: CN hiện đại, TB cao) · <strong>2045</strong> (100 năm Nước: phát triển, thu nhập cao).</td>
+                <td><strong>2 mốc 100 năm (2030 &amp; 2045):</strong> Giai đoạn 2026–2030 tăng trưởng GDP bình quân <strong>≥10%/năm</strong>; đến 2030 GDP đầu người <strong>~8.500 USD</strong>; hướng tới VN <em>hòa bình, độc lập, dân chủ, giàu mạnh, phồn vinh, văn minh, hạnh phúc</em>.</td>
+              </tr>
+              <tr>
+                <td><strong>6 Nhiệm vụ trọng tâm &amp; 3 Đột phá CL</strong></td>
+                <td>3 đột phá: (1) Thể chế KTTT; (2) Nguồn nhân lực &amp; KHCN, ĐMST; (3) Hạ tầng đồng bộ (ưu tiên giao thông, năng lượng, hạ tầng số). 6 nhiệm vụ trọng tâm (chống dịch, chuyển đổi số, xây dựng Đảng...).</td>
+                <td><strong>Điểm mới bứt phá:</strong> Khẳng định <strong>kinh tế tư nhân là động lực quan trọng nhất</strong>; KHCN–ĐMST–CĐS là động lực chính; tháo gỡ dứt điểm điểm nghẽn thể chế; bảo đảm <strong>"4 an"</strong> (<em>an ninh, an sinh, an toàn, an dân</em>); QĐ &amp; CA <em>cách mạng, chính quy, tinh nhuệ, hiện đại</em>; đột phá hạ tầng <strong>đa phương thức, công nghệ, CĐS, chuyển đổi xanh</strong> &amp; <strong>thu hút, trọng dụng nhân tài</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>III. Lý luận Đổi mới, 4 Thắng lợi vĩ đại &amp; 5 Bài học lớn</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Lý luận trọng tâm &amp; 4 Thắng lợi vĩ đại</div>
+            <ul>
+              <li><strong>KTTT &amp; CNH:</strong> KT nhà nước giữ vai trò <strong>chủ đạo</strong>; KT tư nhân là <strong>động lực quan trọng nhất</strong>; các thành phần hợp tác–cạnh tranh lành mạnh; <strong>con người</strong> quyết định tăng trưởng; đấu tranh giai cấp hiện nay = thắng lợi CNH–HĐH.</li>
+              <li><strong>Hệ thống chính trị:</strong> Đảng = <strong>trụ cột</strong>; MTTQ &amp; đoàn thể = đại diện quyền lợi hợp pháp của nhân dân; động lực chủ yếu = <strong>Đại đoàn kết toàn dân</strong>.</li>
+              <li><strong>4 Thắng lợi vĩ đại:</strong> (1) CMT8 1945 · (2) Hai cuộc kháng chiến 1945–1975 · (3) Sự nghiệp Đổi mới từ 1986 · (4) Xây dựng, chỉnh đốn Đảng &amp; uy tín quốc tế.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">5 Bài học lớn của cách mạng Việt Nam</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Nắm vững ngọn cờ <strong>độc lập dân tộc và chủ nghĩa xã hội</strong>.</li>
+              <li>Sự nghiệp cách mạng là <strong>của nhân dân, do nhân dân và vì nhân dân</strong> (<em>lấy dân làm gốc</em>).</li>
+              <li>Không ngừng củng cố, tăng cường <strong>đoàn kết</strong> (toàn Đảng, toàn dân, dân tộc, quốc tế).</li>
+              <li>Kết hợp <strong>sức mạnh dân tộc với sức mạnh thời đại</strong>.</li>
+              <li><strong>Sự lãnh đạo đúng đắn của Đảng</strong> là <strong>nhân tố hàng đầu</strong> quyết định thắng lợi của cách mạng VN.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Giáo trình 2021 + Tài liệu Thông tin Đại hội XIII &amp; XIV (2026)</em></span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <a class="nav-pill" href="flashcard.html">🃏 Flashcard ĐH XIII &amp; XIV →</a>
+            <a class="nav-pill" href="learn.html">🧠 Quizlet 415 câu →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TỔNG ÔN QUIZ 64 CÂU CHUẨN ================= -->
+      <section class="chapter" id="quiz-tong-hop">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">QUIZ NHỚ NHANH · ĐẦY ĐỦ ĐẾN ĐH XIV · KHÔNG TRÙNG LẶP</span>
+            <h2>📝 Tổng ôn Quiz Kiến thức VNR202 (64 câu chuẩn)</h2>
+          </div>
+          <span class="qz-stat" id="allQuizStat">Đã đúng: 0 / 64</span>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">🎯 Khác biệt so với ngân hàng 400+ câu:</strong> Bộ 64 câu này phủ trọn 100% kiến thức từ Chương Nhập môn đến <strong>Đại hội XIV (1/2026)</strong>, nhưng <strong>mỗi đơn vị kiến thức chỉ hỏi đúng 1 lần</strong> (không lặp dài dòng), bấm xong hiện ngay <strong>1 dòng Chốt ý</strong> để đọc xong nhớ liền!
+        </div>
+
+        <div class="qz-filters" id="allQuizFilters">
+          <button type="button" class="qz-btn active" data-f="all">Tất cả (64)</button>
+          <button type="button" class="qz-btn" data-f="0">Ch.0 (6)</button>
+          <button type="button" class="qz-btn" data-f="1">Ch.1 (14)</button>
+          <button type="button" class="qz-btn" data-f="2">Ch.2 (16)</button>
+          <button type="button" class="qz-btn" data-f="3">Ch.3A (12)</button>
+          <button type="button" class="qz-btn" data-f="4">Ch.3B &amp; ĐH XIV (16)</button>
+          <button type="button" class="qz-btn" data-f="todo">🔥 Chỉ câu chưa đúng</button>
+        </div>
+
+        <div class="qz-bar">
+          <button type="button" class="qz-btn" id="allShuffleBtn">🔀 Xáo trộn thứ tự</button>
+          <button type="button" class="qz-btn" id="allResetBtn">↺ Làm lại toàn bộ 64 câu</button>
+        </div>
+
+        <div id="allQuizList" class="qz-list"></div>
+      </section>
+
+      <!-- ================= NGÂN HÀNG 404 CÂU CƠ BẢN (GIỮ NGUYÊN TÍNH NĂNG CŨ) ================= -->
+      <section class="chapter" id="ngan-hang-404">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">NGÂN HÀNG CƠ BẢN · 404 CÂU TRẮC NGHIỆM &amp; FLASHCARD</span>
+            <h2>📚 Luyện nhanh bộ 404 câu cơ bản (FE_VNR)</h2>
+          </div>
+          <span class="qz-stat" id="bankScore">Đúng: 0 / 0</span>
+        </div>
+
+        <div class="bank-tabs">
+          <button type="button" class="qz-btn active" id="bankTabQuiz" onclick="switchBankMode('quiz')">🎯 Chế độ Trắc nghiệm</button>
+          <button type="button" class="qz-btn" id="bankTabFlash" onclick="switchBankMode('flash')">🃏 Chế độ Flashcard vuốt</button>
+        </div>
+
+        <div id="bankQuizPane">
+          <div class="qz-bar">
+            <button type="button" class="qz-btn active" onclick="startBankQuiz(15)">🎲 15 câu ngẫu nhiên</button>
+            <button type="button" class="qz-btn" onclick="startBankQuiz(40)">📝 Đề thử 40 câu</button>
+            <button type="button" class="qz-btn" onclick="startBankQuiz(404)">📚 Toàn bộ 404 câu</button>
+            <button type="button" class="qz-btn" id="bankRetryWrong" onclick="retryBankWrong()" style="display:none;">🔁 Làm lại câu sai</button>
+          </div>
+          <div id="bankQuizList" class="qz-list"></div>
+        </div>
+
+        <div id="bankFlashPane" style="display:none;">
+          <div class="flash-wrap">
+            <div style="margin-bottom:10px; color:var(--muted); font-size:0.88rem;">
+              Thẻ <strong id="bfIdx">1</strong> / <strong id="bfTotal">404</strong> — Bấm vào thẻ (hoặc phím <code>Space</code>) để lật đáp án
+            </div>
+            <div id="bfCard" class="flashcard" onclick="toggleBf()">
+              <div id="bfQ" class="flash-q"></div>
+              <div id="bfOpts" class="flash-opts"></div>
+              <div id="bfA" class="flash-a"></div>
+              <div class="flash-hint">👆 Chạm để lật đáp án · 👈👉 Vuốt trái/phải để đổi thẻ</div>
+            </div>
+            <div class="qz-bar" style="justify-content:center; margin-top:12px;">
+              <button type="button" class="qz-btn" onclick="stepBf(-1)">← Thẻ trước</button>
+              <button type="button" class="qz-btn" onclick="stepBf(1)">Thẻ tiếp →</button>
+              <button type="button" class="qz-btn active" onclick="toggleBf()">👁 Lật đáp án</button>
+              <button type="button" class="qz-btn" onclick="shuffleBf()">🔀 Xáo trộn</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
 
   <button id="topBtn" class="top-btn" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
+  <script src="vnr202_kt_quiz.js"></script>
   <script src="data.js"></script>
   <script>
-    const DATA = window.LSD_DATA || { memoHtml: '', guideHtml: '', questions: [] };
-    const memoEl = document.getElementById('memoContent');
-    const guideEl = document.getElementById('guideContent');
-
-    // Split long prose HTML into chapter-by-chapter pages with sticky sidebar & Prev/Next pager
-    function buildPaginatedSection(targetEl, rawHtml, storageKey, sidebarTitle) {
-      const temp = document.createElement('div');
-      temp.innerHTML = rawHtml;
-      const pages = [];
-      let currentNodes = [];
-      let currentTitle = 'Tổng quan';
-
-      Array.from(temp.childNodes).forEach(node => {
-        if (node.nodeType === 1 && node.tagName === 'H2') {
-          if (currentNodes.some(n => (n.textContent || '').trim().length > 0)) {
-            pages.push({ title: currentTitle, nodes: currentNodes });
-          }
-          currentTitle = node.textContent.trim().replace(/^[IVX0-9]+\.\s*/, '');
-          currentNodes = [node.cloneNode(true)];
-        } else {
-          currentNodes.push(node.cloneNode(true));
-        }
-      });
-      if (currentNodes.length) {
-        pages.push({ title: currentTitle, nodes: currentNodes });
+    // Sync sticky page header height dynamically so sidebar TOC aligns pixel-perfectly
+    const pageHdrEl = document.querySelector('header');
+    function syncPageHdrHeight() {
+      if (pageHdrEl) {
+        document.documentElement.style.setProperty('--pagehdr-h', pageHdrEl.offsetHeight + 'px');
       }
-
-      const shell = document.createElement('div');
-      shell.className = 'ch-shell';
-
-      const sidebar = document.createElement('aside');
-      sidebar.className = 'ch-sidebar';
-      sidebar.innerHTML = `<div class="ch-side-title">${sidebarTitle} (${pages.length} phần)</div>`;
-
-      const proseWrap = document.createElement('div');
-      proseWrap.className = 'prose';
-
-      const pageEls = [];
-      const navBtns = [];
-
-      function shortLabel(str, idx) {
-        const clean = str.replace(/\s+/g, ' ').trim();
-        return clean.length > 34 ? clean.slice(0, 32) + '…' : clean;
-      }
-
-      function activatePage(idxStr, keepScroll) {
-        localStorage.setItem(storageKey, idxStr);
-        navBtns.forEach(b => b.classList.toggle('active', b.dataset.idx === idxStr));
-        if (idxStr === 'all') {
-          pageEls.forEach(p => p.classList.add('active-page'));
-        } else {
-          const targetIdx = parseInt(idxStr, 10) || 0;
-          pageEls.forEach((p, i) => p.classList.toggle('active-page', i === targetIdx));
-        }
-        if (!keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      pages.forEach((pg, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'ch-nav-btn';
-        btn.dataset.idx = String(idx);
-        btn.textContent = `${idx + 1}. ${shortLabel(pg.title, idx)}`;
-        btn.onclick = () => activatePage(String(idx));
-        sidebar.appendChild(btn);
-        navBtns.push(btn);
-
-        const pageDiv = document.createElement('div');
-        pageDiv.className = 'ch-page';
-        pg.nodes.forEach(n => pageDiv.appendChild(n));
-
-        const pager = document.createElement('div');
-        pager.className = 'ch-pager';
-        const prevBtn = idx > 0
-          ? `<button class="ch-pager-btn" data-go="${idx - 1}">← Phần ${idx}: ${shortLabel(pages[idx - 1].title)}</button>`
-          : `<span></span>`;
-        const nextBtn = idx < pages.length - 1
-          ? `<button class="ch-pager-btn primary" data-go="${idx + 1}">Tiếp: Phần ${idx + 2} (${shortLabel(pages[idx + 1].title)}) →</button>`
-          : `<a class="ch-pager-btn primary" style="text-decoration:none;" href="learn.html">🚀 Vào luyện Quizlet 415 câu →</a>`;
-        pager.innerHTML = prevBtn + nextBtn;
-        pager.querySelectorAll('[data-go]').forEach(b => {
-          b.addEventListener('click', () => activatePage(b.dataset.go));
-        });
-        pageDiv.appendChild(pager);
-
-        proseWrap.appendChild(pageDiv);
-        pageEls.push(pageDiv);
-      });
-
-      const allBtn = document.createElement('button');
-      allBtn.className = 'ch-nav-btn';
-      allBtn.dataset.idx = 'all';
-      allBtn.style.marginTop = '6px';
-      allBtn.style.borderTop = '1px dashed var(--border)';
-      allBtn.style.paddingTop = '10px';
-      allBtn.textContent = '📚 Hiện gộp tất cả các phần';
-      allBtn.onclick = () => activatePage('all');
-      sidebar.appendChild(allBtn);
-      navBtns.push(allBtn);
-
-      shell.appendChild(sidebar);
-      shell.appendChild(proseWrap);
-
-      targetEl.className = '';
-      targetEl.innerHTML = '';
-      targetEl.appendChild(shell);
-
-      const saved = localStorage.getItem(storageKey) || '0';
-      activatePage(saved === 'all' || parseInt(saved, 10) < pages.length ? saved : '0', true);
     }
+    syncPageHdrHeight();
+    window.addEventListener('resize', syncPageHdrHeight, { passive: true });
+    window.addEventListener('load', syncPageHdrHeight, { passive: true });
 
-    function renderAllProse() {
-      buildPaginatedSection(memoEl, DATA.memoHtml, 'vnr_memo_page', 'MỤC LỤC GHI NHỚ');
-      buildPaginatedSection(guideEl, DATA.guideHtml, 'vnr_guide_page', 'MỤC LỤC ĐỀ CƯƠNG');
-    }
-    renderAllProse();
-
-    // Tabs
-    let activeTab = 'memo';
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        activeTab = btn.dataset.tab;
-        document.getElementById('tab-' + activeTab).classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    // Compact mode toggle
+    const compactBtn = document.getElementById('compactBtn');
+    compactBtn.addEventListener('click', () => {
+      document.body.classList.toggle('compact');
+      const c = document.body.classList.contains('compact');
+      compactBtn.classList.toggle('active', c);
+      compactBtn.textContent = c ? '📖 Hiện đầy đủ' : '⚡ Chế độ Siêu gọn';
     });
 
-    // Dark mode managed by site_nav.js
+    // Quiz data & persisted state
+    const KT_QUIZ = window.VNR202_KT_QUIZ || [];
+    const QUIZ_KEY = 'vnr202_kt_quiz_v1';
+    let quizState = {};
+    try { quizState = JSON.parse(localStorage.getItem(QUIZ_KEY) || '{}'); } catch {}
+    function saveQuizState() { localStorage.setItem(QUIZ_KEY, JSON.stringify(quizState)); }
 
-    // Instant Search
-    const searchInput = document.getElementById('globalSearch');
-    function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim();
-      if (activeTab === 'quiz') {
-        renderQuizSearch(q);
-        return;
-      }
-      if (activeTab === 'flash') {
-        filterFlash(q);
-        return;
-      }
-      if (!q || q.length < 2) {
-        renderAllProse();
-        return;
-      }
-      const re = new RegExp('(' + escapeRegExp(q) + ')', 'gi');
-      const hlMemo = DATA.memoHtml.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) => tag ? tag : text.replace(re, '<mark class="hl">$1</mark>'));
-      const hlGuide = DATA.guideHtml.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) => tag ? tag : text.replace(re, '<mark class="hl">$1</mark>'));
-      buildPaginatedSection(memoEl, hlMemo, 'vnr_memo_page', 'MỤC LỤC GHI NHỚ');
-      buildPaginatedSection(guideEl, hlGuide, 'vnr_guide_page', 'MỤC LỤC ĐỀ CƯƠNG');
-      document.querySelectorAll('#tab-' + activeTab + ' .ch-page').forEach(p => {
-        p.classList.toggle('active-page', p.querySelector('mark.hl') !== null);
+    const CH_META = [
+      { ch: 0, id: 'chuong-0', label: 'Chương 0' },
+      { ch: 1, id: 'chuong-1', label: 'Chương 1' },
+      { ch: 2, id: 'chuong-2', label: 'Chương 2' },
+      { ch: 3, id: 'chuong-3a', label: 'Chương 3A' },
+      { ch: 4, id: 'chuong-3b', label: 'Chương 3B' }
+    ];
+
+    // Chapter mastery tracker (5 chapter pages)
+    const DONE_KEY = 'vnr202_kt_done_v1';
+    let doneSet = new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]'));
+
+    function renderDone() {
+      CH_META.forEach(m => {
+        const isDone = doneSet.has(m.ch);
+        const btn = document.querySelector(`.done-btn[data-done="${m.ch}"]`);
+        const td = document.getElementById('td-' + m.ch);
+        const chQs = KT_QUIZ.filter(q => q.ch === m.ch);
+        const chOk = chQs.filter(q => quizState[q.id] === 'ok').length;
+        if (btn) {
+          btn.classList.toggle('checked', isDone);
+          btn.textContent = isDone ? '☑ Đã thuộc' : '☐ Đánh dấu đã thuộc';
+        }
+        if (td) {
+          const isFull = chQs.length > 0 && chOk === chQs.length;
+          td.classList.toggle('full', isDone || isFull);
+          td.textContent = isDone ? '✓' : (chOk > 0 ? `${chOk}/${chQs.length}` : '');
+        }
       });
-      const firstMark = document.querySelector('#tab-' + activeTab + ' mark.hl');
-      if (firstMark) firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
+      const totalOk = KT_QUIZ.filter(q => quizState[q.id] === 'ok').length;
+      const tdQuiz = document.getElementById('td-quiz');
+      if (tdQuiz) {
+        tdQuiz.textContent = `${totalOk}/${KT_QUIZ.length}`;
+        tdQuiz.classList.toggle('full', KT_QUIZ.length > 0 && totalOk === KT_QUIZ.length);
+      }
+      const allStat = document.getElementById('allQuizStat');
+      if (allStat) allStat.textContent = `Đã đúng: ${totalOk} / ${KT_QUIZ.length}`;
+      document.getElementById('progText').textContent = `${doneSet.size}/${CH_META.length}`;
+      document.getElementById('progFill').style.width = ((doneSet.size / CH_META.length) * 100) + '%';
+    }
 
-    // Quiz Engine
-    let currentQuiz = [];
-    let wrongList = [];
-    let answeredCount = 0;
-    let correctCount = 0;
+    function toggleDone(ch) {
+      if (doneSet.has(ch)) doneSet.delete(ch);
+      else doneSet.add(ch);
+      localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
+      renderDone();
+    }
 
-    function shuffle(arr) {
+    function shuffleArr(arr) {
       const a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -875,164 +1503,403 @@
       return a;
     }
 
-    function updateScore() {
-      document.getElementById('quizScore').textContent = `Đúng: ${correctCount} / ${answeredCount} (Tổng ${currentQuiz.length} câu)`;
-      document.getElementById('retryWrongBtn').style.display = wrongList.length ? 'inline-block' : 'none';
+    const CH_TAG_LBL = { 0: 'Ch.0', 1: 'Ch.1', 2: 'Ch.2', 3: 'Ch.3A', 4: 'Ch.3B' };
+
+    function renderQuizCards(container, list, opts) {
+      const showChTag = !!(opts && opts.showChTag);
+      const onUpdate = opts && opts.onUpdate;
+      container.innerHTML = '';
+      if (!list.length) {
+        container.innerHTML = `<div class="memo-box" style="margin-bottom:0;"><strong class="lbl">🎉 Tuyệt vời!</strong> Không còn câu nào chưa đúng trong mục này.</div>`;
+        return;
+      }
+      list.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'qz-card';
+        const qDiv = document.createElement('div');
+        qDiv.className = 'qz-q';
+        qDiv.innerHTML = `${showChTag ? `<span class="qz-ch-tag">${CH_TAG_LBL[item.ch]}</span>` : ''}Câu ${idx + 1}: ${item.q}`;
+
+        const optsDiv = document.createElement('div');
+        optsDiv.className = 'qz-opts';
+
+        const expDiv = document.createElement('div');
+        expDiv.className = 'qz-exp';
+        expDiv.innerHTML = `<strong>💡 Chốt ý:</strong> ${item.exp}`;
+
+        item.options.forEach((optText, oIdx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'qz-opt';
+          btn.textContent = optText;
+          btn.addEventListener('click', () => {
+            if (card.dataset.answered) return;
+            card.dataset.answered = '1';
+            if (oIdx === item.ans) {
+              btn.classList.add('correct');
+              card.classList.add('is-ok');
+              quizState[item.id] = 'ok';
+            } else {
+              btn.classList.add('wrong');
+              card.classList.add('is-err');
+              quizState[item.id] = 'err';
+              optsDiv.querySelectorAll('.qz-opt')[item.ans].classList.add('correct');
+            }
+            optsDiv.querySelectorAll('.qz-opt').forEach(b => b.disabled = true);
+            expDiv.classList.add('show');
+            saveQuizState();
+
+            const chQs = KT_QUIZ.filter(q => q.ch === item.ch);
+            if (chQs.length && chQs.every(q => quizState[q.id] === 'ok')) {
+              doneSet.add(item.ch);
+              localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
+            }
+            renderDone();
+            if (onUpdate) onUpdate();
+          });
+          optsDiv.appendChild(btn);
+        });
+
+        card.appendChild(qDiv);
+        card.appendChild(optsDiv);
+        card.appendChild(expDiv);
+        container.appendChild(card);
+      });
     }
 
-    function renderQuiz(list) {
-      currentQuiz = list;
-      wrongList = [];
-      answeredCount = 0;
-      correctCount = 0;
-      updateScore();
-      const box = document.getElementById('quizContainer');
+    // Inject embedded Post-Reading Recall Quiz into each Chapter page
+    const chapterQuizRenderers = {};
+    CH_META.forEach(m => {
+      const sec = document.getElementById(m.id);
+      if (!sec) return;
+      const chQs = KT_QUIZ.filter(q => q.ch === m.ch);
+
+      const chHdr = sec.querySelector('.ch-header');
+      const doneBtn = chHdr ? chHdr.querySelector('.done-btn') : null;
+      if (chHdr && doneBtn) {
+        const actions = document.createElement('div');
+        actions.className = 'ch-actions';
+        const jumpBtn = document.createElement('button');
+        jumpBtn.type = 'button';
+        jumpBtn.className = 'quiz-jump-btn';
+        jumpBtn.textContent = `📝 Quiz ${m.label} (${chQs.length} câu)`;
+        jumpBtn.onclick = () => {
+          const box = document.getElementById('quiz-ch-' + m.ch);
+          if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        doneBtn.parentNode.insertBefore(actions, doneBtn);
+        actions.appendChild(jumpBtn);
+        actions.appendChild(doneBtn);
+      }
+
+      const qBox = document.createElement('div');
+      qBox.className = 'ch-quiz-box';
+      qBox.id = 'quiz-ch-' + m.ch;
+      qBox.innerHTML = `
+        <div class="qz-head">
+          <div>
+            <div class="qz-title">📝 Kiểm tra nhớ nhanh ${m.label} (${chQs.length} câu — không trùng lặp)</div>
+            <div class="qz-sub">Đọc xong ${m.label}, làm ngay ${chQs.length} câu này để chốt sạch mọi mốc &amp; từ khóa quan trọng.</div>
+          </div>
+          <span class="qz-stat" id="qz-stat-${m.ch}">Đúng: 0 / ${chQs.length}</span>
+        </div>
+        <div class="qz-bar">
+          <button type="button" class="qz-btn" id="qz-shuf-${m.ch}">🔀 Xáo câu</button>
+          <button type="button" class="qz-btn" id="qz-wrong-${m.ch}">🔁 Chỉ làm câu chưa đúng</button>
+          <button type="button" class="qz-btn" id="qz-reset-${m.ch}">↺ Làm lại ${m.label}</button>
+        </div>
+        <div class="qz-list" id="qz-list-${m.ch}"></div>
+      `;
+      const footer = sec.querySelector('.ch-footer');
+      if (footer) sec.insertBefore(qBox, footer);
+      else sec.appendChild(qBox);
+
+      const updateChStat = () => {
+        const ok = chQs.filter(q => quizState[q.id] === 'ok').length;
+        const st = document.getElementById('qz-stat-' + m.ch);
+        if (st) st.textContent = `Đúng: ${ok} / ${chQs.length}`;
+      };
+      const renderCh = (list) => {
+        updateChStat();
+        renderQuizCards(document.getElementById('qz-list-' + m.ch), list, {
+          showChTag: false,
+          onUpdate: updateChStat
+        });
+      };
+      chapterQuizRenderers[m.ch] = renderCh;
+      renderCh(chQs);
+
+      document.getElementById('qz-shuf-' + m.ch).onclick = () => renderCh(shuffleArr(chQs));
+      document.getElementById('qz-wrong-' + m.ch).onclick = () => renderCh(chQs.filter(q => quizState[q.id] !== 'ok'));
+      document.getElementById('qz-reset-' + m.ch).onclick = () => {
+        chQs.forEach(q => delete quizState[q.id]);
+        saveQuizState();
+        renderDone();
+        renderCh(chQs);
+      };
+    });
+
+    // Full 64-question Recall Quiz page (#quiz-tong-hop)
+    let allFilter = 'all';
+    let allShuffled = false;
+    function renderAllQuiz() {
+      let pool = KT_QUIZ.slice();
+      if (allFilter === 'todo') {
+        pool = pool.filter(q => quizState[q.id] !== 'ok');
+      } else if (allFilter !== 'all') {
+        const chNum = parseInt(allFilter, 10);
+        pool = pool.filter(q => q.ch === chNum);
+      }
+      if (allShuffled) pool = shuffleArr(pool);
+      renderQuizCards(document.getElementById('allQuizList'), pool, {
+        showChTag: allFilter === 'all' || allFilter === 'todo',
+        onUpdate: () => {
+          CH_META.forEach(m => {
+            const chQs = KT_QUIZ.filter(q => q.ch === m.ch);
+            const ok = chQs.filter(q => quizState[q.id] === 'ok').length;
+            const st = document.getElementById('qz-stat-' + m.ch);
+            if (st) st.textContent = `Đúng: ${ok} / ${chQs.length}`;
+          });
+        }
+      });
+    }
+
+    document.querySelectorAll('#allQuizFilters [data-f]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#allQuizFilters [data-f]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        allFilter = btn.dataset.f;
+        allShuffled = false;
+        renderAllQuiz();
+      });
+    });
+    document.getElementById('allShuffleBtn').addEventListener('click', () => { allShuffled = true; renderAllQuiz(); });
+    document.getElementById('allResetBtn').addEventListener('click', () => {
+      quizState = {};
+      saveQuizState();
+      renderDone();
+      CH_META.forEach(m => { if (chapterQuizRenderers[m.ch]) chapterQuizRenderers[m.ch](KT_QUIZ.filter(q => q.ch === m.ch)); });
+      allShuffled = false;
+      renderAllQuiz();
+    });
+
+    renderDone();
+    renderAllQuiz();
+
+    // Preserved 404 Bank (Quiz + Flashcard) from data.js
+    const BANK_QS = (window.LSD_DATA && window.LSD_DATA.questions) || [];
+    let bankCurrent = [], bankWrong = [], bankAns = 0, bankOk = 0;
+
+    function switchBankMode(mode) {
+      document.getElementById('bankTabQuiz').classList.toggle('active', mode === 'quiz');
+      document.getElementById('bankTabFlash').classList.toggle('active', mode === 'flash');
+      document.getElementById('bankQuizPane').style.display = mode === 'quiz' ? 'block' : 'none';
+      document.getElementById('bankFlashPane').style.display = mode === 'flash' ? 'block' : 'none';
+    }
+
+    function updateBankScore() {
+      document.getElementById('bankScore').textContent = `Đúng: ${bankOk} / ${bankAns} (${bankCurrent.length} câu)`;
+      document.getElementById('bankRetryWrong').style.display = bankWrong.length ? 'inline-block' : 'none';
+    }
+
+    function renderBankQuiz(list) {
+      bankCurrent = list; bankWrong = []; bankAns = 0; bankOk = 0;
+      updateBankScore();
+      const box = document.getElementById('bankQuizList');
       box.innerHTML = '';
       list.forEach((item, idx) => {
         const card = document.createElement('div');
-        card.className = 'q-card';
+        card.className = 'qz-card';
         const title = document.createElement('div');
-        title.className = 'q-title';
+        title.className = 'qz-q';
         title.textContent = `Câu ${idx + 1}: ${item.q}`;
-        const optList = document.createElement('div');
-        optList.className = 'opt-list';
-        item.options.forEach(opt => {
+        const opts = document.createElement('div');
+        opts.className = 'qz-opts';
+        (item.options || []).forEach(opt => {
           const btn = document.createElement('button');
-          btn.className = 'opt-btn';
+          btn.type = 'button';
+          btn.className = 'qz-opt';
           btn.textContent = opt;
           btn.onclick = () => {
             if (card.dataset.done) return;
             card.dataset.done = '1';
-            answeredCount++;
-            const chosenLetter = opt[0];
-            const isOk = chosenLetter === item.letter;
-            if (isOk) {
-              btn.classList.add('correct');
-              correctCount++;
+            bankAns++;
+            if (opt[0] === item.letter) {
+              btn.classList.add('correct'); card.classList.add('is-ok'); bankOk++;
             } else {
-              btn.classList.add('wrong');
-              wrongList.push(item);
-              optList.querySelectorAll('.opt-btn').forEach(b => {
-                if (b.textContent[0] === item.letter) b.classList.add('correct');
-              });
+              btn.classList.add('wrong'); card.classList.add('is-err'); bankWrong.push(item);
+              opts.querySelectorAll('.qz-opt').forEach(b => { if (b.textContent[0] === item.letter) b.classList.add('correct'); });
             }
-            optList.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
-            updateScore();
+            opts.querySelectorAll('.qz-opt').forEach(b => b.disabled = true);
+            updateBankScore();
           };
-          optList.appendChild(btn);
+          opts.appendChild(btn);
         });
         card.appendChild(title);
-        card.appendChild(optList);
+        card.appendChild(opts);
         box.appendChild(card);
       });
     }
-
-    function startQuiz(n) {
-      const pool = n >= DATA.questions.length ? DATA.questions.slice() : shuffle(DATA.questions).slice(0, n);
-      renderQuiz(pool);
+    function startBankQuiz(n) {
+      const pool = n >= BANK_QS.length ? BANK_QS.slice() : shuffleArr(BANK_QS).slice(0, n);
+      renderBankQuiz(pool);
     }
+    function retryBankWrong() { if (bankWrong.length) renderBankQuiz(bankWrong.slice()); }
+    if (BANK_QS.length) startBankQuiz(15);
 
-    function retryWrong() {
-      if (wrongList.length) renderQuiz(wrongList.slice());
-    }
-
-    function renderQuizSearch(q) {
-      if (!q) { startQuiz(15); return; }
-      const lower = q.toLowerCase();
-      const matched = DATA.questions.filter(x => x.q.toLowerCase().includes(lower) || x.answer.toLowerCase().includes(lower));
-      renderQuiz(matched.slice(0, 60));
-    }
-
-    startQuiz(15);
-
-    // Flashcard Engine
-    let flashPool = DATA.questions.slice();
-    let flashPos = 0;
-
-    function renderFlash() {
-      const optsEl = document.getElementById('flashOpts');
-      if (!flashPool.length) {
-        document.getElementById('flashQ').textContent = 'Không tìm thấy thẻ phù hợp.';
-        optsEl.innerHTML = '';
-        document.getElementById('flashA').textContent = '';
-        return;
-      }
-      const item = flashPool[flashPos];
-      document.getElementById('flashIdx').textContent = flashPos + 1;
-      document.getElementById('flashTotal').textContent = flashPool.length;
-      document.getElementById('flashQ').textContent = item.q;
+    // 404 Bank Flashcard
+    let bfPool = BANK_QS.slice(), bfPos = 0, bfSwiped = false;
+    function renderBf() {
+      const optsEl = document.getElementById('bfOpts');
+      if (!bfPool.length) { document.getElementById('bfQ').textContent = 'Không có dữ liệu thẻ.'; optsEl.innerHTML = ''; return; }
+      const item = bfPool[bfPos];
+      document.getElementById('bfIdx').textContent = bfPos + 1;
+      document.getElementById('bfTotal').textContent = bfPool.length;
+      document.getElementById('bfQ').textContent = item.q;
       optsEl.innerHTML = '';
-      (item.options || []).forEach(opt => {
-        const div = document.createElement('div');
-        div.className = 'flash-opt' + (opt[0] === item.letter ? ' is-correct' : '');
-        div.textContent = opt;
-        optsEl.appendChild(div);
+      (item.options || []).forEach(o => {
+        const d = document.createElement('div');
+        d.className = 'flash-opt' + (o[0] === item.letter ? ' is-correct' : '');
+        d.textContent = o;
+        optsEl.appendChild(d);
       });
-      const ansText = item.answer || (item.options || []).find(o => o[0] === item.letter) || '';
-      document.getElementById('flashA').textContent = '✅ Đáp án đúng: ' + ansText;
-      document.getElementById('flashCard').classList.remove('flipped');
+      const ansTxt = item.answer || (item.options || []).find(o => o[0] === item.letter) || '';
+      document.getElementById('bfA').textContent = '✅ Đáp án đúng: ' + ansTxt;
+      document.getElementById('bfCard').classList.remove('flipped');
     }
+    function toggleBf() { if (bfSwiped) { bfSwiped = false; return; } document.getElementById('bfCard').classList.toggle('flipped'); }
+    function stepBf(d) { if (!bfPool.length) return; bfPos = (bfPos + d + bfPool.length) % bfPool.length; renderBf(); }
+    function shuffleBf() { bfPool = shuffleArr(bfPool); bfPos = 0; renderBf(); }
+    renderBf();
 
-    let justSwiped = false;
-    function toggleFlash() {
-      if (justSwiped) { justSwiped = false; return; }
-      document.getElementById('flashCard').classList.toggle('flipped');
-    }
-
-    function stepFlash(delta) {
-      if (!flashPool.length) return;
-      flashPos = (flashPos + delta + flashPool.length) % flashPool.length;
-      renderFlash();
-    }
-
-    function shuffleFlash() {
-      flashPool = shuffle(flashPool);
-      flashPos = 0;
-      renderFlash();
-    }
-
-    function filterFlash(q) {
-      if (!q) { flashPool = DATA.questions.slice(); }
-      else {
-        const lower = q.toLowerCase();
-        flashPool = DATA.questions.filter(x => x.q.toLowerCase().includes(lower) || x.answer.toLowerCase().includes(lower));
+    const bfEl = document.getElementById('bfCard');
+    let tX = 0, tY = 0;
+    bfEl.addEventListener('touchstart', e => { tX = e.changedTouches[0].clientX; tY = e.changedTouches[0].clientY; }, { passive: true });
+    bfEl.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - tX, dy = e.changedTouches[0].clientY - tY;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        bfSwiped = true; setTimeout(() => { bfSwiped = false; }, 350);
+        stepBf(dx < 0 ? 1 : -1);
       }
-      flashPos = 0;
-      renderFlash();
-    }
+    }, { passive: true });
 
-    document.addEventListener('keydown', e => {
-      if (activeTab !== 'flash' || document.activeElement === searchInput) return;
-      if (e.code === 'Space') { e.preventDefault(); toggleFlash(); }
-      if (e.code === 'ArrowRight') stepFlash(1);
-      if (e.code === 'ArrowLeft') stepFlash(-1);
+    // Instant highlight search (safe DOM walker)
+    const searchInput = document.getElementById('searchInput');
+    const rootEl = document.getElementById('contentRoot');
+    function clearMarks() {
+      rootEl.querySelectorAll('mark.hl').forEach(m => {
+        const parent = m.parentNode;
+        parent.replaceChild(document.createTextNode(m.textContent), m);
+        parent.normalize();
+      });
+    }
+    searchInput.addEventListener('input', () => {
+      clearMarks();
+      const q = searchInput.value.trim();
+      if (q.length < 2) { goPage(currentPage, true); return; }
+      const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      let n;
+      while ((n = walker.nextNode())) {
+        if (n.parentElement && !['SCRIPT', 'STYLE', 'BUTTON'].includes(n.parentElement.tagName) && re.test(n.nodeValue)) {
+          nodes.push(n);
+        }
+        re.lastIndex = 0;
+      }
+      nodes.forEach(node => {
+        const frag = document.createDocumentFragment();
+        let last = 0, text = node.nodeValue;
+        text.replace(re, (match, offset) => {
+          if (offset > last) frag.appendChild(document.createTextNode(text.slice(last, offset)));
+          const mk = document.createElement('mark');
+          mk.className = 'hl';
+          mk.textContent = match;
+          frag.appendChild(mk);
+          last = offset + match.length;
+        });
+        if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      sections.forEach(s => {
+        if (s.id === 'ngan-hang-404') { s.classList.remove('active-page'); return; }
+        s.classList.toggle('active-page', s.querySelector('mark.hl') !== null);
+      });
+      const first = rootEl.querySelector('mark.hl');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
-    // Touch swipe for Flashcard on mobile
-    const flashEl = document.getElementById('flashCard');
-    let touchStartX = 0, touchStartY = 0;
-    flashEl.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].clientX;
-      touchStartY = e.changedTouches[0].clientY;
-    }, { passive: true });
-    flashEl.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-        justSwiped = true;
-        setTimeout(() => { justSwiped = false; }, 350);
-        if (dx < 0) stepFlash(1);
-        else stepFlash(-1);
-      }
-    }, { passive: true });
-
-    // Back-to-top button visibility
+    // Strict Single-Chapter Page Switcher
     const topBtn = document.getElementById('topBtn');
+    const sections = [...document.querySelectorAll('section.chapter')];
+    const pageIds = sections.map(s => s.id);
+    const PAGE_TITLES = {
+      'tong-hop': '⚡ 14 Đại hội & Phản xạ',
+      'chuong-0': 'Ch.0 · Nhập môn',
+      'chuong-1': 'Ch.1 · Lập Đảng & CMT8',
+      'chuong-2': 'Ch.2 · Chống Pháp & Mỹ',
+      'chuong-3a': 'Ch.3A · Thống nhất & Đổi mới',
+      'chuong-3b': 'Ch.3B · Hội nhập & ĐH IX–XIV',
+      'quiz-tong-hop': '📝 Tổng ôn Quiz 64 câu',
+      'ngan-hang-404': '📚 Ngân hàng 404 câu'
+    };
+
+    let savedPage = localStorage.getItem('vnr202_active_page') || 'tong-hop';
+    if (!pageIds.includes(savedPage) || savedPage === 'quiz-tong-hop') savedPage = 'tong-hop';
+    let currentPage = savedPage;
+
+    sections.forEach((sec, idx) => {
+      const pager = document.createElement('div');
+      pager.className = 'page-pager';
+      const prevId = idx > 0 ? pageIds[idx - 1] : null;
+      const nextId = idx < pageIds.length - 1 ? pageIds[idx + 1] : null;
+      pager.innerHTML = `
+        ${prevId ? `<button type="button" class="pager-btn" onclick="goPage('${prevId}')">← ${PAGE_TITLES[prevId]}</button>` : `<span></span>`}
+        ${nextId ? `<button type="button" class="pager-btn primary" onclick="goPage('${nextId}')">Tiếp: ${PAGE_TITLES[nextId]} →</button>` : `<a class="pager-btn primary" style="text-decoration:none;" href="learn.html">🚀 Vào luyện Quizlet 415 câu →</a>`}
+      `;
+      sec.appendChild(pager);
+    });
+
+    function goPage(pid, keepScroll) {
+      if (!pageIds.includes(pid)) pid = 'tong-hop';
+      sections.forEach(s => s.classList.toggle('active-page', s.id === pid));
+      currentPage = pid;
+      if (pid !== 'quiz-tong-hop') localStorage.setItem('vnr202_active_page', pid);
+      if (history.replaceState) history.replaceState(null, '', '#' + pid);
+      if (window.syncGnavTabs) window.syncGnavTabs();
+      document.querySelectorAll('[data-page]').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === pid);
+      });
+      if (pid === 'quiz-tong-hop') renderAllQuiz();
+      if (!keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-page]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        if (searchInput.value) { searchInput.value = ''; clearMarks(); }
+        goPage(a.dataset.page);
+      });
+    });
+
+    window.addEventListener('hashchange', () => {
+      const h = location.hash.replace('#', '');
+      if (h && pageIds.includes(h)) goPage(h);
+    });
     window.addEventListener('scroll', () => {
       topBtn.classList.toggle('show', window.scrollY > 320);
     }, { passive: true });
+    document.addEventListener('keydown', e => {
+      if (currentPage !== 'ngan-hang-404' || document.activeElement === searchInput) return;
+      if (document.getElementById('bankFlashPane').style.display !== 'block') return;
+      if (e.code === 'Space') { e.preventDefault(); toggleBf(); }
+      if (e.code === 'ArrowRight') stepBf(1);
+      if (e.code === 'ArrowLeft') stepBf(-1);
+    });
 
-    renderFlash();
+    const hashId = location.hash.replace('#', '');
+    if (hashId && pageIds.includes(hashId)) goPage(hashId, true);
+    else goPage(currentPage, true);
   </script>
 </body>
 </html>

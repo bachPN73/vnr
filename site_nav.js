@@ -3,7 +3,8 @@
   const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
   const VNR_PAGES = [
-    { file: 'vnr202_kienthuc.html', label: '📖 Kiến thức & 404' },
+    { file: 'vnr202_kienthuc.html', label: '📕 Kiến thức (Đến ĐH XIV)' },
+    { file: 'vnr202_kienthuc.html#quiz-tong-hop', label: '📝 Quiz Kiến thức (64 câu)' },
     { file: 'learn.html', label: '🧠 Quizlet 415 (Gom cụm)' },
     { file: 'flashcard.html', label: '🃏 Flashcard 305 (ĐH I–XIV)' }
   ];

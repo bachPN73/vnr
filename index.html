@@ -237,7 +237,7 @@
       <section class="subj-panel vnr">
         <div class="subj-head">
           <div>
-            <span class="subj-code">VNR202 · 3 CÔNG CỤ</span>
+            <span class="subj-code">VNR202 · 4 CÔNG CỤ</span>
             <h2>Lịch sử Đảng Cộng sản Việt Nam</h2>
           </div>
         </div>
@@ -256,20 +256,31 @@
         <div class="feature-list">
           <a class="f-card" href="vnr202_kienthuc.html">
             <div class="f-left">
-              <div class="f-ico">📖</div>
+              <div class="f-ico">📕</div>
               <div>
-                <div class="f-title">Bước 1 · Kiến thức 4 tầng &amp; Đề cương Full</div>
-                <div class="f-desc">Timeline 6 chặng, công thức 13 Đại hội, bảng phân biệt bẫy, đề cương đầy đủ + bộ 404 câu cơ bản.</div>
+                <div class="f-title">Bước 1 · Kiến thức Đầy đủ (Nhập môn → ĐH XIV 2026)</div>
+                <div class="f-desc">Tách riêng từng trang chương, bảng 14 Đại hội (I–XIV), bảng phản xạ 1 giây, chế độ Siêu gọn + Quiz kiểm tra ngay cuối mỗi chương.</div>
               </div>
             </div>
-            <span class="f-badge">Nền tảng</span>
+            <span class="f-badge" id="vnrChBadge">0/5 ch.</span>
+          </a>
+
+          <a class="f-card" href="vnr202_kienthuc.html#quiz-tong-hop">
+            <div class="f-left">
+              <div class="f-ico">📝</div>
+              <div>
+                <div class="f-title">Bước 2 · Quiz Kiến thức Chuẩn (64 câu — Không lặp)</div>
+                <div class="f-desc">Phủ trọn từ Chương 0 đến Đại hội XIV (2026), mỗi ý kiến thức chỉ hỏi đúng 1 lần kèm chốt ý nhớ nhanh sau khi đọc.</div>
+              </div>
+            </div>
+            <span class="f-badge" id="vnrKtQuizBadge">0/64 câu</span>
           </a>
 
           <a class="f-card" href="learn.html">
             <div class="f-left">
               <div class="f-ico">🧠</div>
               <div>
-                <div class="f-title">Bước 2 · Quizlet Learn (415 câu · 10 Cụm)</div>
+                <div class="f-title">Bước 3 · Quizlet Learn (415 câu · 10 Cụm)</div>
                 <div class="f-desc">Gom sát các cặp dễ nhầm (new.txt), làm sai tự động lặp lại sau 2 câu, đúng 2 lần liên tiếp mới thuộc.</div>
               </div>
             </div>
@@ -280,7 +291,7 @@
             <div class="f-left">
               <div class="f-ico">🃏</div>
               <div>
-                <div class="f-title">Bước 3 · Flashcard Tài liệu &amp; ĐH I–XIV</div>
+                <div class="f-title">Bước 4 · Flashcard Tài liệu &amp; ĐH I–XIV</div>
                 <div class="f-desc">305 thẻ chuyên sâu từ Coursera, Giáo trình 2021 và tài liệu mới Đại hội XIII &amp; Đại hội XIV (2026).</div>
               </div>
             </div>
@@ -375,6 +386,17 @@
     document.getElementById('mlnStat').textContent = `${mln.ok} / 432 thuộc (${mln.pct}%)`;
     document.getElementById('mlnBarOk').style.width = (mln.ok * 100 / 432) + '%';
     document.getElementById('mlnBarLr').style.width = (mln.lr * 100 / 432) + '%';
+
+    try {
+      const vnrDone = JSON.parse(localStorage.getItem('vnr202_kt_done_v1') || '[]');
+      document.getElementById('vnrChBadge').textContent = `${vnrDone.length}/5 ch.`;
+    } catch {}
+
+    try {
+      const vnrKt = JSON.parse(localStorage.getItem('vnr202_kt_quiz_v1') || '{}');
+      const vOk = Object.values(vnrKt).filter(v => v === 'ok').length;
+      document.getElementById('vnrKtQuizBadge').textContent = `${vOk}/64 câu`;
+    } catch {}
 
     try {
       const chDone = JSON.parse(localStorage.getItem('mln131_kt_done_v1') || '[]');
