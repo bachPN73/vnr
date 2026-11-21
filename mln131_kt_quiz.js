@@ -1,5 +1,5 @@
-/* MLN131 — Bộ 80 câu Quiz Chuẩn (Không Trùng Lặp) từ 3 file PDF MLN_kienthuc
- * Mỗi đơn vị kiến thức cốt lõi của Chương 1–7 được hỏi ĐÚNG 1 LẦN để đọc xong nhớ ngay.
+/* MLN131 — Bộ 100 câu Quiz Chuẩn (Không Trùng Lặp) từ 3 file PDF MLN_kienthuc + Trọng tâm Giáo trình 2021
+ * Mỗi đơn vị kiến thức cốt lõi của Chương 1–7 được hỏi ĐÚNG 1 LẦN kèm Chốt ý để đọc xong nhớ ngay.
  */
 window.MLN131_KT_QUIZ = [
   {
@@ -144,6 +144,45 @@ window.MLN131_KT_QUIZ = [
     ],
     "ans": 1,
     "exp": "4 PP cụ thể: Lịch sử–lôgíc, Khảo sát–phân tích, So sánh, Liên ngành (+ gắn tổng kết thực tiễn); Thực tiễn: giáo dục NIỀM TIN KHOA HỌC."
+  },
+  {
+    "id": 81,
+    "ch": 1,
+    "q": "Phát kiến vĩ đại nào của C. Mác và Ph. Ăngghen đã khắc phục triệt để hạn chế lịch sử của CNXH không tưởng phê phán, đồng thời phát hiện phân chia giai cấp trước đó là công lao của ai?",
+    "options": [
+      "A. Học thuyết tiến hóa; phát hiện phân chia giai cấp là công lao riêng của V.I. Lênin",
+      "B. Học thuyết giá trị lao động; phát hiện phân chia giai cấp là công lao của Ph. Hêghen",
+      "C. Chủ nghĩa duy vật chất phác; phát hiện phân chia giai cấp là công lao của Xanh Ximông",
+      "D. Học thuyết về sứ mệnh lịch sử toàn thế giới của GCCN; phát hiện phân chia giai cấp là công lao của các nhà sử học tư sản trước Mác"
+    ],
+    "ans": 3,
+    "exp": "Học thuyết SMLS GCCN khắc phục triệt để hạn chế CNXH không tưởng; phát hiện phân chia & đấu tranh giai cấp là của các nhà sử học tư sản trước Mác!"
+  },
+  {
+    "id": 82,
+    "ch": 1,
+    "q": "Trong các phương pháp dưới đây, phương pháp nào KHÔNG phải là phương pháp nghiên cứu của môn Chủ nghĩa xã hội khoa học?",
+    "options": [
+      "A. Phương pháp kết hợp lịch sử và lôgíc",
+      "B. Phương pháp so sánh",
+      "C. Phương pháp khảo sát và phân tích về mặt chính trị – xã hội",
+      "D. Phương pháp trừu tượng hóa khoa học"
+    ],
+    "ans": 3,
+    "exp": "Bẫy kinh điển Ch.1: Phương pháp trừu tượng hóa khoa học thuộc Kinh tế chính trị Mác–Lênin, KHÔNG thuộc CNXHKH!"
+  },
+  {
+    "id": 83,
+    "ch": 1,
+    "q": "Về giai đoạn phát triển CNXHKH từ 1924 đến nay, bộ thông tin nào sau đây ghép ĐÚNG (người ảnh hưởng 1924–1953, mô hình KT mới Liên Xô, tên công cuộc cải cách các nước & nguyên nhân Liên Xô sụp đổ)?",
+    "options": [
+      "A. J. Xtalin (1924–1953) · Mô hình NEP · Cải tổ (Liên Xô), Cải cách mở cửa (Trung Quốc), Đổi mới (Việt Nam) · Sụp đổ do vận dụng sai CN Mác–Lênin",
+      "B. G. Đi-mi-trốp (1924–1953) · Mô hình WTO · Cải cách mở cửa (Liên Xô) · Sụp đổ do không có tài nguyên",
+      "C. S. Phuriê (1924–1953) · Mô hình USR · Cải tổ (Trung Quốc) · Sụp đổ do quá độ trực tiếp",
+      "D. Ph. Hêghen (1924–1953) · Mô hình CCCP · Đổi mới (Liên Xô), Cải tổ (Việt Nam) · Sụp đổ do bản chất sai lầm của CN Mác–Lênin"
+    ],
+    "ans": 0,
+    "exp": "Nhớ nhanh: J. Xtalin (1924–53) · NEP · Cải tổ (LX) / Cải cách mở cửa (TQ) / Đổi mới (VN) · LX–Đông Âu sụp đổ do vận dụng SAI CN Mác–Lênin."
   },
   {
     "id": 12,
@@ -302,6 +341,45 @@ window.MLN131_KT_QUIZ = [
     "exp": "5 giải pháp nhấn mạnh: kiên định lãnh đạo ĐCSVN, gắn liên minh công–nông–trí–doanh nhân, gắn CNH–HĐH, không ngừng TRÍ THỨC HÓA & trách nhiệm CẢ HỆ THỐNG CHÍNH TRỊ."
   },
   {
+    "id": 84,
+    "ch": 2,
+    "q": "Hai khẩu hiệu của công nhân dệt Lion (Pháp) năm 1831 ('Sống có việc làm hay là chết trong đấu tranh') và 1834 ('Cộng hòa hay là chết') đánh dấu bước chuyển nào?",
+    "options": [
+      "A. Công nhân thỏa hiệp hoàn toàn với giới chủ nhà máy dệt",
+      "B. Phong trào đấu tranh của giai cấp công nhân chuyển từ mục đích kinh tế sang mục đích chính trị",
+      "C. Giai cấp công nhân đã giành được chính quyền trên toàn nước Pháp",
+      "D. Phong trào công nhân chuyển từ tự giác quay về tự phát"
+    ],
+    "ans": 1,
+    "exp": "Công nhân dệt Lion (1831 → 1834): chuyển từ mục đích KINH TẾ sang mục đích CHÍNH TRỊ."
+  },
+  {
+    "id": 85,
+    "ch": 2,
+    "q": "Theo Chủ nghĩa Mác – Lênin, quy luật CHUNG ra đời Đảng Cộng sản khác quy luật ĐẶC THÙ ở Việt Nam ở điểm nào, và chất lượng GCCN được thể hiện rõ nhất qua yếu tố nào?",
+    "options": [
+      "A. Quy luật chung chỉ cần Phong trào công nhân tự phát không cần lý luận",
+      "B. Quy luật chung: CNXHKH + Phong trào nông dân; Chất lượng GCCN chỉ đo bằng số năm đi làm",
+      "C. Quy luật chung: CNXHKH + Phong trào công nhân (VN thêm Phong trào yêu nước); Chất lượng GCCN thể hiện ở trình độ trưởng thành về ý thức chính trị",
+      "D. Quy luật chung đã bao gồm sẵn Phong trào yêu nước ở mọi nước Tây Âu; Chất lượng đo bằng thu nhập"
+    ],
+    "ans": 2,
+    "exp": "Quy luật chung = CNXHKH + PT công nhân (VN cộng thêm PT YÊU NƯỚC) · Chất lượng GCCN = trình độ trưởng thành Ý THỨC CHÍNH TRỊ."
+  },
+  {
+    "id": 86,
+    "ch": 2,
+    "q": "Vì sao sở hữu cổ phần ('trung lưu hóa') không xóa bỏ bản chất bị bóc lột của GCCN hiện đại, và nhược điểm lịch sử vốn có của GCCN Việt Nam là gì?",
+    "options": [
+      "A. Quá trình sản xuất và phân chia lợi nhuận vẫn phụ thuộc các nhà tư sản lớn; nhược điểm vốn có của GCCN VN là tâm lý tiểu nông, tập quán lạc hậu từ nông nghiệp cổ truyền (tổ chức đại diện quyền lợi là Công đoàn)",
+      "B. Vì GCCN hiện đại giảm hao phí trí lực và tăng hao phí cơ bắp",
+      "C. Vì cổ phần đã biến toàn bộ công nhân thành tư sản; GCCN VN không có nhược điểm lịch sử nào",
+      "D. Vì công nhân không được quyền mua cổ phiếu; nhược điểm GCCN VN là thiếu tinh thần dân tộc"
+    ],
+    "ans": 0,
+    "exp": "Trung lưu hóa vẫn bị bóc lột do SX & lợi nhuận phụ thuộc nhà tư sản lớn · GCCN VN: nhược điểm = tâm lý tiểu nông · Đại diện quyền lợi = Công đoàn."
+  },
+  {
     "id": 24,
     "ch": 3,
     "q": "Chủ nghĩa xã hội được tiếp cận theo 4 góc độ nào?",
@@ -443,6 +521,45 @@ window.MLN131_KT_QUIZ = [
     ],
     "ans": 0,
     "exp": "Ch.3 nhớ con số: 6 đặc trưng chung (NDLĐ làm chủ, NN kiểu mới) vs 8 đặc trưng VN (Dân giàu nước mạnh..., Nhân dân làm chủ, NN pháp quyền XHCN do ĐCS lãnh đạo)."
+  },
+  {
+    "id": 87,
+    "ch": 3,
+    "q": "Theo phân kỳ lịch sử của Chủ nghĩa Mác – Lênin (5 hình thái KT–XH), nhận định nào ĐÚNG về hình thái KT–XH Cộng sản chủ nghĩa và Chủ nghĩa xã hội?",
+    "options": [
+      "A. Sự thay thế từ TBCN lên CSCN hoàn toàn do mong muốn chủ quan của con người",
+      "B. Xã hội chủ nghĩa là hình thái thứ 5 và Cộng sản chủ nghĩa là hình thái thứ 6 độc lập nhau",
+      "C. Con đường hòa bình là phương pháp phổ biến nhất đã thực hiện thành công ở nhiều nước",
+      "D. Xã hội chủ nghĩa KHÔNG phải 1 hình thái riêng mà là giai đoạn đầu của hình thái CSCN; CSCN khác về chất vì không có giai cấp đối kháng và ra đời qua cách mạng vô sản (con đường hòa bình rất hiếm quý, chưa từng xảy ra)"
+    ],
+    "ans": 3,
+    "exp": "5 hình thái: CSNT–CHNL–PK–TBCN–CSCN (XHCN là giai đoạn đầu CSCN) · CSCN không có giai cấp đối kháng · Con đường hòa bình hiếm quý, chưa từng xảy ra!"
+  },
+  {
+    "id": 88,
+    "ch": 3,
+    "q": "Sự khác biệt giữa nguyên tắc phân phối chủ yếu của Chủ nghĩa xã hội và Chủ nghĩa cộng sản (giai đoạn cao) là gì?",
+    "options": [
+      "A. Chủ nghĩa xã hội: hưởng theo nhu cầu; Chủ nghĩa cộng sản: hưởng theo lao động",
+      "B. Cả hai giai đoạn đều chỉ áp dụng phân phối bình quân bao cấp theo đầu người",
+      "C. Chủ nghĩa xã hội: 'Làm theo năng lực, hưởng theo LAO ĐỘNG' (giữ vai trò chủ đạo ở VN); Chủ nghĩa cộng sản: 'Làm theo năng lực, hưởng theo NHU CẦU'",
+      "D. Chủ nghĩa xã hội chỉ phân phối theo quỹ phúc lợi, không phân phối theo lao động"
+    ],
+    "ans": 2,
+    "exp": "Cặp cực hay thi: CNXH = hưởng theo LAO ĐỘNG (ở VN thêm theo đóng góp & phúc lợi XH) · CNCS = hưởng theo NHU CẦU!"
+  },
+  {
+    "id": 89,
+    "ch": 3,
+    "q": "V.I. Lênin đã dùng những hình ảnh và con số nào khi luận giải về Thời kỳ quá độ lên CNXH (đặc biệt là quá độ gián tiếp)?",
+    "options": [
+      "A. Gọi TKQĐ là 'bước nhảy tức thì không đau đớn'; nước Nga chỉ tồn tại 2 thành phần kinh tế",
+      "B. Gọi TKQĐ là 'những cơn đau đẻ kéo dài', phải 'bắc những nhịp cầu nhỏ' qua kinh tế tư bản; nước Nga TKQĐ tồn tại 5 thành phần kinh tế (hình thức quá độ trực tiếp chưa từng diễn ra trên thực tế)",
+      "C. Khẳng định trong TKQĐ ở VN, sở hữu tư nhân TBCN giữ vai trò chủ đạo",
+      "D. Khẳng định Liên Xô và Đông Âu đã thực hiện thành công hình thức quá độ trực tiếp"
+    ],
+    "ans": 1,
+    "exp": "Lênin: 'Những cơn đau đẻ kéo dài' · 'Bắc những nhịp cầu nhỏ' (quá độ gián tiếp) · 5 thành phần KT ở Nga · Quá độ trực tiếp CHƯA TỪNG diễn ra!"
   },
   {
     "id": 35,
@@ -601,6 +718,45 @@ window.MLN131_KT_QUIZ = [
     "exp": "4 giải pháp hoàn thiện NN pháp quyền: (1) Lãnh đạo của Đảng, (2) Cải cách thể chế, (3) Cán bộ công chức trong sạch, (4) Phòng chống tham nhũng, lãng phí."
   },
   {
+    "id": 90,
+    "ch": 4,
+    "q": "Phân biệt chuẩn xác tính chất phạm trù của Dân chủ (giá trị XH vs hình thái nhà nước) và 2 mốc lịch sử hình thành Dân chủ XHCN?",
+    "options": [
+      "A. Là giá trị XH: phạm trù VĨNH VIỄN · Là hình thái nhà nước: phạm trù LỊCH SỬ (mất khi NN tiêu vong); DC XHCN phôi thai từ Công xã Pari (1871, Pháp) và chính thức xác lập từ CM Tháng Mười Nga (1917)",
+      "B. Cả hai tư cách đều là phạm trù vĩnh viễn không bao giờ tiêu vong; phôi thai từ CMT8/1945",
+      "C. Là giá trị XH: phạm trù lịch sử · Là hình thái nhà nước: phạm trù vĩnh viễn",
+      "D. Chế độ Cộng sản nguyên thủy không có bất kỳ hình thức dân chủ nào (kể cả dân chủ quân sự)"
+    ],
+    "ans": 0,
+    "exp": "Giá trị XH = VĨNH VIỄN · Hình thái NN = LỊCH SỬ · CSNT = 'Dân chủ quân sự' · DC XHCN phôi thai Công xã Pari 1871 → xác lập CMT10 Nga 1917!"
+  },
+  {
+    "id": 91,
+    "ch": 4,
+    "q": "Có tồn tại nền dân chủ hay kiểu nhà nước nào 'của tất cả mọi người, mọi giai cấp' không, và hai lĩnh vực nổi bật quan trọng hàng đầu của dân chủ là gì?",
+    "options": [
+      "A. Dân chủ XHCN là nền dân chủ của tất cả mọi giai cấp kể cả thế lực phản động; 2 lĩnh vực nổi bật là Văn hóa và Du lịch",
+      "B. Dân chủ tư sản là nền dân chủ của tất cả mọi người; 2 lĩnh vực nổi bật là Tôn giáo và Ngoại giao",
+      "C. Nhà nước XHCN là nhà nước của thiểu số thống trị đa số",
+      "D. KHÔNG có bất cứ nền dân chủ hay kiểu nhà nước nào của tất cả mọi giai cấp (NN XHCN là của đa số thống trị thiểu số); 2 lĩnh vực nổi bật nhất là Kinh tế và Chính trị"
+    ],
+    "ans": 3,
+    "exp": "Bẫy kinh điển Ch.4: KHÔNG có nền DC/nhà nước nào của tất cả mọi người! NN XHCN = đa số thống trị thiểu số · 2 lĩnh vực nổi bật nhất = Kinh tế & Chính trị."
+  },
+  {
+    "id": 92,
+    "ch": 4,
+    "q": "Căn cứ tính chất quyền lực, chức năng nào của Nhà nước XHCN là QUAN TRỌNG NHẤT, và cơ quan quyền lực nhà nước cao nhất cùng quyền đi kèm bầu cử ở VN là gì?",
+    "options": [
+      "A. Chức năng xã hội (tổ chức và xây dựng) là quan trọng nhất, mang ý nghĩa then chốt; Quốc hội là cơ quan quyền lực cao nhất của nhân dân; nhân dân có quyền bầu đại biểu kèm quyền bãi miễn đại biểu không xứng đáng",
+      "B. Công tác giám sát phản biện chỉ cần thực hiện nội bộ không cần công khai minh bạch",
+      "C. Chức năng giai cấp (trấn áp) là quan trọng nhất; Chính phủ là cơ quan quyền lực nhà nước cao nhất",
+      "D. Chức năng đối ngoại là quan trọng nhất; nhân dân chỉ có quyền bầu mà không có quyền bãi miễn"
+    ],
+    "ans": 0,
+    "exp": "Chức năng quan trọng nhất NN XHCN = Xã hội (tổ chức & xây dựng) · Cơ quan cao nhất = Quốc hội · Quyền đi kèm bầu cử = quyền BÃI MIỄN!"
+  },
+  {
     "id": 47,
     "ch": 5,
     "q": "Trong hệ thống cơ cấu xã hội, cơ cấu xã hội – giai cấp giữ vị trí như thế nào và vì sao?",
@@ -729,6 +885,32 @@ window.MLN131_KT_QUIZ = [
     ],
     "ans": 2,
     "exp": "Quy luật 3: Biến đổi trong mối quan hệ VỪA ĐẤU TRANH, VỪA LIÊN MINH → từng bước xóa bất bình đẳng → XÍCH LẠI GẦN NHAU."
+  },
+  {
+    "id": 93,
+    "ch": 5,
+    "q": "Theo Mác – Ăngghen, 'người bạn đồng hành tự nhiên' của GCCN là ai; theo Lênin, nguyên tắc cao nhất của chuyên chính vô sản là gì; và trong 3 nội dung liên minh, nội dung nào giữ vai trò QUYẾT ĐỊNH nhất?",
+    "options": [
+      "A. 'Người bạn đồng hành tự nhiên' = Giai cấp tư sản · Nguyên tắc cao nhất = xóa bỏ nông dân · Nội dung quyết định nhất = Văn hóa",
+      "B. 'Người bạn đồng hành tự nhiên' = Đội ngũ doanh nhân · Nội dung quyết định nhất = Tư tưởng",
+      "C. 'Người bạn đồng hành tự nhiên' = Giai cấp nông dân · Nguyên tắc cao nhất CCVS = duy trì khối liên minh công – nông · Nội dung quan trọng/quyết định nhất = Nội dung KINH TẾ",
+      "D. Chỉ cần liên minh công – nông ở giai đoạn giành chính quyền, xây dựng XH mới không cần nữa"
+    ],
+    "ans": 2,
+    "exp": "'Người bạn đồng hành tự nhiên' = Nông dân · Nguyên tắc cao nhất CCVS = Liên minh công–nông · Nội dung quyết định nhất = KINH TẾ!"
+  },
+  {
+    "id": 94,
+    "ch": 5,
+    "q": "Về xu hướng biến đổi cơ cấu xã hội – giai cấp ở Việt Nam hiện nay, tổ hợp nhận định nào sau đây là CHÍNH XÁC?",
+    "options": [
+      "A. Giai cấp nông dân tăng nhanh cả số lượng lẫn tỷ lệ; cơ cấu XH bao gồm cả 'cơ cấu XH – hạ tầng'",
+      "B. Giai cấp nông dân giảm dần về cả số lượng và tỷ lệ (nhiệm vụ phát huy bản sắc VH & bảo vệ môi trường); Trí thức không phải tầng lớp mới xuất hiện ở TKQĐ mà càng quan trọng trong CMCN 4.0; Phương hướng phụ nữ là tăng tỷ lệ tham gia cấp ủy và bộ máy quản lý; Giai cấp tư sản đã bị đánh bại nhưng vẫn còn sức mạnh kinh tế",
+      "C. Có thể dùng mệnh lệnh hành chính xóa bỏ triệt để ngay lập tức các giai tầng trong TKQĐ",
+      "D. Trước Đổi mới cơ cấu XH–GC Việt Nam đã có đầy đủ đội ngũ doanh nhân lớn mạnh"
+    ],
+    "ans": 1,
+    "exp": "Nông dân giảm số lượng & tỷ lệ · Trước Đổi mới: Công–Nông–Trí (Trí thức KHÔNG phải tầng lớp mới) · Phụ nữ: tăng tỷ lệ tham gia cấp ủy, quản lý · Tư sản còn sức mạnh kinh tế."
   },
   {
     "id": 57,
@@ -913,6 +1095,45 @@ window.MLN131_KT_QUIZ = [
     "exp": "3 định hướng QH DT–TG: (1) Chiến lược cơ bản lâu dài cấp bách, (2) Đặt trong cộng đồng QG–DT thống nhất, (3) Bảo đảm tự do đồng thời KIÊN QUYẾT CHỐNG LỢI DỤNG CHÍNH TRỊ."
   },
   {
+    "id": 95,
+    "ch": 6,
+    "q": "Thứ tự hình thức cộng đồng người từ thấp đến cao theo CN Mác – Lênin là gì, nguyên nhân biến đổi chính là gì, và đặc trưng QUAN TRỌNG NHẤT của Dân tộc (nghĩa rộng) là gì?",
+    "options": [
+      "A. Thị tộc → Bộ lạc → Bộ tộc → Dân tộc; nguyên nhân chính do sự biến đổi của phương thức sản xuất; đặc trưng quan trọng nhất của dân tộc (nghĩa rộng) là chung một phương thức sinh hoạt kinh tế",
+      "B. Thị tộc → Bộ tộc → Bộ lạc → Dân tộc; do ý chí giai cấp thống trị; quan trọng nhất là lãnh thổ",
+      "C. Dân tộc xuất hiện ngay từ thời cộng sản nguyên thủy không trải qua các hình thức trung gian",
+      "D. Bộ lạc → Thị tộc → Dân tộc → Bộ tộc; do biến đổi kiến trúc thượng tầng; quan trọng nhất là ngôn ngữ"
+    ],
+    "ans": 0,
+    "exp": "Thị tộc → Bộ lạc → Bộ tộc → Dân tộc (do biến đổi PHƯƠNG THỨC SẢN XUẤT) · Quan trọng nhất nghĩa rộng = chung phương thức sinh hoạt KINH TẾ!"
+  },
+  {
+    "id": 96,
+    "ch": 6,
+    "q": "Trong Cương lĩnh dân tộc của V.I. Lênin, quyền nào là CƠ SỞ, nội dung nào của quyền tự quyết là CƠ BẢN NHẤT, và biện pháp cơ bản nhất để bình đẳng ở nước đa tộc người là gì?",
+    "options": [
+      "A. Quyền tự quyết là cơ sở; tự quyết về văn hóa là tiên quyết nhất; chỉ cần ban hành văn bản luật là đủ",
+      "B. Xu hướng liên hiệp lại của các dân tộc nổi lên từ thời kỳ chiếm hữu nô lệ",
+      "C. Quyền bình đẳng là cơ sở thực hiện quyền tự quyết; tự quyết về CHÍNH TRỊ là cơ bản, tiên quyết nhất; biện pháp cơ bản nhất ở nước đa tộc người là xóa bỏ dần sự chênh lệch về mọi mặt do lịch sử để lại",
+      "D. Tự quyết về lãnh thổ tách biệt hoàn toàn là mục tiêu duy nhất; Hội nghị TW 2 khóa VII ra NQ đại đoàn kết"
+    ],
+    "ans": 2,
+    "exp": "Bình đẳng = cơ sở (xóa dần chênh lệch mọi mặt) · Tự quyết CHÍNH TRỊ = tiên quyết nhất · Xu hướng 1 do thức tỉnh ý thức DT; Xu hướng 2 khi CNTB thành đế quốc · TW 7 khóa IX: NQ đại đoàn kết!"
+  },
+  {
+    "id": 97,
+    "ch": 6,
+    "q": "Phân biệt đúng Tín ngưỡng truyền thống, Tôn giáo nội sinh, Thế giới quan tôn giáo và 2 mặt Chính trị – Tư tưởng của tôn giáo ở Việt Nam?",
+    "options": [
+      "A. Một số tôn giáo du nhập vào Việt Nam hoàn toàn không chịu ảnh hưởng của bản sắc văn hóa Việt Nam",
+      "B. Tôn giáo mang thế giới quan duy tâm (phản ánh hư ảo); mặt CHÍNH TRỊ phản ánh mâu thuẫn đối kháng; Tín ngưỡng cấp QG = Thờ cúng Vua Hùng (người Hoa: Bà Thiên Hậu); Tôn giáo nội sinh VN = Đạo Cao Đài & Phật giáo Hòa Hảo",
+      "C. Tôn giáo mang thế giới quan duy vật biện chứng; mặt TƯ TƯỞNG phản ánh mâu thuẫn đối kháng",
+      "D. Phật giáo và Công giáo là hai tôn giáo nội sinh của Việt Nam; thờ cúng Vua Hùng là tôn giáo ngoại nhập"
+    ],
+    "ans": 1,
+    "exp": "Thế giới quan = DUY TÂM · Mặt chính trị = mâu thuẫn đối kháng · Tín ngưỡng QG = Vua Hùng · Tôn giáo nội sinh = Cao Đài & Phật giáo Hòa Hảo!"
+  },
+  {
     "id": 71,
     "ch": 7,
     "q": "Gia đình là một hình thức cộng đồng xã hội đặc biệt, được hình thành và duy trì dựa trên 3 mối quan hệ cơ bản nào?",
@@ -1041,5 +1262,44 @@ window.MLN131_KT_QUIZ = [
     ],
     "ans": 3,
     "exp": "4 phương hướng GĐ VN: (1) Lãnh đạo của Đảng & nhận thức XH, (2) Phát triển KT–XH & KT hộ, (3) Kế thừa truyền thống + tiếp thu tiến bộ nhân loại, (4) Phong trào GIA ĐÌNH VĂN HÓA."
+  },
+  {
+    "id": 98,
+    "ch": 7,
+    "q": "Trong 3 quan hệ gia đình, quan hệ nào là tự nhiên và gắn kết mạnh nhất; hình thức gia đình nào sớm nhất lịch sử; và nguồn gốc của bất bình đẳng nam nữ trong gia đình là gì?",
+    "options": [
+      "A. Gia đình được xem là 'bộ phận của làng xã' và có 'chức năng nghề nghiệp' cơ bản",
+      "B. Quan hệ huyết thống là quan hệ tự nhiên, gắn kết mạnh mẽ nhất; Gia đình mẫu hệ hình thành sớm nhất; Nguồn gốc bất bình đẳng nam nữ & thống trị của đàn ông là chế độ tư hữu về tư liệu sản xuất",
+      "C. Quan hệ nuôi dưỡng gắn kết mạnh nhất; Gia đình phụ hệ sớm nhất; Nguồn gốc bất bình đẳng là do sinh học",
+      "D. Quan hệ kinh tế là quan hệ cơ bản nhất; Hôn nhân 1 vợ 1 chồng xuất hiện từ thời công xã nguyên thủy"
+    ],
+    "ans": 1,
+    "exp": "Huyết thống = tự nhiên, mạnh nhất · Mẫu hệ = sớm nhất · 1 vợ 1 chồng xuất hiện khi tư hữu thắng công hữu · Nguồn gốc bất bình đẳng = CHẾ ĐỘ TƯ HỮU TLSX!"
+  },
+  {
+    "id": 99,
+    "ch": 7,
+    "q": "Câu nói 'Nếu không giải phóng phụ nữ là xây dựng chủ nghĩa xã hội chỉ một nửa' của ai, và Mác – Ăngghen gọi điều gì là 'quan hệ thứ ba' tham dự ngay từ đầu lịch sử?",
+    "options": [
+      "A. V.I. Lênin nói về giải phóng phụ nữ; 'quan hệ thứ ba' là quan hệ giữa các quốc gia",
+      "B. Ph. Ăngghen nói về giải phóng phụ nữ; 'quan hệ thứ ba' là quan hệ giữa bạn bè",
+      "C. Mác nói về giải phóng phụ nữ; 'quan hệ thứ ba' là quan hệ thương mại thị trường",
+      "D. Chủ tịch Hồ Chí Minh khẳng định về giải phóng phụ nữ; C. Mác & Ph. Ăngghen gọi Gia đình (quan hệ vợ–chồng, cha mẹ–con cái) là 'quan hệ thứ ba'"
+    ],
+    "ans": 3,
+    "exp": "Hồ Chí Minh: 'Không giải phóng phụ nữ = xây CNXH chỉ một nửa' · Mác–Ăngghen: 'Quan hệ thứ ba' = Gia đình · Ph. Ăngghen: nghĩa vụ những kẻ yêu nhau kết hôn với nhau."
+  },
+  {
+    "id": 100,
+    "ch": 7,
+    "q": "Về biến đổi Gia đình Việt Nam hiện nay, nhận định nào ĐÚNG về chính sách sinh đẻ, thách thức lớn nhất, kinh tế gia đình và mục tiêu trực tiếp xây dựng gia đình?",
+    "options": [
+      "A. Vẫn tiếp tục hạn chế mỗi gia đình chỉ sinh 1 con; thách thức lớn nhất là thiếu lao động nông nghiệp",
+      "B. Vai trò giáo dục của các thành viên trong gia đình hiện nay ngày càng tăng mạnh so với nhà trường",
+      "C. Khuyến khích 'sinh đủ 2 con' (do già hóa dân số, khác thập niên 70–80 vận động 1–2 con); Thách thức lớn nhất = mâu thuẫn giữa các thế hệ; Kinh tế chuyển từ tự cấp→hàng hóa & từ thị trường QG→toàn cầu; Mục tiêu trực tiếp = gia đình no ấm, bình đẳng, tiến bộ, hạnh phúc",
+      "D. Khó khăn hội nhập của kinh tế gia đình là do quy mô quá lớn và dư thừa vốn đầu tư"
+    ],
+    "ans": 2,
+    "exp": "Già hóa dân số → 'sinh đủ 2 con' · Thách thức lớn nhất = mâu thuẫn thế hệ · KT gia đình khó hội nhập do quy mô nhỏ, lao động ít · Mục tiêu trực tiếp = no ấm, bình đẳng, tiến bộ, hạnh phúc!"
   }
 ];

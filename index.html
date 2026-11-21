@@ -336,11 +336,11 @@
             <div class="f-left">
               <div class="f-ico">📝</div>
               <div>
-                <div class="f-title">Bước 2 · Quiz Kiến thức 7 Chương (80 câu chuẩn)</div>
-                <div class="f-desc">Tinh gọn, không trùng lặp — mỗi đơn vị kiến thức PDF chỉ hỏi đúng 1 lần kèm chốt ý nhớ nhanh sau khi đọc.</div>
+                <div class="f-title">Bước 2 · Quiz Kiến thức 7 Chương (100 câu chuẩn)</div>
+                <div class="f-desc">Tinh gọn, không trùng lặp — phủ trọn 3 PDF Coursera + trọng tâm đề thi Giáo trình 2021, mỗi ý hỏi đúng 1 lần kèm chốt ý.</div>
               </div>
             </div>
-            <span class="f-badge" id="mlnKtQuizBadge">0/80 câu</span>
+            <span class="f-badge" id="mlnKtQuizBadge">0/100 câu</span>
           </a>
 
           <a class="f-card" href="mln131.html">
@@ -406,7 +406,7 @@
     try {
       const ktQuiz = JSON.parse(localStorage.getItem('mln131_kt_quiz_v1') || '{}');
       const okCount = Object.values(ktQuiz).filter(v => v === 'ok').length;
-      document.getElementById('mlnKtQuizBadge').textContent = `${okCount}/80 câu`;
+      document.getElementById('mlnKtQuizBadge').textContent = `${okCount}/100 câu`;
     } catch {}
 
     try {

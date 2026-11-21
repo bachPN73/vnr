@@ -10,7 +10,7 @@
   ];
   const MLN_PAGES = [
     { file: 'mln131_kienthuc.html', label: '📘 Kiến thức 7 Chương' },
-    { file: 'mln131_kienthuc.html#quiz-tong-hop', label: '📝 Quiz Kiến thức (80 câu)' },
+    { file: 'mln131_kienthuc.html#quiz-tong-hop', label: '📝 Quiz Kiến thức (100 câu)' },
     { file: 'mln131.html', label: '🧠 Quizlet 432 (Gom cụm)' }
   ];
 
