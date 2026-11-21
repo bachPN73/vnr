@@ -53,12 +53,10 @@
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
+      position: relative;
+      z-index: 20;
       background: var(--card);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
     }
     .topbar {
       max-width: 980px;
@@ -510,17 +508,14 @@
   </style>
 </head>
 <body>
+  <script src="site_nav.js"></script>
   <header>
     <div class="topbar">
       <div class="nav-left">
-        <a class="pill-link" href="index.html">← Trang chính</a>
-        <a class="pill-link" href="flashcard.html">🃏 305 Tài liệu</a>
-        <a class="pill-link" href="mln131.html" style="color:#fff; background:#0f766e; border-color:#0f766e;">📗 MLN131 (432)</a>
-        <div class="brand">🧠 QUIZLET LEARN · 415 CÂU GOM CỤM</div>
+        <div class="brand">🧠 VNR202 QUIZLET LEARN · 415 CÂU (10 CỤM)</div>
       </div>
       <div style="display:flex; gap:8px; align-items:center;">
         <button id="homeBtn" class="pill-link" style="display:none;" onclick="showDashboard()">📋 Chọn cụm</button>
-        <button id="themeBtn" class="icon-btn" title="Sáng / Tối">🌙</button>
       </div>
     </div>
   </header>
@@ -658,18 +653,7 @@
     const ALL_CARDS = CLUSTERS.flatMap(c => c.cards.map(card => ({ ...card, clusterTitle: c.code + ': ' + c.title, clusterTip: c.tip })));
     const CARD_MAP = Object.fromEntries(ALL_CARDS.map(c => [c.id, c]));
 
-    // Theme sync
-    const themeBtn = document.getElementById('themeBtn');
-    if (localStorage.getItem('lsd_dark') === '1') {
-      document.body.classList.add('dark');
-      themeBtn.textContent = '☀️';
-    }
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const d = document.body.classList.contains('dark');
-      themeBtn.textContent = d ? '☀️' : '🌙';
-      localStorage.setItem('lsd_dark', d ? '1' : '0');
-    });
+    // Theme managed by site_nav.js
 
     // Progress stored in localStorage:
     // prog[cardId] = { state: 0 (new) | 1 (learning/missed) | 2 (mastered), streak: number, misses: number }
@@ -1109,6 +1093,8 @@
     });
 
     renderDashboard();
+    const urlCluster = new URLSearchParams(location.search).get('cluster');
+    if (urlCluster && CLUSTERS.some(c => c.id === urlCluster)) startCluster(urlCluster);
   </script>
 </body>
 </html>

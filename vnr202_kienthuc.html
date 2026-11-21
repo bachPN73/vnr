@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#b91c1c" />
+  <title>Ôn Tập Siêu Tốc — Lịch Sử Đảng Cộng Sản Việt Nam</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --accent: #b91c1c;
+      --accent-soft: #fef2f2;
+      --accent-2: #d97706;
+      --ok: #15803d;
+      --ok-bg: #dcfce7;
+      --err: #b91c1c;
+      --err-bg: #fee2e2;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+    body.dark {
+      --bg: #0b1120;
+      --card: #111827;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --accent: #ef4444;
+      --accent-soft: #2a1215;
+      --accent-2: #f59e0b;
+      --ok: #4ade80;
+      --ok-bg: #052e16;
+      --err: #f87171;
+      --err-bg: #450a0a;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    header {
+      position: relative;
+      z-index: 20;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+    .brand span.badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tab-btn {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tab-btn .tab-ico { font-size: 1rem; line-height: 1; }
+    .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .search-box {
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.88rem;
+      width: 210px;
+    }
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 7px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    main {
+      max-width: 1120px;
+      margin: 22px auto 60px;
+      padding: 0 18px;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* Visual Timeline Banner */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stage-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+    .stage-card:nth-child(even) { border-top-color: var(--accent-2); }
+    .stage-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .stage-card:nth-child(even) .stage-title { color: var(--accent-2); }
+    .stage-card ul { margin: 0; padding-left: 18px; font-size: 0.88rem; color: var(--muted); }
+    .stage-card li strong { color: var(--text); }
+
+    /* Prose Content */
+    .prose {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+    }
+    .prose h1 { font-size: 1.5rem; margin-top: 0; color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+    .prose h2 { font-size: 1.22rem; margin-top: 28px; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; }
+    .prose h3 { font-size: 1.05rem; margin-top: 20px; color: var(--text); }
+    .prose h4 { font-size: 0.96rem; margin-top: 16px; color: var(--accent-2); }
+    .prose blockquote {
+      margin: 14px 0;
+      padding: 10px 16px;
+      border-left: 4px solid var(--accent-2);
+      background: var(--accent-soft);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.94rem;
+    }
+    .prose code {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 5px;
+      font-size: 0.86em;
+    }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border-radius: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.91rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+    tr:nth-child(even) td { background: rgba(148, 163, 184, 0.05); }
+    mark.hl { background: #fde047; color: #0f172a; padding: 0 2px; border-radius: 3px; }
+
+    /* Quiz & Flashcard */
+    .quiz-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .btn {
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.88rem;
+    }
+    .btn.secondary {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .q-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+    .q-title { font-weight: 700; margin-bottom: 12px; font-size: 0.98rem; }
+    .opt-list { display: grid; gap: 8px; }
+    .opt-btn {
+      text-align: left;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.12s;
+    }
+    .opt-btn:hover:not(:disabled) { border-color: var(--accent); }
+    .opt-btn.correct { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 700; }
+    .opt-btn.wrong { background: var(--err-bg); border-color: var(--err); color: var(--err); }
+
+    /* Flashcard */
+    .flash-wrap {
+      max-width: 720px;
+      margin: 18px auto;
+      text-align: center;
+    }
+    .flashcard {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .flashcard:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .flash-q { font-size: 1.08rem; font-weight: 700; margin-bottom: 14px; text-align: left; width: 100%; }
+    .flash-opts {
+      width: 100%;
+      display: grid;
+      gap: 8px;
+      text-align: left;
+      margin-bottom: 12px;
+    }
+    .flash-opt {
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.94rem;
+      transition: all 0.15s ease;
+    }
+    .flashcard.flipped .flash-opt.is-correct {
+      background: var(--ok-bg);
+      border-color: var(--ok);
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .flash-a {
+      margin-top: 10px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--ok-bg);
+      color: var(--ok);
+      font-weight: 700;
+      font-size: 0.96rem;
+      display: none;
+      width: 100%;
+      text-align: left;
+    }
+    .flashcard.flipped .flash-a { display: block; }
+    .flash-hint { font-size: 0.82rem; color: var(--muted); margin-top: 12px; }
+    .flash-nav { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .top-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 24px;
+      z-index: 45;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--accent);
+      font-size: 1.2rem;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .top-btn.show { display: flex; }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 10px 12px;
+        gap: 8px;
+      }
+      .brand {
+        font-size: 0.95rem;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .brand span.badge { font-size: 0.68rem; padding: 2px 7px; }
+      .controls {
+        width: 100%;
+      }
+      .search-box {
+        flex: 1;
+        width: auto;
+        font-size: 16px;
+        padding: 9px 12px;
+        min-height: 42px;
+      }
+      .icon-btn {
+        min-width: 42px;
+        min-height: 42px;
+        font-size: 1.05rem;
+      }
+      /* Fixed Bottom Navigation Bar on Mobile */
+      .tabs {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 60;
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        padding: 4px 4px calc(6px + env(safe-area-inset-bottom));
+      }
+      .tab-btn {
+        border: none;
+        border-radius: 10px;
+        padding: 6px 2px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        font-size: 0.72rem;
+        min-height: 50px;
+        color: var(--muted);
+      }
+      .tab-btn .tab-ico { font-size: 1.18rem; }
+      .tab-btn.active {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      main {
+        margin: 12px auto 0;
+        padding: 0 10px calc(84px + env(safe-area-inset-bottom));
+      }
+      .timeline-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .stage-card { padding: 12px 14px; }
+      .stage-card ul { font-size: 0.86rem; padding-left: 16px; }
+      .prose {
+        padding: 16px 13px;
+        border-radius: 12px;
+        overflow-wrap: anywhere;
+      }
+      .prose h1 { font-size: 1.22rem; }
+      .prose h2 { font-size: 1.06rem; margin-top: 22px; }
+      .prose h3 { font-size: 0.98rem; }
+      .prose blockquote { padding: 8px 12px; font-size: 0.88rem; }
+      table { font-size: 0.83rem; }
+      th, td { padding: 7px 8px; min-width: 88px; }
+      .quiz-bar {
+        padding: 12px;
+        gap: 10px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .quiz-bar > div:first-child {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px !important;
+      }
+      .quiz-bar > div:first-child strong {
+        grid-column: 1 / -1;
+        font-size: 0.9rem;
+      }
+      .btn { min-height: 42px; padding: 8px 10px; font-size: 0.85rem; }
+      #quizScore { text-align: center; font-size: 0.92rem; }
+      .q-card { padding: 14px 12px; }
+      .q-title { font-size: 0.95rem; }
+      .opt-btn {
+        min-height: 46px;
+        padding: 11px 12px;
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      .flash-wrap { margin: 6px auto; }
+      .flashcard {
+        padding: 18px 14px;
+        min-height: 220px;
+        border-radius: 14px;
+        touch-action: pan-y;
+      }
+      .flashcard:hover { transform: none; }
+      .flash-q { font-size: 0.98rem; margin-bottom: 12px; }
+      .flash-opt { padding: 10px 12px; font-size: 0.89rem; line-height: 1.45; }
+      .flash-a { font-size: 0.9rem; padding: 10px 12px; }
+      .flash-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .flash-nav .btn { width: 100%; min-height: 44px; }
+      .top-btn {
+        bottom: calc(74px + env(safe-area-inset-bottom));
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="site_nav.js"></script>
+  <header>
+    <div class="header-inner">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="memo"><span class="tab-ico">⚡</span><span class="tab-lbl">Ghi nhớ</span></button>
+        <button class="tab-btn" data-tab="guide"><span class="tab-ico">📖</span><span class="tab-lbl">Đề cương</span></button>
+        <button class="tab-btn" data-tab="quiz"><span class="tab-ico">🎯</span><span class="tab-lbl">Trắc nghiệm</span></button>
+        <button class="tab-btn" data-tab="flash"><span class="tab-ico">🃏</span><span class="tab-lbl">Flashcard</span></button>
+      </div>
+      <div class="controls">
+        <input id="globalSearch" class="search-box" type="search" placeholder="Tìm nhanh mốc, Đại hội..." />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- TAB 1: MEMORY SYSTEM -->
+    <section id="tab-memo" class="panel active">
+      <div class="timeline-grid">
+        <div class="stage-card">
+          <div class="stage-title">CHẶNG 0: CHUẨN BỊ (1911–1930)</div>
+          <ul>
+            <li><strong>5/6/1911:</strong> Ra đi tìm đường → <strong>1919:</strong> Yêu sách 8 điểm</li>
+            <li><strong>1920:</strong> Luận cương Lênin &amp; ĐH Tua → Người cộng sản</li>
+            <li><strong>6/1925:</strong> Hội VNCMTN (<em>quả trứng</em>) → <strong>1928:</strong> Vô sản hóa</li>
+            <li><strong>2/1930:</strong> Lập Đảng — Cương lĩnh đầu tiên (4 văn kiện)</li>
+          </ul>
+        </div>
+        <div class="stage-card">
+          <div class="stage-title">CHẶNG 1: GIÀNH CHÍNH QUYỀN (1930–1945)</div>
+          <ul>
+            <li><strong>30–31:</strong> Xô Viết Nghệ Tĩnh (tập dượt 1) — Luận cương 10/30</li>
+            <li><strong>36–39:</strong> Dân chủ (báo chí, nghị trường) — ĐH I (1935)</li>
+            <li><strong>5/1941:</strong> TW 8 (Việt Minh) → <strong>1943:</strong> Đề cương văn hóa</li>
+            <li><strong>22/12/1944:</strong> VNTTGPQ → <strong>2/9/1945:</strong> Khai sinh VNDCCH</li>
+          </ul>
+        </div>
+        <div class="stage-card">
+          <div class="stage-title">CHẶNG 2: CHỐNG PHÁP (1945–1954)</div>
+          <ul>
+            <li><strong>6/1/1946:</strong> Tổng tuyển cử → <strong>9/11/1946:</strong> Hiến pháp 1</li>
+            <li><strong>45–46:</strong> Hòa Tưởng → Hòa Pháp (6/3 &amp; 14/9/1946)</li>
+            <li><strong>19/12/1946:</strong> Toàn quốc KC → <strong>1947:</strong> Việt Bắc → <strong>1951:</strong> ĐH II</li>
+            <li><strong>7/5/1954:</strong> Điện Biên Phủ → <strong>7/1954:</strong> Hiệp định Giơnevơ</li>
+          </ul>
+        </div>
+        <div class="stage-card">
+          <div class="stage-title">CHẶNG 3: CHỐNG MỸ (1954–1975)</div>
+          <ul>
+            <li><strong>1/1959:</strong> TW 15 → <strong>1960:</strong> Đồng Khởi &amp; ĐH III (2 chiến lược)</li>
+            <li><strong>4 chiến lược Mỹ:</strong> Đơn phương → Đặc biệt (Ấp Bắc) → Cục bộ (Vạn Tường, Mậu Thân) → VN hóa</li>
+            <li><strong>12/1972:</strong> ĐBP trên không → <strong>27/1/1973:</strong> Hiệp định Pari</li>
+            <li><strong>30/4/1975:</strong> Chiến dịch Hồ Chí Minh toàn thắng</li>
+          </ul>
+        </div>
+        <div class="stage-card">
+          <div class="stage-title">CHẶNG 4: THỐNG NHẤT &amp; TÌM TÒI (1975–1986)</div>
+          <ul>
+            <li><strong>7/1976:</strong> CHXHCN VN → <strong>12/1976:</strong> ĐH IV (ĐCS VN)</li>
+            <li><strong>3 bước đột phá:</strong> TW 6 (8/79) → TW 8 (6/85) → BCT (8/86)</li>
+            <li><strong>1/1981:</strong> Khoán 100 → <strong>3/1982:</strong> ĐH V (Nông nghiệp hàng đầu)</li>
+          </ul>
+        </div>
+        <div class="stage-card">
+          <div class="stage-title">CHẶNG 5: ĐỔI MỚI &amp; HỘI NHẬP (1986–NAY)</div>
+          <ul>
+            <li><strong>VI (86):</strong> Đổi mới → <strong>VII (91):</strong> Cương lĩnh 6 + Bạn</li>
+            <li><strong>VIII (96):</strong> Đẩy mạnh CNH → <strong>IX (01):</strong> KTTT + Đối tác</li>
+            <li><strong>X (06):</strong> ĐV làm KT tư nhân → <strong>XI (11):</strong> Cương lĩnh 8</li>
+            <li><strong>XII (16):</strong> Lợi ích QG cao nhất → <strong>XIII (21):</strong> 2025–2030–2045</li>
+          </ul>
+        </div>
+      </div>
+      <div id="memoContent" class="prose"></div>
+    </section>
+
+    <!-- TAB 2: FULL STUDY GUIDE -->
+    <section id="tab-guide" class="panel">
+      <div id="guideContent" class="prose"></div>
+    </section>
+
+    <!-- TAB 3: INTERACTIVE QUIZ -->
+    <section id="tab-quiz" class="panel">
+      <div class="quiz-bar">
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <strong>Chế độ luyện:</strong>
+          <button class="btn" onclick="startQuiz(15)">🎲 15 câu ngẫu nhiên</button>
+          <button class="btn secondary" onclick="startQuiz(40)">📝 Đề thử 40 câu</button>
+          <button class="btn secondary" onclick="startQuiz(404)">📚 Toàn bộ 404 câu</button>
+          <button class="btn secondary" id="retryWrongBtn" onclick="retryWrong()" style="display:none;">🔁 Làm lại câu sai</button>
+        </div>
+        <div id="quizScore" style="font-weight:700; color:var(--accent);">Đúng: 0 / 0</div>
+      </div>
+      <div id="quizContainer"></div>
+    </section>
+
+    <!-- TAB 4: FLASHCARD -->
+    <section id="tab-flash" class="panel">
+      <div class="flash-wrap">
+        <div style="margin-bottom:12px; color:var(--muted); font-size:0.9rem;">
+          Thẻ <strong id="flashIdx">1</strong> / <strong id="flashTotal">404</strong> — Bấm vào thẻ (hoặc phím <code>Space</code>) để lật đáp án
+        </div>
+        <div id="flashCard" class="flashcard" onclick="toggleFlash()">
+          <div id="flashQ" class="flash-q"></div>
+          <div id="flashOpts" class="flash-opts"></div>
+          <div id="flashA" class="flash-a"></div>
+          <div class="flash-hint">👆 Chạm để lật đáp án · 👈👉 Vuốt trái/phải để đổi thẻ</div>
+        </div>
+        <div class="flash-nav">
+          <button class="btn secondary" onclick="stepFlash(-1)">← Thẻ trước</button>
+          <button class="btn secondary" onclick="stepFlash(1)">Thẻ tiếp →</button>
+          <button class="btn" onclick="toggleFlash()">👁 Lật đáp án</button>
+          <button class="btn secondary" onclick="shuffleFlash()">🔀 Xáo trộn</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="topBtn" class="top-btn" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="data.js"></script>
+  <script>
+    const DATA = window.LSD_DATA || { memoHtml: '', guideHtml: '', questions: [] };
+    const memoEl = document.getElementById('memoContent');
+    const guideEl = document.getElementById('guideContent');
+    memoEl.innerHTML = DATA.memoHtml;
+    guideEl.innerHTML = DATA.guideHtml;
+
+    // Tabs
+    let activeTab = 'memo';
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        activeTab = btn.dataset.tab;
+        document.getElementById('tab-' + activeTab).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Dark mode managed by site_nav.js
+
+    // Instant Search
+    const searchInput = document.getElementById('globalSearch');
+    function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim();
+      if (activeTab === 'quiz') {
+        renderQuizSearch(q);
+        return;
+      }
+      if (activeTab === 'flash') {
+        filterFlash(q);
+        return;
+      }
+      // Highlight in memo & guide
+      [ [memoEl, DATA.memoHtml], [guideEl, DATA.guideHtml] ].forEach(([el, orig]) => {
+        if (!q || q.length < 2) { el.innerHTML = orig; return; }
+        const re = new RegExp('(' + escapeRegExp(q) + ')', 'gi');
+        el.innerHTML = orig.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) => {
+          if (tag) return tag;
+          return text.replace(re, '<mark class="hl">$1</mark>');
+        });
+      });
+      const firstMark = document.querySelector('#tab-' + activeTab + ' mark.hl');
+      if (firstMark) firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Quiz Engine
+    let currentQuiz = [];
+    let wrongList = [];
+    let answeredCount = 0;
+    let correctCount = 0;
+
+    function shuffle(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function updateScore() {
+      document.getElementById('quizScore').textContent = `Đúng: ${correctCount} / ${answeredCount} (Tổng ${currentQuiz.length} câu)`;
+      document.getElementById('retryWrongBtn').style.display = wrongList.length ? 'inline-block' : 'none';
+    }
+
+    function renderQuiz(list) {
+      currentQuiz = list;
+      wrongList = [];
+      answeredCount = 0;
+      correctCount = 0;
+      updateScore();
+      const box = document.getElementById('quizContainer');
+      box.innerHTML = '';
+      list.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        const title = document.createElement('div');
+        title.className = 'q-title';
+        title.textContent = `Câu ${idx + 1}: ${item.q}`;
+        const optList = document.createElement('div');
+        optList.className = 'opt-list';
+        item.options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'opt-btn';
+          btn.textContent = opt;
+          btn.onclick = () => {
+            if (card.dataset.done) return;
+            card.dataset.done = '1';
+            answeredCount++;
+            const chosenLetter = opt[0];
+            const isOk = chosenLetter === item.letter;
+            if (isOk) {
+              btn.classList.add('correct');
+              correctCount++;
+            } else {
+              btn.classList.add('wrong');
+              wrongList.push(item);
+              optList.querySelectorAll('.opt-btn').forEach(b => {
+                if (b.textContent[0] === item.letter) b.classList.add('correct');
+              });
+            }
+            optList.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+            updateScore();
+          };
+          optList.appendChild(btn);
+        });
+        card.appendChild(title);
+        card.appendChild(optList);
+        box.appendChild(card);
+      });
+    }
+
+    function startQuiz(n) {
+      const pool = n >= DATA.questions.length ? DATA.questions.slice() : shuffle(DATA.questions).slice(0, n);
+      renderQuiz(pool);
+    }
+
+    function retryWrong() {
+      if (wrongList.length) renderQuiz(wrongList.slice());
+    }
+
+    function renderQuizSearch(q) {
+      if (!q) { startQuiz(15); return; }
+      const lower = q.toLowerCase();
+      const matched = DATA.questions.filter(x => x.q.toLowerCase().includes(lower) || x.answer.toLowerCase().includes(lower));
+      renderQuiz(matched.slice(0, 60));
+    }
+
+    startQuiz(15);
+
+    // Flashcard Engine
+    let flashPool = DATA.questions.slice();
+    let flashPos = 0;
+
+    function renderFlash() {
+      const optsEl = document.getElementById('flashOpts');
+      if (!flashPool.length) {
+        document.getElementById('flashQ').textContent = 'Không tìm thấy thẻ phù hợp.';
+        optsEl.innerHTML = '';
+        document.getElementById('flashA').textContent = '';
+        return;
+      }
+      const item = flashPool[flashPos];
+      document.getElementById('flashIdx').textContent = flashPos + 1;
+      document.getElementById('flashTotal').textContent = flashPool.length;
+      document.getElementById('flashQ').textContent = item.q;
+      optsEl.innerHTML = '';
+      (item.options || []).forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'flash-opt' + (opt[0] === item.letter ? ' is-correct' : '');
+        div.textContent = opt;
+        optsEl.appendChild(div);
+      });
+      const ansText = item.answer || (item.options || []).find(o => o[0] === item.letter) || '';
+      document.getElementById('flashA').textContent = '✅ Đáp án đúng: ' + ansText;
+      document.getElementById('flashCard').classList.remove('flipped');
+    }
+
+    let justSwiped = false;
+    function toggleFlash() {
+      if (justSwiped) { justSwiped = false; return; }
+      document.getElementById('flashCard').classList.toggle('flipped');
+    }
+
+    function stepFlash(delta) {
+      if (!flashPool.length) return;
+      flashPos = (flashPos + delta + flashPool.length) % flashPool.length;
+      renderFlash();
+    }
+
+    function shuffleFlash() {
+      flashPool = shuffle(flashPool);
+      flashPos = 0;
+      renderFlash();
+    }
+
+    function filterFlash(q) {
+      if (!q) { flashPool = DATA.questions.slice(); }
+      else {
+        const lower = q.toLowerCase();
+        flashPool = DATA.questions.filter(x => x.q.toLowerCase().includes(lower) || x.answer.toLowerCase().includes(lower));
+      }
+      flashPos = 0;
+      renderFlash();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (activeTab !== 'flash' || document.activeElement === searchInput) return;
+      if (e.code === 'Space') { e.preventDefault(); toggleFlash(); }
+      if (e.code === 'ArrowRight') stepFlash(1);
+      if (e.code === 'ArrowLeft') stepFlash(-1);
+    });
+
+    // Touch swipe for Flashcard on mobile
+    const flashEl = document.getElementById('flashCard');
+    let touchStartX = 0, touchStartY = 0;
+    flashEl.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    flashEl.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        justSwiped = true;
+        setTimeout(() => { justSwiped = false; }, 350);
+        if (dx < 0) stepFlash(1);
+        else stepFlash(-1);
+      }
+    }, { passive: true });
+
+    // Back-to-top button visibility
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.classList.toggle('show', window.scrollY > 320);
+    }, { passive: true });
+
+    renderFlash();
+  </script>
+</body>
+</html>
