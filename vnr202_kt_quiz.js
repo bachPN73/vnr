@@ -1,6 +1,3 @@
-/* VNR202 — Bộ 64 câu Quiz Chuẩn (Không Trùng Lặp) phủ trọn Nhập môn → Chương 3 & Đại hội XIV (2026)
- * Mỗi đơn vị kiến thức cốt lõi chỉ hỏi ĐÚNG 1 LẦN kèm 1 dòng Chốt ý để đọc xong nhớ ngay.
- */
 window.VNR202_KT_QUIZ = [
   {
     "id": 1,
@@ -322,7 +319,7 @@ window.VNR202_KT_QUIZ = [
       "A. Việt Bắc 1947: Giành quyền chủ động chiến lược; Biên giới 1950: Bảo vệ cơ quan đầu não ở Tây Nguyên",
       "B. Cả hai chiến dịch đều diễn ra ở chiến trường miền Nam",
       "C. Việt Bắc 1947: Phá sản hoàn toàn kế hoạch Nava; Biên giới 1950: Buộc Pháp ký Hiệp định Giơnevơ",
-      "D. Việt Bắc 1947: Đánh bại âm mưu 'đánh nhanh, thắng nhanh' của Pháp; Biên giới 1950: Khai thông biên giới quốc tế (đặt ngoại giao TQ, Liên Xô, Đông Âu) và giành quyền chủ động chiến lược trên chiến trường chính Bắc Bộ"
+      "D. Việt Bắc 1947: Đánh bại âm mưu 'đánh nhanh, thắng nhanh' của Pháp; Biên giới 1950: Khai thông biên giới quốc tế (mở thông hành lang liên lạc với TQ, Liên Xô, các nước XHCN sau khi đã đặt ngoại giao đầu 1950) và giành quyền chủ động chiến lược trên chiến trường chính Bắc Bộ"
     ],
     "ans": 3,
     "exp": "Cặp dễ nhầm: Việt Bắc 1947 = phá 'đánh nhanh thắng nhanh' · Biên giới 1950 = khai thông quốc tế & GIÀNH QUYỀN CHỦ ĐỘNG chiến lược."
@@ -660,7 +657,7 @@ window.VNR202_KT_QUIZ = [
       "A. Giữ nguyên 6 đặc trưng như năm 1991 và không bổ sung đặc trưng nào",
       "B. Chỉ nêu mục tiêu đến năm 2015, không có tầm nhìn giữa thế kỷ XXI",
       "C. Rút gọn xuống còn 4 đặc trưng để đơn giản hóa văn kiện",
-      "D. Lên 8 đặc trưng ('Dân giàu, nước mạnh, dân chủ, công bằng, văn minh; do nhân dân làm chủ...'; bổ sung đặc trưng bình đẳng, đoàn kết các dân tộc); mục tiêu giữa TK XXI thành nước công nghiệp hiện đại theo định hướng XHCN; phát triển nhanh gắn với bền vững"
+      "D. Lên 8 đặc trưng ('Dân giàu, nước mạnh, dân chủ, công bằng, văn minh; do nhân dân làm chủ...'; bổ sung 2 đặc trưng mới: 'Dân giàu, nước mạnh, dân chủ, công bằng, văn minh' và 'Có Nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân do Đảng Cộng sản lãnh đạo'); mục tiêu giữa TK XXI thành nước công nghiệp hiện đại theo định hướng XHCN; phát triển nhanh gắn với bền vững"
     ],
     "ans": 3,
     "exp": "ĐH XI (1/2011): Cương lĩnh 8 ĐẶC TRƯNG (từ 6 lên 8) · Chiến lược 2011–2020: phát triển nhanh gắn BỀN VỮNG, nguồn nhân lực chất lượng cao."
@@ -702,7 +699,7 @@ window.VNR202_KT_QUIZ = [
       "D. TW 5: Kinh tế biển · TW 6: Bảo hiểm xã hội · TW 7: Sức khỏe nhân dân · TW 8: KTTT"
     ],
     "ans": 1,
-    "exp": "Nhớ khóa XII (5–6–7–8): TW 5 = KTTT · TW 6 (NQ20) = Sức khỏe · TW 7 (NQ28) = BHXH · TW 8 (NQ36) = Kinh tế biển. Khóa X: TW 3/NQ04 = Chống tham nhũng · CT 03 = Đạo đức HCM · TW 5/NQ14 = Kiểm tra giám sát."
+    "exp": "Nhớ khóa XII (5–6–7–8): TW 5 = KTTT · TW 6 (NQ20) = Sức khỏe · TW 7 (NQ28) = BHXH · TW 8 (NQ36) = Kinh tế biển. Khóa X: TW 3/NQ04 = Chống tham nhũng · CT 06 (11/2006) = Đạo đức HCM [CT 03 là 5/2011 khóa XI] · TW 5/NQ14 = Kiểm tra giám sát."
   },
   {
     "id": 55,
@@ -811,15 +808,15 @@ window.VNR202_KT_QUIZ = [
   {
     "id": 63,
     "ch": 4,
-    "q": "Bốn thắng lợi vĩ đại của cách mạng Việt Nam dưới sự lãnh đạo của Đảng (Kết luận Giáo trình) bao gồm những thắng lợi nào?",
+    "q": "Ba thắng lợi vĩ đại của cách mạng Việt Nam dưới sự lãnh đạo của Đảng (Kết luận Giáo trình 2021) bao gồm những thắng lợi nào?",
     "options": [
-      "A. (1) Cách mạng Tháng Tám 1945; (2) Hai cuộc kháng chiến chống Pháp và chống Mỹ (1945–1975); (3) Sự nghiệp Đổi mới (từ 1986 đến nay); (4) Xây dựng, chỉnh đốn Đảng và nâng cao năng lực cầm quyền, uy tín quốc tế",
+      "(1) Cách mạng Tháng Tám 1945, thành lập Nhà nước VNDCCH; (2) Các cuộc kháng chiến oanh liệt giải phóng dân tộc, bảo vệ Tổ quốc; (3) Sự nghiệp Đổi mới và từng bước đưa đất nước quá độ lên CNXH",
       "B. Khai thác thuộc địa lần 1, lần 2, Khoán 100 và Khoán 10",
       "C. Chỉ gồm 2 cuộc kháng chiến chống Pháp và chống Mỹ",
       "D. Phong trào Cần Vương, Khởi nghĩa Yên Bái, CMT8 và gia nhập WTO"
     ],
     "ans": 0,
-    "exp": "4 thắng lợi vĩ đại: (1) CMT8 1945 → (2) Hai cuộc kháng chiến 45–75 → (3) Sự nghiệp Đổi mới từ 1986 → (4) Xây dựng, chỉnh đốn Đảng & uy tín quốc tế."
+    "exp": "Kết luận Giáo trình 2021 (tr. 413–423) xác định đúng 3 thắng lợi vĩ đại: (1) Cách mạng Tháng Tám 1945; (2) Các cuộc kháng chiến oanh liệt giải phóng dân tộc, bảo vệ Tổ quốc; (3) Sự nghiệp Đổi mới quá độ lên CNXH."
   },
   {
     "id": 64,

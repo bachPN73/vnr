@@ -512,7 +512,7 @@
           </div>
 
           <div class="stage-footer">
-            <span style="font-size:0.8rem; color:var(--muted);">Phím tắt: <code>1–4</code> chọn · <code>Enter</code> / <code>Space</code> tiếp tục</span>
+            <span style="font-size:0.8rem; color:var(--muted);">Phím tắt: <code>1–5</code> chọn · <code>Enter</code> / <code>Space</code> tiếp tục</span>
             <button id="nextBtn" class="btn" style="display:none;" onclick="advanceQueue()">Tiếp tục →</button>
           </div>
         </div>
@@ -719,6 +719,12 @@
     }
 
     function startAllMode() {
+      const allDone = ALL_CARDS.every(c => getP(c.id).state === 2);
+      if (allDone) {
+        if (!confirm('Bạn đã thuộc toàn bộ 432 câu MLN131! Bạn có muốn đặt lại để ôn lại từ đầu không?')) return;
+        ALL_CARDS.forEach(c => { PROG[c.id] = { ...getP(c.id), state: 0, streak: 0 }; });
+        saveProg();
+      }
       sessionCards = ALL_CARDS.slice();
       sessionTitle = 'MLN131 · Toàn bộ 432 câu (8 Cụm)';
       sessionTip = 'Đang học xuyên suốt 8 cụm MLN131 theo đúng thứ tự các cặp dễ nhầm lẫn.';

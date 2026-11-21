@@ -1,6 +1,3 @@
-/* MLN131 — Bộ 100 câu Quiz Chuẩn (Không Trùng Lặp) từ 3 file PDF MLN_kienthuc + Trọng tâm Giáo trình 2021
- * Mỗi đơn vị kiến thức cốt lõi của Chương 1–7 được hỏi ĐÚNG 1 LẦN kèm Chốt ý để đọc xong nhớ ngay.
- */
 window.MLN131_KT_QUIZ = [
   {
     "id": 1,
@@ -252,7 +249,7 @@ window.MLN131_KT_QUIZ = [
   {
     "id": 17,
     "ch": 2,
-    "q": "Trong 2 điều kiện CHỦ QUAN để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử, nhân tố nào là quan trọng nhất?",
+    "q": "Trong 3 điều kiện CHỦ QUAN để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử, nhân tố nào là quan trọng nhất?",
     "options": [
       "A. Sự tăng trưởng thuần túy về số lượng lao động phổ thông",
       "B. Sự thỏa hiệp hòa bình với giai cấp tư sản độc quyền",
@@ -260,7 +257,7 @@ window.MLN131_KT_QUIZ = [
       "D. Đảng Cộng sản (bên cạnh sự phát triển của bản thân GCCN cả về số lượng và chất lượng)"
     ],
     "ans": 3,
-    "exp": "2 ĐK chủ quan (THỰC HIỆN SMLS): (1) Phát triển bản thân GCCN về số lượng & chất lượng; (2) Đảng Cộng sản — nhân tố QUAN TRỌNG NHẤT."
+    "exp": "3 ĐK chủ quan (THỰC HIỆN SMLS): (1) Phát triển bản thân GCCN về số lượng & chất lượng; (2) Đảng Cộng sản — nhân tố QUAN TRỌNG NHẤT; (3) Sự liên minh giai cấp giữa GCCN với nông dân và các tầng lớp lao động khác."
   },
   {
     "id": 18,

@@ -677,13 +677,12 @@
     }
 
     function renderDashboard() {
-      let gOk = 0, gLearn = 0, gNew = 0, weakCount = 0;
+      let gOk = 0, gLearn = 0, gNew = 0;
       ALL_CARDS.forEach(c => {
         const p = getP(c.id);
         if (p.state === 2) gOk++;
         else if (p.state === 1) gLearn++;
         else gNew++;
-        if (p.misses > 0 && p.state !== 2) weakCount++;
       });
       const total = ALL_CARDS.length || 1;
       document.getElementById('gOk').textContent = gOk;
@@ -815,6 +814,12 @@
     }
 
     function startAllMode() {
+      const allDone = ALL_CARDS.every(c => getP(c.id).state === 2);
+      if (allDone) {
+        if (!confirm('Bạn đã thuộc toàn bộ 415 câu! Bạn có muốn đặt lại để ôn lại từ đầu không?')) return;
+        ALL_CARDS.forEach(c => { PROG[c.id] = { ...getP(c.id), state: 0, streak: 0 }; });
+        saveProg();
+      }
       sessionCards = ALL_CARDS.slice();
       sessionTitle = 'Toàn bộ 415 câu (Gom theo 10 cụm)';
       sessionTip = 'Đang học xuyên suốt 10 cụm theo đúng thứ tự các cặp câu dễ nhầm lẫn.';
@@ -918,13 +923,14 @@
       document.getElementById('nextBtn').style.display = 'none';
       document.getElementById('multiSubmitWrap').style.display = card.multi ? 'block' : 'none';
 
-      // Build options (shuffle text while keeping clean A/B/C/D keys!)
+      // Build options (keep original order if any option references letter/position like "Tất cả trên đúng" or "đều đúng/sai")
       const rawOpts = card.options.map(o => {
         const origL = o[0].toUpperCase();
         const body = o.replace(/^[A-Fa-f][\.\)]\s*/, '').trim();
         return { origLetter: origL, text: body, isCorrect: card.letters.includes(origL) };
       });
-      const doShuffle = document.getElementById('shuffleOptsChk').checked;
+      const hasPosRef = rawOpts.some(o => /\bcả\s+[a-d]\b|\bđều\s+(đúng|sai)\b|\btất\s+cả\s+(trên|các\s+đáp\s+án)\b|\ba\s+và\s+b\b/i.test(o.text));
+      const doShuffle = document.getElementById('shuffleOptsChk').checked && !hasPosRef;
       const ordered = doShuffle ? shuffleArr(rawOpts) : rawOpts;
       const keys = ['A', 'B', 'C', 'D', 'E', 'F'];
       curDisplayedOpts = ordered.map((o, i) => ({ ...o, key: keys[i] }));
