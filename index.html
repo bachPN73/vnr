@@ -293,7 +293,7 @@
       <section class="subj-panel mln">
         <div class="subj-head">
           <div>
-            <span class="subj-code">MLN131 · 2 CÔNG CỤ</span>
+            <span class="subj-code">MLN131 · 3 CÔNG CỤ</span>
             <h2>Chủ nghĩa xã hội khoa học</h2>
           </div>
         </div>
@@ -314,18 +314,29 @@
             <div class="f-left">
               <div class="f-ico">📘</div>
               <div>
-                <div class="f-title">Bước 1 · Kiến thức Đầy đủ 7 Chương (Clean)</div>
-                <div class="f-desc">100% nội dung 3 file PDF Coursera, bảng "Con số biết nói", chế độ Siêu gọn ôn cấp tốc &amp; tick thuộc từng chương.</div>
+                <div class="f-title">Bước 1 · Kiến thức 7 Chương (Từng chương riêng)</div>
+                <div class="f-desc">100% nội dung 3 file PDF Coursera chia riêng từng chương, đọc xong có ngay Quiz kiểm tra 10–14 câu ngay dưới bài.</div>
               </div>
             </div>
             <span class="f-badge" id="mlnChBadge">0/7 ch.</span>
+          </a>
+
+          <a class="f-card" href="mln131_kienthuc.html#quiz-tong-hop">
+            <div class="f-left">
+              <div class="f-ico">📝</div>
+              <div>
+                <div class="f-title">Bước 2 · Quiz Kiến thức 7 Chương (80 câu chuẩn)</div>
+                <div class="f-desc">Tinh gọn, không trùng lặp — mỗi đơn vị kiến thức PDF chỉ hỏi đúng 1 lần kèm chốt ý nhớ nhanh sau khi đọc.</div>
+              </div>
+            </div>
+            <span class="f-badge" id="mlnKtQuizBadge">0/80 câu</span>
           </a>
 
           <a class="f-card" href="mln131.html">
             <div class="f-left">
               <div class="f-ico">🧠</div>
               <div>
-                <div class="f-title">Bước 2 · Quizlet Learn (432 câu · 8 Cụm)</div>
+                <div class="f-title">Bước 3 · Quizlet Learn (432 câu · 8 Cụm)</div>
                 <div class="f-desc">Gom sát 8 cụm lý thuyết dễ nhầm, hỗ trợ đầy đủ 23 câu chọn nhiều đáp án, lặp lại tức thì khi làm sai.</div>
               </div>
             </div>
@@ -368,6 +379,12 @@
     try {
       const chDone = JSON.parse(localStorage.getItem('mln131_kt_done_v1') || '[]');
       document.getElementById('mlnChBadge').textContent = `${chDone.length}/7 ch.`;
+    } catch {}
+
+    try {
+      const ktQuiz = JSON.parse(localStorage.getItem('mln131_kt_quiz_v1') || '{}');
+      const okCount = Object.values(ktQuiz).filter(v => v === 'ok').length;
+      document.getElementById('mlnKtQuizBadge').textContent = `${okCount}/80 câu`;
     } catch {}
 
     try {

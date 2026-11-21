@@ -47,7 +47,7 @@
     }
     header {
       position: sticky;
-      top: 85px;
+      top: var(--gnav-h, 96px);
       z-index: 40;
       background: var(--card);
       border-bottom: 1px solid var(--border);
@@ -214,14 +214,14 @@
     }
     .ch-sidebar {
       position: sticky;
-      top: 150px;
+      top: calc(var(--gnav-h, 96px) + 66px);
       align-self: start;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 13px;
       box-shadow: var(--shadow);
-      max-height: calc(100vh - 166px);
+      max-height: calc(100vh - var(--gnav-h, 96px) - 82px);
       overflow-y: auto;
     }
     .ch-side-title {

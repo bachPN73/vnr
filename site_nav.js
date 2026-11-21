@@ -9,11 +9,12 @@
   ];
   const MLN_PAGES = [
     { file: 'mln131_kienthuc.html', label: '📘 Kiến thức 7 Chương' },
+    { file: 'mln131_kienthuc.html#quiz-tong-hop', label: '📝 Quiz Kiến thức (80 câu)' },
     { file: 'mln131.html', label: '🧠 Quizlet 432 (Gom cụm)' }
   ];
 
-  const isVnr = VNR_PAGES.some(p => p.file === path);
-  const isMln = MLN_PAGES.some(p => p.file === path);
+  const isVnr = VNR_PAGES.some(p => p.file.split('#')[0] === path);
+  const isMln = MLN_PAGES.some(p => p.file.split('#')[0] === path);
   const isHub = !isVnr && !isMln;
 
   // Remember last visited page per subject & overall
@@ -180,12 +181,35 @@
     ${subPages.length ? `
     <div class="gnav-sub">
       <div class="gnav-sub-inner">
-        ${subPages.map(p => `<a class="gnav-tab ${p.file === path ? actCls : ''}" href="${p.file}">${p.label}</a>`).join('')}
+        ${subPages.map(p => {
+          const [f, h] = p.file.split('#');
+          const curHash = location.hash.replace('#', '');
+          const isAct = h ? (f === path && curHash === h) : (f === path && curHash !== 'quiz-tong-hop');
+          return `<a class="gnav-tab ${isAct ? actCls : ''}" data-gnav-file="${p.file}" href="${p.file}">${p.label}</a>`;
+        }).join('')}
       </div>
     </div>` : ''}
   `;
 
   document.body.insertBefore(nav, document.body.firstChild);
+
+  function syncActiveTabs() {
+    const curHash = location.hash.replace('#', '');
+    nav.querySelectorAll('.gnav-tab[data-gnav-file]').forEach(a => {
+      const [f, h] = a.dataset.gnavFile.split('#');
+      const isAct = h ? (f === path && curHash === h) : (f === path && curHash !== 'quiz-tong-hop');
+      a.classList.toggle(actCls, isAct);
+    });
+  }
+  window.syncGnavTabs = syncActiveTabs;
+  window.addEventListener('hashchange', syncActiveTabs);
+
+  function syncNavHeight() {
+    document.documentElement.style.setProperty('--gnav-h', nav.offsetHeight + 'px');
+  }
+  syncNavHeight();
+  window.addEventListener('resize', syncNavHeight, { passive: true });
+  window.addEventListener('load', syncNavHeight, { passive: true });
 
   const tBtn = document.getElementById('gnavThemeBtn');
   tBtn.addEventListener('click', () => {

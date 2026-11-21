@@ -57,7 +57,7 @@
     /* Sticky Page Tool Bar (below global nav) */
     header {
       position: sticky;
-      top: 85px;
+      top: var(--gnav-h, 96px);
       z-index: 40;
       background: var(--card);
       border-bottom: 1px solid var(--border);
@@ -185,14 +185,14 @@
     /* Sticky Sidebar TOC */
     aside.toc {
       position: sticky;
-      top: 150px;
+      top: calc(var(--gnav-h, 96px) + var(--pagehdr-h, 58px) + 14px);
       align-self: start;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
       box-shadow: var(--shadow);
-      max-height: calc(100vh - 166px);
+      max-height: calc(100vh - var(--gnav-h, 96px) - var(--pagehdr-h, 58px) - 28px);
       overflow-y: auto;
     }
     .toc-head {
@@ -226,7 +226,7 @@
       gap: 6px;
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       padding: 7px 9px;
       border-radius: 8px;
@@ -236,13 +236,21 @@
     .toc a:hover, .toc a.active {
       background: var(--primary-soft);
       color: var(--primary);
+      font-weight: 700;
     }
-    .toc-done { font-size: 0.78rem; color: var(--ok); }
+    .toc-done {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .toc-done.full { color: var(--ok); }
 
     /* Content Column */
     .content { min-width: 0; }
 
-    /* Chapter Section Card (Single-Page Mode) */
+    /* Strict Single-Chapter Page View */
     section.chapter {
       display: none;
       background: var(--card);
@@ -251,11 +259,170 @@
       padding: 24px 26px;
       margin-bottom: 20px;
       box-shadow: var(--shadow);
-      scroll-margin-top: 150px;
+      scroll-margin-top: 155px;
     }
-    section.chapter.active-page,
-    body.show-all section.chapter {
+    section.chapter.active-page {
       display: block;
+    }
+    .ch-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .quiz-jump-btn {
+      border: 1px solid var(--primary);
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .quiz-jump-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    body.dark .quiz-jump-btn:hover { color: #042f2e; }
+
+    /* Post-Reading Recall Quiz Styles */
+    .ch-quiz-box {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border);
+      scroll-margin-top: 165px;
+    }
+    .qz-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .qz-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .qz-sub {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .qz-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .qz-stat {
+      font-size: 0.83rem;
+      font-weight: 800;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+    }
+    .qz-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--text);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .qz-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .qz-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    body.dark .qz-btn.active { color: #042f2e; }
+    .qz-list {
+      display: grid;
+      gap: 12px;
+    }
+    .qz-card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .qz-card.is-ok { border-color: var(--ok); }
+    .qz-card.is-err { border-color: #dc2626; }
+    .qz-q {
+      font-weight: 700;
+      font-size: 0.94rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .qz-ch-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-right: 6px;
+      vertical-align: 1px;
+    }
+    .qz-opts {
+      display: grid;
+      gap: 7px;
+    }
+    .qz-opt {
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.89rem;
+      line-height: 1.45;
+      cursor: pointer;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .qz-opt:hover:not(:disabled) { border-color: var(--primary); }
+    .qz-opt.correct {
+      background: var(--ok-soft);
+      border-color: var(--ok);
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .qz-opt.wrong {
+      background: #fee2e2;
+      border-color: #dc2626;
+      color: #b91c1c;
+    }
+    body.dark .qz-opt.wrong {
+      background: #450a0a;
+      border-color: #f87171;
+      color: #f87171;
+    }
+    .qz-exp {
+      display: none;
+      margin-top: 9px;
+      padding: 8px 11px;
+      border-radius: 8px;
+      background: var(--amber-soft);
+      border-left: 3px solid var(--amber);
+      font-size: 0.85rem;
+      line-height: 1.48;
+    }
+    .qz-exp.show { display: block; }
+    .qz-filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
     .mj-chip.active {
       background: var(--primary);
@@ -535,7 +702,7 @@
       <a class="mj-chip" href="#chuong-5" data-page="chuong-5">Ch.5 Cơ cấu &amp; LM</a>
       <a class="mj-chip" href="#chuong-6" data-page="chuong-6">Ch.6 Dân tộc &amp; TG</a>
       <a class="mj-chip" href="#chuong-7" data-page="chuong-7">Ch.7 Gia đình</a>
-      <a class="mj-chip" href="#all" data-page="all">📚 Xem tất cả</a>
+      <a class="mj-chip" href="#quiz-tong-hop" data-page="quiz-tong-hop">📝 Quiz 80 câu</a>
     </nav>
   </header>
 
@@ -555,7 +722,7 @@
       <a href="#chuong-5" data-page="chuong-5" data-ch="5"><span>Ch.5 · Cơ cấu &amp; Liên minh</span><span class="toc-done" id="td-5"></span></a>
       <a href="#chuong-6" data-page="chuong-6" data-ch="6"><span>Ch.6 · Dân tộc &amp; Tôn giáo</span><span class="toc-done" id="td-6"></span></a>
       <a href="#chuong-7" data-page="chuong-7" data-ch="7"><span>Ch.7 · Vấn đề Gia đình</span><span class="toc-done" id="td-7"></span></a>
-      <a href="#all" data-page="all" style="margin-top:6px; border-top:1px dashed var(--border); padding-top:9px;"><span>📚 Hiện gộp cả 7 chương</span></a>
+      <a href="#quiz-tong-hop" data-page="quiz-tong-hop" style="margin-top:6px; border-top:1px dashed var(--border); padding-top:9px;"><span>📝 Tổng ôn Quiz (80 câu)</span><span class="toc-done" id="td-quiz">0/80</span></a>
     </aside>
 
     <!-- MAIN CONTENT -->
@@ -1392,13 +1559,57 @@
         </div>
       </section>
 
+      <!-- ================= TỔNG ÔN QUIZ 80 CÂU ================= -->
+      <section class="chapter" id="quiz-tong-hop">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">QUIZ NHỚ NHANH · ĐẦY ĐỦ 7 CHƯƠNG · KHÔNG TRÙNG LẶP</span>
+            <h2>📝 Tổng ôn Quiz Kiến thức MLN131 (80 câu chuẩn từ 3 PDF)</h2>
+          </div>
+          <span class="qz-stat" id="allQuizStat">Đã đúng: 0 / 80</span>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">🎯 Cách dùng hiệu quả:</strong> Mỗi đơn vị kiến thức cốt lõi trong 3 file PDF <em>MLN_kienthuc</em> chỉ hỏi <strong>đúng 1 lần</strong> (không lặp dài dòng 300–400 câu). Đọc xong chương nào làm ngay 10–14 câu ở cuối chương đó, hoặc lọc tổng ôn toàn bộ 80 câu tại đây.
+        </div>
+
+        <div class="qz-filters" id="allQuizFilters">
+          <button class="qz-btn active" data-f="all">Tất cả (80)</button>
+          <button class="qz-btn" data-f="1">Ch.1 (11)</button>
+          <button class="qz-btn" data-f="2">Ch.2 (12)</button>
+          <button class="qz-btn" data-f="3">Ch.3 (11)</button>
+          <button class="qz-btn" data-f="4">Ch.4 (12)</button>
+          <button class="qz-btn" data-f="5">Ch.5 (10)</button>
+          <button class="qz-btn" data-f="6">Ch.6 (14)</button>
+          <button class="qz-btn" data-f="7">Ch.7 (10)</button>
+          <button class="qz-btn" data-f="todo">🔥 Chỉ câu chưa đúng</button>
+        </div>
+
+        <div class="qz-bar">
+          <button class="qz-btn" id="allShuffleBtn">🔀 Xáo trộn thứ tự</button>
+          <button class="qz-btn" id="allResetBtn">↺ Làm lại toàn bộ 80 câu</button>
+        </div>
+
+        <div id="allQuizList" class="qz-list"></div>
+      </section>
+
     </main>
   </div>
 
   <button id="topBtn" class="top-btn" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
+  <script src="mln131_kt_quiz.js"></script>
   <script>
-    // Theme managed by site_nav.js
+    // Sync sticky page header height dynamically so sidebar TOC aligns pixel-perfectly
+    const pageHdrEl = document.querySelector('header');
+    function syncPageHdrHeight() {
+      if (pageHdrEl) {
+        document.documentElement.style.setProperty('--pagehdr-h', pageHdrEl.offsetHeight + 'px');
+      }
+    }
+    syncPageHdrHeight();
+    window.addEventListener('resize', syncPageHdrHeight, { passive: true });
+    window.addEventListener('load', syncPageHdrHeight, { passive: true });
 
     // Compact mode toggle
     const compactBtn = document.getElementById('compactBtn');
@@ -1409,30 +1620,259 @@
       compactBtn.textContent = c ? '📖 Hiện đầy đủ' : '⚡ Chế độ Siêu gọn';
     });
 
+    // Quiz data & persisted status (id -> 'ok' | 'err')
+    const KT_QUIZ = window.MLN131_KT_QUIZ || [];
+    const QUIZ_KEY = 'mln131_kt_quiz_v1';
+    let quizState = {};
+    try { quizState = JSON.parse(localStorage.getItem(QUIZ_KEY) || '{}'); } catch {}
+
+    function saveQuizState() {
+      localStorage.setItem(QUIZ_KEY, JSON.stringify(quizState));
+    }
+
     // Chapter mastery tracker
     const DONE_KEY = 'mln131_kt_done_v1';
     let doneSet = new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]'));
+
     function renderDone() {
       for (let i = 1; i <= 7; i++) {
         const isDone = doneSet.has(i);
         const btn = document.querySelector(`.done-btn[data-done="${i}"]`);
         const td = document.getElementById('td-' + i);
+        const chQs = KT_QUIZ.filter(q => q.ch === i);
+        const chOk = chQs.filter(q => quizState[q.id] === 'ok').length;
         if (btn) {
           btn.classList.toggle('checked', isDone);
           btn.textContent = isDone ? '☑ Đã thuộc' : '☐ Đánh dấu đã thuộc';
         }
-        if (td) td.textContent = isDone ? '✓' : '';
+        if (td) {
+          const isFull = chQs.length > 0 && chOk === chQs.length;
+          td.classList.toggle('full', isDone || isFull);
+          td.textContent = isDone ? '✓' : (chOk > 0 ? `${chOk}/${chQs.length}` : '');
+        }
       }
+      const totalOk = KT_QUIZ.filter(q => quizState[q.id] === 'ok').length;
+      const tdQuiz = document.getElementById('td-quiz');
+      if (tdQuiz) {
+        tdQuiz.textContent = `${totalOk}/${KT_QUIZ.length}`;
+        tdQuiz.classList.toggle('full', KT_QUIZ.length > 0 && totalOk === KT_QUIZ.length);
+      }
+      const allStat = document.getElementById('allQuizStat');
+      if (allStat) allStat.textContent = `Đã đúng: ${totalOk} / ${KT_QUIZ.length}`;
       document.getElementById('progText').textContent = `${doneSet.size}/7`;
       document.getElementById('progFill').style.width = ((doneSet.size / 7) * 100) + '%';
     }
+
     function toggleDone(ch) {
       if (doneSet.has(ch)) doneSet.delete(ch);
       else doneSet.add(ch);
       localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
       renderDone();
     }
+
+    function shuffleArr(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // Build interactive question cards into a container
+    function renderQuizCards(container, list, opts) {
+      const showChTag = !!(opts && opts.showChTag);
+      const onUpdate = opts && opts.onUpdate;
+      container.innerHTML = '';
+      if (!list.length) {
+        container.innerHTML = `<div class="memo-box" style="margin-bottom:0;"><strong class="lbl">🎉 Tuyệt vời!</strong> Không còn câu nào chưa đúng trong mục này.</div>`;
+        return;
+      }
+      list.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'qz-card';
+        const qDiv = document.createElement('div');
+        qDiv.className = 'qz-q';
+        qDiv.innerHTML = `${showChTag ? `<span class="qz-ch-tag">Ch.${item.ch}</span>` : ''}Câu ${idx + 1}: ${item.q}`;
+
+        const optsDiv = document.createElement('div');
+        optsDiv.className = 'qz-opts';
+
+        const expDiv = document.createElement('div');
+        expDiv.className = 'qz-exp';
+        expDiv.innerHTML = `<strong>💡 Chốt ý:</strong> ${item.exp}`;
+
+        item.options.forEach((optText, oIdx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'qz-opt';
+          btn.textContent = optText;
+          btn.addEventListener('click', () => {
+            if (card.dataset.answered) return;
+            card.dataset.answered = '1';
+            const isOk = oIdx === item.ans;
+            if (isOk) {
+              btn.classList.add('correct');
+              card.classList.add('is-ok');
+              quizState[item.id] = 'ok';
+            } else {
+              btn.classList.add('wrong');
+              card.classList.add('is-err');
+              quizState[item.id] = 'err';
+              optsDiv.querySelectorAll('.qz-opt')[item.ans].classList.add('correct');
+            }
+            optsDiv.querySelectorAll('.qz-opt').forEach(b => b.disabled = true);
+            expDiv.classList.add('show');
+            saveQuizState();
+
+            // Auto-check chapter mastered if all questions of this chapter are 'ok'
+            const chQs = KT_QUIZ.filter(q => q.ch === item.ch);
+            if (chQs.length && chQs.every(q => quizState[q.id] === 'ok')) {
+              doneSet.add(item.ch);
+              localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
+            }
+            renderDone();
+            if (onUpdate) onUpdate();
+          });
+          optsDiv.appendChild(btn);
+        });
+
+        card.appendChild(qDiv);
+        card.appendChild(optsDiv);
+        card.appendChild(expDiv);
+        container.appendChild(card);
+      });
+    }
+
+    // Inject embedded Post-Reading Recall Quiz inside each Chapter 1..7
+    const chapterQuizRenderers = {};
+    for (let ch = 1; ch <= 7; ch++) {
+      const sec = document.getElementById('chuong-' + ch);
+      if (!sec) continue;
+      const chQs = KT_QUIZ.filter(q => q.ch === ch);
+
+      // Add quick jump button to chapter header
+      const chHdr = sec.querySelector('.ch-header');
+      const doneBtn = chHdr ? chHdr.querySelector('.done-btn') : null;
+      if (chHdr && doneBtn) {
+        const actions = document.createElement('div');
+        actions.className = 'ch-actions';
+        const jumpBtn = document.createElement('button');
+        jumpBtn.type = 'button';
+        jumpBtn.className = 'quiz-jump-btn';
+        jumpBtn.textContent = `📝 Quiz Chương ${ch} (${chQs.length} câu)`;
+        jumpBtn.onclick = () => {
+          const box = document.getElementById('quiz-ch-' + ch);
+          if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        doneBtn.parentNode.insertBefore(actions, doneBtn);
+        actions.appendChild(jumpBtn);
+        actions.appendChild(doneBtn);
+      }
+
+      // Build post-reading quiz box right before ch-footer
+      const qBox = document.createElement('div');
+      qBox.className = 'ch-quiz-box';
+      qBox.id = 'quiz-ch-' + ch;
+      qBox.innerHTML = `
+        <div class="qz-head">
+          <div>
+            <div class="qz-title">📝 Kiểm tra nhớ nhanh Chương ${ch} (${chQs.length} câu — không trùng lặp)</div>
+            <div class="qz-sub">Đọc xong Chương ${ch}, chọn đáp án để kiểm tra ngay mỗi ý kiến thức 1 lần kèm chốt ý ngắn gọn.</div>
+          </div>
+          <span class="qz-stat" id="qz-stat-${ch}">Đúng: 0 / ${chQs.length}</span>
+        </div>
+        <div class="qz-bar">
+          <button type="button" class="qz-btn" id="qz-shuf-${ch}">🔀 Xáo câu</button>
+          <button type="button" class="qz-btn" id="qz-wrong-${ch}">🔁 Chỉ làm câu chưa đúng</button>
+          <button type="button" class="qz-btn" id="qz-reset-${ch}">↺ Làm lại Chương ${ch}</button>
+        </div>
+        <div class="qz-list" id="qz-list-${ch}"></div>
+      `;
+      const footer = sec.querySelector('.ch-footer');
+      if (footer) sec.insertBefore(qBox, footer);
+      else sec.appendChild(qBox);
+
+      const updateChStat = () => {
+        const ok = chQs.filter(q => quizState[q.id] === 'ok').length;
+        const st = document.getElementById('qz-stat-' + ch);
+        if (st) st.textContent = `Đúng: ${ok} / ${chQs.length}`;
+      };
+
+      const renderCh = (list) => {
+        updateChStat();
+        renderQuizCards(document.getElementById('qz-list-' + ch), list, {
+          showChTag: false,
+          onUpdate: updateChStat
+        });
+      };
+
+      chapterQuizRenderers[ch] = renderCh;
+      renderCh(chQs);
+
+      document.getElementById('qz-shuf-' + ch).onclick = () => renderCh(shuffleArr(chQs));
+      document.getElementById('qz-wrong-' + ch).onclick = () => {
+        renderCh(chQs.filter(q => quizState[q.id] !== 'ok'));
+      };
+      document.getElementById('qz-reset-' + ch).onclick = () => {
+        chQs.forEach(q => delete quizState[q.id]);
+        saveQuizState();
+        renderDone();
+        renderCh(chQs);
+      };
+    }
+
+    // Full 80-question Recall Quiz page (#quiz-tong-hop)
+    let allFilter = 'all';
+    let allShuffled = false;
+    function renderAllQuiz() {
+      let pool = KT_QUIZ.slice();
+      if (allFilter === 'todo') {
+        pool = pool.filter(q => quizState[q.id] !== 'ok');
+      } else if (allFilter !== 'all') {
+        const chNum = parseInt(allFilter, 10);
+        pool = pool.filter(q => q.ch === chNum);
+      }
+      if (allShuffled) pool = shuffleArr(pool);
+      renderQuizCards(document.getElementById('allQuizList'), pool, {
+        showChTag: allFilter === 'all' || allFilter === 'todo',
+        onUpdate: () => {
+          for (let c = 1; c <= 7; c++) {
+            const chQs = KT_QUIZ.filter(q => q.ch === c);
+            const ok = chQs.filter(q => quizState[q.id] === 'ok').length;
+            const st = document.getElementById('qz-stat-' + c);
+            if (st) st.textContent = `Đúng: ${ok} / ${chQs.length}`;
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll('#allQuizFilters [data-f]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#allQuizFilters [data-f]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        allFilter = btn.dataset.f;
+        allShuffled = false;
+        renderAllQuiz();
+      });
+    });
+    document.getElementById('allShuffleBtn').addEventListener('click', () => {
+      allShuffled = true;
+      renderAllQuiz();
+    });
+    document.getElementById('allResetBtn').addEventListener('click', () => {
+      quizState = {};
+      saveQuizState();
+      renderDone();
+      for (let c = 1; c <= 7; c++) {
+        if (chapterQuizRenderers[c]) chapterQuizRenderers[c](KT_QUIZ.filter(q => q.ch === c));
+      }
+      allShuffled = false;
+      renderAllQuiz();
+    });
+
     renderDone();
+    renderAllQuiz();
 
     // Instant highlight search (safe DOM text-node walker so event handlers stay intact)
     const searchInput = document.getElementById('searchInput');
@@ -1447,7 +1887,10 @@
     searchInput.addEventListener('input', () => {
       clearMarks();
       const q = searchInput.value.trim();
-      if (q.length < 2) return;
+      if (q.length < 2) {
+        goPage(currentPage, true);
+        return;
+      }
       const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
       const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
       const nodes = [];
@@ -1473,26 +1916,33 @@
         if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
         node.parentNode.replaceChild(frag, node);
       });
+      sections.forEach(s => {
+        const hasMatch = s.querySelector('mark.hl') !== null;
+        s.classList.toggle('active-page', hasMatch);
+      });
       const first = rootEl.querySelector('mark.hl');
       if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
-    // Chapter-by-Chapter Single Page Switcher
+    // Strict Chapter-by-Chapter Single Page Switcher
     const topBtn = document.getElementById('topBtn');
     const sections = [...document.querySelectorAll('section.chapter')];
     const pageIds = sections.map(s => s.id);
     const PAGE_TITLES = {
-      'tong-hop': '⚡ Tổng hợp số',
+      'tong-hop': '⚡ Bảng Tổng hợp số',
       'chuong-1': 'Chương 1 · Nhập môn',
       'chuong-2': 'Chương 2 · Công nhân',
       'chuong-3': 'Chương 3 · CNXH & TKQĐ',
       'chuong-4': 'Chương 4 · Dân chủ & NN',
       'chuong-5': 'Chương 5 · Cơ cấu & LM',
       'chuong-6': 'Chương 6 · Dân tộc & TG',
-      'chuong-7': 'Chương 7 · Gia đình'
+      'chuong-7': 'Chương 7 · Gia đình',
+      'quiz-tong-hop': '📝 Tổng ôn Quiz 80 câu'
     };
 
-    let currentPage = localStorage.getItem('mln131_active_page') || 'tong-hop';
+    let savedPage = localStorage.getItem('mln131_active_page') || 'tong-hop';
+    if (!pageIds.includes(savedPage) || savedPage === 'quiz-tong-hop') savedPage = 'tong-hop';
+    let currentPage = savedPage;
 
     // Inject Prev / Next pager into each chapter section
     sections.forEach((sec, idx) => {
@@ -1501,48 +1951,44 @@
       const prevId = idx > 0 ? pageIds[idx - 1] : null;
       const nextId = idx < pageIds.length - 1 ? pageIds[idx + 1] : null;
       pager.innerHTML = `
-        ${prevId ? `<button class="pager-btn" onclick="goPage('${prevId}')">← ${PAGE_TITLES[prevId]}</button>` : `<span></span>`}
-        ${nextId ? `<button class="pager-btn primary" onclick="goPage('${nextId}')">Tiếp: ${PAGE_TITLES[nextId]} →</button>` : `<a class="pager-btn primary" style="text-decoration:none;" href="mln131.html">🚀 Vào luyện Quizlet 432 câu →</a>`}
+        ${prevId ? `<button type="button" class="pager-btn" onclick="goPage('${prevId}')">← ${PAGE_TITLES[prevId]}</button>` : `<span></span>`}
+        ${nextId ? `<button type="button" class="pager-btn primary" onclick="goPage('${nextId}')">Tiếp: ${PAGE_TITLES[nextId]} →</button>` : `<a class="pager-btn primary" style="text-decoration:none;" href="mln131.html">🚀 Vào luyện Quizlet 432 câu →</a>`}
       `;
       sec.appendChild(pager);
     });
 
     function goPage(pid, keepScroll) {
-      if (pid === 'all') {
-        document.body.classList.add('show-all');
-        sections.forEach(s => s.classList.add('active-page'));
-      } else {
-        if (!pageIds.includes(pid)) pid = 'tong-hop';
-        document.body.classList.remove('show-all');
-        sections.forEach(s => s.classList.toggle('active-page', s.id === pid));
-      }
+      if (!pageIds.includes(pid)) pid = 'tong-hop';
+      sections.forEach(s => s.classList.toggle('active-page', s.id === pid));
       currentPage = pid;
-      localStorage.setItem('mln131_active_page', pid);
+      if (pid !== 'quiz-tong-hop') {
+        localStorage.setItem('mln131_active_page', pid);
+      }
+      if (history.replaceState) {
+        history.replaceState(null, '', '#' + pid);
+      }
+      if (window.syncGnavTabs) window.syncGnavTabs();
       document.querySelectorAll('[data-page]').forEach(a => {
         a.classList.toggle('active', a.dataset.page === pid);
       });
+      if (pid === 'quiz-tong-hop') renderAllQuiz();
       if (!keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     document.querySelectorAll('[data-page]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
+        if (searchInput.value) {
+          searchInput.value = '';
+          clearMarks();
+        }
         goPage(a.dataset.page);
       });
     });
 
-    // When searching, show all matching chapter pages automatically
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim();
-      if (q.length >= 2) {
-        document.body.classList.remove('show-all');
-        sections.forEach(s => {
-          const hasMatch = s.querySelector('mark.hl') !== null;
-          s.classList.toggle('active-page', hasMatch);
-        });
-      } else {
-        goPage(currentPage, true);
-      }
+    window.addEventListener('hashchange', () => {
+      const h = location.hash.replace('#', '');
+      if (h && pageIds.includes(h)) goPage(h);
     });
 
     window.addEventListener('scroll', () => {
@@ -1550,7 +1996,7 @@
     }, { passive: true });
 
     const hashId = location.hash.replace('#', '');
-    if (hashId && (pageIds.includes(hashId) || hashId === 'all')) {
+    if (hashId && pageIds.includes(hashId)) {
       goPage(hashId, true);
     } else {
       goPage(currentPage, true);
