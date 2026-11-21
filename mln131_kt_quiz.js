@@ -30,9 +30,9 @@ window.MLN131_KT_QUIZ = [
     "ch": 1,
     "q": "Ba tiền đề khoa học tự nhiên tạo cơ sở phương pháp luận cho sự ra đời của CNXHKH gồm những phát minh nào?",
     "options": [
-      "A. Thuyết tương đối, Cơ học lượng tử và Định luật vạn vật hấp dẫn",
-      "B. Học thuyết tế bào, Thuyết di truyền Mendel và Định luật Ohm",
-      "C. Học thuyết tiến hóa, Định luật bảo toàn và chuyển hóa năng lượng, Học thuyết tế bào",
+      "Học thuyết địa tâm của Ptôlêmê; Thuyết nguyên tử cổ đại; Định luật vạn vật hấp dẫn của Niutơn",
+      "Thuyết tương đối của Anhxtanh; Cơ học lượng tử; Học thuyết di truyền học phân tử hiện đại",
+      "Định luật bảo toàn khối lượng; Thuyết kiến tạo mảng; Học thuyết chọn lọc nhân tạo cổ điển",
       "D. Bảng tuần hoàn hóa học, Định luật Newton và Thuyết Big Bang"
     ],
     "ans": 2,
@@ -134,10 +134,10 @@ window.MLN131_KT_QUIZ = [
     "ch": 1,
     "q": "Ngoài phương pháp luận chung (CNDV biện chứng & CNDV lịch sử), CNXHKH sử dụng 4 phương pháp cụ thể nào và mang ý nghĩa thực tiễn cốt lõi gì?",
     "options": [
-      "A. Phỏng vấn sâu, phân tích định lượng kinh tế, quy nạp hình thức; thay thế hoàn toàn các khoa học khác",
+      "Phương pháp trừu tượng hóa khoa học; phương pháp mô hình hóa toán học kinh tế và thống kê thực nghiệm",
       "B. Lịch sử–lôgíc, khảo sát–phân tích CT–XH, so sánh, liên ngành (gắn tổng kết thực tiễn); giáo dục niềm tin khoa học vào lý tưởng XHCN",
-      "C. Chỉ dùng duy nhất phương pháp so sánh; ý nghĩa chủ yếu để lưu trữ tư liệu cổ",
-      "D. Thực nghiệm phòng lab, mô phỏng toán học, chiết trung, trực giác; phục vụ dự báo chứng khoán"
+      "Phương pháp phân tích tâm lý cá nhân kết hợp thực nghiệm sinh học và quan sát tự nhiên thuần túy",
+      "Phương pháp diễn dịch hình thức thuần túy tách rời khảo sát thực tiễn các phong trào chính trị – xã hội"
     ],
     "ans": 1,
     "exp": "4 PP cụ thể: Lịch sử–lôgíc, Khảo sát–phân tích, So sánh, Liên ngành (+ gắn tổng kết thực tiễn); Thực tiễn: giáo dục NIỀM TIN KHOA HỌC."
@@ -171,15 +171,15 @@ window.MLN131_KT_QUIZ = [
   {
     "id": 83,
     "ch": 1,
-    "q": "Về giai đoạn phát triển CNXHKH từ 1924 đến nay, bộ thông tin nào sau đây ghép ĐÚNG (người ảnh hưởng 1924–1953, mô hình KT mới Liên Xô, tên công cuộc cải cách các nước & nguyên nhân Liên Xô sụp đổ)?",
+    "q": "Về quá trình phát triển và vận dụng CNXHKH ở Liên Xô, Trung Quốc và Việt Nam từ thời V.I. Lênin (1921) đến nay, nhận định nào là CHÍNH XÁC?",
     "options": [
-      "A. J. Xtalin (1924–1953) · Mô hình NEP · Cải tổ (Liên Xô), Cải cách mở cửa (Trung Quốc), Đổi mới (Việt Nam) · Sụp đổ do vận dụng sai CN Mác–Lênin",
-      "B. G. Đi-mi-trốp (1924–1953) · Mô hình WTO · Cải cách mở cửa (Liên Xô) · Sụp đổ do không có tài nguyên",
-      "C. S. Phuriê (1924–1953) · Mô hình USR · Cải tổ (Trung Quốc) · Sụp đổ do quá độ trực tiếp",
-      "D. Ph. Hêghen (1924–1953) · Mô hình CCCP · Đổi mới (Liên Xô), Cải tổ (Việt Nam) · Sụp đổ do bản chất sai lầm của CN Mác–Lênin"
+      "Chính sách kinh tế mới (NEP, 1921 — V.I. Lênin đề xướng, đề thi gọi 'Mô hình kinh tế mới'); giai đoạn 1924–1953 gắn với J. Xtalin; Cải tổ (Liên Xô), Cải cách mở cửa (Trung Quốc), Đổi mới (Việt Nam); Liên Xô sụp đổ do vận dụng sai CN Mác – Lênin",
+      "Chính sách kinh tế mới (NEP) được thực hiện đầu tiên ở Trung Quốc; công cuộc Cải tổ diễn ra ở Việt Nam từ năm 1986; Liên Xô sụp đổ do học thuyết Mác – Lênin đã lỗi thời",
+      "Công cuộc Cải cách và mở cửa diễn ra đầu tiên ở Liên Xô dưới thời J. Xtalin; công cuộc Đổi mới diễn ra ở Trung Quốc từ năm 1978",
+      "Liên Xô và Đông Âu sụp đổ chứng tỏ mô hình chủ nghĩa xã hội khoa học hoàn toàn không có khả năng áp dụng vào thực tiễn hiện đại"
     ],
     "ans": 0,
-    "exp": "Nhớ nhanh: J. Xtalin (1924–53) · NEP · Cải tổ (LX) / Cải cách mở cửa (TQ) / Đổi mới (VN) · LX–Đông Âu sụp đổ do vận dụng SAI CN Mác–Lênin."
+    "exp": "Nhớ chuẩn: NEP = Chính sách/Mô hình kinh tế mới ở Nga Xô-viết/Liên Xô (1921, V.I. Lênin) · 1924–1953 = J. Xtalin · Cải tổ = Liên Xô · Cải cách mở cửa = Trung Quốc · Đổi mới = Việt Nam · Sụp đổ do nhận thức & vận dụng sai!"
   },
   {
     "id": 12,
@@ -251,10 +251,10 @@ window.MLN131_KT_QUIZ = [
     "ch": 2,
     "q": "Trong 3 điều kiện CHỦ QUAN để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử, nhân tố nào là quan trọng nhất?",
     "options": [
-      "A. Sự tăng trưởng thuần túy về số lượng lao động phổ thông",
-      "B. Sự thỏa hiệp hòa bình với giai cấp tư sản độc quyền",
-      "C. Các tổ chức từ thiện xã hội của giới chủ tư bản",
-      "D. Đảng Cộng sản (bên cạnh sự phát triển của bản thân GCCN cả về số lượng và chất lượng)"
+      "Sự phát triển tự phát về số lượng của giai cấp công nhân trong các ngành công nghiệp truyền thống",
+      "Hệ thống các tổ chức công đoàn và nghiệp đoàn cơ sở tại các doanh nghiệp tư bản chủ nghĩa",
+      "Tầng lớp trí thức tiến bộ và đội ngũ doanh nhân trong nền kinh tế thị trường hiện đại",
+      "Đảng Cộng sản — đội tiền phong, nhân tố chủ quan quan trọng nhất để GCCN thực hiện sứ mệnh lịch sử"
     ],
     "ans": 3,
     "exp": "3 ĐK chủ quan (THỰC HIỆN SMLS): (1) Phát triển bản thân GCCN về số lượng & chất lượng; (2) Đảng Cộng sản — nhân tố QUAN TRỌNG NHẤT; (3) Sự liên minh giai cấp giữa GCCN với nông dân và các tầng lớp lao động khác."
@@ -339,7 +339,7 @@ window.MLN131_KT_QUIZ = [
   },
   {
     "id": 84,
-    "ch": 2,
+    "ch": 1,
     "q": "Hai khẩu hiệu của công nhân dệt Lion (Pháp) năm 1831 ('Sống có việc làm hay là chết trong đấu tranh') và 1834 ('Cộng hòa hay là chết') đánh dấu bước chuyển nào?",
     "options": [
       "A. Công nhân thỏa hiệp hoàn toàn với giới chủ nhà máy dệt",
@@ -348,7 +348,7 @@ window.MLN131_KT_QUIZ = [
       "D. Phong trào công nhân chuyển từ tự giác quay về tự phát"
     ],
     "ans": 1,
-    "exp": "Công nhân dệt Lion (1831 → 1834): chuyển từ mục đích KINH TẾ sang mục đích CHÍNH TRỊ."
+    "exp": "Công nhân dệt Lion (Pháp, Ch.1 I.1.a): 1831 (kinh tế) → 1834 (chính trị) · Phát hiện phân chia giai cấp = Các nhà sử học tư sản trước Mác · Hêghen = 'hạt nhân hợp lý' phép biện chứng!"
   },
   {
     "id": 85,
@@ -548,15 +548,15 @@ window.MLN131_KT_QUIZ = [
   {
     "id": 89,
     "ch": 3,
-    "q": "V.I. Lênin đã dùng những hình ảnh và con số nào khi luận giải về Thời kỳ quá độ lên CNXH (đặc biệt là quá độ gián tiếp)?",
+    "q": "Về tính chất phức tạp của Thời kỳ quá độ lên CNXH (C. Mác và V.I. Lênin), tổ hợp nhận định nào sau đây là ĐÚNG?",
     "options": [
-      "A. Gọi TKQĐ là 'bước nhảy tức thì không đau đớn'; nước Nga chỉ tồn tại 2 thành phần kinh tế",
-      "B. Gọi TKQĐ là 'những cơn đau đẻ kéo dài', phải 'bắc những nhịp cầu nhỏ' qua kinh tế tư bản; nước Nga TKQĐ tồn tại 5 thành phần kinh tế (hình thức quá độ trực tiếp chưa từng diễn ra trên thực tế)",
-      "C. Khẳng định trong TKQĐ ở VN, sở hữu tư nhân TBCN giữ vai trò chủ đạo",
-      "D. Khẳng định Liên Xô và Đông Âu đã thực hiện thành công hình thức quá độ trực tiếp"
+      "Thời kỳ quá độ diễn ra nhanh chóng, phẳng lặng; nước Nga thời kỳ quá độ chỉ tồn tại duy nhất 2 thành phần kinh tế",
+      "Được ví như 'những cơn đau đẻ kéo dài' (C. Mác nêu, V.I. Lênin phát triển), quá độ gián tiếp phải 'bắc những chiếc cầu nhỏ vững chắc đi xuyên qua chủ nghĩa tư bản nhà nước'; nước Nga TKQĐ có 5 thành phần kinh tế; quá độ trực tiếp chưa từng diễn ra",
+      "Trong thời kỳ quá độ lên CNXH ở Việt Nam hiện nay, sở hữu tư nhân tư bản chủ nghĩa giữ vai trò chủ đạo chi phối toàn bộ nền kinh tế",
+      "Liên Xô, các nước Đông Âu và Việt Nam đều đã thực hiện thành công hình thức quá độ trực tiếp từ chủ nghĩa tư bản phát triển cao lên CNXH"
     ],
     "ans": 1,
-    "exp": "Lênin: 'Những cơn đau đẻ kéo dài' · 'Bắc những nhịp cầu nhỏ' (quá độ gián tiếp) · 5 thành phần KT ở Nga · Quá độ trực tiếp CHƯA TỪNG diễn ra!"
+    "exp": "'Những cơn đau đẻ kéo dài' (C. Mác nêu, Lênin phát triển) · 'Bắc những chiếc cầu nhỏ... xuyên qua CNTB nhà nước' (quá độ gián tiếp) · 5 thành phần KT ở Nga · Quá độ trực tiếp CHƯA TỪNG diễn ra!"
   },
   {
     "id": 35,
@@ -706,10 +706,10 @@ window.MLN131_KT_QUIZ = [
     "ch": 4,
     "q": "Bốn giải pháp hoàn thiện Nhà nước pháp quyền XHCN ở Việt Nam bao gồm những trọng tâm nào?",
     "options": [
-      "A. Đa đảng cầm quyền; Tư nhân hóa bộ máy tư pháp; Xóa bỏ Hiến pháp; Giảm kiểm tra giám sát",
-      "B. Tăng biên chế hành chính; Tập trung mọi quyết định vào một bộ duy nhất; Cắt giảm ngân sách giáo dục",
+      "Thực hiện chế độ đa đảng đối lập cầm quyền; phân lập tuyệt đối ba nhánh quyền lực không cần sự lãnh đạo của Đảng",
+      "Mở rộng bộ máy hành chính các cấp; tập trung toàn bộ quyền lập pháp, hành pháp và tư pháp vào cơ quan hành chính",
       "C. Đặt dưới sự lãnh đạo của Đảng; Cải cách thể chế và phương thức hoạt động; Xây dựng đội ngũ cán bộ công chức trong sạch có năng lực; Đấu tranh phòng chống tham nhũng, lãng phí, thực hành tiết kiệm",
-      "D. Thay thế pháp luật bằng hương ước địa phương ở mọi cấp quản lý"
+      "Đề cao hương ước và tập quán địa phương cao hơn Hiến pháp; giảm bớt hoạt động thanh tra, kiểm sát độc lập"
     ],
     "ans": 2,
     "exp": "4 giải pháp hoàn thiện NN pháp quyền: (1) Lãnh đạo của Đảng, (2) Cải cách thể chế, (3) Cán bộ công chức trong sạch, (4) Phòng chống tham nhũng, lãng phí."
@@ -732,9 +732,9 @@ window.MLN131_KT_QUIZ = [
     "ch": 4,
     "q": "Có tồn tại nền dân chủ hay kiểu nhà nước nào 'của tất cả mọi người, mọi giai cấp' không, và hai lĩnh vực nổi bật quan trọng hàng đầu của dân chủ là gì?",
     "options": [
-      "A. Dân chủ XHCN là nền dân chủ của tất cả mọi giai cấp kể cả thế lực phản động; 2 lĩnh vực nổi bật là Văn hóa và Du lịch",
-      "B. Dân chủ tư sản là nền dân chủ của tất cả mọi người; 2 lĩnh vực nổi bật là Tôn giáo và Ngoại giao",
-      "C. Nhà nước XHCN là nhà nước của thiểu số thống trị đa số",
+      "Dân chủ XHCN là nền dân chủ phi giai cấp của tất cả mọi người; 2 lĩnh vực nổi bật nhất là Văn hóa và Xã hội",
+      "Dân chủ tư sản là nền dân chủ rộng rãi của mọi giai cấp; 2 lĩnh vực nổi bật nhất là Tư tưởng và Đối ngoại",
+      "Nhà nước XHCN là nhà nước của thiểu số bóc lột thống trị đa số nhân dân lao động; 2 lĩnh vực là Quân sự và Pháp luật",
       "D. KHÔNG có bất cứ nền dân chủ hay kiểu nhà nước nào của tất cả mọi giai cấp (NN XHCN là của đa số thống trị thiểu số); 2 lĩnh vực nổi bật nhất là Kinh tế và Chính trị"
     ],
     "ans": 3,
@@ -899,15 +899,15 @@ window.MLN131_KT_QUIZ = [
   {
     "id": 94,
     "ch": 5,
-    "q": "Về xu hướng biến đổi cơ cấu xã hội – giai cấp ở Việt Nam hiện nay, tổ hợp nhận định nào sau đây là CHÍNH XÁC?",
+    "q": "Trong TKQĐ lên CNXH nói chung và ở Việt Nam hiện nay, tổ hợp nhận định nào về biến đổi cơ cấu xã hội – giai cấp là CHÍNH XÁC?",
     "options": [
-      "A. Giai cấp nông dân tăng nhanh cả số lượng lẫn tỷ lệ; cơ cấu XH bao gồm cả 'cơ cấu XH – hạ tầng'",
-      "B. Giai cấp nông dân giảm dần về cả số lượng và tỷ lệ (nhiệm vụ phát huy bản sắc VH & bảo vệ môi trường); Trí thức không phải tầng lớp mới xuất hiện ở TKQĐ mà càng quan trọng trong CMCN 4.0; Phương hướng phụ nữ là tăng tỷ lệ tham gia cấp ủy và bộ máy quản lý; Giai cấp tư sản đã bị đánh bại nhưng vẫn còn sức mạnh kinh tế",
-      "C. Có thể dùng mệnh lệnh hành chính xóa bỏ triệt để ngay lập tức các giai tầng trong TKQĐ",
-      "D. Trước Đổi mới cơ cấu XH–GC Việt Nam đã có đầy đủ đội ngũ doanh nhân lớn mạnh"
+      "Ở Việt Nam hiện nay, giai cấp nông dân tăng nhanh cả về số lượng lẫn tỷ lệ; hệ thống cơ cấu xã hội bao gồm cả 'cơ cấu xã hội – hạ tầng'",
+      "Ở VN: nông dân giảm dần số lượng & tỷ lệ (nhiệm vụ phát huy bản sắc VH & bảo vệ môi trường), trí thức không phải tầng lớp mới xuất hiện mà càng quan trọng trong CMCN 4.0, phụ nữ tăng tỷ lệ tham gia cấp ủy & quản lý; trong TKQĐ nói chung, GCTS tuy bị đánh bại nhưng còn sức mạnh kinh tế",
+      "Trong thời kỳ quá độ, nhà nước chuyên chính vô sản có thể dùng mệnh lệnh hành chính để xóa bỏ triệt để, ngay lập tức mọi giai cấp và tầng lớp",
+      "Trước thời kỳ Đổi mới (1986), cơ cấu xã hội – giai cấp ở Việt Nam đã có đội ngũ doanh nhân phát triển lớn mạnh giữ vai trò nòng cốt"
     ],
     "ans": 1,
-    "exp": "Nông dân giảm số lượng & tỷ lệ · Trước Đổi mới: Công–Nông–Trí (Trí thức KHÔNG phải tầng lớp mới) · Phụ nữ: tăng tỷ lệ tham gia cấp ủy, quản lý · Tư sản còn sức mạnh kinh tế."
+    "exp": "Ở VN: Nông dân giảm số lượng & tỷ lệ · Trước Đổi mới: Công–Nông–Trí (Trí thức KHÔNG phải tầng lớp mới) · Phụ nữ: tăng tỷ lệ tham gia cấp ủy, quản lý · Trong TKQĐ chung: GCTS bị đánh bại nhưng còn sức mạnh KT."
   },
   {
     "id": 57,
@@ -1266,12 +1266,12 @@ window.MLN131_KT_QUIZ = [
     "q": "Trong 3 quan hệ gia đình, quan hệ nào là tự nhiên và gắn kết mạnh nhất; hình thức gia đình nào sớm nhất lịch sử; và nguồn gốc của bất bình đẳng nam nữ trong gia đình là gì?",
     "options": [
       "A. Gia đình được xem là 'bộ phận của làng xã' và có 'chức năng nghề nghiệp' cơ bản",
-      "B. Quan hệ huyết thống là quan hệ tự nhiên, gắn kết mạnh mẽ nhất; Gia đình mẫu hệ hình thành sớm nhất; Nguồn gốc bất bình đẳng nam nữ & thống trị của đàn ông là chế độ tư hữu về tư liệu sản xuất",
+      "Quan hệ huyết thống là quan hệ tự nhiên, gắn kết mạnh mẽ nhất; Gia đình mẫu hệ hình thành sớm nhất (trong nhóm mẫu hệ – phụ hệ – 1 vợ 1 chồng; sơ khai nhất theo Ăngghen là gia đình huyết tộc); Nguồn gốc bất bình đẳng nam nữ là chế độ tư hữu về TLSX",
       "C. Quan hệ nuôi dưỡng gắn kết mạnh nhất; Gia đình phụ hệ sớm nhất; Nguồn gốc bất bình đẳng là do sinh học",
       "D. Quan hệ kinh tế là quan hệ cơ bản nhất; Hôn nhân 1 vợ 1 chồng xuất hiện từ thời công xã nguyên thủy"
     ],
     "ans": 1,
-    "exp": "Huyết thống = tự nhiên, mạnh nhất · Mẫu hệ = sớm nhất · 1 vợ 1 chồng xuất hiện khi tư hữu thắng công hữu · Nguồn gốc bất bình đẳng = CHẾ ĐỘ TƯ HỮU TLSX!"
+    "exp": "Huyết thống = tự nhiên, mạnh nhất · Mẫu hệ = sớm nhất trong các đáp án thi (sơ khai nhất theo Ăngghen là huyết tộc → quần hôn mẫu hệ) · Nguồn gốc bất bình đẳng = CHẾ ĐỘ TƯ HỮU TLSX!"
   },
   {
     "id": 99,

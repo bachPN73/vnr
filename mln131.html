@@ -502,7 +502,7 @@
           <div id="optsBox" class="opts"></div>
 
           <div id="multiSubmitWrap" style="margin-top:12px; display:none;">
-            <button class="btn" style="width:100%;" onclick="submitMulti()">✓ Kiểm tra các đáp án đã chọn</button>
+            <button id="multiSubmitBtn" class="btn" style="width:100%;" onclick="submitMulti()" disabled>✓ Kiểm tra các đáp án đã chọn</button>
           </div>
 
           <div id="feedbackBox" class="feedback">
@@ -569,10 +569,11 @@
     const STORE_KEY = 'mln131_learn_v1';
     let PROG = {};
     try { PROG = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { PROG = {}; }
-    function saveProg() { localStorage.setItem(STORE_KEY, JSON.stringify(PROG)); }
+    function saveProg() { try { localStorage.setItem(STORE_KEY, JSON.stringify(PROG)); } catch {} }
     function getP(id) { return PROG[id] || { state: 0, streak: 0, misses: 0 }; }
 
     function switchView(id) {
+      clearTimeout(autoTimer);
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       document.getElementById('homeBtn').style.display = id === 'view-dash' ? 'none' : 'inline-block';
@@ -649,7 +650,7 @@
       const cl = CLUSTERS.find(x => x.id === cid);
       if (!cl) return;
       document.getElementById('browseTitle').textContent = `${cl.code}: ${cl.title} (${cl.count} câu)`;
-      document.getElementById('browseTip').innerHTML = `<strong>💡 Mẹo phân biệt nhanh:</strong> ${cl.tip}`;
+      document.getElementById('browseTip').innerHTML = `<strong>💡 Mẹo phân biệt nhanh:</strong> ${escapeHtml(cl.tip)}`;
       document.getElementById('browseStartBtn').onclick = () => startCluster(cid);
 
       const box = document.getElementById('browseList');
@@ -685,6 +686,7 @@
     let sessionCards = [];
     let sessionTitle = '';
     let sessionTip = '';
+    let isWeakSession = false;
     let roundNum = 0;
     let roundQueue = [];
     let roundMissedIds = new Set();
@@ -714,6 +716,7 @@
       sessionCards = cl.cards.map(c => ({ ...c, clusterTip: cl.tip }));
       sessionTitle = `${cl.code}: ${cl.title}`;
       sessionTip = cl.tip;
+      isWeakSession = false;
       roundNum = 0;
       startNextRound();
     }
@@ -728,6 +731,7 @@
       sessionCards = ALL_CARDS.slice();
       sessionTitle = 'MLN131 · Toàn bộ 432 câu (8 Cụm)';
       sessionTip = 'Đang học xuyên suốt 8 cụm MLN131 theo đúng thứ tự các cặp dễ nhầm lẫn.';
+      isWeakSession = false;
       roundNum = 0;
       startNextRound();
     }
@@ -736,11 +740,10 @@
       const weak = ALL_CARDS.filter(c => getP(c.id).misses > 0);
       if (!weak.length) return;
       weak.sort((a, b) => getP(b.id).misses - getP(a.id).misses);
-      weak.forEach(c => { PROG[c.id] = { ...getP(c.id), state: 1, streak: 0 }; });
-      saveProg();
       sessionCards = weak;
       sessionTitle = `🔥 MLN131 · Ôn ${weak.length} câu hay sai nhất`;
-      sessionTip = 'Các câu từng làm sai sẽ được lặp liên tục cho đến khi bạn trả lời đúng 2 lần liên tiếp!';
+      sessionTip = 'Các câu từng làm sai sẽ được lặp liên tục cho đến khi bạn trả lời đúng 2 lần liên tiếp (đúng đủ 2 lần sẽ xóa khỏi danh sách câu hay sai)!';
+      isWeakSession = true;
       roundNum = 0;
       startNextRound();
     }
@@ -750,13 +753,19 @@
       const roundSize = parseInt(document.getElementById('roundSizeSel').value, 10) || 7;
       const orderMode = document.getElementById('orderSel').value;
 
-      let learning = sessionCards.filter(c => getP(c.id).state === 1);
-      let unseen = sessionCards.filter(c => getP(c.id).state === 0);
-      if (orderMode === 'shuffle') {
-        learning = shuffleArr(learning);
-        unseen = shuffleArr(unseen);
+      let candidates;
+      if (isWeakSession) {
+        candidates = sessionCards.filter(c => getP(c.id).misses > 0);
+        if (orderMode === 'shuffle') candidates = shuffleArr(candidates);
+      } else {
+        let learning = sessionCards.filter(c => getP(c.id).state === 1);
+        let unseen = sessionCards.filter(c => getP(c.id).state === 0);
+        if (orderMode === 'shuffle') {
+          learning = shuffleArr(learning);
+          unseen = shuffleArr(unseen);
+        }
+        candidates = [...learning, ...unseen];
       }
-      const candidates = [...learning, ...unseen];
       if (!candidates.length) {
         showDashboard();
         return;
@@ -764,10 +773,11 @@
 
       roundNum++;
       const batch = candidates.slice(0, roundSize);
-      roundQueue = batch.map(c => ({
-        id: c.id,
-        needHits: getP(c.id).state === 1 ? 2 : 1
-      }));
+      roundQueue = batch.map(c => {
+        const p = getP(c.id);
+        const need = isWeakSession ? 2 : (p.state === 1 ? Math.max(1, 2 - (p.streak || 0)) : 1);
+        return { id: c.id, needHits: need };
+      });
       roundMissedIds = new Set();
 
       document.getElementById('sessionTitle').textContent = sessionTitle;
@@ -826,14 +836,22 @@
       document.getElementById('feedbackBox').className = 'feedback';
       document.getElementById('nextBtn').style.display = 'none';
       document.getElementById('multiSubmitWrap').style.display = card.multi ? 'block' : 'none';
+      const msBtn = document.getElementById('multiSubmitBtn');
+      if (msBtn) msBtn.disabled = true;
+      const td = document.getElementById('tipDrawer');
+      if (td && td.classList.contains('open')) {
+        td.innerHTML = `<strong>💡 Mẹo nhớ nhanh:</strong> ${escapeHtml(card.clusterTip || sessionTip)}`;
+      }
 
       const rawOpts = card.options.map(o => {
         const origL = o[0].toUpperCase();
         const body = o.replace(/^[A-Fa-f][\.\)]\s*/, '').trim();
         return { origLetter: origL, text: body, isCorrect: card.letters.includes(origL) };
       });
-      // Keep original order if an option says "Cả a b c" / "Cả a b và c" so letter references stay truthful!
-      const hasLetterRef = rawOpts.some(o => /\bcả\s+a\b|\bđều đúng\b/i.test(o.text));
+      // Unicode-safe letter/position reference guard (no ASCII \b before Vietnamese characters!)
+      const hasLetterRef = rawOpts.some(o =>
+        /(?:^|[^\p{L}\p{N}_])(?:cả\s+[a-f]|[a-f]\s*(?:,|và|&)\s*[a-f]\s+đều|tất\s*cả(?:\s+các)?(?:\s+(?:đáp|phương)\s+án)?\s+đều|đều\s+(?:đúng|sai)|các\s+(?:đáp|phương)\s+án\s+trên|không\s+có\s+(?:đáp|phương)\s+án\s+nào\s+(?:đúng|dùng))(?=$|[^\p{L}\p{N}_])/iu.test(o.text)
+      );
       const doShuffle = document.getElementById('shuffleOptsChk').checked && !hasLetterRef;
       const ordered = doShuffle ? shuffleArr(rawOpts) : rawOpts;
       const keys = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -862,6 +880,8 @@
           curSelected.add(idx);
           btn.classList.add('selected');
         }
+        const msBtn = document.getElementById('multiSubmitBtn');
+        if (msBtn) msBtn.disabled = curSelected.size === 0;
         return;
       }
       curSelected = new Set([idx]);
@@ -898,7 +918,7 @@
       if (isRight) {
         const rem = curEntry.needHits - 1;
         if (rem <= 0) {
-          PROG[card.id] = { state: 2, streak: p.streak + 1, misses: p.misses };
+          PROG[card.id] = { state: 2, streak: p.streak + 1, misses: isWeakSession ? 0 : p.misses };
           fb.className = 'feedback show fb-ok';
           fbTitle.textContent = '✅ Chính xác! Đã thuộc câu này!';
           fbAns.textContent = '';
@@ -987,14 +1007,21 @@
 
     document.addEventListener('keydown', e => {
       if (!document.getElementById('view-learn').classList.contains('active')) return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
       if (['1', '2', '3', '4', '5', '6'].includes(e.key) && !locked) {
         const idx = parseInt(e.key, 10) - 1;
         const btn = document.querySelector(`#optsBox .opt[data-idx="${idx}"]`);
         if (btn) btn.click();
       } else if (e.key === 'Enter' || e.code === 'Space') {
-        e.preventDefault();
-        if (locked) advanceQueue();
-        else if (curEntry && CARD_MAP[curEntry.id].multi && curSelected.size > 0) submitMulti();
+        const act = document.activeElement;
+        if (act && act.tagName === 'BUTTON' && !act.classList.contains('opt') && act.id !== 'nextBtn' && act.id !== 'multiSubmitBtn') return;
+        if (locked) {
+          e.preventDefault();
+          advanceQueue();
+        } else if (curEntry && CARD_MAP[curEntry.id].multi && curSelected.size > 0) {
+          e.preventDefault();
+          submitMulti();
+        }
       }
     });
 

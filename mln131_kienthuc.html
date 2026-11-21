@@ -259,7 +259,7 @@
       padding: 24px 26px;
       margin-bottom: 20px;
       box-shadow: var(--shadow);
-      scroll-margin-top: 155px;
+      scroll-margin-top: calc(var(--gnav-h, 96px) + var(--pagehdr-h, 58px) + 12px);
     }
     section.chapter.active-page {
       display: block;
@@ -292,7 +292,7 @@
       margin-top: 26px;
       padding-top: 20px;
       border-top: 2px solid var(--border);
-      scroll-margin-top: 165px;
+      scroll-margin-top: calc(var(--gnav-h, 96px) + var(--pagehdr-h, 58px) + 12px);
     }
     .qz-head {
       display: flex;
@@ -670,7 +670,7 @@
       .shell { grid-template-columns: 1fr; margin-top: 12px; padding: 0 10px 64px; }
       aside.toc { display: none; }
       .mobile-jump { display: flex; }
-      section.chapter { padding: 16px 14px; border-radius: 13px; scroll-margin-top: 124px; }
+      section.chapter { padding: 16px 14px; border-radius: 13px; scroll-margin-top: calc(var(--gnav-h, 96px) + var(--pagehdr-h, 58px) + 12px); }
       .ch-header h2 { font-size: 1.12rem; }
       .topbar { padding: 9px 12px; gap: 7px; }
       .brand-row { width: 100%; justify-content: space-between; }
@@ -775,7 +775,7 @@
               <tr>
                 <td><strong>Ch.7</strong></td>
                 <td><strong>3</strong> quan hệ · <strong>3</strong> vị trí · <strong>4</strong> chức năng cơ bản · <strong>4</strong> cơ sở xây dựng GĐ · <strong>3</strong> nguyên tắc hôn nhân tiến bộ · <strong>4</strong> phương hướng GĐ VN</td>
-                <td>Chức năng đặc thù = <strong>tái sản xuất con người</strong> · Thường xuyên = <strong>thỏa mãn tâm sinh lý</strong> · Sớm nhất = <strong>Mẫu hệ</strong></td>
+                <td>Chức năng đặc thù = <strong>tái sản xuất con người</strong> · Thường xuyên = <strong>thỏa mãn tâm sinh lý</strong> · Sớm nhất (đề thi) = <strong>Mẫu hệ</strong> <em>(sơ khai nhất: huyết tộc)</em></td>
               </tr>
             </tbody>
           </table>
@@ -791,8 +791,8 @@
               <tr><td><em>"Học thuyết của Mác là học thuyết vạn năng vì nó là một học thuyết chính xác"</em></td><td><strong>V.I. Lênin</strong> (cũng nói <em>Bộ Tư bản</em> chứng minh CNDVLS thành nguyên lý khoa học)</td></tr>
               <tr><td><em>"GCTS tạo ra vũ khí giết chết mình &amp; người sử dụng vũ khí đó"</em> / <em>"LLSX đồ sộ hơn tất cả các thế hệ trước"</em></td><td><strong>C. Mác &amp; Ph. Ăngghen</strong> — trong <strong>Tuyên ngôn của Đảng Cộng sản (1848)</strong> (<em>người dùng vũ khí = GCCN hiện đại</em>)</td></tr>
               <tr><td>Phát hiện phân chia giai cấp &amp; đấu tranh giai cấp · "Hạt nhân hợp lý" phép biện chứng</td><td><strong>Các nhà sử học tư sản trước Mác</strong> (không phải Mác!) · <strong>Ph. Hêghen</strong></td></tr>
-              <tr><td>Khẩu hiệu công nhân dệt <strong>Lion (Pháp)</strong> năm 1831 &amp; 1834</td><td>Chuyển từ <strong>mục đích kinh tế sang mục đích chính trị</strong></td></tr>
-              <tr><td><strong>"Những cơn đau đẻ kéo dài"</strong> / <strong>"Bắc những nhịp cầu nhỏ"</strong> / <strong>5 thành phần KT nước Nga</strong></td><td><strong>V.I. Lênin</strong> nói về <strong>Thời kỳ quá độ</strong> (đặc biệt quá độ <strong>gián tiếp</strong>)</td></tr>
+              <tr><td>Khẩu hiệu công nhân dệt <strong>Lion (Pháp)</strong> năm 1831 &amp; 1834 <em>(Ch.1 — Điều kiện KT–XH)</em></td><td>Chuyển từ <strong>mục đích kinh tế sang mục đích chính trị</strong></td></tr>
+              <tr><td><strong>"Những cơn đau đẻ kéo dài"</strong> / <strong>"Bắc những chiếc cầu nhỏ... xuyên qua CNTB nhà nước"</strong> / <strong>5 thành phần KT Nga</strong></td><td><strong>C. Mác nêu, V.I. Lênin phát triển</strong> về <strong>Thời kỳ quá độ</strong> (đặc biệt quá độ <strong>gián tiếp</strong>)</td></tr>
               <tr><td>Phân phối <strong>CNXH</strong> vs <strong>CNCS</strong> · <strong>5 hình thái KT–XH</strong></td><td>CNXH: <strong>theo lao động</strong> vs CNCS: <strong>theo nhu cầu</strong> · <strong>XHCN không phải 1 hình thái riêng</strong> (là giai đoạn đầu CSCN)</td></tr>
               <tr><td>Dân chủ là <strong>giá trị XH</strong> vs <strong>hình thái nhà nước</strong> · <em>"Dân chủ quân sự"</em></td><td>Giá trị XH = <strong>phạm trù vĩnh viễn</strong> · Hình thái NN = <strong>phạm trù lịch sử</strong> (mất khi NN tiêu vong) · DC quân sự = <strong>CSNT</strong></td></tr>
               <tr><td><em>"Nước ta là nước dân chủ, địa vị cao nhất là dân, vì dân là chủ"</em></td><td><strong>Chủ tịch Hồ Chí Minh</strong> · Không có nền dân chủ / nhà nước nào của tất cả mọi người!</td></tr>
@@ -849,7 +849,7 @@
           <div class="mini-card">
             <div class="mc-title">c) 3 Tiền đề tư tưởng lý luận</div>
             <ul>
-              <li><strong>Triết học cổ điển Đức:</strong> Ph. Hêghen (1770–1831), L. Phoiơbắc (1804–1879)</li>
+              <li><strong>Triết học cổ điển Đức:</strong> Ph. Hêghen (1770–1831), L. Phoiơbắc (1804–1872)</li>
               <li><strong>KTCT cổ điển Anh:</strong> A. Smith (1723–1790), D. Ricardo (1772–1823)</li>
               <li><strong>CNXH không tưởng phê phán:</strong> Xanh Ximông (1760–1825), S. Phuriê (1772–1837), R. Ôoen (1771–1858)</li>
             </ul>
@@ -888,17 +888,17 @@
               <tr>
                 <td><strong>Trước CM Tháng Mười (1917)</strong></td>
                 <td>V.I. Lênin</td>
-                <td>Chống trào lưu phi mácxít; lý luận <strong>Đảng cách mạng kiểu mới</strong>; hoàn chỉnh lý luận CM XHCN &amp; chuyên chính vô sản; khả năng thắng lợi CM XHCN từ phân tích chủ nghĩa đế quốc; lãnh đạo lật đổ Nga hoàng.</td>
+                <td>Chống trào lưu phi mácxít; lý luận <strong>Đảng cách mạng kiểu mới</strong>; hoàn chỉnh lý luận CM XHCN &amp; chuyên chính vô sản (luận giải bản chất dân chủ, mối quan hệ giữa chức năng thống trị và chức năng xã hội); khả năng thắng lợi CM XHCN từ phân tích chủ nghĩa đế quốc; lãnh đạo lật đổ Nga hoàng.</td>
               </tr>
               <tr>
                 <td><strong>1917 – 1924</strong></td>
                 <td>V.I. Lênin</td>
-                <td>Xây dựng CNXH hiện thực (<strong>Nhà nước Xô-viết 1917</strong>); phát triển luận điểm về: <em>Chuyên chính vô sản</em>, <em>Thời kỳ quá độ chính trị</em>, <em>Chế độ dân chủ</em>, <em>Cải cách hành chính bộ máy nhà nước</em>.</td>
+                <td>Xây dựng CNXH hiện thực (<strong>Nhà nước Xô-viết 1917</strong>, đề xướng <strong>Chính sách kinh tế mới – NEP năm 1921</strong>); phát triển luận điểm về: <em>Chuyên chính vô sản</em>, <em>Thời kỳ quá độ chính trị</em>, <em>Chế độ dân chủ</em>, <em>Cải cách hành chính bộ máy nhà nước</em>.</td>
               </tr>
               <tr>
                 <td><strong>1924 – 1991</strong></td>
                 <td>Phong trào CS quốc tế</td>
-                <td><strong>Hội nghị Mátxcơva 11/1957</strong> &amp; <strong>Hội nghị 81 Đảng CS (1/1960)</strong>; đấu tranh gay gắt chống chủ nghĩa xét lại và chủ nghĩa giáo điều biệt phái.</td>
+                <td>Giai đoạn 1924–1953 gắn với <strong>J. Xtalin</strong>; <strong>Hội nghị Mátxcơva 11/1957</strong> &amp; <strong>Hội nghị 81 Đảng CS (11/1960</strong> — <em>lưu ý PDF Coursera in nhầm 1/1960</em>); đấu tranh chống chủ nghĩa xét lại và giáo điều biệt phái.</td>
               </tr>
               <tr>
                 <td><strong>1991 – nay</strong></td>
@@ -920,10 +920,11 @@
             <p>Phương pháp luận chung: <strong>CNDV biện chứng &amp; CNDV lịch sử</strong>. 4 phương pháp cụ thể:</p>
             <ul>
               <li>Kết hợp <strong>lịch sử và lôgíc</strong></li>
-              <li><strong>Khảo sát và phân tích</strong> chính trị – xã hội cụ thể</li>
-              <li><strong>So sánh</strong> · Các phương pháp <strong>liên ngành</strong></li>
-              <li>Gắn bó trực tiếp với <strong>phương pháp tổng kết thực tiễn</strong></li>
+              <li><strong>Khảo sát và phân tích</strong> về mặt chính trị – xã hội dựa trên các điều kiện KT–XH cụ thể</li>
+              <li>Phương pháp <strong>so sánh</strong></li>
+              <li>Các phương pháp <strong>có tính liên ngành</strong></li>
             </ul>
+            <p class="detail" style="margin-top:4px; font-size:0.84rem; color:var(--muted);">→ Ngoài ra còn gắn bó trực tiếp với <strong>phương pháp tổng kết thực tiễn</strong>.</p>
           </div>
         </div>
         <div class="grid-2 detail">
@@ -940,10 +941,10 @@
         <div class="trap-box">
           <strong>🔥 Trọng tâm đề thi &amp; Bẫy Chương 1 cần thuộc lòng:</strong>
           <ul style="margin:6px 0 0; padding-left:18px;">
-            <li><strong>2 nhóm tiền đề lớn:</strong> (1) Điều kiện KT–XH (đại công nghiệp, GCTS–GCVS, đấu tranh GCVS) và (2) Tiền đề KHTN – Tư tưởng lý luận <em>(bẫy: thành tựu KHTN KHÔNG thuộc điều kiện KT–XH!)</em>.</li>
+            <li><strong>2 nhóm điều kiện – tiền đề lớn:</strong> (1) Điều kiện KT–XH (đại công nghiệp, mâu thuẫn GCTS–GCVS, phong trào đấu tranh GCVS như <strong>công nhân dệt Lion 1831 &amp; 1834</strong> chuyển từ mục đích KT → CT) và (2) Tiền đề KHTN – Tư tưởng lý luận <em>(bẫy: thành tựu KHTN KHÔNG thuộc điều kiện KT–XH!)</em>.</li>
             <li><strong>3 hạn chế của CNXH không tưởng phê phán:</strong> Không phát hiện quy luật vận động XH &amp; CNTB; không chỉ ra lực lượng tiên phong (GCCN); không chỉ ra biện pháp hiện thực hóa → <strong>Học thuyết SMLS toàn thế giới của GCCN</strong> khắc phục triệt để hạn chế này!</li>
             <li><strong>Vai trò từng phát kiến &amp; nguồn gốc:</strong> <em>Giá trị thặng dư</em> khẳng định về mặt <strong>kinh tế</strong> sự diệt vong tất yếu của CNTB; <em>Ph. Hêghen</em> là <strong>"hạt nhân hợp lý"</strong> của phép biện chứng; phát hiện phân chia giai cấp là công lao của <strong>các nhà sử học tư sản trước Mác</strong>.</li>
-            <li><strong>Mốc 1924–nay hay thi:</strong> Mô hình kinh tế mới ở Liên Xô = <strong>NEP</strong>; giai đoạn 1924–1953 chịu ảnh hưởng trực tiếp của <strong>J. Xtalin</strong>; <strong>Cải tổ</strong> (Liên Xô), <strong>Cải cách mở cửa</strong> (Trung Quốc), <strong>Đổi mới</strong> (Việt Nam); Liên Xô &amp; Đông Âu sụp đổ do <strong>vận dụng sai CN Mác–Lênin</strong> (không phải do bản chất học thuyết).</li>
+            <li><strong>Mốc 1917–nay hay thi:</strong> Chính sách/Mô hình kinh tế mới ở Nga Xô-viết/Liên Xô (1921, V.I. Lênin) = <strong>NEP</strong>; giai đoạn 1924–1953 chịu ảnh hưởng trực tiếp của <strong>J. Xtalin</strong>; <strong>Cải tổ</strong> (Liên Xô), <strong>Cải cách mở cửa</strong> (Trung Quốc), <strong>Đổi mới</strong> (Việt Nam); Liên Xô &amp; Đông Âu sụp đổ do <strong>vận dụng sai CN Mác–Lênin</strong> (không phải do bản chất học thuyết).</li>
             <li><strong>Bẫy Phương pháp nghiên cứu:</strong> <strong>KHÔNG có</strong> <em>"phương pháp trừu tượng hóa khoa học"</em> (đó là PP của KTCT Mác–Lênin). <strong>3 chức năng–nhiệm vụ:</strong> trang bị tri thức khoa học, giáo dục lập trường GCCN, định hướng CT–XH.</li>
           </ul>
         </div>
@@ -1055,9 +1056,8 @@
         <ul class="clean-ul">
           <li><strong>3 Đặc điểm lịch sử:</strong> (1) Ra đời <strong>trước giai cấp tư sản</strong> (đầu TK XX), phát triển chậm vì sinh ra ở nước thuộc địa nửa phong kiến; (2) Lực lượng chính trị tiên phong lãnh đạo giải phóng dân tộc; (3) Gắn bó mật thiết với các tầng lớp nhân dân.</li>
           <li><strong>Biến đổi hiện nay:</strong> Tăng nhanh số lượng &amp; chất lượng, đi đầu CNH–HĐH gắn kinh tế tri thức; đa dạng ngành nghề, đội ngũ công nhân khu vực <strong>kinh tế nhà nước giữ vai trò nòng cốt, chủ đạo</strong>; công nhân tri thức &amp; công nhân trẻ là lực lượng chủ đạo; điểm then chốt là xây dựng, chỉnh đốn Đảng trong sạch, vững mạnh.</li>
-          <li><strong>Nội dung SMLS ở VN hiện nay:</strong>
-            <span class="detail"><em>Kinh tế</em> (nguồn nhân lực chủ yếu phát triển KTTT định hướng XHCN, đi đầu CNH–HĐH, liên minh công–nông–trí phát triển nông nghiệp–nông thôn); <em>Chính trị–XH</em> (giữ bản chất GCCN của Đảng, ngăn suy thoái, "tự diễn biến", "tự chuyển hóa"); <em>Văn hóa–TT</em> (nền văn hóa tiên tiến đậm đà bản sắc, cốt lõi là xây dựng con người mới XHCN, tác phong công nghiệp).</span>
-          </li>
+          <li class="detail"><strong>Nội dung SMLS ở VN hiện nay:</strong> <em>Kinh tế</em> (nguồn nhân lực chủ yếu phát triển KTTT định hướng XHCN, đi đầu CNH–HĐH, liên minh công–nông–trí phát triển nông nghiệp–nông thôn); <em>Chính trị–XH</em> (giữ bản chất GCCN của Đảng, ngăn suy thoái, "tự diễn biến", "tự chuyển hóa"); <em>Văn hóa–TT</em> (nền văn hóa tiên tiến đậm đà bản sắc, cốt lõi là xây dựng con người mới XHCN, tác phong công nghiệp).</li>
+          <li class="detail"><strong>Phương hướng xây dựng GCCN VN:</strong> Xây dựng GCCN lớn mạnh, tăng nhanh số lượng, nâng cao chất lượng, cơ cấu phù hợp; ngày càng trí thức hóa, làm chủ KH–CN tiên tiến; thích ứng cơ chế thị trường &amp; hội nhập quốc tế; có tác phong công nghiệp và kỷ luật lao động cao.</li>
         </ul>
         <h4>5 Giải pháp xây dựng GCCN Việt Nam hiện nay</h4>
         <ol class="clean-num">
@@ -1176,7 +1176,7 @@
             <li><strong>5 Hình thái KT–XH:</strong> CSNT → CHNL → PK → TBCN → CSCN (quá trình <strong>lịch sử – tự nhiên</strong>; cấu trúc gồm LLSX + QHSX + KTTT; <strong>bẫy:</strong> <em>Xã hội chủ nghĩa KHÔNG phải 1 hình thái riêng</em> mà là giai đoạn đầu CSCN). Khác biệt về chất của CSCN: <strong>không có giai cấp đối kháng</strong>, ra đời qua <strong>cách mạng vô sản</strong> (bằng bạo lực; con đường <em>hòa bình</em> rất hiếm quý và <em>chưa từng xảy ra</em>).</li>
             <li><strong>Mục đích cao cả nhất của CNXH (V.I. Lênin — 3 ý):</strong> (1) Xóa bỏ phân chia giai cấp, (2) Biến tất cả thành viên thành người lao động, (3) Tiêu diệt cơ sở mọi tình trạng người bóc lột người.</li>
             <li><strong>Nguyên tắc phân phối (cực hay thi!):</strong> <strong>CNXH:</strong> <em>"Làm theo năng lực, hưởng theo <strong>lao động</strong>"</em> (TKQĐ ở VN: theo lao động là chủ đạo + theo đóng góp + quỹ phúc lợi XH) · <strong>CNCS (giai đoạn cao):</strong> <em>"Làm theo năng lực, hưởng theo <strong>nhu cầu</strong>"</em>.</li>
-            <li><strong>Chi tiết Thời kỳ quá độ theo Lênin:</strong> <strong>Quá độ trực tiếp chưa từng diễn ra trên thực tế</strong> (Liên Xô, Đông Âu, VN đều quá độ <em>gián tiếp</em>). Lênin gọi TKQĐ là <strong>"những cơn đau đẻ kéo dài"</strong>, phải <strong>"bắc những nhịp cầu nhỏ"</strong> qua kinh tế tư bản; nước Nga TKQĐ có <strong>5 thành phần kinh tế</strong> (<em>gia trưởng, hàng hóa nhỏ, tư bản, tư bản nhà nước, XHCN</em>). Điều kiện mới của đấu tranh giai cấp = <em>GCCN &amp; NDLĐ đã cầm quyền</em>.</li>
+            <li><strong>Chi tiết Thời kỳ quá độ (C. Mác &amp; V.I. Lênin):</strong> <strong>Quá độ trực tiếp chưa từng diễn ra trên thực tế</strong> (Liên Xô, Đông Âu, VN đều quá độ <em>gián tiếp</em>). TKQĐ được ví như <strong>"những cơn đau đẻ kéo dài"</strong> (C. Mác nêu, V.I. Lênin phát triển); Lênin chỉ rõ quá độ gián tiếp phải <strong>"bắc những chiếc cầu nhỏ vững chắc đi xuyên qua chủ nghĩa tư bản nhà nước"</strong>; nước Nga TKQĐ có <strong>5 thành phần kinh tế</strong> (<em>gia trưởng, hàng hóa nhỏ, tư bản, tư bản nhà nước, XHCN</em>). Điều kiện mới của đấu tranh giai cấp = <em>GCCN &amp; NDLĐ đã cầm quyền</em>.</li>
             <li><strong>Xuất phát điểm &amp; Mốc ĐH XIII ở VN:</strong> Xuất phát từ thuộc địa nửa PK, LLSX thấp, chiến tranh kéo dài; <strong>CM KH–CN &amp; toàn cầu hóa</strong> vừa là thời cơ vừa là thách thức; sở hữu tư nhân TBCN còn tồn tại nhưng <em>không giữ vai trò chủ đạo</em>; <strong>3 mốc ĐH XIII:</strong> <strong>2025</strong> (vượt TB thấp) → <strong>2030</strong> (CN hiện đại, TB cao) → <strong>2045</strong> (phát triển, thu nhập cao).</li>
           </ul>
         </div>
@@ -1225,7 +1225,8 @@
         <h3>II. Nhà nước xã hội chủ nghĩa &amp; Mối quan hệ với Dân chủ XHCN</h3>
         <div class="grid-2">
           <div class="mini-card">
-            <div class="mc-title">Bản chất &amp; 3 cách chia Chức năng NN XHCN</div>
+            <div class="mc-title">Khái niệm, Bản chất &amp; 3 cách chia Chức năng NN XHCN</div>
+            <p class="detail" style="margin-bottom:6px;">Là kiểu nhà nước mà sự thống trị chính trị thuộc về GCCN, do CM XHCN sản sinh ra, có sứ mệnh xây dựng thành công CNXH, đưa NDLĐ lên địa vị làm chủ trên tất cả các mặt.</p>
             <ul>
               <li><strong>Bản chất:</strong> <em>Chính trị</em> (GCCN); <em>Kinh tế</em> (sở hữu XH về TLSX chủ yếu, hết bóc lột); <em>Văn hóa – XH</em> (Mác–Lênin + tinh hoa + bản sắc).</li>
               <li><strong>Theo phạm vi:</strong> Đối nội &amp; đối ngoại.</li>
@@ -1245,7 +1246,8 @@
         <h3>III. Dân chủ XHCN &amp; Nhà nước pháp quyền XHCN ở Việt Nam</h3>
         <ul class="clean-ul">
           <li><strong>Tiến trình:</strong> Chế độ dân chủ nhân dân xác lập sau <strong>CMT8 1945</strong> → <strong>1976</strong> đổi tên CHXHCN VN (hay dùng "làm chủ tập thể XHCN") → <strong>Đại hội VI (1986)</strong> nhấn mạnh phát huy dân chủ.</li>
-          <li><strong>Bản chất DC XHCN ở VN:</strong> Là <em>mục tiêu</em>, <em>bản chất</em>, <em>động lực</em>; gắn với <strong>pháp luật, kỷ luật, kỷ cương</strong>; thực hiện qua <strong>dân chủ gián tiếp và dân chủ trực tiếp</strong>.</li>
+          <li><strong>Bản chất DC XHCN ở VN:</strong> Là <em>mục tiêu</em>, <em>bản chất</em>, <em>động lực</em>; gắn với <strong>pháp luật, kỷ luật, kỷ cương</strong>; thực hiện trong đời sống thực tiễn ở tất cả các cấp, mọi lĩnh vực qua <strong>dân chủ gián tiếp và dân chủ trực tiếp</strong>.</li>
+          <li class="detail"><strong>Quan niệm NN pháp quyền XHCN VN:</strong> Nhà nước thượng tôn pháp luật, đề cao Hiến pháp &amp; pháp luật, tôn trọng quyền lợi và nghĩa vụ công dân; quyền lực nhà nước vừa tập trung thống nhất vừa có phân công, phân cấp rõ ràng tránh lạm quyền.</li>
         </ul>
 
         <h4>6 Đặc điểm của Nhà nước pháp quyền XHCN Việt Nam</h4>
@@ -1336,6 +1338,7 @@
         </div>
 
         <h3>III. Cơ cấu XH – giai cấp &amp; Liên minh ở Việt Nam</h3>
+        <p class="detail" style="margin:4px 0 10px;"><strong>2 đặc điểm nổi bật ở VN:</strong> (1) Biến đổi vừa đảm bảo <strong>tính quy luật phổ biến</strong> vừa mang <strong>tính đặc thù</strong> của xã hội VN; (2) Trong sự biến đổi đó, <strong>vị trí, vai trò của các giai cấp, tầng lớp ngày càng được khẳng định</strong>.</p>
         <div class="grid-2">
           <div class="mini-card">
             <div class="mc-title">Vai trò 4 giai cấp, tầng lớp cơ bản</div>
@@ -1618,7 +1621,7 @@
             <div class="mc-title">1. Biến đổi quy mô &amp; quan hệ</div>
             <ul>
               <li><strong>Gia đình đơn (gia đình hạt nhân)</strong> phổ biến ở cả đô thị &amp; nông thôn; <strong>quy mô thu nhỏ</strong>.</li>
-              <li>Bình đẳng nam nữ, cuộc sống riêng tư được tôn trọng hơn; nhưng xuất hiện ly hôn, gia đình đơn thân, độc thân, áp lực công việc...</li>
+              <li>Bình đẳng nam nữ, cuộc sống riêng tư được tôn trọng hơn; nhưng xuất hiện ly hôn, gia đình đơn thân, độc thân, kết hôn đồng tính, sinh con ngoài giá thú, áp lực công việc...</li>
               <li><strong>3 mô hình chủ gia đình cùng tồn tại:</strong> (1) Người chồng; (2) <strong>Người vợ</strong>; (3) <strong>Cả hai vợ chồng cùng làm chủ</strong>.</li>
             </ul>
           </div>
@@ -1627,7 +1630,7 @@
             <ul>
               <li><strong>Tái sản xuất:</strong> Độ bền hôn nhân phụ thuộc nhiều vào <strong>tâm lý, tình cảm, kinh tế</strong> (không chỉ có con/con trai).</li>
               <li><strong>Kinh tế – tiêu dùng:</strong> Tiến tới <strong>"tiêu dùng sản phẩm do người khác làm ra"</strong> (hàng hóa, dịch vụ xã hội).</li>
-              <li><strong>Giáo dục:</strong> Đầu tư tài chính tăng; hướng đến <strong>kiến thức khoa học hiện đại</strong> để con cái hòa nhập thế giới.</li>
+              <li><strong>Giáo dục:</strong> Đầu tư tài chính tăng; hướng đến <strong>kiến thức khoa học hiện đại</strong> để con cái hòa nhập thế giới <em>(nhưng cũng xuất hiện hiện tượng trẻ em hư, bỏ học sớm, lang thang, tệ nạn...)</em>.</li>
               <li><strong>Tâm sinh lý – tình cảm:</strong> Phụ thuộc hòa hợp tình cảm, đảm bảo hạnh phúc cá nhân chính đáng.</li>
             </ul>
           </div>
@@ -1645,8 +1648,8 @@
           <strong>🔥 Trọng tâm đề thi &amp; Bẫy Chương 7 cần thuộc lòng:</strong>
           <ul style="margin:6px 0 0; padding-left:18px;">
             <li><strong>Quan hệ, Vị trí &amp; Chức năng bổ sung:</strong> <em>Hôn nhân &amp; Huyết thống</em> là 2 quan hệ cơ bản nhất; <strong>Huyết thống</strong> là quan hệ tự nhiên, <strong>gắn kết mạnh mẽ nhất</strong>. Mác–Ăngghen gọi Gia đình (vợ–chồng, cha mẹ–con cái) là <strong>"quan hệ thứ ba"</strong>. Gia đình là tế bào XH vì <em>sản xuất tư liệu tiêu dùng, TLSX &amp; tái sản xuất con người</em> (<strong>KHÔNG</strong> là "bộ phận của làng xã"). Ngoài 4 chức năng cơ bản (<strong>KHÔNG có</strong> <em>chức năng nghề nghiệp</em>; tái sản xuất quyết định mật độ dân cư &amp; nguồn lực LĐ, thực hiện tùy nhu cầu từng nơi), còn có <strong>chức năng văn hóa</strong> &amp; <strong>chức năng chính trị</strong>.</li>
-            <li><strong>Lịch sử Hôn nhân &amp; Giải phóng phụ nữ:</strong> Hình thức gia đình sớm nhất = <strong>Gia đình mẫu hệ</strong>; hôn nhân 1 vợ 1 chồng xuất hiện lần đầu khi <strong>chế độ tư hữu thắng công hữu nguyên thủy</strong>; <strong>nguồn gốc bất bình đẳng nam nữ &amp; thống trị của đàn ông</strong> = <strong>Chế độ tư hữu về TLSX</strong> (kết quả thống trị về kinh tế). <strong>Hồ Chí Minh:</strong> <em>"Nếu không giải phóng phụ nữ là xây dựng CNXH chỉ một nửa"</em>. <strong>Bẫy cơ sở GĐ:</strong> <strong>KHÔNG có</strong> <em>"cơ sở lao động sản xuất"</em>; thiếu cơ sở văn hóa thì xây dựng gia đình sẽ <strong>lệch lạc, không đạt hiệu quả</strong>.</li>
-            <li><strong>Biến đổi sâu sắc ở Gia đình VN hiện nay:</strong> <strong>Gia đình hạt nhân (2 thế hệ)</strong> phổ biến; <strong>thách thức lớn nhất hiện nay</strong> = <strong>mâu thuẫn giữa các thế hệ do khác biệt tuổi tác</strong>. <strong>Chính sách sinh đẻ:</strong> thập niên 70–80 vận động <em>1–2 con</em> → hiện nay khuyến khích <strong>"sinh đủ 2 con"</strong> do <strong>già hóa dân số</strong>! <strong>2 bước chuyển kinh tế GĐ:</strong> tự cấp tự túc → <em>kinh tế hàng hóa</em> &amp; thị trường quốc gia → <em>thị trường toàn cầu</em> (khó khăn hội nhập do <em>quy mô nhỏ, lao động ít, tự sản xuất là chính</em>). <strong>Giáo dục:</strong> tương đồng xưa–nay là <em>hy sinh cá nhân cho cộng đồng</em>, nhưng <strong>vai trò giáo dục của các thành viên trong gia đình đang có xu hướng giảm xuống</strong>. Mục tiêu trực tiếp: gia đình <strong>"no ấm, bình đẳng, tiến bộ, hạnh phúc"</strong> (kế thừa <em>sự cố kết chặt chẽ giữa các thành viên</em>).</li>
+            <li><strong>Lịch sử Hôn nhân &amp; Giải phóng phụ nữ:</strong> Hình thức gia đình sớm nhất (trong nhóm mẫu hệ – phụ hệ – 1 vợ 1 chồng của đề thi) = <strong>Gia đình mẫu hệ</strong> <em>(sơ khai nhất theo Ph. Ăngghen là gia đình huyết tộc → quần hôn mẫu hệ)</em>; hôn nhân 1 vợ 1 chồng xuất hiện lần đầu khi <strong>chế độ tư hữu thắng công hữu nguyên thủy</strong>; <strong>nguồn gốc bất bình đẳng nam nữ &amp; thống trị của đàn ông</strong> = <strong>Chế độ tư hữu về TLSX</strong> (kết quả thống trị về kinh tế). Trong CNXH, chủ trương bảo vệ hôn nhân 1 vợ 1 chồng nhằm <strong>thực hiện bình đẳng trong gia đình, giải phóng phụ nữ</strong>; <strong>Hồ Chí Minh:</strong> <em>"Nếu không giải phóng phụ nữ là xây dựng CNXH chỉ một nửa"</em>. <strong>Bẫy cơ sở GĐ:</strong> <strong>KHÔNG có</strong> <em>"cơ sở lao động sản xuất"</em>; thiếu cơ sở văn hóa thì xây dựng gia đình sẽ <strong>lệch lạc, không đạt hiệu quả</strong>.</li>
+            <li><strong>Biến đổi sâu sắc ở Gia đình VN hiện nay:</strong> <strong>Gia đình hạt nhân (2 thế hệ)</strong> phổ biến; <strong>thách thức lớn nhất hiện nay</strong> = <strong>mâu thuẫn giữa các thế hệ do khác biệt tuổi tác</strong>. <strong>Chính sách sinh đẻ:</strong> thập niên 70–80 vận động <em>1–2 con</em> → hiện nay khuyến khích <strong>"sinh đủ 2 con"</strong> do <strong>già hóa dân số</strong>! <strong>2 bước chuyển kinh tế GĐ:</strong> tự cấp tự túc → <em>kinh tế hàng hóa</em> &amp; thị trường quốc gia → <em>thị trường toàn cầu</em> (khó khăn hội nhập do <em>quy mô nhỏ, lao động ít, tự sản xuất là chính</em>). <strong>Giáo dục:</strong> tương đồng xưa–nay là <em>hy sinh cá nhân cho cộng đồng</em>, nhưng <strong>vai trò giáo dục của các thành viên trong gia đình đang có xu hướng giảm xuống</strong>. Mục tiêu trực tiếp: gia đình <strong>"no ấm, bình đẳng, tiến bộ, hạnh phúc"</strong> (ĐH XIII bổ sung <em>"no ấm, tiến bộ, hạnh phúc, văn minh"</em>; kế thừa <em>sự cố kết chặt chẽ giữa các thành viên</em>).</li>
           </ul>
         </div>
 
@@ -1672,8 +1675,8 @@
 
         <div class="qz-filters" id="allQuizFilters">
           <button class="qz-btn active" data-f="all">Tất cả (100)</button>
-          <button class="qz-btn" data-f="1">Ch.1 (14)</button>
-          <button class="qz-btn" data-f="2">Ch.2 (15)</button>
+          <button class="qz-btn" data-f="1">Ch.1 (15)</button>
+          <button class="qz-btn" data-f="2">Ch.2 (14)</button>
           <button class="qz-btn" data-f="3">Ch.3 (14)</button>
           <button class="qz-btn" data-f="4">Ch.4 (15)</button>
           <button class="qz-btn" data-f="5">Ch.5 (12)</button>
@@ -1717,19 +1720,37 @@
       compactBtn.textContent = c ? '📖 Hiện đầy đủ' : '⚡ Chế độ Siêu gọn';
     });
 
-    // Quiz data & persisted status (id -> 'ok' | 'err')
+    // Quiz data & persisted status (id -> { s: 'ok'|'err', p: number } or legacy 'ok'|'err')
     const KT_QUIZ = window.MLN131_KT_QUIZ || [];
     const QUIZ_KEY = 'mln131_kt_quiz_v1';
     let quizState = {};
-    try { quizState = JSON.parse(localStorage.getItem(QUIZ_KEY) || '{}'); } catch {}
+    try { quizState = JSON.parse(localStorage.getItem(QUIZ_KEY) || '{}') || {}; } catch { quizState = {}; }
 
+    function isQuizOk(id) {
+      const v = quizState[id];
+      return v === 'ok' || (v && v.s === 'ok');
+    }
+    function getQuizEntry(id) {
+      const v = quizState[id];
+      if (!v) return null;
+      if (typeof v === 'string') return { s: v, p: -1 };
+      return v;
+    }
     function saveQuizState() {
-      localStorage.setItem(QUIZ_KEY, JSON.stringify(quizState));
+      try { localStorage.setItem(QUIZ_KEY, JSON.stringify(quizState)); } catch {}
     }
 
     // Chapter mastery tracker
     const DONE_KEY = 'mln131_kt_done_v1';
-    let doneSet = new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]'));
+    let doneSet = new Set();
+    try { doneSet = new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]')); } catch { doneSet = new Set(); }
+    function saveDoneSet() {
+      try { localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet])); } catch {}
+    }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+    }
 
     function renderDone() {
       for (let i = 1; i <= 7; i++) {
@@ -1737,7 +1758,7 @@
         const btn = document.querySelector(`.done-btn[data-done="${i}"]`);
         const td = document.getElementById('td-' + i);
         const chQs = KT_QUIZ.filter(q => q.ch === i);
-        const chOk = chQs.filter(q => quizState[q.id] === 'ok').length;
+        const chOk = chQs.filter(q => isQuizOk(q.id)).length;
         if (btn) {
           btn.classList.toggle('checked', isDone);
           btn.textContent = isDone ? '☑ Đã thuộc' : '☐ Đánh dấu đã thuộc';
@@ -1748,7 +1769,7 @@
           td.textContent = isDone ? '✓' : (chOk > 0 ? `${chOk}/${chQs.length}` : '');
         }
       }
-      const totalOk = KT_QUIZ.filter(q => quizState[q.id] === 'ok').length;
+      const totalOk = KT_QUIZ.filter(q => isQuizOk(q.id)).length;
       const tdQuiz = document.getElementById('td-quiz');
       if (tdQuiz) {
         tdQuiz.textContent = `${totalOk}/${KT_QUIZ.length}`;
@@ -1763,7 +1784,7 @@
     function toggleDone(ch) {
       if (doneSet.has(ch)) doneSet.delete(ch);
       else doneSet.add(ch);
-      localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
+      saveDoneSet();
       renderDone();
     }
 
@@ -1776,7 +1797,7 @@
       return a;
     }
 
-    // Build interactive question cards into a container
+    // Build interactive question cards into a container (restoring persisted visual state)
     function renderQuizCards(container, list, opts) {
       const showChTag = !!(opts && opts.showChTag);
       const onUpdate = opts && opts.onUpdate;
@@ -1790,15 +1811,16 @@
         card.className = 'qz-card';
         const qDiv = document.createElement('div');
         qDiv.className = 'qz-q';
-        qDiv.innerHTML = `${showChTag ? `<span class="qz-ch-tag">Ch.${item.ch}</span>` : ''}Câu ${idx + 1}: ${item.q}`;
+        qDiv.innerHTML = `${showChTag ? `<span class="qz-ch-tag">Ch.${item.ch}</span>` : ''}Câu ${idx + 1}: ${escapeHtml(item.q)}`;
 
         const optsDiv = document.createElement('div');
         optsDiv.className = 'qz-opts';
 
         const expDiv = document.createElement('div');
         expDiv.className = 'qz-exp';
-        expDiv.innerHTML = `<strong>💡 Chốt ý:</strong> ${item.exp}`;
+        expDiv.innerHTML = `<strong>💡 Chốt ý:</strong> ${escapeHtml(item.exp)}`;
 
+        const saved = getQuizEntry(item.id);
         item.options.forEach((optText, oIdx) => {
           const btn = document.createElement('button');
           btn.type = 'button';
@@ -1811,28 +1833,43 @@
             if (isOk) {
               btn.classList.add('correct');
               card.classList.add('is-ok');
-              quizState[item.id] = 'ok';
+              quizState[item.id] = { s: 'ok', p: oIdx };
             } else {
               btn.classList.add('wrong');
               card.classList.add('is-err');
-              quizState[item.id] = 'err';
+              quizState[item.id] = { s: 'err', p: oIdx };
               optsDiv.querySelectorAll('.qz-opt')[item.ans].classList.add('correct');
             }
             optsDiv.querySelectorAll('.qz-opt').forEach(b => b.disabled = true);
             expDiv.classList.add('show');
             saveQuizState();
 
-            // Auto-check chapter mastered if all questions of this chapter are 'ok'
             const chQs = KT_QUIZ.filter(q => q.ch === item.ch);
-            if (chQs.length && chQs.every(q => quizState[q.id] === 'ok')) {
+            if (chQs.length && chQs.every(q => isQuizOk(q.id))) {
               doneSet.add(item.ch);
-              localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
+              saveDoneSet();
             }
             renderDone();
-            if (onUpdate) onUpdate();
+            if (onUpdate) onUpdate(item.ch);
           });
           optsDiv.appendChild(btn);
         });
+
+        if (saved) {
+          card.dataset.answered = '1';
+          const optBtns = optsDiv.querySelectorAll('.qz-opt');
+          optBtns.forEach(b => b.disabled = true);
+          if (optBtns[item.ans]) optBtns[item.ans].classList.add('correct');
+          if (saved.s === 'ok') {
+            card.classList.add('is-ok');
+          } else {
+            card.classList.add('is-err');
+            if (saved.p >= 0 && optBtns[saved.p] && saved.p !== item.ans) {
+              optBtns[saved.p].classList.add('wrong');
+            }
+          }
+          expDiv.classList.add('show');
+        }
 
         card.appendChild(qDiv);
         card.appendChild(optsDiv);
@@ -1848,7 +1885,6 @@
       if (!sec) continue;
       const chQs = KT_QUIZ.filter(q => q.ch === ch);
 
-      // Add quick jump button to chapter header
       const chHdr = sec.querySelector('.ch-header');
       const doneBtn = chHdr ? chHdr.querySelector('.done-btn') : null;
       if (chHdr && doneBtn) {
@@ -1867,7 +1903,6 @@
         actions.appendChild(doneBtn);
       }
 
-      // Build post-reading quiz box right before ch-footer
       const qBox = document.createElement('div');
       qBox.className = 'ch-quiz-box';
       qBox.id = 'quiz-ch-' + ch;
@@ -1891,7 +1926,7 @@
       else sec.appendChild(qBox);
 
       const updateChStat = () => {
-        const ok = chQs.filter(q => quizState[q.id] === 'ok').length;
+        const ok = chQs.filter(q => isQuizOk(q.id)).length;
         const st = document.getElementById('qz-stat-' + ch);
         if (st) st.textContent = `Đúng: ${ok} / ${chQs.length}`;
       };
@@ -1900,7 +1935,9 @@
         updateChStat();
         renderQuizCards(document.getElementById('qz-list-' + ch), list, {
           showChTag: false,
-          onUpdate: updateChStat
+          onUpdate: () => {
+            updateChStat();
+          }
         });
       };
 
@@ -1909,11 +1946,13 @@
 
       document.getElementById('qz-shuf-' + ch).onclick = () => renderCh(shuffleArr(chQs));
       document.getElementById('qz-wrong-' + ch).onclick = () => {
-        renderCh(chQs.filter(q => quizState[q.id] !== 'ok'));
+        renderCh(chQs.filter(q => !isQuizOk(q.id)));
       };
       document.getElementById('qz-reset-' + ch).onclick = () => {
         chQs.forEach(q => delete quizState[q.id]);
+        doneSet.delete(ch);
         saveQuizState();
+        saveDoneSet();
         renderDone();
         renderCh(chQs);
       };
@@ -1925,7 +1964,7 @@
     function renderAllQuiz() {
       let pool = KT_QUIZ.slice();
       if (allFilter === 'todo') {
-        pool = pool.filter(q => quizState[q.id] !== 'ok');
+        pool = pool.filter(q => !isQuizOk(q.id));
       } else if (allFilter !== 'all') {
         const chNum = parseInt(allFilter, 10);
         pool = pool.filter(q => q.ch === chNum);
@@ -1933,12 +1972,9 @@
       if (allShuffled) pool = shuffleArr(pool);
       renderQuizCards(document.getElementById('allQuizList'), pool, {
         showChTag: allFilter === 'all' || allFilter === 'todo',
-        onUpdate: () => {
-          for (let c = 1; c <= 7; c++) {
-            const chQs = KT_QUIZ.filter(q => q.ch === c);
-            const ok = chQs.filter(q => quizState[q.id] === 'ok').length;
-            const st = document.getElementById('qz-stat-' + c);
-            if (st) st.textContent = `Đúng: ${ok} / ${chQs.length}`;
+        onUpdate: (changedCh) => {
+          if (changedCh && chapterQuizRenderers[changedCh]) {
+            chapterQuizRenderers[changedCh](KT_QUIZ.filter(q => q.ch === changedCh));
           }
         }
       });
@@ -1959,7 +1995,9 @@
     });
     document.getElementById('allResetBtn').addEventListener('click', () => {
       quizState = {};
+      doneSet.clear();
       saveQuizState();
+      saveDoneSet();
       renderDone();
       for (let c = 1; c <= 7; c++) {
         if (chapterQuizRenderers[c]) chapterQuizRenderers[c](KT_QUIZ.filter(q => q.ch === c));
@@ -1969,12 +2007,18 @@
     });
 
     renderDone();
-    renderAllQuiz();
 
-    // Instant highlight search (safe DOM text-node walker so event handlers stay intact)
+    // Instant highlight search (safe DOM text-node walker excluding hidden quiz answers & compact-hidden detail)
     const searchInput = document.getElementById('searchInput');
     const rootEl = document.getElementById('contentRoot');
+    const noMatchBanner = document.createElement('div');
+    noMatchBanner.className = 'memo-box';
+    noMatchBanner.style.display = 'none';
+    noMatchBanner.innerHTML = '<strong class="lbl">🔍 Không tìm thấy kết quả:</strong> Không có mục kiến thức nào khớp từ khóa bạn nhập. Hãy thử từ khóa ngắn gọn hơn.';
+    rootEl.insertBefore(noMatchBanner, rootEl.firstChild);
+
     function clearMarks() {
+      noMatchBanner.style.display = 'none';
       rootEl.querySelectorAll('mark.hl').forEach(m => {
         const parent = m.parentNode;
         parent.replaceChild(document.createTextNode(m.textContent), m);
@@ -1985,15 +2029,20 @@
       clearMarks();
       const q = searchInput.value.trim();
       if (q.length < 2) {
-        goPage(currentPage, true);
+        goPage(currentPage, true, true);
         return;
       }
+      const isCompact = document.body.classList.contains('compact');
       const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
       const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
       const nodes = [];
       let n;
       while ((n = walker.nextNode())) {
-        if (n.parentElement && !['SCRIPT', 'STYLE', 'BUTTON'].includes(n.parentElement.tagName) && re.test(n.nodeValue)) {
+        const el = n.parentElement;
+        if (!el || ['SCRIPT', 'STYLE', 'BUTTON'].includes(el.tagName)) continue;
+        if (el.closest('#quiz-tong-hop') || el.closest('.ch-quiz-box') || el.closest('.page-pager')) continue;
+        if (isCompact && el.closest('.detail')) continue;
+        if (re.test(n.nodeValue)) {
           nodes.push(n);
         }
         re.lastIndex = 0;
@@ -2013,12 +2062,18 @@
         if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
         node.parentNode.replaceChild(frag, node);
       });
+      let matchCount = 0;
       sections.forEach(s => {
         const hasMatch = s.querySelector('mark.hl') !== null;
         s.classList.toggle('active-page', hasMatch);
+        if (hasMatch) matchCount++;
       });
-      const first = rootEl.querySelector('mark.hl');
-      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (matchCount === 0) {
+        noMatchBanner.style.display = 'block';
+      } else {
+        const first = rootEl.querySelector('mark.hl');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
 
     // Strict Chapter-by-Chapter Single Page Switcher
@@ -2037,7 +2092,8 @@
       'quiz-tong-hop': '📝 Tổng ôn Quiz 100 câu'
     };
 
-    let savedPage = localStorage.getItem('mln131_active_page') || 'tong-hop';
+    let savedPage = 'tong-hop';
+    try { savedPage = localStorage.getItem('mln131_active_page') || 'tong-hop'; } catch {}
     if (!pageIds.includes(savedPage) || savedPage === 'quiz-tong-hop') savedPage = 'tong-hop';
     let currentPage = savedPage;
 
@@ -2054,15 +2110,21 @@
       sec.appendChild(pager);
     });
 
-    function goPage(pid, keepScroll) {
+    function goPage(pid, keepScroll, fromSearchOrInit) {
       if (!pageIds.includes(pid)) pid = 'tong-hop';
+      if (!fromSearchOrInit && searchInput.value) {
+        searchInput.value = '';
+        clearMarks();
+      }
       sections.forEach(s => s.classList.toggle('active-page', s.id === pid));
       currentPage = pid;
       if (pid !== 'quiz-tong-hop') {
-        localStorage.setItem('mln131_active_page', pid);
+        try { localStorage.setItem('mln131_active_page', pid); } catch {}
       }
-      if (history.replaceState) {
-        history.replaceState(null, '', '#' + pid);
+      if (fromSearchOrInit) {
+        if (history.replaceState) history.replaceState(null, '', '#' + pid);
+      } else if (location.hash !== '#' + pid) {
+        if (history.pushState) history.pushState(null, '', '#' + pid);
       }
       if (window.syncGnavTabs) window.syncGnavTabs();
       document.querySelectorAll('[data-page]').forEach(a => {
@@ -2075,17 +2137,13 @@
     document.querySelectorAll('[data-page]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
-        if (searchInput.value) {
-          searchInput.value = '';
-          clearMarks();
-        }
         goPage(a.dataset.page);
       });
     });
 
     window.addEventListener('hashchange', () => {
       const h = location.hash.replace('#', '');
-      if (h && pageIds.includes(h)) goPage(h);
+      if (h && pageIds.includes(h)) goPage(h, false, true);
     });
 
     window.addEventListener('scroll', () => {
@@ -2094,9 +2152,9 @@
 
     const hashId = location.hash.replace('#', '');
     if (hashId && pageIds.includes(hashId)) {
-      goPage(hashId, true);
+      goPage(hashId, true, true);
     } else {
-      goPage(currentPage, true);
+      goPage(currentPage, true, true);
     }
   </script>
 </body>

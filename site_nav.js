@@ -19,18 +19,22 @@
   const isHub = !isVnr && !isMln;
 
   // Remember last visited page per subject & overall
-  if (!isHub) {
-    localStorage.setItem('hub_last_page', path);
-    localStorage.setItem(isVnr ? 'hub_last_vnr' : 'hub_last_mln', path);
-  }
+  try {
+    if (!isHub) {
+      localStorage.setItem('hub_last_page', path);
+      localStorage.setItem(isVnr ? 'hub_last_vnr' : 'hub_last_mln', path);
+    }
+    if (localStorage.getItem('lsd_dark') === '1') {
+      document.body.classList.add('dark');
+    }
+  } catch {}
 
-  // Apply persisted dark mode immediately
-  if (localStorage.getItem('lsd_dark') === '1') {
-    document.body.classList.add('dark');
-  }
-
-  const lastVnr = localStorage.getItem('hub_last_vnr') || 'vnr202_kienthuc.html';
-  const lastMln = localStorage.getItem('hub_last_mln') || 'mln131_kienthuc.html';
+  let lastVnr = 'vnr202_kienthuc.html';
+  let lastMln = 'mln131_kienthuc.html';
+  try {
+    lastVnr = localStorage.getItem('hub_last_vnr') || lastVnr;
+    lastMln = localStorage.getItem('hub_last_mln') || lastMln;
+  } catch {}
 
   const css = `
     html { overflow-x: visible !important; }
@@ -217,6 +221,6 @@
     document.body.classList.toggle('dark');
     const isDark = document.body.classList.contains('dark');
     tBtn.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem('lsd_dark', isDark ? '1' : '0');
+    try { localStorage.setItem('lsd_dark', isDark ? '1' : '0'); } catch {}
   });
 })();

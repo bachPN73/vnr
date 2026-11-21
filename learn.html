@@ -665,6 +665,7 @@
     function getP(id) { return PROG[id] || { state: 0, streak: 0, misses: 0 }; }
 
     function switchView(id) {
+      clearTimeout(autoTimer);
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       document.getElementById('homeBtn').style.display = id === 'view-dash' ? 'none' : 'inline-block';
@@ -929,7 +930,9 @@
         const body = o.replace(/^[A-Fa-f][\.\)]\s*/, '').trim();
         return { origLetter: origL, text: body, isCorrect: card.letters.includes(origL) };
       });
-      const hasPosRef = rawOpts.some(o => /\bcả\s+[a-d]\b|\bđều\s+(đúng|sai)\b|\btất\s+cả\s+(trên|các\s+đáp\s+án)\b|\ba\s+và\s+b\b/i.test(o.text));
+      const hasPosRef = rawOpts.some(o =>
+        /(?:^|[^\p{L}\p{N}_])(?:cả\s+[a-f]|[a-f]\s*(?:,|và|&)\s*[a-f]\s+đều|tất\s*cả(?:\s+các)?(?:\s+(?:đáp|phương)\s+án)?\s+(?:đều|trên)|đều\s+(?:đúng|sai)|các\s+(?:đáp|phương)\s+án\s+(?:trên|trả\s+lời\s+đều))(?=$|[^\p{L}\p{N}_])/iu.test(o.text)
+      );
       const doShuffle = document.getElementById('shuffleOptsChk').checked && !hasPosRef;
       const ordered = doShuffle ? shuffleArr(rawOpts) : rawOpts;
       const keys = ['A', 'B', 'C', 'D', 'E', 'F'];
