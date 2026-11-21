@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>MLN131 — Hệ Thống Kiến Thức Đầy Đủ 7 Chương (Clean &amp; Dễ Nhớ)</title>
+  <style>
+    :root {
+      --bg: #f6f8fa;
+      --card: #ffffff;
+      --soft: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --primary: #0f766e;
+      --primary-soft: #ecfdf5;
+      --primary-border: #99f6e4;
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
+      --blue: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --ok: #15803d;
+      --ok-soft: #dcfce7;
+      --shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+    }
+    body.dark {
+      --bg: #081014;
+      --card: #0f1b20;
+      --soft: #15252c;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #1e323b;
+      --primary: #2dd4bf;
+      --primary-soft: #0b2928;
+      --primary-border: #115e59;
+      --amber: #fbbf24;
+      --amber-soft: #2e1f05;
+      --blue: #60a5fa;
+      --blue-soft: #0f1f3d;
+      --ok: #4ade80;
+      --ok-soft: #052e16;
+      --shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Topbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .topbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+    .nav-pill {
+      text-decoration: none;
+      color: var(--text);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-pill:hover { border-color: var(--primary); color: var(--primary); }
+    .nav-pill.cta {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    body.dark .nav-pill.cta { color: #042f2e; }
+
+    .tools {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      padding: 6px 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.88rem;
+      width: 210px;
+    }
+    .mode-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .mode-btn.active {
+      background: var(--amber-soft);
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--text);
+      border-radius: 8px;
+      min-width: 36px;
+      min-height: 36px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* Mobile horizontal jump bar */
+    .mobile-jump {
+      display: none;
+      gap: 6px;
+      padding: 0 12px 9px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .mobile-jump::-webkit-scrollbar { display: none; }
+    .mj-chip {
+      text-decoration: none;
+      color: var(--muted);
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .mj-chip:hover { color: var(--primary); border-color: var(--primary); }
+
+    /* Shell Layout */
+    .shell {
+      max-width: 1200px;
+      margin: 20px auto 64px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* Sticky Sidebar TOC */
+    aside.toc {
+      position: sticky;
+      top: 74px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+    }
+    .toc-head {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .toc-prog {
+      height: 5px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .toc-prog-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.2s;
+    }
+    .toc a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 7px 9px;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .toc a:hover, .toc a.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .toc-done { font-size: 0.78rem; color: var(--ok); }
+
+    /* Content Column */
+    .content { min-width: 0; }
+
+    /* Chapter Section Card */
+    section.chapter {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 26px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 78px;
+    }
+    .ch-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .ch-kicker {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .ch-header h2 {
+      margin: 0;
+      font-size: 1.32rem;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .done-btn {
+      border: 1px solid var(--border);
+      background: var(--soft);
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .done-btn.checked {
+      background: var(--ok-soft);
+      border-color: var(--ok);
+      color: var(--ok);
+    }
+
+    /* Quick Memory Box */
+    .memo-box {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin-bottom: 18px;
+      font-size: 0.91rem;
+    }
+    .memo-box strong.lbl { color: var(--primary); }
+
+    .trap-box {
+      background: var(--amber-soft);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--amber);
+      border-radius: 10px;
+      padding: 11px 14px;
+      margin: 12px 0;
+      font-size: 0.89rem;
+    }
+
+    /* Subheadings */
+    h3 {
+      font-size: 1.06rem;
+      color: var(--primary);
+      margin: 22px 0 10px;
+      padding-left: 10px;
+      border-left: 3.5px solid var(--primary);
+    }
+    h4 {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin: 14px 0 6px;
+    }
+
+    /* Clean Grid Cards inside Chapter */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 10px 0 14px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+    .mini-card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      font-size: 0.91rem;
+    }
+    .mini-card .mc-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 5px;
+      font-size: 0.92rem;
+    }
+    .mini-card p { margin: 0; }
+    .mini-card ul { margin: 4px 0 0; padding-left: 17px; }
+
+    /* Numbered Clean Pills List */
+    ol.clean-num {
+      list-style: none;
+      counter-reset: item;
+      padding: 0;
+      margin: 8px 0 14px;
+      display: grid;
+      gap: 7px;
+    }
+    ol.clean-num li {
+      counter-increment: item;
+      position: relative;
+      padding: 9px 12px 9px 40px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+    ol.clean-num li::before {
+      content: counter(item);
+      position: absolute;
+      left: 10px;
+      top: 9px;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    body.dark ol.clean-num li::before { color: #042f2e; }
+
+    ul.clean-ul {
+      margin: 6px 0 12px;
+      padding-left: 20px;
+    }
+    ul.clean-ul li { margin-bottom: 5px; font-size: 0.93rem; }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--primary-soft); color: var(--primary); font-weight: 800; }
+    tr:nth-child(even) td { background: rgba(148, 163, 184, 0.04); }
+
+    .kw {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    mark.hl { background: #fde047; color: #0f172a; padding: 0 2px; border-radius: 3px; }
+
+    /* Compact / Speed-Review Mode hides long detail paragraphs */
+    body.compact .detail { display: none !important; }
+    body.compact section.chapter { padding: 18px 20px; }
+
+    .ch-footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .top-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 20px;
+      z-index: 45;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--primary);
+      font-size: 1.15rem;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .top-btn.show { display: flex; }
+
+    @media (max-width: 900px) {
+      .shell { grid-template-columns: 1fr; margin-top: 12px; padding: 0 10px 64px; }
+      aside.toc { display: none; }
+      .mobile-jump { display: flex; }
+      section.chapter { padding: 16px 14px; border-radius: 13px; scroll-margin-top: 124px; }
+      .ch-header h2 { font-size: 1.12rem; }
+      .topbar { padding: 9px 12px; gap: 7px; }
+      .brand-row { width: 100%; justify-content: space-between; }
+      .tools { width: 100%; }
+      .search-box { flex: 1; width: auto; font-size: 16px; min-height: 38px; }
+      table { font-size: 0.83rem; }
+      th, td { padding: 7px 8px; min-width: 85px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand-row">
+        <div class="brand">📘 MLN131 · KIẾN THỨC 7 CHƯƠNG</div>
+        <div style="display:flex; gap:6px;">
+          <a class="nav-pill" href="index.html">← VNR202</a>
+          <a class="nav-pill cta" href="mln131.html">📗 Luyện Quizlet (432)</a>
+        </div>
+      </div>
+      <div class="tools">
+        <input id="searchInput" class="search-box" type="search" placeholder="Tìm khái niệm, đặc trưng..." />
+        <button id="compactBtn" class="mode-btn" title="Ẩn bớt diễn giải dài, chỉ giữ khung từ khóa để ôn gấp">⚡ Chế độ Siêu gọn</button>
+        <button id="themeBtn" class="icon-btn" title="Sáng / Tối">🌙</button>
+      </div>
+    </div>
+    <nav class="mobile-jump">
+      <a class="mj-chip" href="#tong-hop">⚡ Tổng hợp số</a>
+      <a class="mj-chip" href="#chuong-1">Ch.1 Nhập môn</a>
+      <a class="mj-chip" href="#chuong-2">Ch.2 Công nhân</a>
+      <a class="mj-chip" href="#chuong-3">Ch.3 CNXH &amp; TKQĐ</a>
+      <a class="mj-chip" href="#chuong-4">Ch.4 Dân chủ &amp; NN</a>
+      <a class="mj-chip" href="#chuong-5">Ch.5 Cơ cấu &amp; LM</a>
+      <a class="mj-chip" href="#chuong-6">Ch.6 Dân tộc &amp; TG</a>
+      <a class="mj-chip" href="#chuong-7">Ch.7 Gia đình</a>
+    </nav>
+  </header>
+
+  <div class="shell">
+    <!-- STICKY SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-head">
+        <span>Mục lục 7 Chương</span>
+        <span id="progText">0/7</span>
+      </div>
+      <div class="toc-prog"><div id="progFill" class="toc-prog-fill"></div></div>
+      <a href="#tong-hop"><span>⚡ Bảng Con số &amp; Cặp dễ nhầm</span></a>
+      <a href="#chuong-1" data-ch="1"><span>Ch.1 · Nhập môn CNXHKH</span><span class="toc-done" id="td-1"></span></a>
+      <a href="#chuong-2" data-ch="2"><span>Ch.2 · Sứ mệnh LS GCCN</span><span class="toc-done" id="td-2"></span></a>
+      <a href="#chuong-3" data-ch="3"><span>Ch.3 · CNXH &amp; Thời kỳ QĐ</span><span class="toc-done" id="td-3"></span></a>
+      <a href="#chuong-4" data-ch="4"><span>Ch.4 · Dân chủ &amp; Nhà nước</span><span class="toc-done" id="td-4"></span></a>
+      <a href="#chuong-5" data-ch="5"><span>Ch.5 · Cơ cấu &amp; Liên minh</span><span class="toc-done" id="td-5"></span></a>
+      <a href="#chuong-6" data-ch="6"><span>Ch.6 · Dân tộc &amp; Tôn giáo</span><span class="toc-done" id="td-6"></span></a>
+      <a href="#chuong-7" data-ch="7"><span>Ch.7 · Vấn đề Gia đình</span><span class="toc-done" id="td-7"></span></a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content" id="contentRoot">
+
+      <!-- SECTION 0: CHEAT SHEET NUMBERS & CONFUSABLE PAIRS -->
+      <section class="chapter" id="tong-hop">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">TỔNG HỢP SIÊU NHANH · 3 FILE PDF COURSERA</span>
+            <h2>⚡ Bảng "Con số biết nói" &amp; Các cặp dễ nhầm toàn môn MLN131</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Chương</th><th>Các con số &amp; Khung cốt lõi phải thuộc lòng</th><th>Cặp dễ nhầm hay ra đề</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ch.1</strong></td>
+                <td><strong>2</strong> nghĩa (rộng/hẹp) · <strong>3</strong> tiền đề KHTN · <strong>3</strong> tiền đề tư tưởng · <strong>3</strong> phát kiến vĩ đại · <strong>4</strong> phương pháp NC (+ tổng kết thực tiễn)</td>
+                <td>Môn học nghiên cứu theo <strong>nghĩa hẹp</strong> (1 trong 3 bộ phận CN Mác-Lênin)</td>
+              </tr>
+              <tr>
+                <td><strong>Ch.2</strong></td>
+                <td><strong>2</strong> phương diện GCCN · <strong>3</strong> đặc điểm · <strong>3</strong> nội dung SMLS · <strong>2</strong> ĐK khách quan &amp; <strong>2</strong> ĐK chủ quan · <strong>5</strong> giải pháp ở VN</td>
+                <td><em>KT–XH</em> (công cụ công nghiệp) vs <em>CT–XH</em> (không sở hữu TLSX, bán sức LĐ)</td>
+              </tr>
+              <tr>
+                <td><strong>Ch.3</strong></td>
+                <td><strong>4</strong> góc độ tiếp cận · <strong>6</strong> đặc trưng CNXH · <strong>2</strong> loại quá độ · <strong>4</strong> đặc điểm TKQĐ · <strong>4</strong> nội dung "bỏ qua TBCN" · <strong>8</strong> đặc trưng &amp; <strong>8</strong> phương hướng VN</td>
+                <td><em>Quá độ trực tiếp</em> (từ CNTB phát triển) vs <em>Gián tiếp</em> (chưa qua CNTB phát triển — như VN)</td>
+              </tr>
+              <tr>
+                <td><strong>Ch.4</strong></td>
+                <td><strong>3</strong> phương diện Mác-Lênin + <strong>2</strong> quan điểm HCM · <strong>3</strong> nền dân chủ · <strong>6</strong> đặc điểm NN pháp quyền VN · <strong>5</strong> giải pháp DC + <strong>4</strong> giải pháp NN</td>
+                <td>3 nền DC: <em>Chủ nô – Tư sản – XHCN</em> · 3 căn cứ chức năng NN: <em>phạm vi / lĩnh vực / tính chất</em></td>
+              </tr>
+              <tr>
+                <td><strong>Ch.5</strong></td>
+                <td><strong>3</strong> quy luật biến đổi cơ cấu XH-GC · <strong>4</strong> giai tầng cơ bản ở VN (Công–Nông–Trí–Doanh nhân) · <strong>3</strong> nội dung liên minh · <strong>5</strong> phương hướng</td>
+                <td>Cơ cấu XH–GC giữ vị trí <strong>quan trọng hàng đầu</strong>; bị quy định bởi <strong>cơ cấu kinh tế</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ch.6</strong></td>
+                <td>Dân tộc: Rộng <strong>5</strong> / Hẹp <strong>3</strong> · <strong>2</strong> xu hướng · <strong>3</strong> nội dung Cương lĩnh · <strong>6</strong> đặc điểm DT VN · Tôn giáo: <strong>3</strong> nguồn gốc · <strong>3</strong> tính chất · <strong>4</strong> nguyên tắc · <strong>5</strong> đặc điểm &amp; <strong>5</strong> chính sách</td>
+                <td>Dân tộc <em>Nation</em> (<strong>5</strong> ĐT) vs <em>Ethnie</em> (<strong>3</strong> ĐT) · Cốt lõi công tác tôn giáo = <strong>vận động quần chúng</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ch.7</strong></td>
+                <td><strong>3</strong> quan hệ · <strong>3</strong> vị trí · <strong>4</strong> chức năng cơ bản · <strong>4</strong> cơ sở xây dựng GĐ · <strong>3</strong> nguyên tắc hôn nhân tiến bộ · <strong>4</strong> phương hướng GĐ VN</td>
+                <td>Chức năng đặc thù = <strong>tái sản xuất con người</strong> · Thường xuyên = <strong>thỏa mãn tâm sinh lý</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 1 ================= -->
+      <section class="chapter" id="chuong-1">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 1</span>
+            <h2>Nhập môn Chủ nghĩa xã hội khoa học</h2>
+          </div>
+          <button class="done-btn" data-done="1" onclick="toggleDone(1)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> CNXHKH (nghĩa hẹp) ra đời những năm 40 TK XIX từ điều kiện KT–XH + 3 tiền đề KHTN + 3 tiền đề tư tưởng; đánh dấu bằng <strong>Tuyên ngôn của Đảng Cộng sản (1848)</strong>; V.I.Lênin biến thành hiện thực năm <strong>1917</strong>.
+        </div>
+
+        <h3>I. Sự ra đời của Chủ nghĩa xã hội khoa học</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Theo nghĩa rộng</div>
+            <p>Là <strong>Chủ nghĩa Mác – Lênin</strong>, luận giải từ các giác độ triết học, kinh tế học chính trị và chính trị – xã hội về sự chuyển biến tất yếu của xã hội loài người từ CNTB lên CNXH và CNCS.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Theo nghĩa hẹp (Phạm vi môn học)</div>
+            <p>Là <strong>một trong ba bộ phận hợp thành</strong> chủ nghĩa Mác – Lênin: <em>Triết học</em>, <em>Kinh tế chính trị</em> và <em>Chủ nghĩa xã hội khoa học</em>.</p>
+          </div>
+        </div>
+
+        <h4>1. Hoàn cảnh lịch sử ra đời</h4>
+        <div class="grid-3">
+          <div class="mini-card">
+            <div class="mc-title">a) Điều kiện kinh tế – xã hội</div>
+            <p>Những năm 40 thế kỷ XIX, cuộc đấu tranh của giai cấp vô sản chống giai cấp tư sản phát triển mạnh mẽ → đòi hỏi bức thiết có một hệ thống lý luận soi đường và cương lĩnh chính trị làm kim chỉ nam.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">b) 3 Tiền đề khoa học tự nhiên</div>
+            <ul>
+              <li><strong>Học thuyết tiến hóa</strong></li>
+              <li><strong>Định luật bảo toàn và chuyển hóa năng lượng</strong></li>
+              <li><strong>Học thuyết tế bào</strong></li>
+            </ul>
+            <p class="detail" style="margin-top:6px; font-size:0.84rem; color:var(--muted);">→ Cơ sở phương pháp luận cho CNDV biện chứng và CNDV lịch sử.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">c) 3 Tiền đề tư tưởng lý luận</div>
+            <ul>
+              <li><strong>Triết học cổ điển Đức:</strong> Ph. Hêghen (1770–1831), L. Phoiơbắc (1804–1879)</li>
+              <li><strong>KTCT cổ điển Anh:</strong> A. Smith (1723–1790), D. Ricardo (1772–1823)</li>
+              <li><strong>CNXH không tưởng phê phán:</strong> Xanh Ximông (1760–1825), S. Phuriê (1772–1837), R. Ôoen (1771–1858)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>2. Vai trò của C. Mác và Ph. Ăngghen</h4>
+        <ul class="clean-ul">
+          <li><strong>Chuyển biến lập trường (1843–1848):</strong> Chuyển biến dứt khoát, kiên định lập trường triết học và lập trường chính trị (từ duy tâm sang duy vật; từ dân chủ cách mạng sang cộng sản chủ nghĩa).</li>
+          <li><strong>Ba phát kiến vĩ đại:</strong> (1) <span class="kw">Chủ nghĩa duy vật lịch sử</span>; (2) <span class="kw">Học thuyết về giá trị thặng dư</span>; (3) <span class="kw">Học thuyết về sứ mệnh lịch sử toàn thế giới của giai cấp công nhân</span>.</li>
+          <li><strong>Tuyên ngôn của Đảng Cộng sản (đánh dấu sự ra đời CNXHKH)</strong> — 4 luận điểm tiêu biểu:
+            <ol class="clean-num detail">
+              <li>Giai cấp công nhân không thể tự giải phóng mình nếu không đồng thời giải phóng vĩnh viễn xã hội khỏi phân chia giai cấp, áp bức, bóc lột dưới sự lãnh đạo của Đảng Cộng sản.</li>
+              <li>Sự sụp đổ của CNTB và sự thắng lợi của CNXH là tất yếu như nhau.</li>
+              <li>Giai cấp công nhân có sứ mệnh lịch sử thủ tiêu CNTB, là lực lượng tiên phong xây dựng CNXH, CNCS.</li>
+              <li>Những người cộng sản cần thiết lập liên minh giai cấp và tiến hành cách mạng không ngừng với chiến lược, sách lược khôn khéo, kiên quyết.</li>
+            </ol>
+          </li>
+        </ul>
+
+        <h3>II. Các giai đoạn phát triển cơ bản của CNXHKH</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Giai đoạn</th><th>Chủ thể</th><th>Nội dung phát triển cốt lõi</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1848 – Công xã Pari (1871)</strong></td>
+                <td>C. Mác &amp; Ph. Ăngghen</td>
+                <td>Đập tan bộ máy nhà nước tư sản, thiết lập <strong>chuyên chính vô sản</strong>; cách mạng không ngừng kết hợp vô sản với nông dân; <strong>liên minh công – nông</strong> là điều kiện tiên quyết.</td>
+              </tr>
+              <tr>
+                <td><strong>Sau 1871 – 1895</strong></td>
+                <td>C. Mác &amp; Ph. Ăngghen</td>
+                <td>Đập tan bộ máy nhà nước <strong>quan liêu</strong> (không đập tan toàn bộ bộ máy nhà nước tư sản nói chung); thừa nhận <strong>Công xã Pari</strong> là hình thái nhà nước của GCCN; yêu cầu bổ sung phù hợp điều kiện lịch sử mới.</td>
+              </tr>
+              <tr>
+                <td><strong>Trước CM Tháng Mười (1917)</strong></td>
+                <td>V.I. Lênin</td>
+                <td>Chống trào lưu phi mácxít; lý luận <strong>Đảng cách mạng kiểu mới</strong>; hoàn chỉnh lý luận CM XHCN &amp; chuyên chính vô sản; khả năng thắng lợi CM XHCN từ phân tích chủ nghĩa đế quốc; lãnh đạo lật đổ Nga hoàng.</td>
+              </tr>
+              <tr>
+                <td><strong>1917 – 1924</strong></td>
+                <td>V.I. Lênin</td>
+                <td>Xây dựng CNXH hiện thực (<strong>Nhà nước Xô-viết 1917</strong>); phát triển luận điểm về: <em>Chuyên chính vô sản</em>, <em>Thời kỳ quá độ chính trị</em>, <em>Chế độ dân chủ</em>, <em>Cải cách hành chính bộ máy nhà nước</em>.</td>
+              </tr>
+              <tr>
+                <td><strong>1924 – 1991</strong></td>
+                <td>Phong trào CS quốc tế</td>
+                <td><strong>Hội nghị Mátxcơva 11/1957</strong> &amp; <strong>Hội nghị 81 Đảng CS (1/1960)</strong>; đấu tranh gay gắt chống chủ nghĩa xét lại và chủ nghĩa giáo điều biệt phái.</td>
+              </tr>
+              <tr>
+                <td><strong>1991 – nay</strong></td>
+                <td>Các nước XHCN (TQ, VN, Cuba, Lào)</td>
+                <td>Đóng góp lý luận từ công cuộc cải cách, mở cửa, đổi mới và hội nhập trong thời đại mới.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>III. Đối tượng, Phương pháp &amp; Ý nghĩa nghiên cứu</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Đối tượng nghiên cứu</div>
+            <p>Những <strong>quy luật, tính quy luật chính trị – xã hội</strong> của quá trình phát sinh, hình thành và phát triển hình thái KT–XH cộng sản chủ nghĩa (giai đoạn thấp là CNXH); nguyên tắc, điều kiện, con đường, phương pháp đấu tranh của GCCN và NDLĐ.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Phương pháp nghiên cứu</div>
+            <p>Phương pháp luận chung: <strong>CNDV biện chứng &amp; CNDV lịch sử</strong>. 4 phương pháp cụ thể:</p>
+            <ul>
+              <li>Kết hợp <strong>lịch sử và lôgíc</strong></li>
+              <li><strong>Khảo sát và phân tích</strong> chính trị – xã hội cụ thể</li>
+              <li><strong>So sánh</strong> · Các phương pháp <strong>liên ngành</strong></li>
+              <li>Gắn bó trực tiếp với <strong>phương pháp tổng kết thực tiễn</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid-2 detail">
+          <div class="mini-card">
+            <div class="mc-title">Ý nghĩa về mặt lý luận</div>
+            <p>Trang bị nhận thức chính trị – xã hội và phương pháp luận khoa học về quá trình tất yếu lịch sử dẫn đến hình thái KT–XH CSCN, giải phóng xã hội và con người.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Ý nghĩa về mặt thực tiễn</div>
+            <p>Giáo dục <strong>niềm tin khoa học</strong> (thống nhất giữa nhận thức, tình cảm, ý chí, quyết tâm) vào mục tiêu, lý tưởng XHCN, trở thành động lực hành động chủ động, sáng tạo.</p>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 1, 2, 3</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 1 trên Quizlet →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 2 ================= -->
+      <section class="chapter" id="chuong-2">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 2</span>
+            <h2>Sứ mệnh lịch sử của giai cấp công nhân</h2>
+          </div>
+          <button class="done-btn" data-done="2" onclick="toggleDone(2)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> GCCN xác định theo <strong>2 phương diện</strong> (KT–XH &amp; CT–XH), có <strong>3 đặc điểm</strong>, thực hiện SMLS trên <strong>3 lĩnh vực</strong> nhờ <strong>2 ĐK khách quan</strong> &amp; <strong>2 ĐK chủ quan</strong> (Đảng CS quan trọng nhất).
+        </div>
+
+        <h3>I. Quan điểm cơ bản của CN Mác – Lênin về GCCN và SMLS</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">1. Phương diện kinh tế – xã hội</div>
+            <p>Là <strong>sản phẩm và chủ thể</strong> của nền sản xuất đại công nghiệp; trực tiếp/gián tiếp vận hành công cụ công nghiệp hiện đại, xã hội hóa cao (máy móc, năng suất cao, tạo tiền đề vật chất cho xã hội mới).</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">2. Phương diện chính trị – xã hội</div>
+            <p>Giai cấp những người lao động <strong>không có sở hữu tư liệu sản xuất chủ yếu</strong> của xã hội → phải <strong>bán sức lao động</strong> cho nhà tư bản và <strong>bị bóc lột giá trị thặng dư</strong>.</p>
+          </div>
+        </div>
+
+        <h4>Đặc điểm của GCCN (3 đặc điểm)</h4>
+        <ul class="clean-ul">
+          <li>Lao động bằng phương thức công nghiệp (công cụ máy móc), năng suất cao, tính xã hội hóa.</li>
+          <li>Là sản phẩm của bản thân nền đại công nghiệp, chủ thể quá trình sản xuất vật chất hiện đại.</li>
+          <li>Phẩm chất đặc biệt: <strong>tính tổ chức, kỷ luật lao động, tinh thần hợp tác, tâm lý công nghiệp</strong> → giai cấp cách mạng triệt để nhất.</li>
+        </ul>
+
+        <h4>Nội dung Sứ mệnh lịch sử (3 nội dung)</h4>
+        <div class="grid-3">
+          <div class="mini-card">
+            <div class="mc-title">1. Nội dung Kinh tế</div>
+            <ul>
+              <li>Tạo tiền đề vật chất – kỹ thuật cho xã hội mới.</li>
+              <li>Đại biểu cho lợi ích chung của xã hội.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">2. Nội dung Chính trị – XH</div>
+            <ul>
+              <li>Lật đổ quyền thống trị, xóa bỏ bóc lột, giành quyền lực.</li>
+              <li>Thiết lập nhà nước kiểu mới, xây dựng nền dân chủ XHCN.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">3. Nội dung Văn hóa – Tư tưởng</div>
+            <p>Cải tạo cái cũ, xây dựng hệ giá trị mới: <strong>lao động; công bằng; dân chủ; bình đẳng và tự do</strong>.</p>
+          </div>
+        </div>
+
+        <h4>Điều kiện quy định &amp; thực hiện SMLS</h4>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">a) 2 Điều kiện khách quan (Quy định)</div>
+            <ul>
+              <li><strong>Địa vị kinh tế:</strong> Người sản xuất của cải chủ yếu, quyết định phát triển xã hội hiện đại.</li>
+              <li><strong>Địa vị chính trị – xã hội:</strong> Phẩm chất tiên tiến (tổ chức, kỷ luật, tự giác, đoàn kết), có lý luận Mác – Lênin và Đảng CS dẫn dắt.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">b) 2 Điều kiện chủ quan (Thực hiện)</div>
+            <ul>
+              <li>Sự phát triển của bản thân GCCN cả về <strong>số lượng và chất lượng</strong>.</li>
+              <li><strong>Đảng Cộng sản</strong> là nhân tố chủ quan <strong>quan trọng nhất</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. Giai cấp công nhân &amp; SMLS trên thế giới hiện nay</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">3 Điểm tương đối ổn định (so với TK XIX)</div>
+            <ul>
+              <li>Vẫn là lực lượng sản xuất hàng đầu của xã hội hiện đại.</li>
+              <li>Vẫn bị giai cấp tư sản và CNTB bóc lột giá trị thặng dư.</li>
+              <li>Phong trào cộng sản và công nhân vẫn đi đầu vì hòa bình, tiến bộ, CNXH.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">3 Biến đổi &amp; khác biệt mới</div>
+            <ul>
+              <li>Xu hướng <strong>"trí tuệ hóa"</strong> tăng nhanh.</li>
+              <li>Xu hướng <strong>"trung lưu hóa"</strong> gia tăng.</li>
+              <li>Giữ vai trò <strong>lãnh đạo, cầm quyền</strong> ở một số quốc gia XHCN.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="trap-box detail">
+          <strong>Thực hiện SMLS hiện nay:</strong> <em>Kinh tế</em> (công nghệ hiện đại, phát triển bền vững) · <em>Chính trị – XH:</em> Ở nước TBCN mục tiêu trực tiếp là <strong>chống bất công, bất bình đẳng</strong>, lâu dài là <strong>giành chính quyền</strong>; ở nước XHCN là lãnh đạo đổi mới, CNH–HĐH, xây dựng Đảng cầm quyền trong sạch · <em>Văn hóa – tư tưởng:</em> Đấu tranh ý thức hệ giữa CNXH và CNTB.
+        </div>
+
+        <h3>III. Sứ mệnh lịch sử của giai cấp công nhân Việt Nam</h3>
+        <ul class="clean-ul">
+          <li><strong>3 Đặc điểm lịch sử:</strong> (1) Ra đời <strong>trước giai cấp tư sản</strong> (đầu TK XX), phát triển chậm vì sinh ra ở nước thuộc địa nửa phong kiến; (2) Lực lượng chính trị tiên phong lãnh đạo giải phóng dân tộc; (3) Gắn bó mật thiết với các tầng lớp nhân dân.</li>
+          <li><strong>Biến đổi hiện nay:</strong> Tăng nhanh số lượng &amp; chất lượng, đi đầu CNH–HĐH gắn kinh tế tri thức; đa dạng ngành nghề, đội ngũ công nhân khu vực <strong>kinh tế nhà nước giữ vai trò nòng cốt, chủ đạo</strong>; công nhân tri thức &amp; công nhân trẻ là lực lượng chủ đạo; điểm then chốt là xây dựng, chỉnh đốn Đảng trong sạch, vững mạnh.</li>
+          <li><strong>Nội dung SMLS ở VN hiện nay:</strong>
+            <span class="detail"><em>Kinh tế</em> (nguồn nhân lực chủ yếu phát triển KTTT định hướng XHCN, đi đầu CNH–HĐH, liên minh công–nông–trí phát triển nông nghiệp–nông thôn); <em>Chính trị–XH</em> (giữ bản chất GCCN của Đảng, ngăn suy thoái, "tự diễn biến", "tự chuyển hóa"); <em>Văn hóa–TT</em> (nền văn hóa tiên tiến đậm đà bản sắc, cốt lõi là xây dựng con người mới XHCN, tác phong công nghiệp).</span>
+          </li>
+        </ul>
+        <h4>5 Giải pháp xây dựng GCCN Việt Nam hiện nay</h4>
+        <ol class="clean-num">
+          <li>Nâng cao nhận thức, kiên định quan điểm GCCN là giai cấp lãnh đạo thông qua Đảng Cộng sản Việt Nam.</li>
+          <li>Xây dựng GCCN lớn mạnh gắn với phát huy sức mạnh <strong>liên minh công – nông – trí thức – doanh nhân</strong>.</li>
+          <li>Gắn chặt chiến lược xây dựng GCCN với chiến lược phát triển KT–XH, CNH–HĐH, hội nhập quốc tế.</li>
+          <li>Đào tạo, bồi dưỡng, nâng cao trình độ mọi mặt, <strong>không ngừng trí thức hóa</strong> giai cấp công nhân.</li>
+          <li>Là trách nhiệm của <strong>cả hệ thống chính trị, toàn xã hội</strong>, bản thân công nhân và người sử dụng lao động.</li>
+        </ol>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 1, 2, 3</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 2 trên Quizlet →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 3 ================= -->
+      <section class="chapter" id="chuong-3">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 3</span>
+            <h2>Chủ nghĩa xã hội và Thời kỳ quá độ lên CNXH</h2>
+          </div>
+          <button class="done-btn" data-done="3" onclick="toggleDone(3)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> CNXH là <strong>giai đoạn đầu</strong> của hình thái KT–XH CSCN (<strong>6 đặc trưng bản chất</strong>); lên CNXH tất yếu qua <strong>thời kỳ quá độ</strong> (trực tiếp / gián tiếp); VN quá độ gián tiếp bỏ qua chế độ TBCN với <strong>8 đặc trưng &amp; 8 phương hướng</strong>.
+        </div>
+
+        <h3>I. Chủ nghĩa xã hội</h3>
+        <ul class="clean-ul">
+          <li><strong>4 góc độ tiếp cận CNXH:</strong> (1) Phong trào thực tiễn đấu tranh chống áp bức; (2) Trào lưu tư tưởng, lý luận; (3) Một khoa học (CNXHKH); (4) <strong>Một chế độ xã hội tốt đẹp</strong> — giai đoạn đầu của hình thái KT–XH CSCN.</li>
+          <li><strong>2 điều kiện ra đời:</strong> <em>Kinh tế</em> (mâu thuẫn LLSX xã hội hóa cao với QHSX tư hữu TBCN) &amp; <em>Chính trị – XH</em> (sự lớn mạnh của GCCN + Đảng CS + liên minh công nông giành chính quyền).</li>
+        </ul>
+        <h4>6 Đặc trưng bản chất của Chủ nghĩa xã hội</h4>
+        <ol class="clean-num">
+          <li><strong>Giải phóng giai cấp, giải phóng dân tộc, giải phóng xã hội, giải phóng con người</strong>, tạo điều kiện phát triển toàn diện.</li>
+          <li>Nền kinh tế phát triển cao dựa trên <strong>LLSX hiện đại</strong> và <strong>chế độ công hữu</strong> về TLSX chủ yếu.</li>
+          <li>Chế độ xã hội <strong>do nhân dân lao động làm chủ</strong>.</li>
+          <li><strong>Nhà nước kiểu mới</strong> mang bản chất GCCN, đại biểu lợi ích, quyền lực, ý chí NDLĐ.</li>
+          <li>Nền văn hóa phát triển cao, kế thừa văn hóa dân tộc và tinh hoa nhân loại.</li>
+          <li>Bảo đảm bình đẳng, đoàn kết các dân tộc và hữu nghị, hợp tác quốc tế.</li>
+        </ol>
+
+        <h3>II. Thời kỳ quá độ lên Chủ nghĩa xã hội</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Tính tất yếu &amp; 2 Loại hình quá độ</div>
+            <ul>
+              <li>Nhân tố XHCN không tự phát nảy sinh trong CNTB; cần thời gian CNH–HĐH, xây dựng quan hệ XH mới, xóa tàn dư cũ.</li>
+              <li><strong>Quá độ trực tiếp:</strong> Từ nước TBCN phát triển cao lên CNCS.</li>
+              <li><strong>Quá độ gián tiếp:</strong> Từ nước chưa qua CNTB phát triển (như VN → lâu dài, gian khổ, phức tạp gấp nhiều lần).</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Đặc điểm TKQĐ trên 4 lĩnh vực</div>
+            <ul>
+              <li><strong>Kinh tế:</strong> Nền kinh tế <strong>nhiều thành phần</strong> (có thành phần đối lập về sở hữu).</li>
+              <li><strong>Chính trị:</strong> GCCN nắm quyền lực nhà nước, cải tạo cũ, xây mới, chống phản động.</li>
+              <li><strong>Tư tưởng – VH:</strong> Đan xen nhiều tư tưởng; hệ tư tưởng GCCN giữ vai trò <strong>chủ đạo</strong>.</li>
+              <li><strong>Xã hội:</strong> Nhiều giai tầng, mối quan hệ <strong>vừa hợp tác vừa đấu tranh</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>III. Quá độ lên CNXH ở Việt Nam</h3>
+        <div class="trap-box">
+          <strong>4 nội dung nhận thức mới về "bỏ qua chế độ TBCN" (rất hay thi!):</strong>
+          (1) Là con đường cách mạng tất yếu khách quan; (2) <strong>Bỏ qua việc xác lập vị trí thống trị của QHSX và KTTT tư bản chủ nghĩa</strong>; (3) <strong>Tiếp thu, kế thừa thành tựu nhân loại</strong> đạt được dưới CNTB; (4) Tạo sự <strong>biến đổi về chất</strong> trên mọi lĩnh vực — rất khó khăn, phức tạp, lâu dài.
+        </div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">8 Đặc trưng bản chất CNXH ở Việt Nam</div>
+            <ol class="clean-num" style="margin-top:8px;">
+              <li><strong>Dân giàu, nước mạnh, dân chủ, công bằng, văn minh.</strong></li>
+              <li><strong>Do nhân dân làm chủ.</strong></li>
+              <li>Kinh tế phát triển cao (LLSX hiện đại + QHSX tiến bộ phù hợp).</li>
+              <li>Văn hóa tiên tiến, đậm đà bản sắc dân tộc.</li>
+              <li>Con người có cuộc sống ấm no, tự do, hạnh phúc, phát triển toàn diện.</li>
+              <li>Các dân tộc bình đẳng, đoàn kết, tôn trọng, giúp nhau phát triển.</li>
+              <li>Nhà nước pháp quyền XHCN của dân, do dân, vì dân do ĐCS lãnh đạo.</li>
+              <li>Quan hệ hữu nghị, hợp tác với các nước trên thế giới.</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">8 Phương hướng xây dựng CNXH ở VN</div>
+            <ol class="clean-num" style="margin-top:8px;">
+              <li>Đẩy mạnh CNH, HĐH gắn phát triển kinh tế tri thức, bảo vệ tài nguyên, môi trường.</li>
+              <li>Phát triển nền KTTT định hướng XHCN.</li>
+              <li>Xây dựng văn hóa tiên tiến đậm đà bản sắc; xây dựng con người; tiến bộ, công bằng XH.</li>
+              <li>Bảo đảm vững chắc quốc phòng, an ninh quốc gia, trật tự an toàn XH.</li>
+              <li>Đường lối đối ngoại độc lập, tự chủ, hòa bình, hội nhập quốc tế.</li>
+              <li>Xây dựng nền dân chủ XHCN, đại đoàn kết toàn dân tộc, mở rộng Mặt trận.</li>
+              <li>Xây dựng Nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân.</li>
+              <li>Xây dựng Đảng trong sạch, vững mạnh.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 1, 2, 3</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 3 trên Quizlet →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 4 ================= -->
+      <section class="chapter" id="chuong-4">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 4</span>
+            <h2>Dân chủ XHCN và Nhà nước XHCN</h2>
+          </div>
+          <button class="done-btn" data-done="4" onclick="toggleDone(4)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> Dân chủ XHCN là nền dân chủ thứ <strong>3</strong> trong lịch sử (sau Chủ nô &amp; Tư sản), là <strong>cơ sở, nền tảng</strong> của Nhà nước XHCN; Nhà nước pháp quyền XHCN VN có <strong>6 đặc điểm</strong>, thực hiện dân chủ <strong>trực tiếp &amp; gián tiếp</strong>.
+        </div>
+
+        <h3>I. Dân chủ và Dân chủ xã hội chủ nghĩa</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Quan niệm về Dân chủ</div>
+            <ul>
+              <li><strong>CN Mác – Lênin (3 phương diện):</strong> (1) <em>Quyền lực:</em> thuộc về nhân dân; (2) <em>Chế độ XH / chính trị:</em> hình thái nhà nước (chính thể dân chủ); (3) <em>Tổ chức &amp; quản lý:</em> nguyên tắc dân chủ.</li>
+              <li><strong>Hồ Chí Minh (2 quan điểm):</strong> (1) Giá trị nhân loại chung; (2) Thể chế chính trị, chế độ xã hội.</li>
+              <li><strong>3 nền dân chủ từng tồn tại:</strong> <em>Dân chủ chủ nô</em> → <em>Dân chủ tư sản</em> → <em>Dân chủ XHCN</em>.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Dân chủ XHCN &amp; 3 Bản chất</div>
+            <p class="detail" style="margin-bottom:6px;">Phát triển từ thấp đến cao; nguyên tắc cơ bản: không ngừng mở rộng dân chủ — <em>càng hoàn thiện bao nhiêu càng tự tiêu vong bấy nhiêu</em>.</p>
+            <ul>
+              <li><strong>Chính trị:</strong> Bản chất GCCN + tính nhân dân rộng rãi, tính dân tộc sâu sắc.</li>
+              <li><strong>Kinh tế:</strong> Chế độ sở hữu xã hội về TLSX chủ yếu.</li>
+              <li><strong>Tư tưởng – VH – XH:</strong> Hệ tư tưởng Mác – Lênin chủ đạo + kế thừa tinh hoa dân tộc &amp; nhân loại.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. Nhà nước xã hội chủ nghĩa &amp; Mối quan hệ với Dân chủ XHCN</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Bản chất &amp; 3 cách chia Chức năng NN XHCN</div>
+            <ul>
+              <li><strong>Bản chất:</strong> <em>Chính trị</em> (GCCN); <em>Kinh tế</em> (sở hữu XH về TLSX chủ yếu, hết bóc lột); <em>Văn hóa – XH</em> (Mác–Lênin + tinh hoa + bản sắc).</li>
+              <li><strong>Theo phạm vi:</strong> Đối nội &amp; đối ngoại.</li>
+              <li><strong>Theo lĩnh vực:</strong> Chính trị, kinh tế, văn hóa, xã hội...</li>
+              <li><strong>Theo tính chất quyền lực:</strong> Chức năng <strong>giai cấp (trấn áp)</strong> &amp; chức năng <strong>xã hội (tổ chức và xây dựng)</strong>.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Mối quan hệ DC XHCN ↔ NN XHCN</div>
+            <ul>
+              <li><strong>Chiều 1:</strong> Dân chủ XHCN là <strong>cơ sở, nền tảng</strong> cho việc xây dựng và hoạt động của Nhà nước XHCN.</li>
+              <li><strong>Chiều 2:</strong> Nhà nước XHCN là <strong>công cụ quan trọng</strong> để thể chế hóa pháp luật và thực thi quyền làm chủ của nhân dân.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>III. Dân chủ XHCN &amp; Nhà nước pháp quyền XHCN ở Việt Nam</h3>
+        <ul class="clean-ul">
+          <li><strong>Tiến trình:</strong> Chế độ dân chủ nhân dân xác lập sau <strong>CMT8 1945</strong> → <strong>1976</strong> đổi tên CHXHCN VN (hay dùng "làm chủ tập thể XHCN") → <strong>Đại hội VI (1986)</strong> nhấn mạnh phát huy dân chủ.</li>
+          <li><strong>Bản chất DC XHCN ở VN:</strong> Là <em>mục tiêu</em>, <em>bản chất</em>, <em>động lực</em>; gắn với <strong>pháp luật, kỷ luật, kỷ cương</strong>; thực hiện qua <strong>dân chủ gián tiếp và dân chủ trực tiếp</strong>.</li>
+        </ul>
+
+        <h4>6 Đặc điểm của Nhà nước pháp quyền XHCN Việt Nam</h4>
+        <ol class="clean-num">
+          <li>Nhà nước do nhân dân lao động làm chủ — <strong>của dân, do dân, vì dân</strong>.</li>
+          <li>Tổ chức, hoạt động trên cơ sở Hiến pháp và pháp luật; <strong>pháp luật ở vị trí tối thượng</strong>.</li>
+          <li>Quyền lực nhà nước là <strong>thống nhất</strong>, có phân công rõ ràng, phối hợp nhịp nhàng và kiểm soát giữa <strong>lập pháp – hành pháp – tư pháp</strong>.</li>
+          <li>Do <strong>Đảng Cộng sản Việt Nam lãnh đạo</strong>.</li>
+          <li>Tôn trọng quyền con người, coi <strong>con người là chủ thể, trung tâm của sự phát triển</strong>.</li>
+          <li>Tổ chức theo nguyên tắc <strong>tập trung dân chủ</strong>, có phân công, phân cấp, bảo đảm sự chỉ đạo thống nhất của Trung ương.</li>
+        </ol>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">5 Giải pháp phát huy Dân chủ XHCN</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Hoàn thiện thể chế KTTT định hướng XHCN (cơ sở vững chắc).</li>
+              <li>Xây dựng ĐCSVN trong sạch, vững mạnh (<strong>điều kiện tiên quyết</strong>).</li>
+              <li>Xây dựng NN pháp quyền XHCN vững mạnh (điều kiện thực thi).</li>
+              <li>Nâng cao vai trò các tổ chức chính trị – xã hội.</li>
+              <li>Hoàn thiện hệ thống giám sát, phản biện xã hội.</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">4 Giải pháp hoàn thiện NN pháp quyền</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Xây dựng NN pháp quyền XHCN dưới sự lãnh đạo của Đảng.</li>
+              <li>Cải cách thể chế và phương thức hoạt động của Nhà nước.</li>
+              <li>Xây dựng đội ngũ cán bộ, công chức trong sạch, có năng lực.</li>
+              <li>Đấu tranh <strong>phòng, chống tham nhũng, lãng phí, thực hành tiết kiệm</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 4, 5</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 4 trên Quizlet →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 5 ================= -->
+      <section class="chapter" id="chuong-5">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 5</span>
+            <h2>Cơ cấu xã hội – giai cấp &amp; Liên minh giai cấp, tầng lớp</h2>
+          </div>
+          <button class="done-btn" data-done="5" onclick="toggleDone(5)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> <strong>Cơ cấu XH – giai cấp</strong> đứng vị trí <strong>quan trọng hàng đầu</strong>, biến đổi theo <strong>3 quy luật</strong> (gắn với cơ cấu kinh tế); ở VN gồm <strong>Công – Nông – Trí – Doanh nhân</strong> liên minh trên <strong>3 nội dung</strong> (KT, CT, VH–XH).
+        </div>
+
+        <h3>I. Cơ cấu xã hội – giai cấp trong TKQĐ</h3>
+        <ul class="clean-ul">
+          <li><strong>Khái niệm:</strong> Hệ thống các giai cấp, tầng lớp tồn tại khách quan thông qua quan hệ sở hữu TLSX, tổ chức quản lý sản xuất, địa vị chính trị – xã hội.</li>
+          <li><strong>Vị trí quan trọng hàng đầu, chi phối các cơ cấu khác</strong> vì: liên quan đến đảng phái, nhà nước, quyền sở hữu TLSX, phân phối thu nhập → biến đổi của nó tất yếu làm biến đổi toàn bộ cơ cấu xã hội.</li>
+        </ul>
+        <h4>3 Quy luật biến đổi của cơ cấu XH – giai cấp trong TKQĐ</h4>
+        <ol class="clean-num">
+          <li>Biến đổi gắn liền và <strong>bị quy định bởi cơ cấu kinh tế</strong> của TKQĐ lên CNXH.</li>
+          <li>Biến đổi <strong>phức tạp, đa dạng</strong>, làm xuất hiện các tầng lớp xã hội mới.</li>
+          <li>Biến đổi trong mối quan hệ <strong>vừa đấu tranh, vừa liên minh</strong>, từng bước xóa bất bình đẳng dẫn đến <strong>xích lại gần nhau</strong>.</li>
+        </ol>
+
+        <h3>II. Liên minh giai cấp, tầng lớp (2 góc độ)</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Dưới góc độ Chính trị</div>
+            <p>GCCN liên minh với nông dân &amp; nhân dân lao động dưới sự lãnh đạo của ĐCS để tạo sức mạnh tổng hợp đảm bảo thắng lợi cả ở giai đoạn <strong>giành chính quyền</strong> lẫn <strong>xây dựng chế độ mới</strong>.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Dưới góc độ Kinh tế</div>
+            <p>Xuất phát từ yêu cầu khách quan của CNH–HĐH, chuyển từ sản xuất nhỏ nông nghiệp sang sản xuất hàng hóa lớn, công nghiệp, dịch vụ và KH–CN.</p>
+          </div>
+        </div>
+
+        <h3>III. Cơ cấu XH – giai cấp &amp; Liên minh ở Việt Nam</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Vai trò 4 giai cấp, tầng lớp cơ bản</div>
+            <ul>
+              <li><strong>Giai cấp công nhân:</strong> Vai trò đặc biệt, lãnh đạo qua ĐCSVN, đại diện PTSX tiên tiến, <strong>tiên phong</strong> xây dựng CNXH.</li>
+              <li><strong>Giai cấp nông dân:</strong> Vị trí <strong>chiến lược</strong> trong CNH–HĐH nông nghiệp, nông thôn mới.</li>
+              <li><strong>Đội ngũ trí thức:</strong> Lực lượng lao động <strong>sáng tạo đặc biệt quan trọng</strong> trong CNH–HĐH, hội nhập.</li>
+              <li><strong>Đội ngũ doanh nhân:</strong> Phát triển nhanh về số lượng, quy mô và vai trò không ngừng tăng.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">3 Nội dung liên minh ở Việt Nam</div>
+            <ul>
+              <li><strong>Kinh tế:</strong> Hợp tác công–nông–trí mở rộng với doanh nhân xây dựng nền kinh tế XHCN hiện đại.</li>
+              <li><strong>Chính trị:</strong> Tạo cơ sở CT–XH vững chắc cho đại đoàn kết, đập tan âm mưu chống phá, bảo vệ Tổ quốc.</li>
+              <li><strong>Văn hóa – XH:</strong> Xây dựng nền văn hóa VN tiên tiến, đậm đà bản sắc dân tộc, tiếp thu tinh hoa nhân loại.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>5 Phương hướng cơ bản xây dựng cơ cấu XH–GC &amp; tăng cường liên minh</h4>
+        <ol class="clean-num">
+          <li>Đẩy mạnh CNH, HĐH; gắn tăng trưởng kinh tế với tiến bộ, công bằng xã hội.</li>
+          <li>Xây dựng, thực hiện hệ thống chính sách xã hội tổng thể (ưu tiên chính sách về cơ cấu XH–giai cấp).</li>
+          <li>Tạo sự đồng thuận, phát huy tinh thần đoàn kết thống nhất trong khối liên minh và toàn xã hội.</li>
+          <li>Hoàn thiện thể chế KTTT định hướng XHCN, đẩy mạnh KH–CN phát huy vai trò các chủ thể.</li>
+          <li>Đổi mới hoạt động của <strong>Đảng, Nhà nước, Mặt trận Tổ quốc Việt Nam</strong>.</li>
+        </ol>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 4, 5</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 5 trên Quizlet →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 6 ================= -->
+      <section class="chapter" id="chuong-6">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 6</span>
+            <h2>Vấn đề Dân tộc và Tôn giáo trong TKQĐ lên CNXH</h2>
+          </div>
+          <button class="done-btn" data-done="6" onclick="toggleDone(6)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> Dân tộc có <strong>2 nghĩa (Rộng 5 – Hẹp 3)</strong>, <strong>2 xu hướng</strong>, <strong>Cương lĩnh 3 nội dung</strong>, <strong>6 đặc điểm VN</strong>; Tôn giáo có <strong>3 nguồn gốc</strong>, <strong>3 tính chất</strong>, <strong>4 nguyên tắc</strong>, <strong>5 đặc điểm &amp; 5 chính sách VN</strong> (cốt lõi là <strong>vận động quần chúng</strong>).
+        </div>
+
+        <h3>I. Vấn đề Dân tộc</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Nghĩa rộng — Nation (5 đặc trưng)</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Chung một vùng <strong>lãnh thổ ổn định</strong>.</li>
+              <li>Chung một <strong>phương thức sinh hoạt kinh tế</strong>.</li>
+              <li>Chung một <strong>ngôn ngữ</strong> làm công cụ giao tiếp.</li>
+              <li>Chung một <strong>nền văn hóa và tâm lý</strong>.</li>
+              <li>Chung một <strong>nhà nước</strong> (nhà nước dân tộc).</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Nghĩa hẹp — Ethnie / Tộc người (3 đặc trưng)</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li><strong>Cộng đồng về ngôn ngữ</strong> (nói, viết hoặc chỉ riêng nói).</li>
+              <li><strong>Cộng đồng về văn hóa</strong>.</li>
+              <li><strong>Ý thức tự giác tộc người</strong>.</li>
+            </ol>
+            <p class="detail" style="font-size:0.84rem; color:var(--muted);">→ 3 tiêu chí căn cứ để phân định các tộc người ở Việt Nam hiện nay.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">2 Xu hướng khách quan của Lênin</div>
+            <ul>
+              <li><strong>Xu hướng 1:</strong> Cộng đồng dân cư muốn <strong>tách ra</strong> hình thành dân tộc độc lập <em>(trong 1 QG: tự do bình đẳng phồn vinh; quốc tế: giải phóng dân tộc chống đế quốc)</em>.</li>
+              <li><strong>Xu hướng 2:</strong> Các dân tộc trong từng QG hoặc nhiều QG muốn <strong>liên hiệp lại</strong> với nhau <em>(trong 1 QG: xích lại gần nhau, hòa hợp)</em>.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Cương lĩnh dân tộc của CN Mác – Lênin (3 nội dung)</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li><strong>Các dân tộc hoàn toàn bình đẳng</strong> (quyền thiêng liêng, không phân biệt lớn nhỏ).</li>
+              <li><strong>Các dân tộc được quyền tự quyết</strong> (tự quyết định vận mệnh, chế độ chính trị, con đường phát triển).</li>
+              <li><strong>Liên hiệp công nhân tất cả các dân tộc</strong> (thống nhất giải phóng dân tộc với giải phóng giai cấp; yêu nước với quốc tế chân chính).</li>
+            </ol>
+          </div>
+        </div>
+
+        <h4>6 Đặc điểm dân tộc &amp; Quan điểm, Chính sách ở Việt Nam</h4>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">6 Đặc điểm dân tộc Việt Nam</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Có sự <strong>chênh lệch về số dân</strong> giữa các tộc người.</li>
+              <li>Các dân tộc <strong>cư trú xen kẽ nhau</strong>.</li>
+              <li>Dân tộc thiểu số phân bố chủ yếu ở <strong>địa bàn chiến lược quan trọng</strong>.</li>
+              <li>Có <strong>trình độ phát triển không đều</strong>.</li>
+              <li>Có <strong>truyền thống đoàn kết, gắn bó lâu đời</strong>.</li>
+              <li>Mỗi dân tộc có <strong>bản sắc văn hóa riêng</strong> góp phần đa dạng văn hóa VN thống nhất.</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">Quan điểm &amp; 5 Chính sách dân tộc VN</div>
+            <ul>
+              <li><strong>Quan điểm Đảng:</strong> Vấn đề dân tộc là <strong>chiến lược cơ bản, lâu dài, cấp bách</strong>; bình đẳng, đoàn kết, tương trợ; phát triển toàn diện; ưu tiên đầu tư KT–XH vùng dân tộc miền núi; nhiệm vụ của toàn Đảng, toàn dân, toàn quân, cả hệ thống chính trị.</li>
+              <li><strong>5 lĩnh vực chính sách:</strong> <em>Chính trị</em> (bình đẳng, đoàn kết) · <em>Kinh tế</em> (phát triển miền núi) · <em>Văn hóa</em> (tiên tiến đậm đà bản sắc) · <em>Xã hội</em> (an sinh xã hội) · <em>An ninh – quốc phòng</em> (ổn định chính trị, bảo vệ Tổ quốc).</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>II. Vấn đề Tôn giáo</h3>
+        <ul class="clean-ul">
+          <li><strong>Bản chất:</strong> Là một <strong>hiện tượng xã hội – văn hóa do con người sáng tạo ra</strong> (vì mục đích, lợi ích, ước mơ của họ, nhưng lại bị lệ thuộc và phục tùng tôn giáo vô điều kiện).</li>
+        </ul>
+        <div class="grid-3">
+          <div class="mini-card">
+            <div class="mc-title">3 Nguồn gốc tôn giáo</div>
+            <ul>
+              <li><strong>Tự nhiên, kinh tế – xã hội:</strong> Bất lực trước thiên nhiên &amp; áp bức giai cấp.</li>
+              <li><strong>Nhận thức:</strong> Khoảng cách giữa "biết" và "chưa biết" khi khoa học chưa giải thích được.</li>
+              <li><strong>Tâm lý:</strong> Sợ hãi thiên nhiên, bệnh tật, rủi ro hoặc cầu bình yên khi làm việc lớn.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">3 Tính chất tôn giáo</div>
+            <ul>
+              <li><strong>Tính lịch sử:</strong> Hình thành, tồn tại, biến đổi theo từng giai đoạn lịch sử.</li>
+              <li><strong>Tính quần chúng:</strong> Phổ biến ở mọi dân tộc, quốc gia, châu lục.</li>
+              <li><strong>Tính chính trị:</strong> <strong>Chỉ xuất hiện khi xã hội đã phân chia giai cấp</strong> và đối kháng lợi ích.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">4 Nguyên tắc giải quyết</div>
+            <ul>
+              <li>Tôn trọng, bảo đảm quyền <strong>tự do tín ngưỡng và không tín ngưỡng</strong>.</li>
+              <li>Khắc phục tiêu cực gắn liền cải tạo XH cũ, xây XH mới.</li>
+              <li><strong>Phân biệt 2 mặt chính trị và tư tưởng</strong>.</li>
+              <li><strong>Quan điểm lịch sử cụ thể</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">5 Đặc điểm tôn giáo ở Việt Nam</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Việt Nam là quốc gia có <strong>nhiều tôn giáo</strong>.</li>
+              <li><strong>Đa dạng, đan xen, chung sống hòa bình</strong>, không có xung đột chiến tranh tôn giáo.</li>
+              <li>Tín đồ phần lớn là <strong>nhân dân lao động, yêu nước</strong>, có tinh thần dân tộc.</li>
+              <li>Hàng ngũ <strong>chức sắc</strong> có vị trí quan trọng, uy tín với tín đồ.</li>
+              <li>Đều có <strong>quan hệ với tổ chức, cá nhân tôn giáo ở nước ngoài</strong>.</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">5 Chính sách tôn giáo của VN hiện nay</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li>Tín ngưỡng, tôn giáo là <strong>nhu cầu tinh thần</strong> của một bộ phận nhân dân, đang và sẽ tồn tại cùng dân tộc.</li>
+              <li>Thực hiện nhất quán chính sách <strong>đại đoàn kết dân tộc</strong>.</li>
+              <li>Nội dung cốt lõi là <strong>công tác vận động quần chúng</strong>.</li>
+              <li>Là trách nhiệm của <strong>cả hệ thống chính trị</strong>.</li>
+              <li>Tự do hành đạo tại gia đình và cơ sở thờ tự hợp pháp theo quy định pháp luật.</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3>III. Quan hệ Dân tộc &amp; Tôn giáo ở Việt Nam</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">3 Đặc điểm</div>
+            <ul>
+              <li>Thiết lập và củng cố trên cơ sở <strong>cộng đồng quốc gia – dân tộc thống nhất</strong>.</li>
+              <li>Chịu sự chi phối mạnh mẽ bởi <strong>tín ngưỡng truyền thống</strong>.</li>
+              <li>Các <strong>hiện tượng tôn giáo mới</strong> phát triển mạnh tác động tới đời sống và đại đoàn kết.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">3 Định hướng giải quyết</div>
+            <ul>
+              <li>Củng cố mối quan hệ tốt đẹp, đại đoàn kết là vấn đề <strong>chiến lược, cơ bản, lâu dài, cấp bách</strong>.</li>
+              <li>Đặt trong mối quan hệ với cộng đồng quốc gia – dân tộc thống nhất theo định hướng XHCN.</li>
+              <li>Bảo đảm quyền tự do tín ngưỡng, quyền DTTS đồng thời <strong>kiên quyết chống lợi dụng vào mục đích chính trị</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 6, 7</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 6 &amp; 7 trên Quizlet →</a>
+        </div>
+      </section>
+
+      <!-- ================= CHƯƠNG 7 ================= -->
+      <section class="chapter" id="chuong-7">
+        <div class="ch-header">
+          <div>
+            <span class="ch-kicker">CHƯƠNG 7</span>
+            <h2>Vấn đề Gia đình trong thời kỳ quá độ lên CNXH</h2>
+          </div>
+          <button class="done-btn" data-done="7" onclick="toggleDone(7)">☐ Đánh dấu đã thuộc</button>
+        </div>
+
+        <div class="memo-box">
+          <strong class="lbl">💡 Tóm tắt 1 dòng:</strong> Gia đình gắn kết bởi <strong>3 quan hệ</strong> (hôn nhân, huyết thống, nuôi dưỡng), giữ <strong>3 vị trí</strong>, thực hiện <strong>4 chức năng cơ bản</strong>, xây dựng trên <strong>4 cơ sở</strong> (hôn nhân tiến bộ có <strong>3 nguyên tắc</strong>); gia đình VN hiện đại là <strong>gia đình hạt nhân</strong>, quy mô thu nhỏ, xây dựng theo <strong>4 phương hướng</strong>.
+        </div>
+
+        <h3>I. Khái niệm, 3 Vị trí &amp; 4 Chức năng cơ bản của Gia đình</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">Khái niệm &amp; 3 Vị trí trong xã hội</div>
+            <p class="detail" style="margin-bottom:6px;">Cộng đồng XH đặc biệt dựa trên <strong>quan hệ hôn nhân, huyết thống và nuôi dưỡng</strong> kèm quyền và nghĩa vụ.</p>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li><strong>Tế bào của xã hội:</strong> Vai trò quyết định tồn tại, vận động, phát triển xã hội.</li>
+              <li><strong>Tổ ấm</strong> mang lại hạnh phúc, sự hài hòa cho mỗi thành viên.</li>
+              <li><strong>Cầu nối giữa cá nhân và xã hội:</strong> Cộng đồng đầu tiên mỗi cá nhân sinh sống.</li>
+            </ol>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">4 Chức năng cơ bản của Gia đình</div>
+            <ol class="clean-num" style="margin-top:6px;">
+              <li><strong>Tái sản xuất ra con người:</strong> Chức năng <strong>đặc thù</strong>, không cộng đồng nào thay thế được.</li>
+              <li><strong>Nuôi dưỡng, giáo dục:</strong> Hình thành nhân cách, đạo đức, lối sống.</li>
+              <li><strong>Kinh tế và tổ chức tiêu dùng:</strong> Tham gia sản xuất TLSX, tư liệu tiêu dùng.</li>
+              <li><strong>Thỏa mãn nhu cầu tâm sinh lý, duy trì tình cảm:</strong> Chức năng <strong>thường xuyên</strong> (chăm sóc người ốm, già, trẻ em).</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3>II. 4 Cơ sở xây dựng Gia đình trong TKQĐ lên CNXH</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">1. Cơ sở Kinh tế – Xã hội</div>
+            <p>Phát triển LLSX &amp; QHSX mới XHCN; <strong>xóa bỏ chế độ tư hữu về TLSX</strong> để hôn nhân dựa trên tình yêu chứ không vì lợi ích kinh tế hay địa vị.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">2. Cơ sở Chính trị – Xã hội</div>
+            <p>Thiết lập <strong>Nhà nước XHCN</strong> — rõ nét nhất qua hệ thống pháp luật (<strong>Luật Hôn nhân và Gia đình</strong>, bình đẳng giới, dân số, y tế, BHXH).</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">3. Cơ sở Văn hóa</div>
+            <p>Phát triển GD–ĐT, KH–CN nâng cao dân trí, hình thành giá trị, chuẩn mực mới điều chỉnh quan hệ gia đình.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">4. Chế độ Hôn nhân tiến bộ (3 nguyên tắc)</div>
+            <ul>
+              <li><strong>Hôn nhân tự nguyện:</strong> Xuất phát từ tình yêu; bao gồm cả <strong>quyền tự do ly hôn</strong> khi hết tình yêu.</li>
+              <li><strong>Một vợ một chồng, vợ chồng bình đẳng</strong>.</li>
+              <li><strong>Được đảm bảo về pháp lý:</strong> Sự thừa nhận của xã hội qua thủ tục pháp lý.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>III. Xây dựng Gia đình Việt Nam trong TKQĐ lên CNXH</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <div class="mc-title">1. Biến đổi quy mô &amp; quan hệ</div>
+            <ul>
+              <li><strong>Gia đình đơn (gia đình hạt nhân)</strong> phổ biến ở cả đô thị &amp; nông thôn; <strong>quy mô thu nhỏ</strong>.</li>
+              <li>Bình đẳng nam nữ, cuộc sống riêng tư được tôn trọng hơn; nhưng xuất hiện ly hôn, gia đình đơn thân, độc thân, áp lực công việc...</li>
+              <li><strong>3 mô hình chủ gia đình cùng tồn tại:</strong> (1) Người chồng; (2) <strong>Người vợ</strong>; (3) <strong>Cả hai vợ chồng cùng làm chủ</strong>.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <div class="mc-title">2. Biến đổi 4 chức năng ở VN</div>
+            <ul>
+              <li><strong>Tái sản xuất:</strong> Độ bền hôn nhân phụ thuộc nhiều vào <strong>tâm lý, tình cảm, kinh tế</strong> (không chỉ có con/con trai).</li>
+              <li><strong>Kinh tế – tiêu dùng:</strong> Tiến tới <strong>"tiêu dùng sản phẩm do người khác làm ra"</strong> (hàng hóa, dịch vụ xã hội).</li>
+              <li><strong>Giáo dục:</strong> Đầu tư tài chính tăng; hướng đến <strong>kiến thức khoa học hiện đại</strong> để con cái hòa nhập thế giới.</li>
+              <li><strong>Tâm sinh lý – tình cảm:</strong> Phụ thuộc hòa hợp tình cảm, đảm bảo hạnh phúc cá nhân chính đáng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>4 Phương hướng cơ bản xây dựng &amp; phát triển Gia đình VN</h4>
+        <ol class="clean-num">
+          <li>Tăng cường sự lãnh đạo của Đảng, nâng cao nhận thức của xã hội về xây dựng, phát triển gia đình VN.</li>
+          <li>Đẩy mạnh phát triển kinh tế – xã hội, nâng cao đời sống vật chất, kinh tế hộ gia đình.</li>
+          <li><strong>Kế thừa giá trị gia đình truyền thống</strong> đồng thời tiếp thu <strong>tiến bộ của nhân loại</strong>.</li>
+          <li>Tiếp tục phát triển và nâng cao chất lượng phong trào xây dựng <strong>gia đình văn hóa</strong>.</li>
+        </ol>
+
+        <div class="ch-footer">
+          <span>Nguồn: <em>Bài đọc ôn tập Chương 6, 7</em></span>
+          <a class="nav-pill" href="mln131.html">Luyện ngay Cụm 8 trên Quizlet →</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <button id="topBtn" class="top-btn" title="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    // Theme sync
+    const themeBtn = document.getElementById('themeBtn');
+    if (localStorage.getItem('lsd_dark') === '1') {
+      document.body.classList.add('dark');
+      themeBtn.textContent = '☀️';
+    }
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const d = document.body.classList.contains('dark');
+      themeBtn.textContent = d ? '☀️' : '🌙';
+      localStorage.setItem('lsd_dark', d ? '1' : '0');
+    });
+
+    // Compact mode toggle
+    const compactBtn = document.getElementById('compactBtn');
+    compactBtn.addEventListener('click', () => {
+      document.body.classList.toggle('compact');
+      const c = document.body.classList.contains('compact');
+      compactBtn.classList.toggle('active', c);
+      compactBtn.textContent = c ? '📖 Hiện đầy đủ' : '⚡ Chế độ Siêu gọn';
+    });
+
+    // Chapter mastery tracker
+    const DONE_KEY = 'mln131_kt_done_v1';
+    let doneSet = new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]'));
+    function renderDone() {
+      for (let i = 1; i <= 7; i++) {
+        const isDone = doneSet.has(i);
+        const btn = document.querySelector(`.done-btn[data-done="${i}"]`);
+        const td = document.getElementById('td-' + i);
+        if (btn) {
+          btn.classList.toggle('checked', isDone);
+          btn.textContent = isDone ? '☑ Đã thuộc' : '☐ Đánh dấu đã thuộc';
+        }
+        if (td) td.textContent = isDone ? '✓' : '';
+      }
+      document.getElementById('progText').textContent = `${doneSet.size}/7`;
+      document.getElementById('progFill').style.width = ((doneSet.size / 7) * 100) + '%';
+    }
+    function toggleDone(ch) {
+      if (doneSet.has(ch)) doneSet.delete(ch);
+      else doneSet.add(ch);
+      localStorage.setItem(DONE_KEY, JSON.stringify([...doneSet]));
+      renderDone();
+    }
+    renderDone();
+
+    // Instant highlight search (safe DOM text-node walker so event handlers stay intact)
+    const searchInput = document.getElementById('searchInput');
+    const rootEl = document.getElementById('contentRoot');
+    function clearMarks() {
+      rootEl.querySelectorAll('mark.hl').forEach(m => {
+        const parent = m.parentNode;
+        parent.replaceChild(document.createTextNode(m.textContent), m);
+        parent.normalize();
+      });
+    }
+    searchInput.addEventListener('input', () => {
+      clearMarks();
+      const q = searchInput.value.trim();
+      if (q.length < 2) return;
+      const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      let n;
+      while ((n = walker.nextNode())) {
+        if (n.parentElement && !['SCRIPT', 'STYLE', 'BUTTON'].includes(n.parentElement.tagName) && re.test(n.nodeValue)) {
+          nodes.push(n);
+        }
+        re.lastIndex = 0;
+      }
+      nodes.forEach(node => {
+        const frag = document.createDocumentFragment();
+        let last = 0;
+        const text = node.nodeValue;
+        text.replace(re, (match, offset) => {
+          if (offset > last) frag.appendChild(document.createTextNode(text.slice(last, offset)));
+          const mk = document.createElement('mark');
+          mk.className = 'hl';
+          mk.textContent = match;
+          frag.appendChild(mk);
+          last = offset + match.length;
+        });
+        if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      const first = rootEl.querySelector('mark.hl');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Active TOC highlight + back-to-top
+    const topBtn = document.getElementById('topBtn');
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const sections = [...document.querySelectorAll('section.chapter')];
+    window.addEventListener('scroll', () => {
+      topBtn.classList.toggle('show', window.scrollY > 360);
+      let cur = sections[0].id;
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= 130) cur = s.id;
+      }
+      tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }, { passive: true });
+  </script>
+</body>
+</html>
